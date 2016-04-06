@@ -1,0 +1,37 @@
+<tool id="demo2D00" name="demo2D00" version="0.0.1">
+  <description>Runs demo2D00 from CellOrganizer</description>
+  <command intepreter="bash">
+    pwd
+    demo2D00.sh $seed $number_of_synthesized_images
+  </command>
+  <inputs>
+    <!-- seed for random number generator -->
+    <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
+
+    <!-- number of synthesized images -->
+    <param name="number_of_synthesized_images" type="integer" value="1" label="Number of synthesized images"/>
+  </inputs>
+  <outputs>
+    <data format="tif" name="demo2D00_1.tif" />
+  </outputs>
+  <help>
+
+
+**Description**
+
+Synthesizes 2D image(s).
+
+-----
+
+**Input**
+
+Models.
+
+-----
+
+**Output**
+
+One or more images.
+
+</help>
+</tool>
