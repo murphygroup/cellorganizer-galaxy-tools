@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox>
+  <section id="getext" name="Get Data">
+    <tool file="data_source/upload.xml" />
+  </section>
+  <section id="synthesis_demos" name="Synthesis Demos">
+    <tool file="data_source/upload.xml" />
+    <tool file="demos/demo2D0.xml" />
+  </section>
+  <section id="training_demos" name="Training Demos">
+    <tool file="data_source/upload.xml" />
+    <tool file="demos/demo3D11.xml" />
+  </section>
+  <section id="useful_tools" name="Useful Tools">
+    <tool file="data_source/upload.xml" />
+    <tool file="usefule_tools/make_projection.xml" />
+  </section>
+</toolbox>
