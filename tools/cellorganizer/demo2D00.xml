@@ -1,18 +1,12 @@
-<tool id="demo2D00" name="demo2D00" version="0.0.1">
-  <description>Runs demo2D00 from CellOrganizer</description>
-  <command intepreter="bash">
-    pwd
-    demo2D00.sh $seed $number_of_synthesized_images
-  </command>
+<tool id="demounnun" name="name_demo2D00" version="0.0.1">
+  <description>Runs dsa from CellOrganizer</description>
+  <command interpreter="python">demo2D00.py $input $image_num $separated_images</command>
   <inputs>
-    <!-- seed for random number generator -->
-    <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
-
-    <!-- number of synthesized images -->
-    <param name="number_of_synthesized_images" type="integer" value="1" label="Number of synthesized images"/>
+    <param format="tiff" name="input" type="data" label="Source file"/>
+    <param name="image_num" type="integer" value="10" label="Number of results"/>
   </inputs>
   <outputs>
-    <data format="tif" name="demo2D00_1.tif" />
+    <data format="zip" name="separated_images" />
   </outputs>
   <help>
 
