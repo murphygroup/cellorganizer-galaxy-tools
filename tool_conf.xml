@@ -3,7 +3,7 @@
   <section id="getext" name="Get Data">
     <tool file="data_source/upload.xml" />
   </section>
-  <section id="cellorganizer" name="Synthesis Demos">
+  <section name="TIFF to collection of JPEG" id="cell">
     <tool file="cellorganizer/demo2D00.xml" />
   </section>
 </toolbox>
