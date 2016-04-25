@@ -1,25 +1,39 @@
-<tool id="demounnun" name="name_demo2D00" version="0.0.1">
-  <description>Runs dsa from CellOrganizer</description>
-  <command interpreter="python">demo2D00.py $input $image_num $separated_images</command>
+<tool id="demo2D00" name="demo2D00" version="0.0.1">
+  <description>Runs demo2D00 from CellOrganizer</description>
+  <command interpreter="bash">
+    demo2D00.sh $seed $number_of_synthesized_images
+  </command>
   <inputs>
-    <param format="tiff" name="input" type="data" label="Source file"/>
-    <param name="image_num" type="integer" value="10" label="Number of results"/>
+    <!-- seed for random number generator -->
+    <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
+
+    <!-- number of synthesized images -->
+    <param name="number_of_synthesized_images" type="integer" value="1" label="Number of synthesized images"/>
+
+    <!-- image compression -->
+    <param name="compression" type="select" label="Image compression">
+      <option value="lzw" selected="true">LZW</option>
+      <option value="none">No compression</option>
+    </param>
   </inputs>
   <outputs>
-    <data format="zip" name="separated_images" />
+    <data format="txt" name="output" />
+>>>>>>> Stashed changes
   </outputs>
-  <help>
-
+<help>
 
 **Description**
 
-Synthesizes 2D image(s).
+Synthesizes 2D HeLa images from generative models trained by Murphy Lab.
+The models used to generate these instances are included CellOrganizer.
 
 -----
 
 **Input**
 
-Models.
+- Seed for pseudo-random generator
+- Number of synthesized images
+- Image compression
 
 -----
 
