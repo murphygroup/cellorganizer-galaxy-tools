@@ -7,4 +7,8 @@
   <section id="cellorganizer" name="CellOrganizer">
     <tool file="cellorganizer/slml2img.xml" />
   </section>
+
+  <section id="cellorganizer-demos" name="CellOrganizer Demos">
+    <tool file="cellorganizer/demo2D00.xml" />
+  </section>
 </toolbox>
