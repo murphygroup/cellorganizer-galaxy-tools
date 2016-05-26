@@ -2,8 +2,7 @@
 
 export PATH=$PATH:$(dirname $0)
 WORKING_DIRECTORY=`pwd`
-CELLORGANIZER=/Users/icaoberg/Documents/MATLAB/cellorganizer
-MATLAB=/Applications/MATLAB_R2015a.app/bin/matlab
+MATLAB=matlab
 
 if [ "$#" -ne 1 ]; then
   SEED=12345
@@ -55,11 +54,7 @@ toc
 exit;" > script.m
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-##$MATLAB -nodesktop -nosplash -r "script;"
+$MATLAB -nodesktop -nosplash -r "script;"
 
 cd $WORKING_DIRECTORY
 rm -fv ./cellorganizer
-
-echo "I pity the fool!" > output
-
-ls
