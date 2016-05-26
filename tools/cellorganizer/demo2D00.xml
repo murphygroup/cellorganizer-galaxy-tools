@@ -18,7 +18,6 @@
   </inputs>
   <outputs>
     <data format="txt" name="output" />
->>>>>>> Stashed changes
   </outputs>
 <help>
 
