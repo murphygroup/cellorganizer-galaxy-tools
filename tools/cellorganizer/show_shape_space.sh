@@ -39,4 +39,4 @@ cat script.m
 
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-MATLAB -nodesktop -nosplash -r "script;"
+$MATLAB -nodesktop -nosplash -r "script;"
