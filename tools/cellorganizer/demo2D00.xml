@@ -17,7 +17,7 @@
     </param>
   </inputs>
   <outputs>
-    <data format="tif" name="output" from_work_dir="examples.zip"/>
+    <data format="zip" name="output" from_work_dir="examples.zip"/>
   </outputs>
 <help>
 
