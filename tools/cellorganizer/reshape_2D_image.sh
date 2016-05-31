@@ -11,6 +11,8 @@ INPUT=$1
 NUMBER_OF_IMAGES=1
 COMPRESSION=$2
 
+ln -s $INPUT $(pwd)/output.tif
+
 echo "
 % reshape_2D_image
 
@@ -19,7 +21,7 @@ echo "
 addpath( genpath([pwd filesep 'cellorganizer']));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-file = ''$INPUT';
+file = 'output.tif;
 disp( ['Loading image ' file])
 img = tif2img( file );
 img2 = reshape( img, size(img, 1 ), [] );
