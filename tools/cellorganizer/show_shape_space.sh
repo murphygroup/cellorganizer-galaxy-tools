@@ -22,9 +22,9 @@ model_name = './model.mat';
 load(model_name);
 
 % show shape space by calling the function
-figure,
+f = figure('visible','off');
 showShapeSpaceFigure(model);
-saveas( gcf, 'show_shape_space.png', 'png' );
+saveas( f, 'show_shape_space.png', 'png' );
 
 exit;" > script.m
 
