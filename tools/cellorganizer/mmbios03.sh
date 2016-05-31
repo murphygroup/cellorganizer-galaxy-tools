@@ -83,7 +83,6 @@ options.output.blender.downsample = [1 1 1];
 options.verbose = true;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %main call to CellOrganizer
 slml2img( {model_file_path},  options );
 
@@ -94,7 +93,7 @@ cat script.m
 
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "a=rand(10); disp(a);"
+$MATLAB -nodesktop -nosplash -r "script;"
 
 echo "List files"
 ls *
