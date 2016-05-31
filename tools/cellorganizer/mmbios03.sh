@@ -12,8 +12,11 @@ NUMBER_OF_SYNTHESIZED_IMAGES=$2
 NUMBER_OF_GAUSSIAN_OBJECTS=$3
 
 echo "
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SEED EXAMPLE
+% DO NOT MODIFY THIS BLOCK
+addpath( genpath([pwd filesep 'cellorganizer']));
+
 seed = $SEED;
 try
     state = rng(seed);
