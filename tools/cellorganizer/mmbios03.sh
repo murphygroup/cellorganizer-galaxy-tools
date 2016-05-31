@@ -51,7 +51,7 @@ param.targetDirectory = pwd;
 param.prefix = 'examples';
 
 %number of images to synthesize
-param.numberOfSynthesizedImages = NUMBER_OF_SYNTHESIZED_IMAGES;
+param.numberOfSynthesizedImages = $NUMBER_OF_SYNTHESIZED_IMAGES;
 
 %save images as TIF files
 param.output.tifimages = true;
@@ -92,6 +92,11 @@ echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
 
+echo "List files"
+ls *
+
 echo "Compressing results"
-zip -rv examples.zip examples
-rm -rfv examples
+if [ -d examples ]; then
+  zip -rv examples.zip examples
+  rm -rfv examples
+fi
