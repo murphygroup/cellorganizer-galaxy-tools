@@ -1,5 +1,5 @@
 <tool id="mmbios03" name="mmbios03" version="0.0.1">
-  <description>Synthesizes an image using a simple geometry as the framework and samples from 3D HeLa TfR model for the protein pattern..</description>
+  <description>Synthesizes an image using a simple geometry as the framework and samples from 3D HeLa TfR model for the protein pattern.</description>
   <command interpreter="bash">
     mmbios03.sh $seed $number_of_synthesized_images $number_of_gaussian_objects
   </command>
