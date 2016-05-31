@@ -18,18 +18,18 @@
   </outputs>
 <help>
 
-  **Description**
+**Description**
 
-  Synthesizes one 3D image with nuclear, cell shape, and vesicular channels
-  from all vesicular object models (lysosomes, mitochondria, nucleoli, and
-  endosomes) with sampling method set to render vesicular objects as
-  ellipsoids without convolution. The model was trained from the Murphy Lab
-  3D HeLa dataset.
+Synthesizes one 3D image with nuclear, cell shape, and vesicular channels
+from all vesicular object models (lysosomes, mitochondria, nucleoli, and
+endosomes) with sampling method set to render vesicular objects as
+ellipsoids without convolution. The model was trained from the Murphy Lab
+3D HeLa dataset.
 
-  **Output**
+**Output**
 
-  * a zip file with six TIFF files (nuclear, cell shape, lysosomal, mitochondrial,
-    nucleolar, and endosomal channels)
+- a zip file with six TIFF files (nuclear, cell shape, lysosomal, mitochondrial,
+  nucleolar, and endosomal channels)
 
 </help>
 </tool>

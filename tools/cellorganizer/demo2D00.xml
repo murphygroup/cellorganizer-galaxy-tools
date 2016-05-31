@@ -25,16 +25,8 @@ The models used to generate these instances are included CellOrganizer.
 
 -----
 
-**Input**
-
-- Seed for pseudo-random generator
-- Number of synthesized images
-- Image compression
-
------
-
 **Output**
 
-One image as a TIF file.
+- One image as a TIF file.
 </help>
 </tool>

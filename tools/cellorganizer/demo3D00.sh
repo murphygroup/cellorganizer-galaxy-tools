@@ -24,7 +24,7 @@ catch err
 end
 
 options.targetDirectory = pwd;
-options.prefix = 'img';
+options.prefix = 'examples';
 options.compression = 'lzw';
 options.sampling.method = 'disc';
 options.debug = false;

@@ -39,7 +39,7 @@ Makes a collection of simple geometries and trains a framework model from that c
 
 **Output**
 
-A valid CellOrganizer model as a Matlab file.
+- A valid CellOrganizer model as a Matlab file.
 
 </help>
 </tool>
