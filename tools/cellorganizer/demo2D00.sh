@@ -8,8 +8,8 @@ WORKING_DIRECTORY=`pwd`
 MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
 SEED=$1
-NUMBER_OF_IMAGES=$2
-COMPRESSION=$3
+NUMBER_OF_IMAGES=1
+COMPRESSION=$2
 
 echo "
 % demo2D00
