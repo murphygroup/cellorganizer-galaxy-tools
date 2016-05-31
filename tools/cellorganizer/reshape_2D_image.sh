@@ -17,10 +17,10 @@ echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 addpath( genpath([pwd filesep 'cellorganizer']));
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-file = $INPUT;
+file = ''$INPUT';
+disp( ['Loading image ' file])
 img = tif2img( file );
 img2 = reshape( img, size(img, 1 ), [] );
 img2 = uint8(img2);
