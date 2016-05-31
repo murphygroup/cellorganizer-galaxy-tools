@@ -15,9 +15,7 @@ echo "
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-current_path = which(mfilename);
-[current_path, filename, extension] = fileparts( current_path );
-cd(current_path);
+addpath( genpath([pwd filesep 'cellorganizer']));
 
 options.seed = $SEED;
 try
@@ -37,10 +35,10 @@ options.display = false;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FEEL FREE TO MODIFY THE VARIABLES IN THIS BLOCK
-list_of_models = {'../../../models/3D/nuc.mat', ...
-    '../../../models/3D/lamp2.mat', ...
-    '../../../models/3D/tfr.mat', ...
-    '../../../models/3D/mit.mat'};
+list_of_models = {'./cellorganizer/models/3D/nuc.mat', ...
+    './cellorganizer/models/3D/lamp2.mat', ...
+    './cellorganizer/models/3D/tfr.mat', ...
+    './cellorganizer/models/3D/mit.mat'};
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 answer = slml2img( list_of_models, options );
