@@ -11,7 +11,9 @@ INPUT=$1
 
 ln -s $INPUT $(pwd)/model.mat
 
-ls $INPUT
+echo "Input is" $INPUT
+echo "List files"
+ls
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,7 +22,7 @@ addpath( genpath([pwd filesep 'cellorganizer']));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % specify model name and load model
-model_name = './model.mat';
+model_name = '$INPUT';
 load(model_name);
 
 % show shape space by calling the function
