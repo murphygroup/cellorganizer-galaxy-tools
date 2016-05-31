@@ -8,6 +8,33 @@ WORKING_DIRECTORY=`pwd`
 MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
 echo "
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT MODIFY THIS BLOCK
+addpath( genpath([pwd filesep 'cellorganizer']));
+
+options.seed = $SEED;
+try
+    state = rng( options.seed );
+catch err
+    state = rand( 'seed', options.seed ); %#ok<RAND>
+end
+
+options.targetDirectory = pwd;
+options.prefix = 'img';
+options.compression = 'lzw';
+options.sampling.method = 'disc';
+options.debug = false;
+options.verbose = true;
+options.display = false;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FEEL FREE TO MODIFY THE VARIABLES IN THIS BLOCK
+list_of_models = {'../../../models/3D/nuc.mat'};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+answer = slml2img( list_of_models, options );
+
 exit;" > script.m
 
 echo "Running the following script in Matlab"
