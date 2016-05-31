@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
 export PATH=$PATH:$(dirname $0)
-WORKING_DIRECTORY=`pwd`
-MATLAB=matlab
+CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
 
-if [ "$#" -ne 1 ]; then
-  SEED=12345
-  NUMBER_OF_IMAGES=1
-  COMPRESSION='lzw'
-else
-  SEED=$1
-  NUMBER_OF_IMAGES=$2
-  COMPRESSION=$3
-fi
+WORKING_DIRECTORY=`pwd` 
+
+MATLAB=/opt/packages/matlab/R2016a/bin/matlab
+
+SEED=$1
+NUMBER_OF_IMAGES=$2
+COMPRESSION=$3
 
 echo "
 % demo2D00
@@ -37,7 +34,7 @@ catch err
     state = rand( 'seed', options.seed ); %#ok<RAND>
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-options.numberOfSynthesizedImages=$NUMBER_OF_IMAGES
+options.numberOfSynthesizedImages=$NUMBER_OF_IMAGES;
 options.compression = '$COMPRESSION';
 options.targetDirectory = pwd;
 options.debug = false;
@@ -51,10 +48,19 @@ answer = slml2img( {'./cellorganizer/models/2D/nucleolus.mat', ...
   './cellorganizer/models/2D/lysosome.mat'}, options );
 toc
 
+img = tif2img( 'output1.tif' );
+img2 = reshape( img, size(img, 1 ), [] );
+img2 = uint8(img2);
+imwrite( img2, 'output2.png' );
+
 exit;" > script.m
 
+echo "Running the following script in Matlab"
+cat script.m
+
+echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
 
-cd $WORKING_DIRECTORY
-rm -fv ./cellorganizer
+echo "List all files in the current tree and subtrees"
+find . -type f

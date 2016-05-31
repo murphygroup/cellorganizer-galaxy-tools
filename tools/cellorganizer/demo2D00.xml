@@ -1,7 +1,7 @@
 <tool id="demo2D00" name="demo2D00" version="0.0.1">
   <description>Runs demo2D00 from CellOrganizer</description>
   <command interpreter="bash">
-    demo2D00.sh $seed $number_of_synthesized_images
+    demo2D00.sh $seed $number_of_synthesized_images $compression
   </command>
   <inputs>
     <!-- seed for random number generator -->
@@ -17,7 +17,8 @@
     </param>
   </inputs>
   <outputs>
-    <data format="txt" name="output" />
+    <data format="tif" name="output_image1" from_work_dir="output1.tif"/>
+    <data format="png" name="output_image2" from_work_dir="output2.png"/>
   </outputs>
 <help>
 
