@@ -106,12 +106,3 @@ cat script.m
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
-
-echo "List files"
-ls *
-
-echo "Compressing results"
-if [ -d examples ]; then
-  zip -rv examples.zip examples
-  rm -rfv examples
-fi
