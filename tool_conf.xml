@@ -29,6 +29,7 @@
 
   <!-- These are useful tools -->
   <section id="cellorganizer-tools" name="Useful tools">
+    <tool file="cellorganizer/reshape_2D_image.xml" />
     <tool file="cellorganizer/compare_models.xml" />
     <tool file="cellorganizer/dataset2shapespace.xml" />
   </section>
