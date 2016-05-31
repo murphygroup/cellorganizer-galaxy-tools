@@ -14,7 +14,7 @@ NUMBER_OF_GAUSSIAN_OBJECTS=$3
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SEED EXAMPLE
-seed = $SEED
+seed = $SEED;
 try
     state = rng(seed);
 catch
@@ -28,15 +28,15 @@ options.image_size = 512;
 a = randi([100 200]);
 b = randi([100 200]);
 c = randi([100 200]);
-param.instance.nucleus = generate_ellipsoid(a,b,c,options);
+options.instance.nucleus = generate_ellipsoid(a,b,c,options);
 
 a = randi([250 500]);
 b = randi([250 500]);
 c = randi([250 500]);
-param.instance.cell = generate_ellipsoid(a,b,c,options);
+options.instance.cell = generate_ellipsoid(a,b,c,options);
 
 %step0.2: set the resolution of the latter images
-param.instance.resolution = [0.049, 0.049, 0.2000];
+options.instance.resolution = [0.049, 0.049, 0.2000];
 
 %step0.3: use a valid CellOrganizer model that contains a protein model. in
 %this model we are going to use the 3D HeLa nucleoli model distrubuted in
@@ -45,43 +45,43 @@ model_file_path = './cellorganizer/models/3D/tfr.mat';
 
 %these are optional parameters that you are welcome to modify as needed
 %location where CellOrganizer will save the images to
-param.targetDirectory = pwd;
+options.targetDirectory = pwd;
 
 %output folder name
-param.prefix = 'examples';
+options.prefix = 'examples';
 
 %number of images to synthesize
-param.numberOfSynthesizedImages = $NUMBER_OF_SYNTHESIZED_IMAGES;
+options.numberOfSynthesizedImages = $NUMBER_OF_SYNTHESIZED_IMAGES;
 
 %save images as TIF files
-param.output.tifimages = true;
+options.output.tifimages = true;
 
 %compression for TIF output
-param.compression = 'lzw';
+options.compression = 'lzw';
 
 %do not apply point-spread-function
-param.microscope = 'none';
+options.microscope = 'none';
 
 %render Gaussian objects as discs
-param.sampling.method = 'disc';
+options.sampling.method = 'disc';
 
 %overlap frequency model and generate a single object
-param.numberOfGaussianObjects = $NUMBER_OF_GAUSSIAN_OBJECTS;
+options.numberOfGaussianObjects = $NUMBER_OF_GAUSSIAN_OBJECTS;
 
 %generate framework
-param.synthesis = 'all';
+options.synthesis = 'all';
 
 %generate SBML output
 options.output.blenderfile = true;
 options.output.blender.downsample = [1 1 1];
 
 %helper options
-param.verbose = true;
+options.verbose = true;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %main call to CellOrganizer
-slml2img( {model_file_path},  param );
+slml2img( {model_file_path},  options );
 
 exit;" > script.m
 
