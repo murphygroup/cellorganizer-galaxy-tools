@@ -67,11 +67,3 @@ cat script.m
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
-
-echo "Compressing results"
-mkdir examples
-mv -v output*.png examples/
-mv -v output*.tif examples/
-
-zip -rv examples.zip examples
-rm -rfv examples
