@@ -11,6 +11,11 @@ SEED=$1
 NUMBER_OF_SYNTHESIZED_IMAGES=$2
 NUMBER_OF_GAUSSIAN_OBJECTS=$3
 
+#dimensions needed for CellBlender
+#1 micron cell
+#0.2 micron endosome
+#0.35 nucleus
+
 echo "
 % mmbios03
 
@@ -40,7 +45,7 @@ c = randi([250 500]);
 options.instance.cell = generate_ellipsoid(a,b,c,options);
 
 %step0.2: set the resolution of the latter images
-options.instance.resolution = [0.049, 0.049, 0.2000];
+options.instance.resolution = [1.0, 1.0, 1.0];
 
 %step0.3: use a valid CellOrganizer model that contains a protein model. in
 %this model we are going to use the 3D HeLa nucleoli model distrubuted in
@@ -86,6 +91,15 @@ options.verbose = true;
 %main call to CellOrganizer
 slml2img( {model_file_path},  options );
 
+directory = [ pwd filesep 'examples' filesep 'cell1' ];
+
+img = im2projection_RGB( ...
+    {tif2img([directory filesep 'cell.tif']), ...
+    tif2img([directory filesep 'nucleus.tif']), ...
+    tif2img([directory filesep 'endosome1.tif'])});
+
+imwrite( img, [ directory filesep 'projection.png'] );
+
 exit;" > script.m
 
 echo "Running the following script in Matlab"
@@ -100,6 +114,6 @@ ls *
 
 echo "Compressing results"
 if [ -d examples ]; then
-  zip -rv examples.zip examples
+  zip -rv output.zip examples synthetic_images
   rm -rfv examples
 fi
