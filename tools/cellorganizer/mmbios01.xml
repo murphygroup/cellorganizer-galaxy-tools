@@ -18,7 +18,7 @@
     <param name="downsample_factor" type="integer" value="1" label="Downsample factor"/>
   </inputs>
   <outputs>
-    <data format="txt" name="output" from_work_dir="model.mat"/>
+    <data format="mat" name="output" from_work_dir="model.mat"/>
   </outputs>
 <help>
 
