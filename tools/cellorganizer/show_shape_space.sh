@@ -18,7 +18,9 @@ ls
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-addpath( genpath([pwd filesep 'cellorganizer']));
+cd ./cellorganizer
+setup(true);
+cd('$WORKING_DIRECTORY')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % specify model name and load model
@@ -37,4 +39,4 @@ cat script.m
 
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-##$MATLAB -nodesktop -nosplash -r "script;"
+MATLAB -nodesktop -nosplash -r "script;"
