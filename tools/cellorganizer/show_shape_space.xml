@@ -1,7 +1,7 @@
 <tool id="show_shape_space" name="show_shape_space" version="0.0.1">
   <description>Shows a visual representation of the shape space..</description>
   <command interpreter="bash">
-    reshape_2D_image.sh $input
+    show_shape_space.sh $input
   </command>
   <inputs>
 <param format="tif" name="input" type="data" label="Diffeomorphic model"></param>
