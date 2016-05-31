@@ -21,7 +21,7 @@ echo "
 addpath( genpath([pwd filesep 'cellorganizer']));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-file = 'output.tif;
+file = 'output.tif';
 disp( ['Loading image ' file])
 img = tif2img( file );
 img2 = reshape( img, size(img, 1 ), [] );
