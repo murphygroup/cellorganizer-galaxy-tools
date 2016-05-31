@@ -16,14 +16,6 @@ echo "
 % DO NOT MODIFY THIS BLOCK
 addpath( genpath([pwd filesep 'cellorganizer']));
 
-seed = $SEED;
-try
-    state = rng(seed);
-catch
-    state = RandStream.create( 'mt19937ar', 'seed', seed );
-    RandStream.setDefaultStream( state );
-end
-
 options.verbose = true;
 options.debug = false;
 options.display = true;
