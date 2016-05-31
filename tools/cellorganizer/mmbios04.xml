@@ -18,22 +18,13 @@
 
 **Description**
 
-Makes a collection of simple geometries and trains a framework model from that collection.
-
------
-
-**Input**
-
-- Seed for pseudo-random generator. Default is 3.
-- Number of simple geometries to generate to train this simple model. Default is 25.
-- Simple geometries image size. Default is 256.
-- Downsample factor. Default is 1 (no downsample). It only downsamples the image in x-direction and y-direction, not z-direction.
+Trains a diffeomorphic generative model using the Murphy Lab 2D HeLa collection
 
 -----
 
 **Output**
 
-A valid CellOrganizer model as a Matlab file.
+* A valid CellOrganizer model as a Matlab file.
 
 </help>
 </tool>
