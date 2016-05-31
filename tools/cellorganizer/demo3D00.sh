@@ -7,6 +7,10 @@ WORKING_DIRECTORY=`pwd`
 
 MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
+SEED=$1
+NUMBER_OF_IMAGES=1
+COMPRESSION=$2
+
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
@@ -43,3 +47,7 @@ cat script.m
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
+
+echo "Compressing results"
+zip -rv examples.zip examples
+rm -rfv examples
