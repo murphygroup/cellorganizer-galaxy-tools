@@ -11,6 +11,8 @@ INPUT=$1
 
 ln -s $INPUT $(pwd)/model.mat
 
+ls $INPUT
+
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
@@ -33,4 +35,4 @@ cat script.m
 
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
+##$MATLAB -nodesktop -nosplash -r "script;"
