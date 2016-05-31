@@ -1,5 +1,5 @@
-<tool id="mmbios01" name="mmbios01" version="0.0.1">
-  <description>Trains a generative model from a collection of simple geometries.</description>
+<tool id="mmbios04" name="mmbios04" version="0.0.1">
+  <description>Trains a diffeomorphic generative model using the Murphy Lab 2D HeLa collection.</description>
   <command interpreter="bash">
     mmbios04.sh $number_of_images $downsample_factor
   </command>
