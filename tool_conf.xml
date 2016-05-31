@@ -1,14 +1,35 @@
 <?xml version='1.0' encoding='utf-8'?>
 <toolbox>
-  <section id="getext" name="Get Data">
+  <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
+    <tool file="import_murphylab_collections/2D_HeLa.xml" />
+    <tool file="import_murphylab_collections/3D_HeLa.xml" />
+        <tool file="import_murphylab_collections/sample_from_public_synthetic_collection.xml" />
   </section>
 
   <section id="cellorganizer" name="CellOrganizer">
-    <tool file="cellorganizer/slml2img.xml" />
+    <tool file="cellorganizer/img2model.xml" />
+    <tool file="cellorganizer/model2img.xml" />
   </section>
 
   <section id="cellorganizer-demos" name="CellOrganizer Demos">
     <tool file="cellorganizer/demo2D00.xml" />
+    <tool file="cellorganizer/demo3D00.xml" />
+    <tool file="cellorganizer/demo3D01.xml" />
+    <tool file="cellorganizer/demo3D11.xml" />
+    <tool file="cellorganizer/demo3D12.xml" />
+  </section>
+
+  <!-- tools to be used in MMBioS 2016 simple pipeline -->
+  <section id="mmbios2016" name="MMBioS 2016">
+    <tool file="cellorganizer/mmbios01.xml" />
+    <tool file="cellorganizer/mmbios02.xml" />
+    <tool file="cellorganizer/mmbios03.xml" />
+  </section>
+
+  <!-- These are useful tools -->
+  <section id="cellorganizer-tools" name="Useful tools">
+    <tool file="cellorganizer/compare_models.xml" />
+    <tool file="cellorganizer/dataset2shapespace.xml" />
   </section>
 </toolbox>
