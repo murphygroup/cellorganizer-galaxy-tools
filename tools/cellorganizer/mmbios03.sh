@@ -32,20 +32,20 @@ catch
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-options.image_size = 512;
+options.image_size = 300;
 
-a = randi([100 200]);
-b = randi([100 200]);
-c = randi([100 200]);
+a = randi([100 128]);
+b = randi([100 128]);
+c = randi([100 128]);
 options.instance.nucleus = generate_ellipsoid(a,b,c,options);
 
-a = randi([250 500]);
-b = randi([250 500]);
-c = randi([250 500]);
+a = randi([200 256]);
+b = randi([200 256]);
+c = randi([200 256]);
 options.instance.cell = generate_ellipsoid(a,b,c,options);
 
 %step0.2: set the resolution of the latter images
-options.instance.resolution = [1.0, 1.0, 1.0];
+options.instance.resolution = [0.004, 0.004, 0.033];
 
 %step0.3: use a valid CellOrganizer model that contains a protein model. in
 %this model we are going to use the 3D HeLa nucleoli model distrubuted in
