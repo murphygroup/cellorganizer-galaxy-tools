@@ -34,7 +34,7 @@ options.display = false;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FEEL FREE TO MODIFY THE VARIABLES IN THIS BLOCK
-list_of_models = {'../../../models/3D/nuc.mat'};
+list_of_models = {'./cellorganizer/models/3D/nuc.mat'};
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 answer = slml2img( list_of_models, options );
