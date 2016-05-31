@@ -12,6 +12,7 @@ NUMBER_OF_SYNTHESIZED_IMAGES=$2
 NUMBER_OF_GAUSSIAN_OBJECTS=$3
 
 echo "
+% mmbios03
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
@@ -93,7 +94,7 @@ cat script.m
 
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
+$MATLAB -nodesktop -nosplash -r "a=rand(10); disp(a);"
 
 echo "List files"
 ls *
