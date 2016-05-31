@@ -12,19 +12,22 @@
     <tool file="cellorganizer/slml2img.xml" />
   </section>
 
-  <section id="cellorganizer-demos" name="CellOrganizer Demos">
+  <section id="cellorganizer_demos" name="CellOrganizer Demos">
     <tool file="cellorganizer/demo2D00.xml" />
     <tool file="cellorganizer/demo3D00.xml" />
     <tool file="cellorganizer/demo3D01.xml" />
-    <tool file="cellorganizer/demo3D11.xml" />
-    <tool file="cellorganizer/demo3D12.xml" />
   </section>
 
   <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="mmbios2016" name="MMBioS 2016">
+  <section id="mmbios2016" name="MMBioS 2016 Basic Pipeline">
     <tool file="cellorganizer/mmbios01.xml" />
     <tool file="cellorganizer/mmbios02.xml" />
     <tool file="cellorganizer/mmbios03.xml" />
+  </section>
+
+  <!-- tools to be used in MMBioS 2016 simple pipeline -->
+  <section id="mmbios2016" name="MMBioS 2016 CellOrganizer Tutorial">
+    <tool file="cellorganizer/mmbios04.xml" />
   </section>
 
   <!-- These are useful tools -->
