@@ -19,14 +19,14 @@
   </section>
 
   <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="mmbios2016" name="MMBioS 2016 Basic Pipeline">
+  <section id="mmbios2016-general" name="MMBioS 2016 Basic Pipeline">
     <tool file="cellorganizer/mmbios01.xml" />
     <tool file="cellorganizer/mmbios02.xml" />
     <tool file="cellorganizer/mmbios03.xml" />
   </section>
 
   <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="mmbios2016" name="MMBioS 2016 CellOrganizer Tutorial">
+  <section id="mmbios2016-cellorganizer" name="MMBioS 2016 CellOrganizer Tutorial">
     <tool file="cellorganizer/mmbios04.xml" />
   </section>
 
