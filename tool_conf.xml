@@ -2,39 +2,29 @@
 <toolbox>
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
-    <tool file="cellorganizer/sample_from_public_database.xml"
-  </section>
-
-  <!--
-  <section id="cellorganizer" name="CellOrganizer">
-    <tool file="cellorganizer/img2slml.xml" />
-    <tool file="cellorganizer/slml2img.xml" />
-  </section>
--->
-
-<!-- tools to be used in MMBioS 2016 simple pipeline -->
-<section id="mmbios2016-general" name="MMBioS 2016">
-  <tool file="cellorganizer/mmbios01.xml" />
-  <tool file="cellorganizer/mmbios02.xml" />
-  <tool file="cellorganizer/mmbios03.xml" />
-</section>
-
-  <section id="cellorganizer_demos" name="Demos">
-    <tool file="cellorganizer/demo2D00.xml" />
-    <tool file="cellorganizer/demo3D00.xml" />
-    <tool file="cellorganizer/demo3D01.xml" />
   </section>
 
   <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="cellorganizer-training" name="Training">
-    <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
+  <section id="mmbios2016-general" name="MMBioS 2016">
+    <tool file="cellorganizer/mmbios01.xml" />
+    <tool file="cellorganizer/mmbios02.xml" />
+    <tool file="cellorganizer/mmbios03.xml" />
   </section>
 
-  <!-- These are useful tools -->
-  <section id="cellorganizer-tools" name="Useful tools">
-    <tool file="cellorganizer/reshape_2D_image.xml" />
-    <tool file="cellorganizer/show_shape_space.xml" />
-    <tool file="cellorganizer/compare_models.xml" />
-    <tool file="cellorganizer/dataset2shapespace.xml" />
-  </section>
+    <section id="cellorganizer_demos" name="Demos">
+      <tool file="cellorganizer/demo2D00.xml" />
+      <tool file="cellorganizer/demo3D00.xml" />
+      <tool file="cellorganizer/demo3D01.xml" />
+    </section>
+
+    <!-- tools to be used in MMBioS 2016 simple pipeline -->
+    <section id="cellorganizer-training" name="Training">
+      <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
+    </section>
+
+    <!-- These are useful tools -->
+    <section id="cellorganizer-tools" name="Useful tools">
+      <tool file="cellorganizer/reshape_2D_image.xml" />
+      <tool file="cellorganizer/show_shape_space.xml" />
+    </section>
 </toolbox>
