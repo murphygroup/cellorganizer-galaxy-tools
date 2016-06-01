@@ -7,8 +7,7 @@
   <inputs>
     <!-- 2D HeLa dataset collection -->
     <param name="2D_hela_dataset" type="select" label="Select 2D HeLa dataset">
-    <option value="0" selected="true">Column 1 / Sequence name</option>
-      <option value="LAM">LAMP2</option>
+      <option value="LAM" selected="true">LAMP2</option>
       <option value="Nuc">Nucleoli</option>
       <option value="Mit">Mitochondria</option>
       <option value="TfR">TfR</option>
