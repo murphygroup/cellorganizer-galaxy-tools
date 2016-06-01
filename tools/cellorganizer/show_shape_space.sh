@@ -12,6 +12,9 @@ INPUT=$1
 ln -s $INPUT $(pwd)/model.mat
 
 echo "Input is" $INPUT
+
+echo $INPUT
+
 echo "List files"
 ls
 
