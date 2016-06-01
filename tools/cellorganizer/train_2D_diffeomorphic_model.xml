@@ -1,10 +1,19 @@
-<tool id="mmbios04" name="mmbios04" version="0.0.1">
+<tool id="train_2D_diffeomorphic_model" name="train_2D_diffeomorphic_model" version="0.0.1">
   <description>Trains a diffeomorphic generative model using the Murphy Lab 2D HeLa collection.</description>
   <command interpreter="bash">
-    mmbios04.sh $number_of_images $downsample_factor
+    train_2D_diffeomorphic_model.sh $2D_hela_dataset $number_of_images $downsample_factor
   </command>
 
   <inputs>
+    <!-- 2D HeLa dataset collection -->
+    <param name="2D_hela_dataset" type="select" label="Select 2D HeLa dataset">
+    <option value="0" selected="true">Column 1 / Sequence name</option>
+      <option value="LAM">LAMP2</option>
+      <option value="Nuc">Nucleoli</option>
+      <option value="Mit">Mitochondria</option>
+      <option value="TfR">TfR</option>
+    </param>
+
     <!-- seed for random number generator -->
     <param name="number_of_images" type="integer" value="9" label="Number of images"/>
 
