@@ -8,15 +8,7 @@ WORKING_DIRECTORY=`pwd`
 MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
 INPUT=$1
-
-ln -s $INPUT $(pwd)/model.mat
-
-echo "Input is" $INPUT
-
-cat $INPUT
-
-echo "List files"
-ls
+cp -v $INPUT $(pwd)/model.mat
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
