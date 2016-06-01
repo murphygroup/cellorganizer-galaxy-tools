@@ -13,7 +13,7 @@ ln -s $INPUT $(pwd)/model.mat
 
 echo "Input is" $INPUT
 
-echo $INPUT
+cat $INPUT
 
 echo "List files"
 ls
