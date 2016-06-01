@@ -24,7 +24,7 @@ cd('$WORKING_DIRECTORY')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % specify model name and load model
-model_name = '$INPUT';
+model_name = './model.mat';
 load(model_name);
 
 % show shape space by calling the function
