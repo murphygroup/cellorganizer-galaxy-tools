@@ -2,32 +2,32 @@
 <toolbox>
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
-    <tool file="import_murphylab_collections/2D_HeLa.xml" />
-    <tool file="import_murphylab_collections/3D_HeLa.xml" />
-    <tool file="import_murphylab_collections/sample_from_public_synthetic_collection.xml" />
+    <tool file="cellorganizer/sample_from_public_database.xml"
   </section>
 
+  <!--
   <section id="cellorganizer" name="CellOrganizer">
     <tool file="cellorganizer/img2slml.xml" />
     <tool file="cellorganizer/slml2img.xml" />
   </section>
+-->
 
-  <section id="cellorganizer_demos" name="CellOrganizer Demos">
+<!-- tools to be used in MMBioS 2016 simple pipeline -->
+<section id="mmbios2016-general" name="MMBioS 2016">
+  <tool file="cellorganizer/mmbios01.xml" />
+  <tool file="cellorganizer/mmbios02.xml" />
+  <tool file="cellorganizer/mmbios03.xml" />
+</section>
+
+  <section id="cellorganizer_demos" name="Demos">
     <tool file="cellorganizer/demo2D00.xml" />
     <tool file="cellorganizer/demo3D00.xml" />
     <tool file="cellorganizer/demo3D01.xml" />
   </section>
 
   <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="mmbios2016-general" name="MMBioS 2016 Basic Pipeline">
-    <tool file="cellorganizer/mmbios01.xml" />
-    <tool file="cellorganizer/mmbios02.xml" />
-    <tool file="cellorganizer/mmbios03.xml" />
-  </section>
-
-  <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="mmbios2016-cellorganizer" name="MMBioS 2016 CellOrganizer Tutorial">
-    <tool file="cellorganizer/mmbios04.xml" />
+  <section id="cellorganizer-training" name="Training">
+    <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
   </section>
 
   <!-- These are useful tools -->
