@@ -28,7 +28,6 @@ options.display = true;
 % collection, modify these according to your needs
 directory = './cellorganizer/images/HeLa/2D/$DATASET/';
 
-directory = '../../../images/HeLa/2D/LAM/';
 number_of_images = $NUMBER_OF_IMAGES;
 files = dir([ directory filesep 'orgdna' filesep 'cell*.tif' ]);
 files = files(1:number_of_images);
