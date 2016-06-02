@@ -1,5 +1,5 @@
 <tool id="export_to_vcell" name="export_to_vcell" version="0.0.1">
-  <description>Exports a 2D synthetic image to VCell.</description>
+  <description>Exports a 2D synthetic image to a format that can be imported in VCell.</description>
   <command interpreter="bash">
     export_to_vcell.sh $input
   </command>

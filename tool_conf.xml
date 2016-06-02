@@ -12,15 +12,14 @@
     <tool file="cellorganizer/mmbios03.xml" />
   </section>
 
-    <section id="demos" name="Demos">
-      <tool file="cellorganizer/demo2D00.xml" />
-      <tool file="cellorganizer/demo3D00.xml" />
-      <tool file="cellorganizer/demo3D01.xml" />
-    </section>
-
-    <!-- tools to be used in MMBioS 2016 simple pipeline -->
     <section id="training" name="Training">
       <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
+      <tool file="cellorganizer/train_3D_vesicular_model.xml" />
+    </section>
+
+    <section id="synthesis" name="Synthesis">
+      <tool file="cellorganizer/synthesize_2D_diffeormorphic_instance.xml" />
+      <tool file="cellorganizer/synthesize_3D_vesicular_instance.xml" />
     </section>
 
     <!-- These are useful tools -->
@@ -33,5 +32,11 @@
       <tool file="cellorganizer/compare_vesicular_models.xml" />
       <tool file="cellorganizer/export_to_blender.xml" />
       <tool file="cellorganizer/export_to_vcell.xml" />
+    </section>
+
+    <section id="demos" name="Demos">
+      <tool file="cellorganizer/demo2D00.xml" />
+      <tool file="cellorganizer/demo3D00.xml" />
+      <tool file="cellorganizer/demo3D01.xml" />
     </section>
 </toolbox>
