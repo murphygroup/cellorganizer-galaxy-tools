@@ -19,8 +19,7 @@ cd('$WORKING_DIRECTORY')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % specify model name and load model
-model_name = './model.mat';
-load(model_name);
+files = {'./model.mat'};
 
 slml2img( files, options );
 !mv -v demo1.tif output.tif
