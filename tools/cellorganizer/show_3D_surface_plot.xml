@@ -1,7 +1,7 @@
 <tool id="show_3D_surface_plot" name="show_3D_surface_plot" version="0.0.1">
   <description>Makes a surface plot from a 3D synthetic image.</description>
   <command interpreter="bash">
-    show_3D_surface_plot.sh $viewanglex $viewangley $alphavalue
+    show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
   </command>
   <inputs>
     <param format="zip" name="input" type="data" label="3D image"></param>
