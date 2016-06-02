@@ -12,7 +12,6 @@ NUMBER_OF_IMAGES=$2
 DOWNSAMPLE_FACTOR=$3
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-rsync -va ./cellorganizer/images/HeLa/2D/$DATASET .
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,11 +28,38 @@ options.display = true;
 %% Training component: main call to img2slml
 
 % collection, modify these according to your needs
-directory = './$DATASET/';
-dna = [ directory filesep 'orgdna' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
-cellm = [ directory filesep 'orgcell' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
-protein = [ directory filesep 'orgprot' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
-options.masks = [ directory filesep 'crop' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
+directory = './cellorganizer/images/HeLa/2D/$DATASET/';
+
+directory = '../../../images/HeLa/2D/LAM/';
+number_of_images = $NUMBER_OF_IMAGES;
+files = dir([ directory filesep 'orgdna' filesep 'cell*.tif' ]);
+files = files(1:number_of_images);
+dna = {};
+for i=1:1:length(files)
+    dna{length(dna)+1} = [ directory filesep 'orgdna' filesep files(i).name];
+end
+
+files = dir([ directory filesep 'orgcell' filesep 'cell*.tif' ]);
+files = files(1:number_of_images);
+cellm = {};
+for i=1:1:length(files)
+    cellm{length(cellm)+1} = [ directory filesep 'orgcell' filesep files(i).name];
+end
+
+files = dir([ directory filesep 'orgprot' filesep 'cell*.tif' ]);
+files = files(1:number_of_images);
+protein = {};
+for i=1:1:length(files)
+    protein{length(protein)+1} = [ directory filesep 'orgprot' filesep files(i).name];
+end
+
+files = dir([ directory filesep 'crop' filesep 'cell*.tif' ]);
+files = files(1:number_of_images);
+masks = {};
+for i=1:1:length(files)
+    masks{length(masks)+1} = [ directory filesep 'crop' filesep files(i).name];
+end
+options.masks = masks;
 
 options.model.resolution = [ 0.49, 0.49 ];
 options.model.filename = 'model.mat';
