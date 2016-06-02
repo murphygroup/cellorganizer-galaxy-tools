@@ -8,14 +8,10 @@ WORKING_DIRECTORY=`pwd`
 MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
 INPUT=$1
-NUMBER_OF_IMAGES=1
-COMPRESSION=$2
 
 ln -s $INPUT $(pwd)/output.tif
 
 echo "
-% reshape_2D_image
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 cd ./cellorganizer
