@@ -1,5 +1,5 @@
 <tool id="show_3D_surface_plot" name="show_3D_surface_plot" version="0.0.1">
-  <description>Reshapes a 2D synthetic image.</description>
+  <description>Makes a surface plot from a 3D synthetic image.</description>
   <command interpreter="bash">
     show_3D_surface_plot.sh $viewanglex $viewangley $alphavalue
   </command>
