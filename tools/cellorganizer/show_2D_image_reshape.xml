@@ -1,4 +1,4 @@
-<tool id="reshape_2D_image" name="reshape_2D_image" version="0.0.1">
+<tool id="show_2D_image_reshape" name="show_2D_image_reshape" version="0.0.1">
   <description>Reshapes a 2D synthetic image.</description>
   <command interpreter="bash">
     show_2D_image_reshape.sh $input

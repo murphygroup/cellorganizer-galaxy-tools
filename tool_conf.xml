@@ -2,6 +2,7 @@
 <toolbox>
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
+    <tool file="cellorganizer/sample_from_public_database.xml" />
   </section>
 
   <!-- tools to be used in MMBioS 2016 simple pipeline -->
@@ -24,7 +25,13 @@
 
     <!-- These are useful tools -->
     <section id="cellorganizer-tools" name="Useful tools">
-      <tool file="cellorganizer/reshape_2D_image.xml" />
+      <tool file="cellorganizer/show_2D_image_reshape.xml" />
+      <tool file="cellorganizer/show_3D_image_reshape.xml" />
+      <tool file="cellorganizer/show_projection.xml" />
+      <tool file="cellorganizer/show_RGB_projection.xml" />
       <tool file="cellorganizer/show_shape_space.xml" />
+      <tool file="cellorganizer/compare_vesicular_models.xml" />
+      <tool file="cellorganizer/export_to_blender.xml" />
+      <tool file="cellorganizer/export_to_vcell.xml" />
     </section>
 </toolbox>

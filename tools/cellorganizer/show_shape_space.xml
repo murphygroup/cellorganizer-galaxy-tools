@@ -1,5 +1,5 @@
 <tool id="show_shape_space" name="show_shape_space" version="0.0.1">
-  <description>Shows a visual representation of the shape space..</description>
+  <description>Shows a visual representation of the shape space from a diffeomorphic model.</description>
   <command interpreter="bash">
     show_shape_space.sh $input
   </command>
