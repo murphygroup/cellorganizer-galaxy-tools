@@ -49,4 +49,4 @@ imwrite( img, 'output.png' );
 exit;" > script.m
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
-echo $MATLAB -nodesktop -nosplash -r "script;"
+$MATLAB -nodesktop -nosplash -r "script;"
