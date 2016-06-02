@@ -20,6 +20,7 @@ cd('$WORKING_DIRECTORY')
 
 % specify model name and load model
 files = {'./model.mat'};
+options.synthesis = 'framework';
 
 slml2img( files, options );
 !mv -v demo1.tif output.tif
