@@ -11,9 +11,10 @@ DATASET=$1
 NUMBER_OF_IMAGES=$2
 DOWNSAMPLE_FACTOR=$3
 
-echo "
-% mmbios04
+ln -s $CELLORGANIZER $(pwd)/cellorganizer
+rsync -va ./cellorganizer/images/HeLa/2D/$DATASET .
 
+echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 cd ./cellorganizer
@@ -28,7 +29,7 @@ options.display = true;
 %% Training component: main call to img2slml
 
 % collection, modify these according to your needs
-directory = './cellorganizer/images/HeLa/2D/$DATASET/';
+directory = './$DATASET/';
 dna = [ directory filesep 'orgdna' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
 cellm = [ directory filesep 'orgcell' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
 protein = [ directory filesep 'orgprot' filesep 'cell[0-$NUMBER_OF_IMAGES].tif' ];
