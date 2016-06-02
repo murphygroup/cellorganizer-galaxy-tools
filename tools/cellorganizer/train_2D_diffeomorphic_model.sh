@@ -30,6 +30,12 @@ directory = './cellorganizer/images/HeLa/2D/$DATASET/';
 
 number_of_images = $NUMBER_OF_IMAGES;
 files = dir([ directory filesep 'orgdna' filesep 'cell*.tif' ]);
+
+if number_of_images > length(files)
+  warning('You are trying to select more images than those available in this dataset. Selecting the maximum available images.')
+  number_of_images = length(files)
+end
+
 files = files(1:number_of_images);
 dna = {};
 for i=1:1:length(files)
