@@ -11,8 +11,6 @@ DATASET=$1
 NUMBER_OF_IMAGES=$2
 DOWNSAMPLE_FACTOR=$3
 
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
