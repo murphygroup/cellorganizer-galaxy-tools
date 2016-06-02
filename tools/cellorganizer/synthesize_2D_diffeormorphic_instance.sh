@@ -22,10 +22,8 @@ cd('$WORKING_DIRECTORY')
 model_name = './model.mat';
 load(model_name);
 
-% show shape space by calling the function
-f = figure('visible','off');
-showShapeSpaceFigure(model);
-saveas( f, 'show_shape_space.png', 'png' );
+slml2img( files, options );
+!mv -v demo1.tif output.tif
 
 exit;" > script.m
 
