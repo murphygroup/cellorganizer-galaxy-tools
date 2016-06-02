@@ -14,29 +14,39 @@ COMPRESSION=$2
 ln -s $INPUT $(pwd)/output.zip
 unzip ./output.zip
 rm -fv output.zip
-
-ls
+find . -type f -name "*.tif" -exec mv -v {} . \;
 
 echo "
-% reshape_2D_image
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-addpath( genpath([pwd filesep 'cellorganizer']));
+cd ./cellorganizer
+setup(true);
+cd('$WORKING_DIRECTORY');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-file = 'output.tif';
-disp( ['Loading image ' file])
-img = tif2img( file );
-img2 = reshape( img, size(img, 1 ), [] );
-img2 = uint8(img2);
-imwrite( img2, ['output.png'] );
+imgs = {};
+files = dir( [ pwd filesep '*.tif'] );
+for index=1:1:length(files)
+  file = files(index).name;
+  disp( ['Loading image ' file]);
+  img = tif2img( file );
+  temp = reshape( img, size(img, 1 ), [] );
+  temp = uint8(temp);
+  size( temp )
+  imgs{index} = temp;
+end
+
+if ~isempty(imgs)
+    img = imgs{1};
+end
+
+for index=2:1:length(imgs)
+    img = [ img; imgs{index} ];
+end
+
+imwrite( img, 'output.png' );
 
 exit;" > script.m
 
-echo "Running the following script in Matlab"
-cat script.m
-
-echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 echo $MATLAB -nodesktop -nosplash -r "script;"
