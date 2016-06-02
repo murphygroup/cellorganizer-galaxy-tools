@@ -1,7 +1,7 @@
 <tool id="reshape_2D_image" name="reshape_2D_image" version="0.0.1">
   <description>Reshapes a 2D synthetic image.</description>
   <command interpreter="bash">
-    reshape_2D_image.sh $input
+    show_2D_image_reshape.sh $input
   </command>
   <inputs>
 <param format="tif" name="input" type="data" label="2D images"></param>
@@ -13,8 +13,7 @@
 
 **Description**
 
-Synthesizes 2D HeLa images from generative models trained by Murphy Lab.
-The models used to generate these instances are included CellOrganizer.
+Makes PNG file from a 2D synthetic image so the user can see the end result in the web browser.
 
 -----
 
@@ -26,6 +25,6 @@ The models used to generate these instances are included CellOrganizer.
 
 **Output**
 
-A reshape of the 2D synthetic image saved as a PNG file.
+- A reshape of the 2D synthetic image saved as a PNG file.
 </help>
 </tool>
