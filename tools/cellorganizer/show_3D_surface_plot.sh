@@ -12,7 +12,7 @@ VIEWANGLEX=$2
 VIEWANGLEY=$3
 ALPHAVAL=$4
 
-ln -s $INPUT $(pwd)/output.zip
+cp -v $INPUT $(pwd)/output.zip
 unzip ./output.zip
 rm -fv output.zip
 find . -type f -name "*.tif" -exec mv -v {} . \;
