@@ -32,6 +32,7 @@
       <tool file="cellorganizer/compare_vesicular_models.xml" />
       <tool file="cellorganizer/export_to_blender.xml" />
       <tool file="cellorganizer/export_to_vcell.xml" />
+      <tool file="cellorganizer/show_3D_surface_plot.xml" />
     </section>
 
     <section id="demos" name="Demos">
