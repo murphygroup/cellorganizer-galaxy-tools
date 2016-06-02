@@ -12,14 +12,11 @@ NUMBER_OF_IMAGES=1
 COMPRESSION=$2
 
 echo "
-% demo2D00
-%
-% Synthesize one 2D image from all vesicles models found in the models
-% folder included in this distribution.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-addpath( genpath([pwd filesep 'cellorganizer']));
+cd ./cellorganizer
+setup(true);
+cd('$WORKING_DIRECTORY')
 
 options.targetDirectory = pwd;
 options.prefix = 'output';
