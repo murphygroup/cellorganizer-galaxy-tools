@@ -29,7 +29,7 @@ for index=1:1:length(files)
   disp( ['Loading image ' file]);
   img = tif2img( file );
   [path,filename,ext]=fileparts(file);
-  file = [ filename '.obj'];
+  file = [filename '.obj'];
   shiftvector = [];
   [shiftvector, ~] = im2blender( img, [pwd filesep file], [$DOWNSAMPLING $DOWNSAMPLING $DOWNSAMPLING], ...
                     [], shiftvector);
@@ -39,3 +39,7 @@ exit;" > script.m
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
+
+zip output.zip *.tif
+zip output.zip *.obj
+zip output.zip *.mtl
