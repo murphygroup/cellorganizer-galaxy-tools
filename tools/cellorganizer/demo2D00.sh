@@ -41,9 +41,7 @@ options.display = false;
 
 tic
 answer = slml2img( {'./cellorganizer/models/2D/nucleolus.mat', ...
-  './cellorganizer/models/2D/endosome.mat', ...
-  './cellorganizer/models/2D/mitochondrion.mat', ...
-  './cellorganizer/models/2D/lysosome.mat'}, options );
+  './cellorganizer/models/2D/endosome.mat'}, options );
 toc
 
 files = dir( 'output*.tif' );
