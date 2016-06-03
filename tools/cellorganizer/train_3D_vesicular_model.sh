@@ -64,7 +64,23 @@ for i=1:1:length(files)
 end
 options.masks = masks;
 
-options.model.resolution = [ 0.49, 0.49 ];
+for i=1:1:length(dna)
+  disp(dna{i})
+end
+
+for i=1:1:length(cellm)
+  disp(cellm{i})
+end
+
+for i=1:1:length(protein)
+  disp(protein{i})
+end
+
+for i=1:1:length(masks)
+  disp(masks{i})
+end
+
+options.model.resolution = [ 0.49, 0.49 0.02];
 options.model.filename = 'model.mat';
 options.model.id = num2str(now);
 options.model.name = 'cellorganizer-on-galaxy';
