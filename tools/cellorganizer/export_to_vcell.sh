@@ -27,7 +27,7 @@ for i=1:1:size(img,3)
    img(:,:,i) = temp;
 end
 
-tif2img(img,'output.tif')
+img2tif(img,'output.tif')
 
 exit;" > script.m
 
