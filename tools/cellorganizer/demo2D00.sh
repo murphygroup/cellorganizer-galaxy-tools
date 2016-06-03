@@ -58,9 +58,5 @@ end
 
 exit;" > script.m
 
-echo "Running the following script in Matlab"
-cat script.m
-
-echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
