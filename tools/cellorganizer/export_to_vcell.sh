@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+export PATH=$PATH:$(dirname $0)
+CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
+
+WORKING_DIRECTORY=`pwd`
+
+MATLAB=/opt/packages/matlab/R2016a/bin/matlab
+
+INPUT=$1
+
+ln -s $INPUT $(pwd)/output.tif
+
+echo "
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT MODIFY THIS BLOCK
+cd ./cellorganizer
+setup(true);
+cd('$WORKING_DIRECTORY');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+img = tif2img( 'output.tif' );
+
+for i=1:1:size(img,3)
+   temp = img(:,:,i);
+   temp( find(temp~=0) ) = i;
+   img(:,:,i) = temp;
+end
+
+tif2img(img,'output.tif')
+
+exit;" > script.m
+
+echo $WORKING_DIRECTORY
+ln -s $CELLORGANIZER $(pwd)/cellorganizer
+$MATLAB -nodesktop -nosplash -r "script;"
