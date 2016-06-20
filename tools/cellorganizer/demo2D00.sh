@@ -14,7 +14,10 @@ COMPRESSION=$2
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
+pwd
 cd ./cellorganizer
+pwd
+ls
 setup();
 cd('$WORKING_DIRECTORY')
 
