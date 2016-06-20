@@ -4,7 +4,7 @@
     sample_from_public_database.sh
   </command>
   <outputs>
-    <data format="tif" name="output" from_work_dir="output.tif" />
+    <data format="tiff" name="output" from_work_dir="output.tif" />
   </outputs>
 <help>
 
