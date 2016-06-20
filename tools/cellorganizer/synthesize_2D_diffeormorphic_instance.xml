@@ -1,5 +1,5 @@
 <tool id="synthesize_2D_diffeormorphic_instance" name="synthesize_2D_diffeormorphic_instance" version="0.0.1">
-  <description>Trains a diffeomorphic generative model using the Murphy Lab 2D HeLa collection.</description>
+  <description>Synthesizes a diffeomorphic generative model using the Murphy Lab 2D HeLa collection.</description>
   <command interpreter="bash">
     synthesize_2D_diffeormorphic_instance.sh $input
   </command>
