@@ -15,7 +15,7 @@ echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 cd ./cellorganizer
-setup(true);
+setup();
 cd('$WORKING_DIRECTORY')
 
 options.targetDirectory = pwd;
