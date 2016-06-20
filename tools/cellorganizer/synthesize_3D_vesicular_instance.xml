@@ -1,5 +1,5 @@
 <tool id="synthesize_3D_vesicular_instance" name="synthesize_3D_vesicular_instance" version="0.0.1">
-  <description>Trains a vesicular generative model using the Murphy Lab 3D HeLa collection.</description>
+  <description>Synthesizes a vesicular generative model using the Murphy Lab 3D HeLa collection.</description>
   <command interpreter="bash">
     synthesize_3D_vesicular_instance.sh $input
   </command>
