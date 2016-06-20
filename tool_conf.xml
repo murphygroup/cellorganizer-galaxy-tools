@@ -3,14 +3,7 @@
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
   </section>
-
-  <!-- tools to be used in MMBioS 2016 simple pipeline -->
-  <section id="mmbios2016" name="MMBioS 2016">
-    <tool file="cellorganizer/mmbios01.xml" />
-    <tool file="cellorganizer/mmbios02.xml" />
-    <tool file="cellorganizer/mmbios03.xml" />
-  </section>
-
+  
     <section id="training" name="Training">
       <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
       <tool file="cellorganizer/train_3D_vesicular_model.xml" />
