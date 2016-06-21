@@ -5,10 +5,10 @@
   </command>
   <inputs>
     <!-- seed for random number generator -->
-    <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
+    <param name="seed" type="integer" value="3" label="Seed for Pseudo-Random Number Generator"/>
 
     <!-- image compression -->
-    <param name="compression" type="select" label="Image compression">
+    <param name="compression" type="select" label="Image Compression">
       <option value="lzw" selected="true">LZW</option>
       <option value="none">No compression</option>
     </param>
@@ -20,13 +20,26 @@
 
 **Description**
 
-Synthesizes 2D HeLa images from generative models trained by Murphy Lab.
-The models used to generate these instances are included CellOrganizer.
+demo2D00 synthesizes one 2D HeLa image with nuclear, cell shape, and vesicular channels from all vesicular object models (nucleoli, lysosomes, endosomes, and mitochonria) without convolution. The generative model used was trained from the Murphy Lab 2D Hela dataset.
+-----
+
+**Input**
+
+- Seed for Random Number Generator
+- Image Compression Algorithm
 
 -----
 
 **Output**
 
-- One image as a TIF file.
+- One TIFF (.tif) file with six slices containing the nuclear, cell shape, nucleolar, lysosomal, endosomal, and mitochondrial channels
+
+-----
+
+**Example**
+
+The following image is generated using the default parameters:
+
+
 </help>
 </tool>
