@@ -2,8 +2,9 @@
 <toolbox>
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
+    <tool file="cellorganizer/sample_from_public_database.xml" />
   </section>
-  
+
     <section id="training" name="Training">
       <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
       <tool file="cellorganizer/train_3D_vesicular_model.xml" />
