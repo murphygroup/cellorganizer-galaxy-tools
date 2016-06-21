@@ -60,7 +60,7 @@ files = dir([ directory filesep '$DATASET*cell*mask*.tif' ]);
 files = files(1:number_of_images);
 masks = {};
 for i=1:1:length(files)
-    masks{length(masks)+1} = [ directory filesep files(i).name];
+    masks{length(masks)+1} = [directory filesep files(i).name];
 end
 options.masks = masks;
 
@@ -80,14 +80,14 @@ for i=1:1:length(masks)
   disp(masks{i})
 end
 
-options.model.resolution = [ 0.49, 0.49 0.02];
+options.model.resolution = [0.49, 0.49 0.02];
 options.model.filename = 'model.mat';
 options.model.id = num2str(now);
 options.model.name = 'cellorganizer-on-galaxy';
 
 %set nuclei and cell model name
-options.nucleus.name = 'num2str(now)';
-options.cell.model = 'num2str(now)';
+options.nucleus.name = num2str(now);
+options.cell.model = num2str(now);
 
 %set the dimensionality of the model
 dimensionality = '3D';
@@ -96,13 +96,13 @@ dimensionality = '3D';
 options.documentation.description = 'This model has been trained on CellOrganizer on Galaxy+Bridges';
 
 %set model type
-options.nucleus.class = 'framework';
-options.cell.class = 'framework';
-options.nucleus.type = 'diffeomorphic';
-options.cell.type = 'diffeomorphic';
+options.nucleus.class = 'nuclear_membrane';
+options.cell.class = 'cell_membrane';
+options.nucleus.type = 'cylindrical_surface';
+options.cell.type = 'ratio';
 options.train.flag = 'framework';
 
-options.downsampling = [$DOWNSAMPLE_FACTOR,$DOWNSAMPLE_FACTOR];
+options.downsampling = [$DOWNSAMPLE_FACTOR,$DOWNSAMPLE_FACTOR,1];
 
 %train the model
 success = img2slml( dimensionality, dna, cellm,[], options );
