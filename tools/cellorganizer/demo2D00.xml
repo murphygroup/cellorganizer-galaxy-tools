@@ -14,7 +14,7 @@
     </param>
   </inputs>
   <outputs>
-    <data format="tiff" name="output" from_work_dir="output1.tif"/>
+    <data format="tiff" name="output" from_work_dir="output.tif"/>
   </outputs>
 <help>
 
@@ -40,6 +40,7 @@ demo2D00 synthesizes one 2D HeLa image with nuclear, cell shape, and vesicular c
 
 The following image is generated using the default parameters:
 
+![demo2D00 Image](<!-- Link required for demo2D00 image -->)
 
 </help>
 </tool>
