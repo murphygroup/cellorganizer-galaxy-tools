@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
 export PATH=$PATH:$(dirname $0)
-CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
 
 WORKING_DIRECTORY=`pwd`
-
-MATLAB=/opt/packages/matlab/R2016a/bin/matlab
-
 DATASET=$1
 NUMBER_OF_IMAGES=$2
 DOWNSAMPLE_FACTOR=$3
@@ -15,7 +11,7 @@ echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 cd ./cellorganizer
-setup()
+setup();
 cd('$WORKING_DIRECTORY')
 
 options.verbose = true;
@@ -92,9 +88,6 @@ options.downsampling = [$DOWNSAMPLE_FACTOR,$DOWNSAMPLE_FACTOR];
 success = img2slml( dimensionality, dna, cellm,[], options );
 
 exit;" > script.m
-
-echo "Running the following script in Matlab"
-cat script.m
 
 echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
