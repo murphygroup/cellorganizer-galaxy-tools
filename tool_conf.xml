@@ -23,7 +23,6 @@
       <tool file="cellorganizer/show_projection.xml" />
       <tool file="cellorganizer/show_RGB_projection.xml" />
       <tool file="cellorganizer/show_shape_space.xml" />
-      <tool file="cellorganizer/compare_vesicular_models.xml" />
       <tool file="cellorganizer/export_to_blender.xml" />
       <tool file="cellorganizer/export_to_vcell.xml" />
       <tool file="cellorganizer/show_3D_surface_plot.xml" />
@@ -32,6 +31,5 @@
     <section id="demos" name="Demos">
       <tool file="cellorganizer/demo2D00.xml" />
       <tool file="cellorganizer/demo3D00.xml" />
-      <tool file="cellorganizer/demo3D01.xml" />
     </section>
 </toolbox>
