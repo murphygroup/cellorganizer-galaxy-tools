@@ -2,7 +2,8 @@
 <toolbox>
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
-    <tool file="cellorganizer/sample_from_database.xml" labels="beta"/>
+    <tool file="cellorganizer/sample_and_view_image.xml" labels="alpha"/>
+    <tool file="cellorganizer/sample_from_database.xml" labels="alpha"/>
   </section>
 
     <section id="training" name="Training">
