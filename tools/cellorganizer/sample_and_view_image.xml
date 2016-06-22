@@ -1,0 +1,21 @@
+<tool id="sample_and_view_image" name="sample_and_view_image" version="0.0.1">
+  <description>Retrieves and displays a random image from the Murphy Lab public image database.</description>
+  <command interpreter="python">
+    sample_and_view_image.py
+  </command>
+  <outputs>
+    <data format="html" name="output" from_work_dir="index.html" >
+  </outputs>
+<help>
+
+**Description**
+
+Retrieves and displays random image from the Murphy Lab public image database.
+
+-----
+
+**Output**
+
+- An OME.tiff
+</help>
+</tool>
