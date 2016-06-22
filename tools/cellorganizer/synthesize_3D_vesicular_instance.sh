@@ -26,6 +26,7 @@ options.targetDirectory = pwd;
 options.prefix = 'example';
 options.compression = 'lzw';
 options.sampling.method = 'disc';
+options.synthesis = 'framework';
 
 slml2img( files, options );
 
