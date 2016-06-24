@@ -22,7 +22,7 @@ setup();
 cd('$WORKING_DIRECTORY');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-answer = show_RGB_image_galaxy_wrapper( file, red, green, blue );
+answer = show_RGB_image_galaxy_wrapper( $INPUT, $RED, $GREEN, $BLUE );
 if answer
   exit;
 else
