@@ -2,8 +2,8 @@
 <toolbox>
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
-    <tool file="cellorganizer/sample_and_view_image.xml" labels="alpha"/>
     <tool file="cellorganizer/sample_from_database.xml" labels="alpha"/>
+    <tool file="cellorganizer/sample_and_view_image.xml" labels="alpha"/>
   </section>
 
     <section id="training" name="Training">
@@ -18,10 +18,12 @@
 
     <!-- These are useful tools -->
     <section id="cellorganizer-tools" name="Useful tools">
+      <tool file="cellorganizer/get_info.xml" />
       <tool file="cellorganizer/show_2D_image_reshape.xml" />
       <tool file="cellorganizer/show_3D_image_reshape.xml" />
       <tool file="cellorganizer/show_projection.xml" />
       <tool file="cellorganizer/show_RGB_projection.xml" />
+      <tool file="cellorganizer/show_RGB_image.xml" />
       <tool file="cellorganizer/show_shape_space.xml" />
       <tool file="cellorganizer/export_to_blender.xml" />
       <tool file="cellorganizer/export_to_vcell.xml" />

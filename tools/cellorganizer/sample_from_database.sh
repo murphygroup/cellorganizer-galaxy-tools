@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 export PATH=$PATH:$(dirname $0)
 
