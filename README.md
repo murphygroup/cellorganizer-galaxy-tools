@@ -10,6 +10,10 @@ If you want to run all the tools in this repo, you will need to install these re
   * [Image Processing Toolbox](http://www.mathworks.com/products/image/)
   * [SimBiology Toolbox](http://www.mathworks.com/help/simbio/)
 * [ffmpeg](https://ffmpeg.org/). A complete, cross-platform solution to record, convert and stream audio and video.
+* [pandoc](http://pandoc.org/).  A universal document converter.
+* Python libraries
+  * [tabulate](https://pypi.python.org/pypi/tabulate)
+  * [Markdown](https://pypi.python.org/pypi/Markdown)
 
 ## Rules for developing tools for Galaxy
 
