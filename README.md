@@ -59,4 +59,3 @@ Any GitHub user can create an issue on our public repository
 For other inquiries feel free to send an email to our mailing list
 
 * [Send email to mailing list](mailto:cellorganizer@compbio.cmu.edu)
->>>>>>> Stashed changes
