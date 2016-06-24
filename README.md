@@ -15,6 +15,10 @@ These rules are meant for CellOrganizer developers and contributors.
 
 #Bugs and Questions
 
-Any GitHub user can create an issue to our public repository
+Any GitHub user can create an issue on our public repository
 
 * [cellorganizer-galaxy-tools](https://github.com/icaoberg/cellorganizer-galaxy-tools/)
+
+For other inquiries feel free to send an email to our mailing list
+
+* [Send email to mailing list](mailto:cellorganizer@compbio.cmu.edu)
