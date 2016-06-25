@@ -23,11 +23,7 @@ cd('$WORKING_DIRECTORY');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 answer = show_RGB_image_galaxy_wrapper( './output.tif', $RED, $GREEN, $BLUE );
-if answer
-  exit;
-else
-  exit(-1)
-end" > script.m
+exit;" > script.m
 
 echo "Linking CellOrganizer"
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
