@@ -32,6 +32,5 @@ echo "Running script"
 $MATLAB -nodesktop -nosplash -r "script;"
 
 if [ ! -d output.png ]; then
-  echo "Image is not present."
-  exit -1
+  exit 2
 fi
