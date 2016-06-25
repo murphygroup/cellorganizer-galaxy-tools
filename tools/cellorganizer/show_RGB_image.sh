@@ -30,7 +30,3 @@ ln -s $CELLORGANIZER $(pwd)/cellorganizer
 
 echo "Running script"
 $MATLAB -nodesktop -nosplash -r "script;"
-
-if [ ! -d output.png ]; then
-  exit 2
-fi
