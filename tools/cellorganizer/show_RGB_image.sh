@@ -22,7 +22,7 @@ setup();
 cd('$WORKING_DIRECTORY');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-answer = show_RGB_image_galaxy_wrapper( $INPUT, $RED, $GREEN, $BLUE );
+answer = show_RGB_image_galaxy_wrapper( './output.tif', $RED, $GREEN, $BLUE );
 if answer
   exit;
 else
