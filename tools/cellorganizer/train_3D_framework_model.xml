@@ -5,8 +5,8 @@
   </command>
 
   <inputs>
-    <!-- 2D HeLa dataset collection -->
-    <param name="hela_dataset" type="select" label="Select 2D HeLa dataset">
+    <!-- 3D HeLa dataset collection -->
+    <param name="hela_dataset" type="select" label="Select 3D HeLa dataset">
       <option value="LAM" selected="true">LAMP2</option>
       <option value="Nuc">Nucleoli</option>
       <option value="Mit">Mitochondria</option>
