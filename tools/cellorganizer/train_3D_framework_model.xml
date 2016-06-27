@@ -1,7 +1,7 @@
-<tool id="train_3D_vesicular_model" name="train_3D_vesicular_model" version="0.0.1">
-  <description>Trains a vesicular generative model using the Murphy Lab 3D HeLa collection.</description>
+<tool id="train_3D_framework_model" name="train_3D_framework_model" version="0.0.1">
+  <description>Trains a framework generative model using the Murphy Lab 3D HeLa collection.</description>
   <command interpreter="bash">
-    train_3D_vesicular_model.sh $hela_dataset $number_of_images $downsample_factor
+    train_3D_framework_model.sh $hela_dataset $number_of_images $downsample_factor $is_diffeomorphic
   </command>
 
   <inputs>
@@ -18,6 +18,8 @@
 
     <!-- number of synthesized images -->
     <param name="downsample_factor" type="integer" value="5" label="Downsample factor"/>
+
+    <param name="is_diffeomorphic" type="boolean" checked="false" label="Train diffeomorphic"/>
   </inputs>
   <outputs>
     <data format="mat" name="output" from_work_dir="model.mat"/>
@@ -26,7 +28,7 @@
 
 **Description**
 
-Trains a vesicular generative model using the Murphy Lab 3D HeLa collection
+Trains a framework generative model using the Murphy Lab 3D HeLa collection.
 
 -----
 

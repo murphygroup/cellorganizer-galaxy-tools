@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
 export PATH=$PATH:$(dirname $0)
-CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
 
 WORKING_DIRECTORY=`pwd`
-
-MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
 DATASET=$1
 NUMBER_OF_IMAGES=$2
 DOWNSAMPLE_FACTOR=$3
+IS_DIFFEOMORPHIC=$4
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,12 +93,22 @@ dimensionality = '3D';
 %documentation
 options.documentation.description = 'This model has been trained on CellOrganizer on Galaxy+Bridges';
 
+train_diffeomorphic_model=$IS_DIFFEOMORPHIC
+
+if train_diffeomorphic_model
 %set model type
-options.nucleus.class = 'nuclear_membrane';
-options.cell.class = 'cell_membrane';
-options.nucleus.type = 'cylindrical_surface';
-options.cell.type = 'ratio';
-options.train.flag = 'framework';
+  options.nucleus.class = 'framework';
+  options.cell.class = 'framework';
+  options.nucleus.type = 'diffeomorphic';
+  options.cell.type = 'diffeomorphic';
+  options.train.flag = 'framework';
+else
+  options.nucleus.class = 'nuclear_membrane';
+  options.cell.class = 'cell_membrane';
+  options.nucleus.type = 'cylindrical_surface';
+  options.cell.type = 'ratio';
+  options.train.flag = 'framework';
+end
 
 options.downsampling = [$DOWNSAMPLE_FACTOR,$DOWNSAMPLE_FACTOR,1];
 
@@ -109,9 +117,5 @@ success = img2slml( dimensionality, dna, cellm,[], options );
 
 exit;" > script.m
 
-echo "Running the following script in Matlab"
-cat script.m
-
-echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
