@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
 export PATH=$PATH:$(dirname $0)
-CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
 
 WORKING_DIRECTORY=`pwd`
 
-MATLAB=/opt/packages/matlab/R2016a/bin/matlab
-
 INPUT=$1
 cp -v $INPUT $(pwd)/model.mat
+
+NUMBER_OF_LABELS =$2
+SUBSIZE=$3
+DRAW_TRACES=$4
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,20 +19,14 @@ setup();
 cd('$WORKING_DIRECTORY')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% specify model name and load model
-model_name = './model.mat';
-load(model_name);
+file = './model.mat';
+options.nlabels = $NUMBER_OF_LABELS;
+options.traces = $DRAW_TRACES;
+options.subsize = $SUBSIZE;
 
-% show shape space by calling the function
-f = figure('visible','off');
-showShapeSpaceFigure(model);
-saveas( f, 'show_shape_space.png', 'png' );
+show_shape_space_figure_galaxy_wrapper( file, options );
 
 exit;" > script.m
 
-echo "Running the following script in Matlab"
-cat script.m
-
-echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
