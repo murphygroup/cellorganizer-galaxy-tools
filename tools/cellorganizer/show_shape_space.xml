@@ -1,12 +1,12 @@
 <tool id="show_shape_space" name="show_shape_space" version="0.0.1">
   <description>Shows a visual representation of the shape space from a diffeomorphic model.</description>
   <command interpreter="bash">
-    show_shape_space.sh $input $number_of_images $draw_traces
+    show_shape_space.sh $input $number_of_labels $subsize $draw_traces
   </command>
   <inputs>
     <param format="mat" name="input" type="data" label="Diffeomorphic model"></param>
     <param name="number_of_labels" type="integer" value="5" label="Number of labels"/>
-    <param name="size" type="integer" value="50" label="Image subsize"/>
+    <param name="subsize" type="integer" value="50" label="Image subsize"/>
     <param name="draw_traces" type="boolean" checked="false" label="Draw traces"/>
   </inputs>
   <outputs>
