@@ -17,6 +17,7 @@ cd('$WORKING_DIRECTORY')
 
 % specify model name and load model
 files = {'./model.mat'};
+load( './model.mat' );
 options.synthesis = 'all';
 
 options.targetDirectory = pwd;
