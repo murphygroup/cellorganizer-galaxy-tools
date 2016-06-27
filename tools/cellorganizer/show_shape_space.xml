@@ -1,10 +1,13 @@
 <tool id="show_shape_space" name="show_shape_space" version="0.0.1">
   <description>Shows a visual representation of the shape space from a diffeomorphic model.</description>
   <command interpreter="bash">
-    show_shape_space.sh $input
+    show_shape_space.sh $input $number_of_images $draw_traces
   </command>
   <inputs>
-<param format="mat" name="input" type="data" label="Diffeomorphic model"></param>
+    <param format="mat" name="input" type="data" label="Diffeomorphic model"></param>
+    <param name="number_of_labels" type="integer" value="5" label="Number of labels"/>
+    <param name="size" type="integer" value="50" label="Image subsize"/>
+    <param name="draw_traces" type="boolean" checked="false" label="Draw traces"/>
   </inputs>
   <outputs>
     <data format="png" name="output" from_work_dir="show_shape_space.png"/>
@@ -12,7 +15,15 @@
 <help>
 **Description**
 
-Makes PNG file showing of the shape space from a 2D diffeomorphic model trained with CellOrganizer.
+Makes PNG file showing of the shape space from a diffeomorphic model trained with CellOrganizer.
+
+-----
+
+**Input**
+
+- Diffeomorphic model
+- Number of labels
+- Image subsize
 
 -----
 
