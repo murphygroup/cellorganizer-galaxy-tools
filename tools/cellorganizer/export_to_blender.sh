@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
 export PATH=$PATH:$(dirname $0)
-CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
 
 WORKING_DIRECTORY=`pwd`
-
-MATLAB=/opt/packages/matlab/R2016a/bin/matlab
 
 INPUT=$1
 DOWNSAMPLING=$2
