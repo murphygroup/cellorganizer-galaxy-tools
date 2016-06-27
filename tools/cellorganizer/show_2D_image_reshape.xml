@@ -1,5 +1,5 @@
 <tool id="show_2D_image_reshape" name="show_2D_image_reshape" version="0.0.1">
-  <description>Reshapes a 2D synthetic image.</description>
+  <description>Exports the image to a format that can be opened in a web browser.</description>
   <command interpreter="bash">
     show_2D_image_reshape.sh $input
   </command>
@@ -13,7 +13,7 @@
 
 **Description**
 
-Makes PNG file from a 2D synthetic image so the user can see the end result in the web browser.
+Exports the image as a PNG file so that it can displayed in a web browser.
 
 -----
 
@@ -25,6 +25,6 @@ Makes PNG file from a 2D synthetic image so the user can see the end result in t
 
 **Output**
 
-- A reshape of the 2D synthetic image saved as a PNG file.
+- A PNG file.
 </help>
 </tool>
