@@ -13,6 +13,7 @@ echo "
 cd ./cellorganizer
 setup();
 cd('$WORKING_DIRECTORY')
+rng('shuffle');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % specify model name and load model
