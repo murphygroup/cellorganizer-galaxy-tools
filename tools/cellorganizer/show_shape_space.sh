@@ -28,5 +28,7 @@ show_shape_space_figure_galaxy_wrapper( file, options );
 
 exit;" > script.m
 
+cat script.m
+
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
