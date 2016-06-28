@@ -7,6 +7,7 @@ WORKING_DIRECTORY=`pwd`
 INPUT=$1
 CHANNEL=$2
 
+echo ln -s $INPUT $(pwd)/output.zip
 ln -s $INPUT $(pwd)/output.zip
 unzip ./output.zip
 rm -fv output.zip
