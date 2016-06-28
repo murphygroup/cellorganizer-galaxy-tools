@@ -1,10 +1,13 @@
 <tool id="show_RGB_projection" name="show_RGB_projection" version="0.0.1">
   <description>Make an RGB projection from a 3D synthetic image.</description>
   <command interpreter="bash">
-    show_RGB_projection.sh $input
+    show_RGB_projection.sh $input $red $green $blue
   </command>
   <inputs>
-<param format="zip" name="input" type="data" label="3D image"></param>
+	<param format="zip" name="input" type="data" label="3D image"></param>
+	  <param name="red" type="integer" value="1" label="Red channel index" />
+    <param name="green" type="integer" value="2" label="Green channel index" />
+    <param name="blue" type="integer" value="3" label="Blue channel index" />
   </inputs>
   <outputs>
     <data format="png" name="output" from_work_dir="output.png"/>
@@ -13,7 +16,7 @@
 
 **Description**
 
-Makes an RGB projection from 3 specific channel from a 3D synthetic image.
+Makes an RGB projection from 3 specific channels from a 3D synthetic image. This projection can be opened in a web browser.
 
 -----
 
@@ -25,6 +28,6 @@ Makes an RGB projection from 3 specific channel from a 3D synthetic image.
 
 **Output**
 
-- A reshape of the 3D synthetic image saved as a PNG file.
+- A PNG file.
 </help>
 </tool>
