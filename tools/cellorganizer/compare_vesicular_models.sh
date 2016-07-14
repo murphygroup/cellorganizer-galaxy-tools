@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
 export PATH=$PATH:$(dirname $0)
+CELLORGANIZER=/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer
 
 WORKING_DIRECTORY=`pwd`
 
-MODEL=$1
+MATLAB=/opt/packages/matlab/R2016a/bin/matlab
+
+MODEL1=$1
+MODEL2=$2
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13,18 +17,16 @@ cd ./cellorganizer
 setup(true);
 cd('$WORKING_DIRECTORY')
 
-model = $MODEL;
+models = {$MODEL1; $MODEL2};
+param = [];
 
-savedir = pwd;
-filetype = 'pdf';
-prefix = 'report';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FEEL FREE TO MODIFY THE VARIABLES IN THIS BLOCK
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-answer = model_summary(model,savedir,filetype,prefix)
+answer = model2report(model,param)
 
 exit;" > script.m
 
