@@ -26,7 +26,7 @@ demo2D02 synthesizes one 2D image with nuclear, cell shape, and lysosomal channe
 
 **Output**
 
-- One TIFF (.tif) file with three slices of the nuclear, cell shape, and nucleolar channels
+- One TIFF (.tif) file with three slices containing the nuclear, cell shape, and nucleolar channels
 
 -----
 
