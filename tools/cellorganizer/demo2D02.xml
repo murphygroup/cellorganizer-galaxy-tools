@@ -1,0 +1,40 @@
+<tool id="demo2D02" name="demo2D02" version="0.0.1">
+  <description>Runs demo3D02 from CellOrganizer.</description>
+  <command interpreter="bash">
+    demo3D02.sh $input
+  </command>
+  <inputs>
+    <!-- lamp2 model file -->
+    <param format="mat" name="input" type="data" label="Lamp2 Model File"></param>
+  </inputs>
+  <outputs>
+    <data format="tiff" name="output" from_work_dir="output.tiff"/>
+  </outputs>
+<help>
+
+**Description**
+
+demo2D02 synthesizes one 2D image with nuclear, cell shape, and lysosomal channels from the LAMP2 model trained in demo2D01 without convolution.
+
+-----
+
+**Input**
+
+- A valid CellOrganizer LAMP2 model file
+
+-----
+
+**Output**
+
+- One TIFF (.tif) file with three slices of the nuclear, cell shape, and nucleolar channels
+
+-----
+
+**Example**
+
+The following image is generated using the default parameters:
+
+![demo2D02 Image](<!-- Link required for demo2D02 image -->)
+
+</help>
+</tool>
