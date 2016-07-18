@@ -5,7 +5,7 @@
   </command>
   <inputs>
     <!-- seed for random number generator -->
-    <param name="seed" type="integer" value="3" label="Seed for Pseudo-Random Number Generator"/>
+    <param name="seed" type="integer" value="12345" label="Seed for Pseudo-Random Number Generator"/>
 
     <!-- image compression -->
     <param name="compression" type="select" label="Image Compression">
