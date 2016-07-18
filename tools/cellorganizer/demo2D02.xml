@@ -1,5 +1,5 @@
 <tool id="demo2D02" name="demo2D02" version="0.0.1">
-  <description>Runs demo3D02 from CellOrganizer.</description>
+  <description>Runs demo2D02 from CellOrganizer.</description>
   <command interpreter="bash">
     demo2D02.sh $input
   </command>
