@@ -5,7 +5,7 @@
   </command>
   <inputs>
     <!-- 3D images -->
-    <param format="zip" name="input" type="data" label="3D Images"></param>
+    <param format="zip" name="input" type="data" label="3D Image"></param>
     <!-- view angle in the x-direction -->
     <param name="viewanglex" type="integer" value="20" label="View Angle on x-Direction"/>
     <!-- view angle in the y-direction -->
@@ -27,8 +27,7 @@ The 3D surface plot tool generates a surface plot from a 3D synthetic image.
 **Inputs**
 
 - 3D Synthetic Image
-- View Angle on x-Direction
-- View Angle on y-Direction
+- View Angles on x- and y-Direction
 - Alpha-Value
 
 -----
