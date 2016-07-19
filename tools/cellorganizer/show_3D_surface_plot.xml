@@ -20,7 +20,7 @@
 
 **Description**
 
-Generates a surface plot from a 3D synthetic image.
+The 3D surface plot tool generates a surface plot from a 3D synthetic image.
 
 -----
 
@@ -35,17 +35,17 @@ Generates a surface plot from a 3D synthetic image.
 
 **Output**
 
-- A PNG file of the surface plot
+- A PNG (.png) file of the surface plot
 
 -----
 
 **Example**
 
-The 3D surface plot tool displays the following image using demo3D00 and the default parameters.
+The 3D surface plot tool displays the following image using demo3D00 and the default parameters:
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/surface_plot.png
   :height: 250
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/surface_plot.png
 
 </help>
 </tool>
