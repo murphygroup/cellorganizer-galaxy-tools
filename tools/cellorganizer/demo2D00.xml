@@ -21,6 +21,7 @@
 **Description**
 
 demo2D00 synthesizes one 2D HeLa image with nuclear, cell shape, and vesicular channels from all vesicular object models (nucleoli, lysosomes, endosomes, and mitochonria) without convolution. The generative model used was trained from the Murphy Lab 2D Hela dataset.
+
 -----
 
 **Input**
