@@ -5,28 +5,44 @@
   </command>
   <inputs>
     <!-- seed for random number generator -->
-    <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
+    <param name="seed" type="integer" value="12345" label="Seed for Pseudo-Random Number Generator"/>
 
     <!-- image compression -->
-    <param name="compression" type="select" label="Image compression">
+    <param name="compression" type="select" label="Image Compression">
       <option value="lzw" selected="true">LZW</option>
       <option value="none">No compression</option>
     </param>
   </inputs>
   <outputs>
-    <data format="zip" name="output" from_work_dir="examples.zip"/>
+    <data format="zip" name="examples" from_work_dir="examples.zip"/>
   </outputs>
 <help>
+
 **Description**
 
-Synthesizes one 3D image with nuclear, cell shape, and vesicular channels
-from all vesicular object models (lysosomes, mitochondria, nucleoli, and
-endosomes) with sampling method set to render vesicular objects as
-ellipsoids without convolution. The model was trained from the Murphy Lab
-3D HeLa dataset.
+demo3D00 synthesizes one 3D image with nuclear, cell shape, and nucleolar channels from nucleolar model with sampling method set to render nucleoli as ellipsoids without convolution. The model was trained from the Murphy Lab 3D HeLa dataset.
 
-**Output**
+-----
 
-- a zip file with three TIFF files (nuclear, cell shape, and nucleolar channels)
+**Input**
+
+- Seed for Pseudo-Random Number Generator
+- Image Compression Algorithm
+
+-----
+
+- One zip file with three TIFF (.tif) files containing the nuclear, cell shape, and nucleolar channels
+
+-----
+
+**Example**
+
+demo3D00 produces the following image using the default parameters:
+
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D00Img.png
+  :height: 500
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D00Img.png
+
+
 </help>
 </tool>
