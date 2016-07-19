@@ -37,9 +37,12 @@ demo3D00 synthesizes one 3D image with nuclear, cell shape, and nucleolar channe
 
 **Example**
 
-The following image is generated using the default parameters:
+demo3D00 produces the following image using the default parameters:
 
-![demo3D00 Image](<!-- Link required for demo3D00 image -->)
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D00Img.png
+  :height: 500
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D00Img.png
+
 
 </help>
 </tool>
