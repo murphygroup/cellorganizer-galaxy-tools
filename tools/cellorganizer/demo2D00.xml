@@ -40,9 +40,9 @@ demo2D00 synthesizes one 2D HeLa image with nuclear, cell shape, and vesicular c
 
 demo2D00 produces the following image under the default parameters:
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo2D00.png
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo2D00.png
-
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo2D00Img.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo2D00Img.png
 
 </help>
 </tool>
