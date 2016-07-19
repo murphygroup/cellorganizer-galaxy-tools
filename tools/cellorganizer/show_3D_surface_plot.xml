@@ -1,5 +1,5 @@
 <tool id="generate_3D_surface_plot" name="generate_3D_surface_plot" version="0.0.1">
-  <description>Generates a surface plot of a 3D synthetic image.</description>
+  <description>Generates a surface plot from a 3D synthetic image.</description>
   <command interpreter="bash">
     show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
   </command>
@@ -24,7 +24,7 @@ Generates a surface plot from a 3D synthetic image.
 
 -----
 
-**Input**
+**Inputs**
 
 - A 3D Synthetic Image
 - View Angle on x-Direction
@@ -41,11 +41,10 @@ Generates a surface plot from a 3D synthetic image.
 
 **Example**
 
-The 3D surface plot tool displays the following image using the default parameters. The 3D synthetic image is from demo3D00.
+The 3D surface plot tool displays the following image using demo3D00 and the default parameters.
 
 .. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
   :height: 250
-  :align: center
   :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
 
 </help>
