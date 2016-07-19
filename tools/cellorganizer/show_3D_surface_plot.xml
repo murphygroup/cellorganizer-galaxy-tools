@@ -1,13 +1,17 @@
-<tool id="show_3D_surface_plot" name="show_3D_surface_plot" version="0.0.1">
-  <description>Makes a surface plot from a 3D synthetic image.</description>
+<tool id="generate_3D_surface_plot" name="generate_3D_surface_plot" version="0.0.1">
+  <description>Generates a surface plot of a 3D synthetic image.</description>
   <command interpreter="bash">
     show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
   </command>
   <inputs>
-    <param format="zip" name="input" type="data" label="3D image"></param>
-    <param name="viewanglex" type="integer" value="20" label="View angle on x-direction"/>
-    <param name="viewangley" type="integer" value="-30" label="View angle on y-direction"/>
-    <param name="alphavalue" type="float" value="0.1" label="alpha-value"/>
+    <!-- 3D images -->
+    <param format="zip" name="input" type="data" label="3D Images"></param>
+    <!-- view angle in the x-direction -->
+    <param name="viewanglex" type="integer" value="20" label="View Angle on x-Direction"/>
+    <!-- view angle in the y-direction -->
+    <param name="viewangley" type="integer" value="-30" label="View Angle on y-Direction"/>
+    <!-- alpha value -->
+    <param name="alphavalue" type="float" value="0.1" label="Alpha-Value"/>
   </inputs>
   <outputs>
     <data format="png" name="output" from_work_dir="output.png"/>
@@ -16,18 +20,35 @@
 
 **Description**
 
-Makes PNG file from a surface plot of a 3D synthetic image.
+Generates a surface plot from a 3D synthetic image in the form of a PNG file.
 
 -----
 
 **Input**
 
-- 3D synthetic image
+- A directory of 3D Synthetic Images
+- View Angle on x-Direction
+- View Angle on y-Direction
+- Alpha-Value
 
 -----
 
 **Output**
 
-- A PNG file.
+- A PNG file of the surface plot
+
+-----
+
+**Example**
+
+The 3D surface plot tool displays the following image on the following default parameters:
+
+- 3D Images: demo3D00 (default parameters)
+- View Angles (x, y): (20, -30)
+- Alpha-Value: 0.1
+
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
+  :height: 500
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
 </help>
 </tool>
