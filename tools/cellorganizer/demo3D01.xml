@@ -41,9 +41,9 @@ demo3D01 synthesizes one 3D image with nuclear, cell shape, and vesicular channe
 
 demo3D01 generates the following image using the default parameters:
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D01Img.png
+.. image:: 
   :height: 750
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D01Img.png
+  :target:
 
 </help>
 </tool>
