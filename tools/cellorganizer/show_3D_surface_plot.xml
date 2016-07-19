@@ -20,13 +20,13 @@
 
 **Description**
 
-Generates a surface plot from a 3D synthetic image in the form of a PNG file.
+Generates a surface plot from a 3D synthetic image.
 
 -----
 
 **Input**
 
-- A directory of 3D Synthetic Images
+- A 3D Synthetic Image
 - View Angle on x-Direction
 - View Angle on y-Direction
 - Alpha-Value
@@ -41,14 +41,11 @@ Generates a surface plot from a 3D synthetic image in the form of a PNG file.
 
 **Example**
 
-The 3D surface plot tool displays the following image on the following default parameters:
-
-- 3D Images: demo3D00 (default parameters)
-- View Angles (x, y): (20, -30)
-- Alpha-Value: 0.1
+The 3D surface plot tool displays the following image using the default parameters. The 3D synthetic image is from demo3D00.
 
 .. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
-  :height: 500
+  :height: 250
   :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue85/tools/cellorganizer/images/surface_plot.png
+-----
 </help>
 </tool>
