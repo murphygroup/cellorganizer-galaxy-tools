@@ -1,5 +1,5 @@
 <tool id="show_shape_space" name="show_shape_space" version="0.0.1">
-  <description>Shows a visual representation of the shape space from a trained 2D diffeomorphic model.</description>
+  <description>Displays a visual representation of the shape space from a trained 2D diffeomorphic model.</description>
   <command interpreter="bash">
     show_shape_space.sh $input $number_of_labels $subsize $draw_traces
   </command>
@@ -41,6 +41,5 @@ The 2D shape space tool displays the following image using a trained 2D diffemor
 .. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue89/tools/cellorganizer/images/shape_space.png
   :height: 250
   :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue89/tools/cellorganizer/images/shape_space.png
-
 </help>
 </tool>
