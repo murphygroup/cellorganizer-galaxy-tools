@@ -38,8 +38,9 @@ The 2D Shape Space tool creates a visualization of the shape space from a traine
 
 The 2D shape space tool displays the following image using a trained 2D diffemorphic model and the default parameters:
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue89/tools/cellorganizer/images/shape_space.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/shape_space.png
   :height: 250
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue89/tools/cellorganizer/images/shape_space.png
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/shape_space.png
+
 </help>
 </tool>
