@@ -32,13 +32,5 @@ demo3D13 exports images synthesized by demo3D01 as Wavefront files importable to
 
 - One zip file of six Wavefront (.obj) file containing the nuclear, cell shape, lysosomal, mitochondrial, nucleolar, and endosomal channels
 
------
-
-**Example**
-
-The following image is generated using the default parameters:
-
-![demo3D13 Image](<!-- Link required for demo3D13 image -->)
-
 </help>
 </tool>
