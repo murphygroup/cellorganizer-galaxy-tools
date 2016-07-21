@@ -43,19 +43,19 @@ demo3D10 synthesizes one 3D image with nuclear, cell shape, and lysosomal channe
 
 **Example**
 
-The following images are generated using the default parameters:
+The following images are generated using the default parameters (only the first z-layer shown):
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue42/tools/cellorganizer/images/demo3D10cell.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D10nuc.png
   :height: 500
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue42/tools/cellorganizer/images/demo3D10cell.png
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D10nuc.png 
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue42/tools/cellorganizer/images/demo3D10nuc.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D10cell.png
   :height: 500
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue42/tools/cellorganizer/images/demo3D10nuc.png
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D10cell.png 
 
-.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue42/tools/cellorganizer/images/demo3D10ves.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D10ves.png
   :height: 500
-  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/issue42/tools/cellorganizer/images/demo3D10ves.png
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo3D10ves.png 
 
 </help>
 </tool>
