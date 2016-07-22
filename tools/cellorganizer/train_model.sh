@@ -24,6 +24,7 @@ PROTEINCYTONUCLEARFLAG=$18
 DOCUMENTATION=$19
 VERBOSE=$20
 DEBUG=$21
+MASKSET=$22
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,10 +89,36 @@ options.documentation.name = $DOCUMENTATION;
 options.verbose = $VERBOSE;
 options.debug = $DEBUG;
 
+masks = $MASKSET
+
 %%% parese image data
 f1 = fopen(dataset);
 imagepaths = textscan(f1,'%s\n');
+imagepaths = imagepaths{1};
 fclose(f1);
+
+%%% get dna imagepaths
+dnainds = ~cellfun(@isempty,regexp(imagepaths,'ch0'));
+dnapaths = imagepaths(dnainds);
+
+%%% get cell imagepaths
+cellinds = ~cellfun(@isempty,regexp(imagepaths,'ch1'));
+cellpaths = imagepaths(cellinds);
+
+%%% get prot image paths
+protinds = cellinds+dnainds<1;
+protpaths = imagepaths(protinds);
+
+%%% get cell mask paths
+try
+    f2 = fopen(masks);
+    maskpaths = textscan(f2,'%s\n');
+    maskpaths = maskpaths{1};
+    fclose(f2);
+    options.masks = maskpaths;
+catch
+    disp('no mask images found')
+end
 
 reader = bfGetReader(imagepaths{1});
 omeMeta = reader.getMetadataStore();

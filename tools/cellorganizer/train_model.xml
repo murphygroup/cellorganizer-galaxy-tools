@@ -1,7 +1,7 @@
 <tool id="model training" name="Train model" version="0.0.1">
   <description>Trains a model (or multiple models) using CellOrganizer</description>
   <command interpreter="bash">
-    train_model.sh $dataset $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
+    train_model.sh $dataset $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug $masks
   </command>
 
   <inputs>
@@ -61,6 +61,7 @@
       <option value="false" selected="true">False</option>
       <option value="true">True</option>
     </param>
+    <param format="dataset" name="mask_set" type="data" label="masks"/>
   </inputs>
   <outputs>
     <data format="mat" name="output" from_work_dir="output1.mat"/>
