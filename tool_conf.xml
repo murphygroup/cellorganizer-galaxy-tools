@@ -14,6 +14,7 @@
     <section id="synthesis" name="Synthesis">
       <tool file="cellorganizer/synthesize_2D_diffeormorphic_instance.xml" />
       <tool file="cellorganizer/synthesize_3D_vesicular_instance.xml" />
+      <tool file="cellorganizer/model_synth.xml" />
     </section>
 
     <!-- These are useful tools -->
