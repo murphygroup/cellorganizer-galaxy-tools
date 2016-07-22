@@ -45,6 +45,11 @@ options.train.flag = $TRAINFLAG; %nuclear, frame, all %% add a default in the sh
 options.model.name = $MODELNAME; %same as above, optional
 options.model.filename = [options.model.name '.mat'];
 options.model.id = $MODELID; %random string%
+
+if strcmpi(options.model.id, '')
+	options.model.id = num2str(now)
+end
+
 options.downsampling = [$DOWNSAMPLE $DOWNSAMPLE 1];
 
 options.nucleus.type = $NUCLEUSTYPE; % medial axis, cylindrical surface or diffeo
@@ -52,15 +57,30 @@ options.nucleus.name = $NUCLEUSNAME; %defualt to empty
 options.nucleus.class = $NUCLEUSCLASS; % nuc or framework
 options.nucleus.id = $NUCLEUSID;
 
+if strcmpi(options.nucleus.id, '')
+	options.nucleus.id = num2str(now)
+end
+
 options.cell.type = $CELLTYPE;
 options.cell.name = $CELLNAME;
 options.cell.class = $CELLCLASS;
 options.cell.id = $CELLID;
 
+if strcmpi(options.cell.id, '')
+	options.cell.id = num2str(now)
+end
+
+
 options.protein.type = $PROTEINTYPE;
 options.protein.name = $PROTEINNAME;
 options.protein.class = $PROTEINCLASS;
 options.protein.id = $PROTEINID;
+
+if strcmpi(options.protein.id, '')
+	options.protein.id = num2str(now)
+end
+
+
 options.protein.cytonuclearflag = $PROTEINCYTONUCLEARFLAG;
 
 options.documentation.name = $DOCUMENTATION;
