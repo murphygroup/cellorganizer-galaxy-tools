@@ -1,0 +1,79 @@
+<tool id="model training" name="Train model" version="0.0.1">
+  <description>Trains a model (or multiple models) using CellOrganizer</description>
+  <command interpreter="bash">
+    train_model.sh $dataset $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
+  </command>
+
+  <inputs>
+    <param format="dataset" name="image_set" type="data" label="images"/>
+    <param name="trainingflag" type="select" label="selects the model to be trained">
+      <option value="all" selected="true">all</option>
+      <option value="nuclear">nuclear</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="modelname" type="text" label="name of model"/>
+    <param name="modelid" type="text" label="id of model"/>
+    <param name="downsample" type="select" label="select downsampling factor">
+      <option value="5" selected="true">5</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </param>
+    <param name="nucleustype" type="select" label="select nuclear model type">
+      <option value="medial axis" selected="true">medial axis</option>
+      <option value="cylindrical surface">cylindrical surface</option>
+      <option value="diffeomorphic">diffeomorphic</option>
+    </param>
+    <param name="nucleusname" type="text" label="name of nuclear model"/>
+    <param name="nucleusclass" type="select" label="select nuclear model class">
+      <option value="nucleus" selected="true">nucleus</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="nucleusid" type="text" label="id of nuclear model"/>
+    <param name="celltype" type="select" label="select cell model type">
+      <option value="ratio" selected="true">ratio</option>
+      <option value="diffeomorphic">diffeomorphic</option>
+    </param>
+    <param name="cellname" type="text" label="name of cell model"/>
+    <param name="cellclass" type="select" label="select cell model class">
+      <option value="cell" selected="true">cell</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="cellid" type="text" label="id of cell model"/>
+    <param name="proteintype" type="select" label="select protein model type">
+      <option value="vesicle" selected="true">vesicle</option>
+    </param>
+    <param name="proteinname" type="text" label="name of protein model"/>
+    <param name="proteinclass" type="text" label="protein model class"/>
+    <param name="proteinid" type="text" label="id of protein model"/>
+    <param name="proteincytonucclearflag" type="select" label="select protein location">
+      <option value="cyto" selected="true">Cytoplasm</option>
+      <option value="nuc">Nucleus</option>
+      <option value="all">all</option>
+    </param>
+    <param name="documentation" type="text" label="optional documentation about model or images"/>
+    <param name="verbose" type="select" label="verbose mode">
+      <option value="false" selected="true">False</option>
+      <option value="true">True</option>
+    </param>
+    <param name="debug" type="select" label="debug mode">
+      <option value="false" selected="true">False</option>
+      <option value="true">True</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="mat" name="output" from_work_dir="output1.mat"/>
+  </outputs>
+<help>
+
+**Description**
+
+Train a cellular model in CellOrganizer
+
+-----
+
+**Output**
+
+A trained cell organizer model
+
+</help>
+</tool>

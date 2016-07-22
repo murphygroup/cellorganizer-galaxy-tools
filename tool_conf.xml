@@ -9,6 +9,7 @@
     <section id="training" name="Training">
       <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
       <tool file="cellorganizer/train_3D_framework_model.xml" />
+      <tool file="cellorganizer/train_model.xml" />
     </section>
 
     <section id="synthesis" name="Synthesis">
