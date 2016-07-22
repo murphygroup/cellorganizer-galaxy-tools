@@ -40,10 +40,12 @@
     </param>
     <param name="cellid" type="text" label="id of cell model"/>
     <param name="proteintype" type="select" label="select protein model type">
-      <option value="vesicle" selected="true">vesicle</option>
+      <option value="gmm" selected="true">gmm</option>
     </param>
     <param name="proteinname" type="text" label="name of protein model"/>
-    <param name="proteinclass" type="text" label="protein model class"/>
+    <param name="proteinclass" type="select" label="protein model class">
+      <option value="vesicle" selected="true">vesicle</option>
+    </param>
     <param name="proteinid" type="text" label="id of protein model"/>
     <param name="proteincytonucclearflag" type="select" label="select protein location">
       <option value="cyto" selected="true">Cytoplasm</option>
