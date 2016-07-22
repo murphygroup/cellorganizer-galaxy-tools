@@ -45,7 +45,7 @@ options.train.flag = $TRAINFLAG; %nuclear, frame, all %% add a default in the sh
 options.model.name = $MODELNAME; %same as above, optional
 options.model.filename = [options.model.name '.mat'];
 options.model.id = $MODELID; %random string%
-options.downsampling = $DOWNSAMPLE;
+options.downsampling = [$DOWNSAMPLE $DOWNSAMPLE $DOWNSAMPLE];
 
 options.nucleus.type = $NUCLEUSTYPE; % medial axis, cylindrical surface or diffeo
 options.nucleus.name = $NUCLEUSNAME; %defualt to empty
