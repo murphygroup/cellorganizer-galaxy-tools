@@ -19,8 +19,8 @@
       <option value="1">1</option>
     </param>
     <param name="nucleustype" type="select" label="select nuclear model type">
-      <option value="medial axis" selected="true">medial axis</option>
-      <option value="cylindrical surface">cylindrical surface</option>
+      <option value="medial_axis" selected="true">medial axis</option>
+      <option value="cylindrical_surface">cylindrical surface</option>
       <option value="diffeomorphic">diffeomorphic</option>
     </param>
     <param name="nucleusname" type="text" label="name of nuclear model"/>
