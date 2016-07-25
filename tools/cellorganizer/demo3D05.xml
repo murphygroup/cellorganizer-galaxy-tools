@@ -39,9 +39,29 @@ demo3D05 synthesizes one 3D image with nuclear, cell shape, and protein channels
 
 **Example**
 
-The following image is generated using the default parameters:
+demo3D05 generates the following images using the default parameters:
 
-![demo3D05 Image](<!-- Link required for demo3D05 image -->)
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/show_RGB_image.png
 
 </help>
 </tool>
