@@ -24,7 +24,7 @@ demo3D05 synthesizes one 3D image with nuclear, cell shape, and protein channels
 
 -----
 
-**Input**
+**Inputs**
 
 - Seed for Pseudo-Random Number Generator
 - Image Compression Algorithm
