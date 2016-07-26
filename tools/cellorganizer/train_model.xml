@@ -1,11 +1,14 @@
 <tool id="model training" name="Train model" version="0.0.1">
   <description>Trains a model (or multiple models) using CellOrganizer</description>
   <command interpreter="bash">
-    train_model.sh $dataset $masks $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
+    train_model.sh $dataset $dnachannel $cellchannel $proteinchannel $masks $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
   </command>
 
   <inputs>
     <param format="dataset" name="image_set" type="data" label="Choose a data set for training"/>
+    <param name="dnachannel" type="integer" label="Provide the dna channel number for the imageset"/>
+    <param name="cellchannel" type="integer" label="Provide the cell channel number for the imageset"/>
+    <param name="proteinchannel" type="integer" label="Provide the protein channel number for the imageset"/>
     <param format="dataset" name="mask_set" type="data" label="Provide an (optional) set of segmented cell masks"/>
     <param name="trainingflag" type="select" label="Selected the cellular componants desired for modeling">
       <option value="all" selected="true">all</option>
