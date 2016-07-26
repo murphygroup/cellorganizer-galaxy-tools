@@ -6,9 +6,9 @@
 
   <inputs>
     <param format="dataset" name="image_set" type="data" label="Choose a data set for training"/>
-    <param name="dnachannel" type="integer" label="Provide the dna channel number for the imageset"/>
-    <param name="cellchannel" type="integer" label="Provide the cell channel number for the imageset"/>
-    <param name="proteinchannel" type="integer" label="Provide the protein channel number for the imageset"/>
+    <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the imageset"/>
+    <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the imageset"/>
+    <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the imageset"/>
     <param format="dataset" name="mask_set" type="data" label="Provide an (optional) set of segmented cell masks"/>
     <param name="trainingflag" type="select" label="Selected the cellular componants desired for modeling">
       <option value="all" selected="true">all</option>
