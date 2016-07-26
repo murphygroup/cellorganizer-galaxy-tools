@@ -131,37 +131,41 @@ end
 
 %%% get image resolution and dimensionality
 options.model.resolution = OME_getResolution(imagepaths{1});
+if ~isempty(options.model.resolution)
 
-reader = bfGetReader(image_path);
-omeMeta = reader.getMetadataStore();
-if omeMeta.getPixelsSizeZ(0).getValue()>2
-    dimensionality = '3D';
+
+    reader = bfGetReader(image_path);
+    omeMeta = reader.getMetadataStore();
+    if omeMeta.getPixelsSizeZ(0).getValue()>2
+        dimensionality = '3D';
+    else
+        dimensionality = '2D';
+
+    %reader = bfGetReader(imagepaths{1});
+    %omeMeta = reader.getMetadataStore();
+
+    %xrange = omeMeta.getPixelsSizeX(0).getValue();
+    %xpixelsize = omeMeta.getPixelsPhysicalSizeX(0).value();
+
+    %yrange = omeMeta.getPixelsSizeY(0).getValue();
+    %ypixelsize = omeMeta.getPixelsPhysicalSizeY(0).value();
+
+    %try
+    %    zrange = omeMeta.getPixelsSizeZ(0).getValue();
+    %    zpixelsize = omeMeta.getPixelsPhysicalSizeZ(0).value();
+    %    dimensionality = '3D';
+    %    options.model.resolution = [xrange/xpixelsize yrange/ypixelsize zrange/zpixelsize];
+    %    options.model.original_resolution = [xrange/xpixelsize yrange/ypixelsize zrange/zpixelsize];
+    %catch
+    %    dimensionality = '2D';
+    %    options.model.resolution = [xrange/xpixelsize yrange/ypixelsize];
+    %    options.model.original_resolution = [xrange/xpixelsize yrange/ypixelsize];
+    %end
+
+    answer = img2slml(dimensionality, dnapath, cellpath, proteinpath, options);
 else
-    dimensionality = '2D';
-
-%reader = bfGetReader(imagepaths{1});
-%omeMeta = reader.getMetadataStore();
-
-%xrange = omeMeta.getPixelsSizeX(0).getValue();
-%xpixelsize = omeMeta.getPixelsPhysicalSizeX(0).value();
-
-%yrange = omeMeta.getPixelsSizeY(0).getValue();
-%ypixelsize = omeMeta.getPixelsPhysicalSizeY(0).value();
-
-%try
-%    zrange = omeMeta.getPixelsSizeZ(0).getValue();
-%    zpixelsize = omeMeta.getPixelsPhysicalSizeZ(0).value();
-%    dimensionality = '3D';
-%    options.model.resolution = [xrange/xpixelsize yrange/ypixelsize zrange/zpixelsize];
-%    options.model.original_resolution = [xrange/xpixelsize yrange/ypixelsize zrange/zpixelsize];
-%catch
-%    dimensionality = '2D';
-%    options.model.resolution = [xrange/xpixelsize yrange/ypixelsize];
-%    options.model.original_resolution = [xrange/xpixelsize yrange/ypixelsize];
-%end
-
-answer = img2slml(dimensionality, dnapath, cellpath, proteinpath, options);
-
+    disp('No resolution specified, exiting.')
+end
 exit;" > script.m
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
