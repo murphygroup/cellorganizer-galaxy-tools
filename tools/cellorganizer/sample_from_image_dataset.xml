@@ -1,0 +1,26 @@
+<tool id="Sample from image dataset" name="Sample from image dataset" version="0.0.1">
+  <description>Returns an image dataset built from the input dataset with the desired number of images</description>
+  <command interpreter="python">
+    sample_from_image_dataset.py $dataset $numimages
+  </command>
+  <inputs>
+    <param name="dataset" type="data" label="Image dataset to be sample from" help="Select an image dataset."/>
+    <param name="numimages" type="integer" value="1" label="Number of images to be sampled"/>
+  </inputs>
+  <outputs>
+    <data format="dataset" name="output" from_work_dir="output.txt" />
+  </outputs>
+<help>
+
+**Description**
+
+Samples from an image dataset to create another, smaller dataset.
+
+-----
+
+**Output**
+
+- An image dataset.
+
+</help>
+</tool>
