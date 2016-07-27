@@ -140,7 +140,7 @@ if ~isempty(options.model.resolution)
         dimensionality = '3D';
     else
         dimensionality = '2D';
-
+    end
     %reader = bfGetReader(imagepaths{1});
     %omeMeta = reader.getMetadataStore();
 
