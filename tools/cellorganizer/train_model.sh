@@ -101,22 +101,28 @@ imagepaths = imagepaths{1};
 fclose(f1);
 
 %%% get dna imagepaths
-dna_channel_numbers = OME_getChannelNumbers(imagepaths, $DNACHANNEL)
-dna_paths = [imagepaths,dna_channel_numbers];
-%dnainds = ~cellfun(@isempty,regexp(imagepaths,'ch0'));
-%dnapaths = imagepaths(dnainds);
+if $DNACHANNEL ~= 0
+    dna_channel_numbers = OME_getChannelNumbers(imagepaths, $DNACHANNEL);
+    dna_paths = strcat(imagepaths, {', '}, dna_channel_numbers);
+    %dnainds = ~cellfun(@isempty,regexp(imagepaths,'ch0'));
+    %dnapaths = imagepaths(dnainds);
+end
 
 %%% get cell imagepaths
-cell_channel_numbers = OME_getChannelNumbers(imagepaths, $CELLCHANNEL)
-cell_paths = [imagepaths,cell_channel_numbers];
-%cellinds = ~cellfun(@isempty,regexp(imagepaths,'ch1'));
-%cellpaths = imagepaths(cellinds);
+if $CELLCHANNEL ~= 0
+    cell_channel_numbers = OME_getChannelNumbers(imagepaths, $CELLCHANNEL);
+    cell_paths = strcat(imagepaths, {', '}, cell_channel_numbers);
+    %cellinds = ~cellfun(@isempty,regexp(imagepaths,'ch1'));
+    %cellpaths = imagepaths(cellinds);
+end
 
 %%% get prot image paths
-protein_channel_numbers = OME_getChannelNumbers(imagepaths, $PROTEINCHANNEL)
-dna_paths = [imagepaths,protein_channel_numbers];
-%protinds = cellinds+dnainds<1;
-%protpaths = imagepaths(protinds);
+if $$PROTEINCHANNEL ~= 0
+    protein_channel_numbers = OME_getChannelNumbers(imagepaths, $PROTEINCHANNEL)
+    protein_paths = strcat(imagepaths, {', '}, protein_channel_numbers);
+    %protinds = cellinds+dnainds<1;
+    %protpaths = imagepaths(protinds);
+end
 
 %%% get cell mask paths
 try
