@@ -1,12 +1,12 @@
 <tool id="show_shape_space" name="show_shape_space" version="0.0.1">
   <description>Displays a visual representation of the shape space from a trained 2D diffeomorphic model.</description>
   <command interpreter="bash">
-    show_shape_space.sh $input $number_of_labels $subsize $draw_traces
+    show_shape_space.sh $input $number_of_labels $grid_size $draw_traces
   </command>
   <inputs>
     <param format="mat" name="input" type="data" label="2D Diffeomorphic Model"></param>
     <param name="number_of_labels" type="integer" value="5" label="Number of Labels"/>
-    <param name="subsize" type="integer" value="50" label="Image Subsize"/>
+    <param name="grid_size" type="integer" value="50" label="Grid Size"/>
     <param name="draw_traces" type="boolean" checked="false" label="Draw Traces"/>
   </inputs>
   <outputs>
@@ -24,7 +24,8 @@ The 2D Shape Space tool creates a visualization of the shape space from a traine
 
 - Trained 2D Diffeomorphic Model
 - Number of Labels
-- Image Subsize
+- Grid Size
+- Draw Traces
 
 -----
 
@@ -36,7 +37,7 @@ The 2D Shape Space tool creates a visualization of the shape space from a traine
 
 **Example**
 
-The 2D shape space tool displays the following image using a trained 2D diffemorphic model and the default parameters:
+The 2D shape space tool displays the following image using a trained 2D diffemorphic model and the parameters (5, 1000, false):
 
 .. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/shape_space.png
   :height: 250
