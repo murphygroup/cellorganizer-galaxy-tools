@@ -8,14 +8,10 @@
   </section>
 
     <section id="training" name="Training">
-      <tool file="cellorganizer/train_2D_diffeomorphic_model.xml" />
-      <tool file="cellorganizer/train_3D_framework_model.xml" />
       <tool file="cellorganizer/train_model.xml" />
     </section>
 
     <section id="synthesis" name="Synthesis">
-      <tool file="cellorganizer/synthesize_2D_diffeormorphic_instance.xml" />
-      <tool file="cellorganizer/synthesize_3D_vesicular_instance.xml" />
       <tool file="cellorganizer/model_synth.xml" />
     </section>
 
