@@ -1,0 +1,85 @@
+<tool id="model training" name="Train model" version="0.0.1">
+  <description>Trains a model (or multiple models) using CellOrganizer</description>
+  <command interpreter="bash">
+    train_model.sh $dataset $dnachannel $cellchannel $proteinchannel $masks $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
+  </command>
+
+  <inputs>
+    <param format="dataset" name="image_set" type="data" label="Choose a data set for training"/>
+    <param name="dnachannel" type="integer" value="0" label="Provide the dna channel number for the imageset"/>
+    <param name="cellchannel" type="integer" value="0" label="Provide the cell channel number for the imageset"/>
+    <param name="proteinchannel" type="integer" value="0" label="Provide the protein channel number for the imageset"/>
+    <param format="dataset" name="mask_set" type="data" label="Provide an (optional) set of segmented cell masks"/>
+    <param name="trainingflag" type="select" label="Selected the cellular components desired for modeling">
+      <option value="all" selected="true">all</option>
+      <option value="nuclear">nuclear</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="modelname" type="text" label="Provide a name for the model"/>
+    <param name="modelid" type="text" label="Provide an (optional) id for the model"/>
+    <param name="downsample" type="select" label="Select a downsampling factor, larger values return a possible more coarse model">
+      <option value="5" selected="true">5</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </param>
+    <param name="nucleustype" type="select" label="Select a nuclear model type">
+      <option value="medial_axis" selected="true">medial axis</option>
+      <option value="cylindrical_surface">cylindrical surface</option>
+      <option value="diffeomorphic">diffeomorphic</option>
+    </param>
+    <param name="nucleusname" type="text" label="Provide an (optional) name for the nuclear model"/>
+    <param name="nucleusclass" type="select" label="Select nuclear model class">
+      <option value="nucleus" selected="true">nucleus</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="nucleusid" type="text" label="Provide an (optional) id for the nuclear model"/>
+    <param name="celltype" type="select" label="Select a cell model type">
+      <option value="ratio" selected="true">ratio</option>
+      <option value="diffeomorphic">diffeomorphic</option>
+    </param>
+    <param name="cellname" type="text" label="Provide an (optional) name for the cell model"/>
+    <param name="cellclass" type="select" label="Select a cell model class">
+      <option value="cell" selected="true">cell</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="cellid" type="text" label="Provide an (optional) id for the cell model"/>
+    <param name="proteintype" type="select" label="Select a protein model type">
+      <option value="gmm" selected="true">gmm</option>
+    </param>
+    <param name="proteinname" type="text" label="Provide an (optional) name for the protein model"/>
+    <param name="proteinclass" type="select" label="Select a protein model class">
+      <option value="vesicle" selected="true">vesicle</option>
+    </param>
+    <param name="proteinid" type="text" label="Provide an (optional) id for the protein model"/>
+    <param name="proteincytonucclearflag" type="select" label="Select a protein location">
+      <option value="cyto" selected="true">Cytoplasm</option>
+      <option value="nuc">Nucleus</option>
+      <option value="all">all</option>
+    </param>
+    <param name="documentation" type="text" label="Provide any (optional) documentation for the model or images used in training"/>
+    <param name="verbose" type="select" label="If true, print all information provided during training (advanced feature)">
+      <option value="false" selected="true">False</option>
+      <option value="true">True</option>
+    </param>
+    <param name="debug" type="select" label="If true, save intermediate results (advanced feature)">
+      <option value="false" selected="true">False</option>
+      <option value="true">True</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data format="mat" name="output" from_work_dir="output1.mat"/>
+  </outputs>
+<help>
+
+**Description**
+
+Train a cellular model in CellOrganizer
+
+-----
+
+**Output**
+
+A trained cell organizer model
+
+</help>
+</tool>
