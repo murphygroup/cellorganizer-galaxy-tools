@@ -1,13 +1,14 @@
-dataset=/Users/timmajarian/Documents/Murphylab/projects/galaxy_chapter/images/omero_imgs.txt
+dataset='/Users/timmajarian/Documents/Murphylab/projects/galaxy_chapter/images/omero_imgs.txt'
 dnachannel=1
 cellchannel=2
 proteinchannel=3
-masks=""
+masks="nothing"
 trainflag="all"
 modelname="hela_test"
 modelid="1"
 downsample=5
 nucleustype="diffeomorphic"
+nucleusname="test"
 nucleusclass="framework"
 nucleusid="1"
 celltype="diffeomorphic"
@@ -27,7 +28,7 @@ cd tools/cellorganizer
 rm -fv ./cellorganizer
 bash ./train_model.sh $dataset $dnachannel $cellchannel $proteinchannel $masks $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
 
-FILE1=output1.mat
+FILE1=hela_test.mat
 if [ -f $FILE1 ]; then
 	echo "File exists"
 else
