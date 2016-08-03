@@ -40,27 +40,27 @@ options.targetDirectory = pwd;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 models = {};
 
-if ~isempty('$MODEL1')
+if ~isempty('$MODEL1') && ~strcmpi('none','$MODEL1')
 	models{end+1} = '$MODEL1';
 end
 
-if ~isempty('$MODEL2')
+if ~isempty('$MODEL2') && ~strcmpi('none','$MODEL2')
 	models{end+1} = '$MODEL2';
 end
 
-if ~isempty('$MODEL3')
+if ~isempty('$MODEL3') && ~strcmpi('none','$MODEL3')
 	models{end+1} = '$MODEL3';
 end
 
-if ~isempty('$MODEL4')
+if ~isempty('$MODEL4') && ~strcmpi('none','$MODEL4')
 	models{end+1} = '$MODEL4';
 end
 
-if ~isempty('$MODEL5')
+if ~isempty('$MODEL5') && ~strcmpi('none','$MODEL5')
 	models{end+1} = '$MODEL5';
 end
 
-if ~isempty('$MODEL6')
+if ~isempty('$MODEL6') && ~strcmpi('none','$MODEL6')
 	models{end+1} = '$MODEL6';
 end
 
