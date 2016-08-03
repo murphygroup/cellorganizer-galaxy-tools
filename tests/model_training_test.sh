@@ -1,4 +1,4 @@
-dataset='/Users/timmajarian/Documents/Murphylab/projects/galaxy_chapter/images/omero_imgs.txt'
+dataset=<'path to text file with image paths in it'>
 dnachannel=1
 cellchannel=2
 proteinchannel=3
