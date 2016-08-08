@@ -8,7 +8,7 @@ INPUT=$1
 cp -v $INPUT $(pwd)/model.mat
 
 NUMBER_OF_LABELS=$2
-SUBSIZE=$3
+GRID_SIZE=$3
 DRAW_TRACES=$4
 
 echo "
@@ -22,7 +22,7 @@ cd('$WORKING_DIRECTORY')
 file = './model.mat';
 options.nlabels = $NUMBER_OF_LABELS;
 options.traces = $DRAW_TRACES;
-options.subsize = $SUBSIZE;
+options.subsize = $GRID_SIZE;
 
 show_shape_space_figure_galaxy_wrapper( file, options );
 
