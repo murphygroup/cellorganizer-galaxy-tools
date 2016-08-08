@@ -1,11 +1,18 @@
 <tool id="demo2D02" name="demo2D02" version="0.0.1">
   <description>Runs demo2D02 from CellOrganizer.</description>
   <command interpreter="bash">
-    demo2D02.sh $input
+    demo2D02.sh $seed $compression
+  </command>
   </command>
   <inputs>
-    <!-- lamp2 model file -->
-    <param format="mat" name="input" type="data" label="Lamp2 Model File"></param>
+    <!-- seed for random number generator -->
+    <param name="seed" type="integer" value="3" label="Seed for Pseudo-Random Number Generator"/>
+
+    <!-- image compression -->
+    <param name="compression" type="select" label="Image Compression">
+      <option value="lzw" selected="true">LZW</option>
+      <option value="none">No compression</option>
+    </param>
   </inputs>
   <outputs>
     <data format="tiff" name="output" from_work_dir="output.tif"/>
@@ -20,7 +27,8 @@ demo2D02 synthesizes one 2D image with nuclear, cell shape, and lysosomal channe
 
 **Input**
 
-- A valid CellOrganizer LAMP2 model file
+- Seed for Pseudo-Random Number Generator
+- Image Compression Algorithm
 
 -----
 
@@ -32,9 +40,11 @@ demo2D02 synthesizes one 2D image with nuclear, cell shape, and lysosomal channe
 
 **Example**
 
-The following image is generated using the default parameters:
+demo2D02 generates the following image using the default parameters:
 
-![demo2D02 Image](<!-- Link required for demo2D02 image -->)
+.. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo2D02reshape.png
+  :height: 250
+  :target: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/demo2D02reshape.png
 
 </help>
 </tool>
