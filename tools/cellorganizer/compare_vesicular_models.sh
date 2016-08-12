@@ -39,8 +39,5 @@ echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
 
-#echo "Compressing results"
-#zip -rv report.zip report*.pdf
-#rm -rfv report*.pdf
 
 
