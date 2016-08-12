@@ -11,23 +11,25 @@ MASKSET=$5
 TRAINFLAG=$6
 MODELNAME=$7
 MODELID=$8
-DOWNSAMPLE=$9
-NUCLEUSTYPE=${10}
-NUCLEUSNAME=${11}
-NUCLEUSCLASS=${12}
-NUCLEUSID=${13}
-CELLTYPE=${14}
-CELLNAME=${15}
-CELLCLASS=${16}
-CELLID=${17}
-PROTEINTYPE=${18}
-PROTEINNAME=${19}
-PROTEINCLASS=${20}
-PROTEINID=${21}
-PROTEINCYTONUCLEARFLAG=${22}
-DOCUMENTATION=${23}
-VERBOSE=${24}
-DEBUG=${25}
+DOWNSAMPLEX=$9
+DOWNSAMPLEY=${10}
+DOWNSAMPLEZ=${11}
+NUCLEUSTYPE=${12}
+NUCLEUSNAME=${13}
+NUCLEUSCLASS=${14}
+NUCLEUSID=${15}
+CELLTYPE=${16}
+CELLNAME=${17}
+CELLCLASS=${18}
+CELLID=${19}
+PROTEINTYPE=${20}
+PROTEINNAME=${21}
+PROTEINCLASS=${22}
+PROTEINID=${23}
+PROTEINCYTONUCLEARFLAG=${24}
+DOCUMENTATION=${25}
+VERBOSE=${26}
+DEBUG=${27}
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +56,7 @@ if strcmpi(options.model.id, '')
     options.model.id = num2str(now)
 end
 
-options.downsampling = [$DOWNSAMPLE $DOWNSAMPLE 1];
+options.downsampling = [$DOWNSAMPLEX $DOWNSAMPLEY $DOWNSAMPLEZ];
 
 options.nucleus.type = '$NUCLEUSTYPE'; % medial axis, cylindrical surface or diffeo
 options.nucleus.name = '$NUCLEUSNAME'; %defualt to empty

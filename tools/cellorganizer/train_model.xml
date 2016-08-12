@@ -1,7 +1,7 @@
 <tool id="model training" name="Train model" version="0.0.1">
   <description>Trains a model (or multiple models) using CellOrganizer</description>
   <command interpreter="bash">
-    train_model.sh $dataset $dnachannel $cellchannel $proteinchannel $masks $trainflag $modelname $modelid $downsample $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
+    train_model.sh $dataset $dnachannel $cellchannel $proteinchannel $masks $trainflag $modelname $modelid $downsamplex $downsampley $downsamplez $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
   </command>
 
   <inputs>
@@ -17,7 +17,17 @@
     </param>
     <param name="modelname" type="text" label="Provide a name for the model"/>
     <param name="modelid" type="text" label="Provide an (optional) id for the model"/>
-    <param name="downsample" type="select" label="Select a downsampling factor, larger values return a possible more coarse model">
+    <param name="downsamplex" type="select" label="Select a downsampling factor in the x dimension, larger values return a possible more coarse model">
+      <option value="5" selected="true">5</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </param>
+    <param name="downsampley" type="select" label="Select a downsampling factor in the y direction, larger values return a possible more coarse model">
+      <option value="5" selected="true">5</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </param>
+    <param name="downsamplez" type="select" label="Select a downsampling factor in the z direction, larger values return a possible more coarse model">
       <option value="5" selected="true">5</option>
       <option value="2">2</option>
       <option value="1">1</option>
