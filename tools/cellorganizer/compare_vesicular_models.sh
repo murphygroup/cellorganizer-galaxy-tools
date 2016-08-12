@@ -17,8 +17,9 @@ cd ./cellorganizer
 setup(true);
 cd('$WORKING_DIRECTORY')
 
-models = {$MODEL1; $MODEL2};
 param = [];
+param.includenuclear = false;
+param.includecell = false;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,7 +27,8 @@ param = [];
 % FEEL FREE TO MODIFY THE VARIABLES IN THIS BLOCK
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-answer = model2report(model,param)
+% answer = model2report(model,param)
+vesicle_comparison( $MODEL1 , $MODEL2 , param )
 
 exit;" > script.m
 
@@ -37,6 +39,8 @@ echo $WORKING_DIRECTORY
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
 
-echo "Compressing results"
-zip -rv report.zip report*.pdf
-rm -rfv report*.pdf
+#echo "Compressing results"
+#zip -rv report.zip report*.pdf
+#rm -rfv report*.pdf
+
+
