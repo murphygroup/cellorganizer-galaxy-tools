@@ -5,12 +5,12 @@
   </command>
 
   <inputs>
-    <param format="dataset" name="image_set" type="data" label="Choose a data set for training"/>
+    <param format="txt" name="dataset" type="data" label="Choose a data set for training"/>
     <param name="dnachannel" type="integer" value="0" label="Provide the dna channel number for the imageset"/>
     <param name="cellchannel" type="integer" value="0" label="Provide the cell channel number for the imageset"/>
     <param name="proteinchannel" type="integer" value="0" label="Provide the protein channel number for the imageset"/>
-    <param format="dataset" name="mask_set" type="data" label="Provide an (optional) set of segmented cell masks"/>
-    <param name="trainingflag" type="select" label="Selected the cellular components desired for modeling">
+    <param format="dataset" name="masks" type="data" label="Provide an (optional) set of segmented cell masks"/>
+    <param name="trainflag" type="select" label="Selected the cellular components desired for modeling">
       <option value="all" selected="true">all</option>
       <option value="nuclear">nuclear</option>
       <option value="framework">framework</option>
@@ -51,7 +51,7 @@
       <option value="vesicle" selected="true">vesicle</option>
     </param>
     <param name="proteinid" type="text" label="Provide an (optional) id for the protein model"/>
-    <param name="proteincytonucclearflag" type="select" label="Select a protein location">
+    <param name="proteincytonuclearflag" type="select" label="Select a protein location">
       <option value="cyto" selected="true">Cytoplasm</option>
       <option value="nuc">Nucleus</option>
       <option value="all">all</option>
