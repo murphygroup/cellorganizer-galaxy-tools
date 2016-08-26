@@ -7,29 +7,28 @@ DATASET=$1
 DNACHANNEL=$2
 CELLCHANNEL=$3
 PROTEINCHANNEL=$4
-MASKSET=$5
-TRAINFLAG=$6
-MODELNAME=$7
-MODELID=$8
-DOWNSAMPLEX=$9
-DOWNSAMPLEY=${10}
-DOWNSAMPLEZ=${11}
-NUCLEUSTYPE=${12}
-NUCLEUSNAME=${13}
-NUCLEUSCLASS=${14}
-NUCLEUSID=${15}
-CELLTYPE=${16}
-CELLNAME=${17}
-CELLCLASS=${18}
-CELLID=${19}
-PROTEINTYPE=${20}
-PROTEINNAME=${21}
-PROTEINCLASS=${22}
-PROTEINID=${23}
-PROTEINCYTONUCLEARFLAG=${24}
-DOCUMENTATION=${25}
-VERBOSE=${26}
-DEBUG=${27}
+TRAINFLAG=$5
+MODELNAME=$6
+MODELID=$7
+DOWNSAMPLEX=$8
+DOWNSAMPLEY=$9
+DOWNSAMPLEZ=${10}
+NUCLEUSTYPE=${11}
+NUCLEUSNAME=${12}
+NUCLEUSCLASS=${13}
+NUCLEUSID=${14}
+CELLTYPE=${15}
+CELLNAME=${16}
+CELLCLASS=${17}
+CELLID=${18}
+PROTEINTYPE=${19}
+PROTEINNAME=${20}
+PROTEINCLASS=${21}
+PROTEINID=${22}
+PROTEINCYTONUCLEARFLAG=${23}
+DOCUMENTATION=${24}
+VERBOSE=${25}
+DEBUG=${26}
 
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,11 +45,10 @@ options.targetDirectory = pwd;
 
 %%%% parse varargin
 dataset = '$DATASET'; %path to images
-%masks = varargin{2}; %bool
 options.train.flag = '$TRAINFLAG'; %nuclear, frame, all %% add a default in the shell script so train.flag is always var 3
 options.model.name = '$MODELNAME'; %same as above, optional
 options.model.filename = [options.model.name '.mat'];
-options.model.id = $MODELID; %random string%
+options.model.id = '$MODELID'; %random string%
 
 if strcmpi(options.model.id, '')
     options.model.id = num2str(now)
@@ -61,7 +59,7 @@ options.downsampling = [$DOWNSAMPLEX $DOWNSAMPLEY $DOWNSAMPLEZ];
 options.nucleus.type = '$NUCLEUSTYPE'; % medial axis, cylindrical surface or diffeo
 options.nucleus.name = '$NUCLEUSNAME'; %defualt to empty
 options.nucleus.class = '$NUCLEUSCLASS'; % nuc or framework
-options.nucleus.id = $NUCLEUSID;
+options.nucleus.id = '$NUCLEUSID';
 
 if strcmpi(options.nucleus.id, '')
     options.nucleus.id = num2str(now)
@@ -70,7 +68,7 @@ end
 options.cell.type = '$CELLTYPE';
 options.cell.name = '$CELLNAME';
 options.cell.class = '$CELLCLASS';
-options.cell.id = $CELLID;
+options.cell.id = '$CELLID';
 
 if strcmpi(options.cell.id, '')
     options.cell.id = num2str(now)
@@ -94,7 +92,6 @@ options.documentation.name = '$DOCUMENTATION';
 options.verbose = $VERBOSE;
 options.debug = $DEBUG;
 
-masks = '$MASKSET';
 
 %%% pares image data
 f1 = fopen(dataset);
@@ -108,6 +105,8 @@ if $DNACHANNEL ~= 0
     dna_paths = strcat(imagepaths, {', '}, dna_channel_numbers);
     %dnainds = ~cellfun(@isempty,regexp(imagepaths,'ch0'));
     %dnapaths = imagepaths(dnainds);
+else
+    dna_paths = {};
 end
 
 %%% get cell imagepaths
@@ -116,6 +115,8 @@ if $CELLCHANNEL ~= 0
     cell_paths = strcat(imagepaths, {', '}, cell_channel_numbers);
     %cellinds = ~cellfun(@isempty,regexp(imagepaths,'ch1'));
     %cellpaths = imagepaths(cellinds);
+else
+    cell_paths = {};
 end
 
 %%% get prot image paths
@@ -124,18 +125,10 @@ if $PROTEINCHANNEL ~= 0
     protein_paths = strcat(imagepaths, {', '}, protein_channel_numbers);
     %protinds = cellinds+dnainds<1;
     %protpaths = imagepaths(protinds);
+else
+    protein_paths = {};
 end
 
-%%% get cell mask paths
-try
-    f2 = fopen(masks);
-    maskpaths = textscan(f2,'%s\n');
-    maskpaths = maskpaths{1};
-    fclose(f2);
-    options.masks = maskpaths;
-catch
-    disp('no mask images found')
-end
 
 %%% get image resolution and dimensionality
 options.model.resolution = OME_getResolution(imagepaths{1});
@@ -178,3 +171,4 @@ exit;" > script.m
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
+
