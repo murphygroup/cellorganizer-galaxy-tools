@@ -32,3 +32,4 @@ cat script.m
 
 ln -s $CELLORGANIZER $(pwd)/cellorganizer
 $MATLAB -nodesktop -nosplash -r "script;"
+

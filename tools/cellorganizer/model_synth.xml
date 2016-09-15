@@ -1,0 +1,59 @@
+<tool id="Synthesize an instance" name="Synthesize an instance" version="0.0.1">
+  <description>Synthesizes an instance from multiple models trained in CellOrganizer</description>
+  <command interpreter="bash">
+    model_synth.sh $model1 $model2 $model3 $model4 $model5 $model6 $synthesis $numimgs $resolution $prefix $compression $microscope $samplingmethod $verbose $debug $randomwalk $walksteps $walktype $tif $indexed $blender $sbml
+  </command>
+  <inputs>
+    <param format="data" name="model1" type="data" label="model1" />
+    <param format="data" name="model2" type="data" label="model2" />
+    <param format="data" name="model3" type="data" label="model3" />
+    <param format="data" name="model4" type="data" label="model4" />
+    <param format="data" name="model5" type="data" label="model5" />
+    <param format="data" name="model6" type="data" label="model6" />
+    <param name="synthesis" type="select" label="Select the desired structures to be synthesized">
+      <option value="all" selected="true">all</option>
+      <option value="nucleus">nucleus</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="numimgs" type="integer" value="1" label="Number of instances to be synthesized"/>
+    <param name="resolution" type="float" value="0.05" label="Provide a desired resolution if images are to be synthesized"/>
+    <param name="prefix" type="text" label="Provide a prefix for saved files"/>
+    <param name="compression" type="select" label="Image Compression">
+      <option value="lzw" selected="true">lzw</option>
+      <option value="none">no compression</option>
+    </param>
+    <param name="microscope" type="text" label="Microscope (optional)"/>
+    <param name="sampling_method" type="select" label="Select a sampling method">
+      <option value="trimmed" selected="true">trimmed</option>
+      <option value="disc">disc</option>
+      <option value="sampled">sampled</option>
+    </param>
+    <param name="verbose" type="boolean" checked="false" label="If true, prints all information during synthesis (advanced feature)"/>
+    <param name="debug" type="boolean" checked="false" label="If true, saves intermediate results (advanced feature)"/>
+    <param name="randomwalk" type="boolean" checked="false" label="If sampling from a diffeomorphic model, true will perform a random walk through the shapespace for the desired number of steps"/>
+    <param name="walksteps" type="integer" value="10" label="If performing a random walk, provide the number of desired steps"/>
+    <param name="walktype" type="select" label="Select the type of random walk desired">
+      <option value="willmore" selected="true">willmore</option>
+    </param>
+    <param name="tif" type="boolean" checked="false" label="If true, instances will be saved as tiffs"/>
+    <param name="indexed" type="boolean" checked="false" label="If true, will return an indexed tif with indices corresponding to channels"/>
+    <param name="blender" type="boolean" checked="false" label="If true, will return object and wavefront files for use in blender simulations"/>
+    <param name="sbml" type="boolean" checked="false" label="If true, will return sbml spatial files for use in molecular simulation"/>
+  </inputs>
+  <outputs>
+    <data format="zip" name="output" from_work_dir="output1.zip"/>
+  </outputs>
+<help>
+
+**Description**
+
+Synthesize instances from multiple trained models saved in multiple formats.
+
+-----
+
+**Output**
+
+A zip containing the desired output files.
+
+</help>
+</tool>
