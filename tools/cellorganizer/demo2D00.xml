@@ -1,7 +1,7 @@
 <tool id="demo2D00" name="demo2D00" version="0.0.1">
   <description>Runs demo2D00 from CellOrganizer</description>
-  <command interpreter="bash">
-    demo2D00.sh $seed $compression
+  <command>
+    matlab -r "demo2D00_for_galaxy($seed,$compression);"
   </command>
   <inputs>
     <!-- seed for random number generator -->
