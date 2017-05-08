@@ -28,14 +28,3 @@ function answer = check_if_files_exist_on_disk_on_galaxy( string )
 
 galaxy_instance_setup();
 answer = check_if_files_exist_on_disk( string );
-
-end
-
-function galaxy_instance_setup()
-	current_directory = pwd;
-	cellorganizer_directory = getenv('CELLORGANIZER');
-
-	cd( cellorganizer_directory );
-	setup();
-	cd( current_directory );
-end
