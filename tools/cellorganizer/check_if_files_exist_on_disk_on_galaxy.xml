@@ -1,0 +1,17 @@
+<tool id="check_if_files_exist_on_disk_on_galaxy" name="Check if" version="0.0.1">
+  <description> files exist on disk.</description>
+  <command>
+    matlab  -log -r "diary on;check_if_files_exist_on_disk_on_galaxy($dataset); diary off; exit"
+  </command>
+  <inputs>
+	  <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />      
+  </inputs>
+  <outputs>
+    <data name="output" from_work_dir="diary"/>
+  </outputs>
+<help>
+**Description**
+
+Just a silly test to check if files exist on disk.
+</help>
+</tool>
