@@ -1,7 +1,7 @@
 <tool id="show_variable" name="Show variable" version="0.0.1">
   <description>name.</description>
-  <command interpreter="bash">
-    show_variable.sh $dataset
+  <command>
+    matlab -nosplash -r "show_variable($dataset)" -wait -log
   </command>
   <inputs>
 	  <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />      
