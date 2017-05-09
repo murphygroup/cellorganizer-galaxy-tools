@@ -35,4 +35,10 @@
       <tool file="cellorganizer/demo2D00.xml" />
       <tool file="cellorganizer/demo3D00.xml" />
     </section>
+
+	<section id="dummy" name="Dumb tools" />
+		<tool file="cellorganizer/check_if_files_exist_on_disk_and_link_them_on_galaxy.xml" />
+		<tool file="cellorganizer/check_if_files_exist_on_disk_on_galaxy.xml" />
+		<tool file="cellorganizer/generate_random_number.xml" />
+	</section>
 </toolbox>
