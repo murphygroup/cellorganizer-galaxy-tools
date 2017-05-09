@@ -1,7 +1,7 @@
 <tool id="check_if_files_exist_on_disk_on_galaxy" name="Check if" version="0.0.1">
   <description> files exist on disk.</description>
   <command>
-    matlab  -log -r "diary on; current_directory = pwd; cellorganizer_directory = getenv('CELLORGANIZER'); cd( cellorganizer_directory ); setup(); cd( current_directory );check_if_files_exist_on_disk('$dataset'); diary off; exit"
+    matlab -r "diary on; current_directory = pwd; cellorganizer_directory = getenv('CELLORGANIZER'); cd( cellorganizer_directory ); setup(); cd( current_directory );check_if_files_exist_on_disk('$dataset'); diary off; exit"
   </command>
   <inputs>
 	  <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />      
