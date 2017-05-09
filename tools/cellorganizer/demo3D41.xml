@@ -1,0 +1,17 @@
+<tool id="demo3D41" name="demo3D41" version="0.0.1">
+  <description>Train with OME.TIFF.</description>
+  <command>
+    matlab -r "diary on; current_directory = pwd; cellorganizer_directory = getenv('CELLORGANIZER'); cd( cellorganizer_directory ); setup(); cd( current_directory ); check_if_files_exist_on_disk_and_link_them('$dataset'); demo3D41(); diary off; exit"
+  </command>
+  <inputs>
+	  <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />      
+  </inputs>
+  <outputs>
+    <data type="mat" name="output" from_work_dir="model.mat"/>
+  </outputs>
+<help>
+**Description**
+
+Just a silly test to check if files exist on disk.
+</help>
+</tool>
