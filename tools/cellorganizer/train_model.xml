@@ -1,20 +1,32 @@
-<tool id="model training" name="Train model" version="0.0.1">
+<tool id="model training" name="Train model" version="0.0.2">
   <description>Trains a model (or multiple models) using CellOrganizer</description>
-  <command interpreter="bash">
-    train_model.sh $dataset $dnachannel $cellchannel $proteinchannel $trainflag $modelname $modelid $downsamplex $downsampley $downsamplez $nucleustype $nucleusname $nucleusclass $nucleusid $celltype $cellname $cellclass $cellid $proteintype $proteinname $proteinclass $proteinid $proteincytonuclearflag $documentation $verbose $debug
+  <command>
+    matlab -r "
+    diary on; 
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( '~/CellOrganizor/build/cellorganizer3/' ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them('$dataset');
+    train_model($maskchannel,$dnachannel,$cellchannel,$proteinchannel,'$trainflag','$modelname','$modelid','$downsamplex','$downsampley','$downsamplez','$nucleustype','$nucleusname','$nucleusclass','$nucleusid','$celltype','$cellname','$cellclass','$cellid','$proteintype','$proteinname','$proteinclass','$proteinid','$proteincytonuclearflag','$documentation','$verbose','$debug');
+    diary off;
+    exit;
+    "
   </command>
-
   <inputs>
-    <param format="txt" name="dataset" type="data" label="Choose a data set for training"/>
-    <param name="dnachannel" type="integer" value="0" label="Provide the dna channel number for the imageset"/>
-    <param name="cellchannel" type="integer" value="0" label="Provide the cell channel number for the imageset"/>
-    <param name="proteinchannel" type="integer" value="0" label="Provide the protein channel number for the imageset"/>
+    <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
+<!--     <param format="txt" name="dataset" type="data" label="Choose a data set for training"/> -->
+    <param name="maskchannel" type="integer" value="4" label="Provide the mask channel number for the imageset"/>
+    <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the imageset"/>
+    <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the imageset"/>
+    <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the imageset"/>
     <param name="trainflag" type="select" label="Selected the cellular components desired for modeling">
       <option value="all" selected="true">all</option>
       <option value="nuclear">nuclear</option>
       <option value="framework">framework</option>
     </param>
-    <param name="modelname" type="text" value="default" label="Provide a name for the model"/>
+    <param name="modelname" type="text" value="model" label="Provide a name for the model"/>
     <param name="modelid" type="text" value="default" label="Provide an (optional) id for the model"/>
     <param name="downsamplex" type="select" label="Select a downsampling factor in the x dimension, larger values return a possible more coarse model">
       <option value="5" selected="true">5</option>
@@ -27,18 +39,18 @@
       <option value="1">1</option>
     </param>
     <param name="downsamplez" type="select" label="Select a downsampling factor in the z direction, larger values return a possible more coarse model">
-      <option value="5" selected="true">5</option>
+      <option value="5">5</option>
       <option value="2">2</option>
-      <option value="1">1</option>
+      <option value="1" selected="true">1</option>
     </param>
     <param name="nucleustype" type="select" label="Select a nuclear model type">
-      <option value="medial_axis" selected="true">medial axis</option>
-      <option value="cylindrical_surface">cylindrical surface</option>
+      <option value="medial_axis">medial axis</option>
+      <option value="cylindrical_surface" selected="true">cylindrical surface</option>
       <option value="diffeomorphic">diffeomorphic</option>
     </param>
     <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
     <param name="nucleusclass" type="select" label="Select nuclear model class">
-      <option value="nucleus" selected="true">nucleus</option>
+      <option value="nuclear_membrane" selected="true">nuclear membrane</option>
       <option value="framework">framework</option>
     </param>
     <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
@@ -48,7 +60,7 @@
     </param>
     <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
     <param name="cellclass" type="select" label="Select a cell model class">
-      <option value="cell" selected="true">cell</option>
+      <option value="cell_membrane" selected="true">cell membrane</option>
       <option value="framework">framework</option>
     </param>
     <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
@@ -67,8 +79,8 @@
     </param>
     <param name="documentation" type="text" value="default" label="Provide any (optional) documentation for the model or images used in training"/>
     <param name="verbose" type="select" label="If true, print all information provided during training (advanced feature)">
-      <option value="false" selected="true">False</option>
-      <option value="true">True</option>
+      <option value="false">False</option>
+      <option value="true" selected="true">True</option>
     </param>
     <param name="debug" type="select" label="If true, save intermediate results (advanced feature)">
       <option value="false" selected="true">False</option>
