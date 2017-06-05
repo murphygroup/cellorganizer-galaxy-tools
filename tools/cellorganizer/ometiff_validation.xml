@@ -7,7 +7,7 @@
     <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
   </inputs>
   <outputs>
-    <data format="ometiff" name="output" from_work_dir="valid_image.ome.tif"/>
+    <data format="tiff" name="output" from_work_dir="valid_image.ome.tif"/>
   </outputs>
 <help>
 
