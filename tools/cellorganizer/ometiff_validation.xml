@@ -4,7 +4,7 @@
     ometiff_validation.sh $dataset
   </command>
   <inputs>
-    <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
+    <param name="dataset" type="data" label="Choose an image for validation" multiple="true" optional="false" />
   </inputs>
   <outputs>
     <data format="tiff" name="output" from_work_dir="valid_image.ome.tif"/>
