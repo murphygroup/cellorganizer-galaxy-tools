@@ -1,0 +1,42 @@
+<tool id="model training and make a report" name="Train model 2" version="0.0.1">
+  <description>Trains a model (or multiple models) using CellOrganizer and make a model report</description>
+  <command>
+    <!-- echo $galaxy_tools2; -->
+    cp -r ~/CellOrganizor/cellorganizer-galaxy-tools/galaxy/database/jobs_directory/000/244/working/* .;
+    bash /Users/piepi/CellOrganizor/galaxy/tools/cellorganizer/train_model_report.sh $output2.extra_files_path;
+    echo $output1.extra_files_path;
+    echo $output2.extra_files_path;
+  </command>
+  <inputs>
+    <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
+  </inputs>
+  <outputs>
+    <data format="mat" name="output" from_work_dir="model.mat"/>
+    <data format="html" name="output" from_work_dir="report.html"/>
+  </outputs>
+<help>
+    matlab -r "
+    diary on; 
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them('$dataset');
+    train_model($maskchannel,$dnachannel,$cellchannel,$proteinchannel,'$trainflag','$modelname','$modelid','$downsamplex','$downsampley','$downsamplez','$nucleustype','$nucleusname','$nucleusclass','$nucleusid','$celltype','$cellname','$cellclass','$cellid','$proteintype','$proteinname','$proteinclass','$proteinid','$proteincytonuclearflag','$documentation','$verbose','$debug');
+    diary off;
+    exit;
+    "
+
+**Description**
+
+Train a cellular model in CellOrganizer
+
+-----
+
+**Output**
+
+A trained cell organizer model
+
+</help>
+</tool>
