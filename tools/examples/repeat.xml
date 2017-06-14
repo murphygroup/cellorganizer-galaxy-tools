@@ -1,0 +1,25 @@
+<tool id="trainingamodel" name="Training" version="0.0.1">
+	<description>Trains a model using CellOrganizer</description>
+	<command>
+		matlab -r "diary diary.txt;
+		documentation = struct();
+		#for $field in $fields
+        	documentation = setfield( documentation, '${field.key}', '${field.value}' );
+      	#end for
+      	options.documentation = documentation;
+      	options.documentation,
+      	diary off;
+      	exit;"
+  	</command>
+	<inputs> 
+		<repeat name="fields" title="Documentation key/value pairs" min="0" default="1">
+	      <param name="key" label="Key" type="text" />
+	      <param name="value" label="Value" type="text" />
+	    </repeat>
+	</inputs> 
+	<outputs>
+    	<data format="txt" name="output" from_work_dir="diary.txt"/>
+  	</outputs>
+<help>
+</help>
+</tool> 

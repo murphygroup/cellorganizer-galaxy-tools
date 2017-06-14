@@ -1,0 +1,12 @@
+<tool id="show_image" name="Show Image" version="1.0.0">
+  <description>in the webpage</description>
+  <command interpreter="bash">
+    show_image.sh $image_name $htmlfile.extra_files_path
+  </command>
+  <inputs>
+    <param name="image_name" type="text" value="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" label="Provide an image url:"/>
+  </inputs>
+  <outputs>
+    <data format="html" name="htmlfile" from_work_dir="index.html"/>
+  </outputs>
+</tool>
