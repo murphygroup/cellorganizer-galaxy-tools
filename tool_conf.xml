@@ -15,6 +15,7 @@
     <!-- These are useful tools -->
     <section id="cellorganizer-tools" name="Useful tools">
       <tool file="cellorganizer/get_info.xml" />
+      <tool file="cellorganizer/ometiff_validation.xml" />
       <tool file="cellorganizer/show_2D_image_reshape.xml" />
       <tool file="cellorganizer/show_3D_image_reshape.xml" />
       <tool file="cellorganizer/show_projection.xml" />
