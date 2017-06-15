@@ -1,17 +1,16 @@
 if [ -d param ]; then
     zip -r param.zip param
-    rm -fv param
+    rm -rfv param
 fi
 
 if [ -d temp ]; then
     zip -r temp.zip temp
-    rm -fv temp
+    rm -rfv temp
 fi
 
 if [ -f diary.txt ]; then
     file diary.txt
 fi
-    
 
 if [ -f model.mat ]; then
     file model.mat
@@ -62,4 +61,4 @@ if [ -f temp.zip ]; then
 fi
 
 grip report.md --no-inline --export report.html > /dev/null 2>&1
-sed -i '' 's/report.md/CellOrganizer+Galaxy Report/g' index.html
+sed -i '' 's/report.md/CellOrganizer+Galaxy Report/g' report.html
