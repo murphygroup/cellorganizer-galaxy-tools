@@ -1,47 +1,168 @@
-<tool id="model training and make a report" name="Train model 2" version="0.0.1">
+<tool id="model training and make a report" name="Train model 2" version="0.0.3">
   <description>Trains a model (or multiple models) using CellOrganizer and make a model report</description>
   <command>
-    <!-- echo $galaxy_tools2; -->
-    cp -r ~/CellOrganizor/cellorganizer-galaxy-tools/galaxy/database/jobs_directory/000/244/working/* .;
-
     matlab -r "diary diary.txt;
-    ls;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them('$dataset');
+
+    selection_flag('$dimensionality','$nuc.nucleusclass','$nuc.nucleustype');
+    selection_flag('$dimensionality','$mem.cellclass','$mem.celltype');
+    selection_flag('$dimensionality','$pro.proteinclass','$pro.proteintype');
+
+    documentation = struct();
+    #for $field in $doc.documentation
+      documentation = setfield( documentation, '${field.docname}', '${field.docvalues}' );
+    #end for
+
+    train_model($maskchannel,$dnachannel,$cellchannel,$proteinchannel,'$trainflag','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$nuc.nucleustype','$nuc.nucleusname','$nuc.nucleusclass','$nuc.nucleusid','$mem.celltype','$mem.cellname','$mem.cellclass','$mem.cellid','$pro.proteintype','$pro.proteinname','$pro.proteinclass','$pro.proteinid','$pro.proteincytonuclearflag',documentation,'$gen.verbose','$gen.debug');
+
     diary off;
     exit;";
-    
-    ls -la;
-    bash /Users/piepi/CellOrganizor/galaxy/tools/cellorganizer/train_model_report.sh $output2.extra_files_path;
-    echo $output1.extra_files_path;
-    echo $output2.extra_files_path;
+
+    bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
   </command>
   <inputs>
     <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
+    <param name="maskchannel" type="integer" value="4" label="Provide the mask channel number for the imageset"/>
+    <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the imageset"/>
+    <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the imageset"/>
+    <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the imageset"/>
+    <param name="trainflag" type="select" label="Selected the cellular components desired for modeling">
+      <option value="all" selected="true">all</option>
+      <option value="nuclear">nuclear</option>
+      <option value="framework">framework</option>
+    </param>
+    <param name="modelname" type="text" value="model" label="Provide a name for the model"/>
+    <param name="modelid" type="text" value="default" label="Provide an (optional) id for the model"/>
+    <param name="dimensionality" type="select" label="Dimensionality:">
+      <option value="2D">2D</option>
+      <option value="3D" selected="true">3D</option>
+    </param>
+    <section name="gen" title="Advanced" expanded="false">
+      <param name="downsamplex" type="select" label="Select a downsampling factor in the x dimension, larger values return a possible more coarse model">
+        <option value="5" selected="true">5</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </param>
+      <param name="downsampley" type="select" label="Select a downsampling factor in the y direction, larger values return a possible more coarse model">
+        <option value="5" selected="true">5</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </param>
+      <param name="downsamplez" type="select" label="Select a downsampling factor in the z direction, larger values return a possible more coarse model">
+        <option value="5">5</option>
+        <option value="2">2</option>
+        <option value="1" selected="true">1</option>
+      </param>
+      <param name="verbose" type="select" label="If true, print all information provided during training (advanced feature)">
+        <option value="false">False</option>
+        <option value="true" selected="true">True</option>
+      </param>
+      <param name="debug" type="select" label="If true, save intermediate results (advanced feature)">
+        <option value="false" selected="true">False</option>
+        <option value="true">True</option>
+      </param>
+    </section>
+    <section name="nuc" title="Nucleus Options" expanded="false">
+      <param name="nucleustype" type="select" label="Select a nuclear model type">
+        <option value="gmm">gmm</option>
+        <option value="medial_axis">medial axis</option>
+        <option value="ratio">ratio</option>
+        <option value="cylindrical_surface" selected="True">cylindrical surface</option>
+        <option value="diffeomorphic">diffeomorphic</option>
+        <option value="microtubule_growth">microtubule growth</option>
+        <option value="morphing">moprhing</option>
+        <option value="standardized_map_half-ellipsoid">standardized map half-ellipsoid</option>
+      </param>
+      <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
+      <param name="nucleusclass" type="select" label="Select nuclear model class">
+        <option value="vesicle">vesicle</option>
+        <option value="nuclear_membrane" selected="True">nuclear membrane</option>
+        <option value="cell_membrane">cell membrane</option>
+        <option value="framework">framework</option>
+        <option value="network">network</option>
+        <option value="protein_distribution">protein distribution</option>
+        <option value="standardized_voxels">standardized voxels</option>
+      </param>
+      <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
+    </section>
+    <section name="mem" title="Cell Membrane Options" expanded="false">
+      <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
+      <param name="celltype" type="select" label="Select a cell model type">
+        <option value="gmm">gmm</option>
+        <option value="medial_axis">medial axis</option>
+        <option value="ratio" selected="True">ratio</option>
+        <option value="cylindrical_surface">cylindrical surface</option>
+        <option value="diffeomorphic">diffeomorphic</option>
+        <option value="microtubule_growth">microtubule growth</option>
+        <option value="morphing">moprhing</option>
+        <option value="standardized_map_half-ellipsoid">standardized map half-ellipsoid</option>
+      </param>
+      <param name="cellclass" type="select" label="Select a cell model class">
+        <option value="vesicle">vesicle</option>
+        <option value="nuclear_membrane">nuclear membrane</option>
+        <option value="cell_membrane" selected="True">cell membrane</option>
+        <option value="framework">framework</option>
+        <option value="network">network</option>
+        <option value="protein_distribution">protein distribution</option>
+        <option value="standardized_voxels">standardized voxels</option>
+      </param>
+      <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
+    </section>
+    <section name="pro" title="Protein Options" expanded="false">
+      <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
+      <param name="proteintype" type="select" label="Select a protein model type">
+        <option value="gmm" selected="True">gmm</option>
+        <option value="medial_axis">medial axis</option>
+        <option value="ratio">ratio</option>
+        <option value="cylindrical_surface">cylindrical surface</option>
+        <option value="diffeomorphic">diffeomorphic</option>
+        <option value="microtubule_growth">microtubule growth</option>
+        <option value="morphing">moprhing</option>
+        <option value="standardized_map_half-ellipsoid">standardized map half-ellipsoid</option>
+      </param>
+      <param name="proteinclass" type="select" label="Select a protein model class">
+        <option value="vesicle" selected="True">vesicle</option>
+        <option value="nuclear_membrane">nuclear membrane</option>
+        <option value="cell_membrane">cell membrane</option>
+        <option value="framework">framework</option>
+        <option value="network">network</option>
+        <option value="protein_distribution">protein distribution</option>
+        <option value="standardized_voxels">standardized voxels</option>
+      </param>
+      <param name="proteinid" type="text" value="default" label="Provide an (optional) id for the protein model"/>
+      <param name="proteincytonuclearflag" type="select" label="Select a protein location">
+        <option value="cyto" selected="true">Cytoplasm</option>
+        <option value="nuc">Nucleus</option>
+        <option value="all">all</option>
+      </param>
+    </section>
+    <section name="doc" title="Documentation" expanded="false">
+      <repeat name="documentation" title="Documentation">
+        <param name="docname" type="text" label="Name"> </param>
+        <param name="docvalues" type="text" label="Values"></param>
+      </repeat>
+    </section>
   </inputs>
   <outputs>
     <data format="mat" name="output1" from_work_dir="model.mat"/>
     <data format="html" name="output2" from_work_dir="report.html"/>
   </outputs>
 <help>
-matlab -r "diary diary.txt;
-current_directory = pwd; 
-cellorganizer_directory = getenv('CELLORGANIZER'); 
-cd( cellorganizer_directory ); 
-setup(); 
-cd( current_directory );
-check_if_files_exist_on_disk_and_link_them('$dataset');
-train_model($maskchannel,$dnachannel,$cellchannel,$proteinchannel,'$trainflag','$modelname','$modelid','$downsamplex','$downsampley','$downsamplez','$nucleustype','$nucleusname','$nucleusclass','$nucleusid','$celltype','$cellname','$cellclass','$cellid','$proteintype','$proteinname','$proteinclass','$proteinid','$proteincytonuclearflag','$documentation','$verbose','$debug');
-diary off;
-exit;"
 
 **Description**
 
-Train a cellular model in CellOrganizer
+Train a cellular model in CellOrganizer and make a model report.
 
 -----
 
 **Output**
 
-A trained cell organizer model
+A trained cell organizer model and a model report.
 
 </help>
 </tool>
