@@ -29,14 +29,14 @@ echo "## Log " >> report.md
 echo "\`\`\`" >> report.md
 cat diary.txt >> report.md
 echo "\`\`\`" >> report.md
-echo "![Model Download](./model.mat)" >> report.md
+echo "[Model Download](./model.mat)" >> report.md
 echo " " >> report.md
 if [ -f param.zip ]; then
-    echo "![Parameterization Download](./param.zip)" >> report.md
+    echo "[Parameterization Download](./param.zip)" >> report.md
 fi
 echo " " >> report.md
 if [ -f temp.zip ]; then
-    echo "![Temporary Results Download](./temp.zip)" >> report.md
+    echo "[Temporary Results Download](./temp.zip)" >> report.md
 fi
 
 echo "Making temporary folder "$1
