@@ -47,7 +47,7 @@
     <param name="sbml" type="boolean" checked="false" label="If true, will return sbml spatial files for use in molecular simulation"/>
   </inputs>
   <outputs>
-    <data format="zip" name="output" from_work_dir="output1.zip"/>
+    <data format="tiff" name="output" from_work_dir="output.ome.tif"/>
   </outputs>
 <help>
 
