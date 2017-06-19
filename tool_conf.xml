@@ -6,6 +6,7 @@
 
     <section id="training" name="Training">
       <tool file="cellorganizer/train_model.xml" />
+      <tool file="cellorganizer/train_model_report.xml" />
     </section>
 
     <section id="synthesis" name="Synthesis">
