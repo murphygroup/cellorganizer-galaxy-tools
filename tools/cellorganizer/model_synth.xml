@@ -1,15 +1,21 @@
-<tool id="Synthesize an instance" name="Synthesize an instance" version="0.0.1">
+<tool id="Synthesize an instance" name="Synthesize an instance" version="0.0.2">
   <description>Synthesizes an instance from multiple models trained in CellOrganizer</description>
-  <command interpreter="bash">
-    model_synth.sh $model1 $model2 $model3 $model4 $model5 $model6 $synthesis $numimgs $resolution $prefix $compression $microscope $samplingmethod $verbose $debug $randomwalk $walksteps $walktype $tif $indexed $blender $sbml
+  <command>
+    matlab -r "diary diary.txt;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them_mat('$model');
+    model_synth('$synthesis',$numimgs,$resolution,'$prefix','$compression','$microscope','$sampling_method','$verbose','$debug','$randomwalk',$walksteps,'$walktype','$tif','$indexed','$blender','$sbml'); 
+    diary off;
+    exit;
+    ";
   </command>
   <inputs>
-    <param format="data" name="model1" type="data" label="model1" />
-    <param format="data" name="model2" type="data" label="model2" />
-    <param format="data" name="model3" type="data" label="model3" />
-    <param format="data" name="model4" type="data" label="model4" />
-    <param format="data" name="model5" type="data" label="model5" />
-    <param format="data" name="model6" type="data" label="model6" />
+    <param name="model" type="data" label="Choose data for sythesis" multiple="true"/>
+    <!-- <param format="data" name="model1" type="data" label="model1" /> -->
     <param name="synthesis" type="select" label="Select the desired structures to be synthesized">
       <option value="all" selected="true">all</option>
       <option value="nucleus">nucleus</option>
@@ -41,7 +47,7 @@
     <param name="sbml" type="boolean" checked="false" label="If true, will return sbml spatial files for use in molecular simulation"/>
   </inputs>
   <outputs>
-    <data format="zip" name="output" from_work_dir="output1.zip"/>
+    <data format="tiff" name="output" from_work_dir="output.ome.tif"/>
   </outputs>
 <help>
 
