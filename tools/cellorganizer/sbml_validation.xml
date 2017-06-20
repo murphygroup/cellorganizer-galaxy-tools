@@ -1,0 +1,17 @@
+<tool id="sbml_validator" name="Validates " version="0.0.1">
+  <description>SBML Level 3 instances.</description>
+  <command interpreter="bash"> 
+	sbml_validator.sh $dataset
+  </command>
+  <inputs>
+	  <param name="dataset" type="data" format="xml" label="Choose a file for validation" multiple="false" optional="false" />      
+  </inputs>
+  <outputs>
+    <data name="output" from_work_dir="file.xml"/>
+  </outputs>
+<help>
+**Description**
+
+Validates an SBML Level 3 instance using the public SBML online validator. 
+</help>
+</tool>
