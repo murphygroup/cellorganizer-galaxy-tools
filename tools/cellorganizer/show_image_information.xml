@@ -1,0 +1,31 @@
+<tool id="show_image_information" name="Show" version="0.0.1">
+  <description> image information </description>
+  <command interpreter="bash">
+    show_image_information.sh $dataset
+  </command>
+  <inputs>
+    <param name="dataset" type="data" format="tif" label="Choose an image" multiple="false" optional="false" />
+  </inputs>
+  <outputs>
+    <data format="html" name="output" from_work_dir="index.html"/>
+  </outputs>
+<help>
+
+**Description**
+
+Shows information about a given image. 
+
+-----
+
+**Input**
+
+An OME.TIFF file.
+
+-----
+
+**Output**
+
+A valid html file.
+
+</help>
+</tool>
