@@ -5,7 +5,6 @@
   </section>
 
     <section id="training" name="Training">
-      <tool file="cellorganizer/train_model.xml" />
       <tool file="cellorganizer/train_model_report.xml" />
     </section>
 
@@ -30,9 +29,9 @@
       <tool file="cellorganizer/vesicular_model_summary.xml" />
     </section>
 
-    <section id="demos" name="Demos">
-      <tool file="cellorganizer/demo2D00.xml" />
-      <tool file="cellorganizer/demo3D00.xml" />
-      <tool file="cellorganizer/demo3D41.xml" />
+    <section id="validators" name="Validators" >
+      <tool file="cellorganizer/obj_validator.xml" />
+      <tool file="cellorganizer/sbml_validator.xml" /> 
+      <tool file="cellorganizer/ometiff_validator.xml" /> 
     </section>
 </toolbox>
