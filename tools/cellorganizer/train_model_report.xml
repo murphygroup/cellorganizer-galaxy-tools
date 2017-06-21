@@ -1,5 +1,5 @@
-<tool id="model training and make a report" name="Train model 2" version="0.0.3">
-  <description>Trains a model (or multiple models) using CellOrganizer and make a model report</description>
+<tool id="model training and make a report" name="Train " version="0.0.3">
+  <description> a generative model</description>
   <command>
     matlab -r "diary diary.txt;
     current_directory = pwd; 
