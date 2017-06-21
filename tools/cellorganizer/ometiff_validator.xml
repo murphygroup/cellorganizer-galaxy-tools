@@ -1,16 +1,15 @@
-<tool id="ometiff_validation" name="Valid" version="0.0.1">
-  <description> an OME.TIFF file</description>
+<tool id="ometiff_validation" name="Validate" version="0.0.1">
+  <description> an OME.TIFF</description>
   <command interpreter="bash">
-    ometiff_validation.sh $dataset
+    ometiff_validator.sh $dataset
   </command>
   <inputs>
-    <param name="dataset" type="data" label="Choose an image for validation" multiple="true" optional="false" />
+    <param name="dataset" type="data" label="Choose an image for validation" multiple="false" optional="false" />
   </inputs>
   <outputs>
-    <data format="tiff" name="output" from_work_dir="valid_image.ome.tif"/>
+    <data format="tiff" name="output" from_work_dir="image.ome.tif"/>
   </outputs>
 <help>
-
 **Description**
 
 Validate the file using xmlvalid from BioFormats.
@@ -25,7 +24,6 @@ An OME.TIFF file.
 
 **Output**
 
-A valid OME.TIFF file.
-
+If true, then a valid OME.TIFF file.
 </help>
 </tool>

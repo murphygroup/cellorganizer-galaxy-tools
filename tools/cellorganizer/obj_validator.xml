@@ -14,6 +14,18 @@
 <help>
 **Description**
 
-Validate Wavefront OBJ file using meshalyzer.
+Validate a Wavefront OBJ file using meshalyzer.
+
+-----
+
+**Input**
+
+A Wavefront OBJ file.
+
+-----
+
+**Output**
+
+If true, then a Wavefront OBJ file.
 </help>
 </tool>
