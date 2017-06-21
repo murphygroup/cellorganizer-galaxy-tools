@@ -1,12 +1,20 @@
 #!/bin/bash
 
-ln -s $1 ./valid_image.ome.tif
 
-xmlvalid valid_image.ome.tif
+echo "Linking file"
+ln -s $1 ./image.ome.tif
 
-if ! xmlvalid valid_image.ome.tif | grep -q "No validation errors found."; then
-	rm -f valid_image.ome.tif
-    exit -1
+echo "Checking file"
+file ./image.ome.tif
+
+echo "Validating file"
+xmlvalid ./image.ome.tif
+
+if ! xmlvalid ./image.ome.tif | grep -q "No validation errors found."; then
+	echo "File is not valid"
+	rm -f ./image.ome.tif
+	exit -1
 else
+	echo "File is valid"
 	exit 0
 fi
