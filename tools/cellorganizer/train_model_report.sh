@@ -49,7 +49,7 @@ if [ -f diary.txt ]; then
 fi
 
 if [ -f model.mat ]; then
-    mv -v model.mat $1
+    cp -v model.mat $1
 fi
 
 if [ -f param.zip ]; then
@@ -60,5 +60,9 @@ if [ -f temp.zip ]; then
     mv -v  temp.zip $1
 fi
 
-grip report.md --no-inline --export report.html > /dev/null 2>&1
-sed -i '' 's/report.md/CellOrganizer+Galaxy Report/g' report.html
+if [ -f report.md ]; then
+    cp -v  report.md $1
+fi
+
+grip report.md --export report.html > /dev/null 2>&1
+sed -i '' 's/report.md/CellOrganizer+Galaxy/g' report.html
