@@ -24,19 +24,26 @@ if [ -f temp.zip ]; then
     file temp.zip
 fi
     
-echo "# Train model tool report " > report.md
-echo "## Log " >> report.md
-echo "\`\`\`" >> report.md
-cat diary.txt >> report.md
-echo "\`\`\`" >> report.md
-echo "[Model Download](./model.mat)" >> report.md
+echo "# Train generative model tool outpout" > report.md
+
+if [ -f model_information.txt ]; then
+	echo "\`\`\`" >> report.md
+	cat model_information.txt >> report.md
+	echo "\`\`\`" >> report.md
+fi
+
+echo "* [View Log](./diary.txt)" >> report.md
+if [ -f model.mat ]; then
+	echo "* [Model Download](./model.mat)" >> report.md
+fi
+
 echo " " >> report.md
 if [ -f param.zip ]; then
-    echo "[Parameterization Download](./param.zip)" >> report.md
+    echo "* [Parameterization Download](./param.zip)" >> report.md
 fi
 echo " " >> report.md
 if [ -f temp.zip ]; then
-    echo "[Temporary Results Download](./temp.zip)" >> report.md
+    echo "* [Temporary Results Download](./temp.zip)" >> report.md
 fi
 
 echo "Making temporary folder "$1
@@ -60,9 +67,13 @@ if [ -f temp.zip ]; then
     mv -v  temp.zip $1
 fi
 
-if [ -f report.md ]; then
-    cp -v  report.md $1
-fi
-
 grip report.md --export report.html > /dev/null 2>&1
 sed -i '' 's/report.md/CellOrganizer+Galaxy/g' report.html
+
+if [ ! -f model.mat ]; then
+	echo "Model file not found." 
+	exit -1
+else
+	echo "Model file found."
+	exit 0
+fi

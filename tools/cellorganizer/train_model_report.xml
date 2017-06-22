@@ -1,7 +1,8 @@
-<tool id="model training and make a report" name="Train " version="0.0.3">
+<tool id="model_training" name="Train" version="0.0.3">
   <description> a generative model</description>
   <command>
     matlab -r "diary diary.txt;
+    tic;
     current_directory = pwd; 
     cellorganizer_directory = getenv('CELLORGANIZER'); 
     cd( cellorganizer_directory ); 
@@ -19,14 +20,18 @@
     #end for
 
     train_model($maskchannel,$dnachannel,$cellchannel,$proteinchannel,'$trainflag','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$nuc.nucleustype','$nuc.nucleusname','$nuc.nucleusclass','$nuc.nucleusid','$mem.celltype','$mem.cellname','$mem.cellclass','$mem.cellid','$pro.proteintype','$pro.proteinname','$pro.proteinclass','$pro.proteinid','$pro.proteincytonuclearflag',documentation,'$gen.verbose','$gen.debug');
+    toc,
+    diary off;
 
+    diary model_information.txt;
+    if exist( './model.mat' ); load( './model.mat' ); model2info( model ); end;
     diary off;
     exit;";
 
     bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
   </command>
   <inputs>
-    <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
+    <param name="dataset" type="data" format="tiff" label="Choose a data set for training" multiple="true" optional="false" />
     <param name="maskchannel" type="integer" value="4" label="Provide the mask channel number for the imageset"/>
     <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the imageset"/>
     <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the imageset"/>
