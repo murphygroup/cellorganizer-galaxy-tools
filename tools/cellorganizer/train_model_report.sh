@@ -67,8 +67,10 @@ if [ -f temp.zip ]; then
     mv -v  temp.zip $1
 fi
 
-grip report.md --export report.html > /dev/null 2>&1
-sed -i '' 's/report.md/CellOrganizer+Galaxy/g' report.html
+#grip report.md --export report.html > /dev/null 2>&1
+#sed -i '' 's/report.md/CellOrganizer+Galaxy/g' report.html
+
+pandoc report.md -o report.html
 
 if [ ! -f model.mat ]; then
 	echo "Model file not found." 
