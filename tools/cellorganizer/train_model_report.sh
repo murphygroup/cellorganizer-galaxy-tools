@@ -41,10 +41,17 @@ echo " " >> report.md
 if [ -f param.zip ]; then
     echo "* [Parameterization Download](./param.zip)" >> report.md
 fi
+
 echo " " >> report.md
 if [ -f temp.zip ]; then
     echo "* [Temporary Results Download](./temp.zip)" >> report.md
 fi
+
+echo " " >> report.md
+if [ -f options.mat ]; then
+    echo "* [Options used in Main function Call](./options.mat)" >> report.md
+fi
+
 
 echo "Making temporary folder "$1
 if [ ! -d $1 ]; then
@@ -65,6 +72,10 @@ fi
 
 if [ -f temp.zip ]; then
     mv -v  temp.zip $1
+fi
+
+if [ -f options.mat ]; then
+    mv -v  options.mat $1
 fi
 
 #grip report.md --export report.html > /dev/null 2>&1
