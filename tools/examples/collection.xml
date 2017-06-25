@@ -1,0 +1,11 @@
+<tool id="collection" name="Create" version="0.0.1">
+	<description> a collection.</description>
+	<command interpreter="bash">
+		$__tool_directory__/collection.sh $output.extra_files_path;
+  	</command>
+	<outputs>
+    	<data format="txt" name="output" from_work_dir="1.txt"/>
+  	</outputs>
+<help>
+</help>
+</tool> 

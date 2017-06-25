@@ -50,15 +50,18 @@
     <section name="gen" title="Advanced" expanded="false">
       <param name="downsamplex" type="select" label="Select a downsampling factor in the x dimension, larger values return a possible more coarse model">
         <option value="5" selected="true">5</option>
+        <option value="10">10</option>
         <option value="2">2</option>
         <option value="1">1</option>
       </param>
       <param name="downsampley" type="select" label="Select a downsampling factor in the y direction, larger values return a possible more coarse model">
+        <option value="10">10</option>
         <option value="5" selected="true">5</option>
         <option value="2">2</option>
         <option value="1">1</option>
       </param>
       <param name="downsamplez" type="select" label="Select a downsampling factor in the z direction, larger values return a possible more coarse model">
+        <option value="10">10</option>
         <option value="5">5</option>
         <option value="2">2</option>
         <option value="1" selected="true">1</option>
