@@ -1,0 +1,13 @@
+<tool id="collection4" name="Create" version="0.0.1">
+	<description> a collection.</description>
+	<command interpreter="bash">
+		$__tool_directory__/collection4.sh 
+  	</command>
+  <outputs>
+	<collection name="output1" type="list" label="Images">
+		<discover_datasets pattern="(?P&lt;designation&gt;.*)\.txt" />
+	</collection>
+  </outputs>
+<help>
+</help>
+</tool> 
