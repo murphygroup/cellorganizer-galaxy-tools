@@ -2,6 +2,7 @@
   <description>Synthesizes an instance from multiple models trained in CellOrganizer</description>
   <command>
     matlab -r "diary diary.txt;
+    tic;
     current_directory = pwd; 
     cellorganizer_directory = getenv('CELLORGANIZER'); 
     cd( cellorganizer_directory ); 
@@ -10,11 +11,12 @@
     check_if_files_exist_on_disk_and_link_them_mat('$model');
     model_synth('$synthesis',$numimgs,$resolution,'$prefix','$compression','$microscope','$sampling_method','$verbose','$debug','$randomwalk',$walksteps,'$walktype','$tif','$indexed','$blender','$sbml'); 
     diary off;
-    exit;
-    ";
+    toc,
+    exit;" && 
+    bash $__tool_directory__/model_synth.sh $output.extra_files_path;
   </command>
   <inputs>
-    <param name="model" type="data" label="Choose data for sythesis" multiple="true"/>
+    <param name="model" type="data" format="mat" label="Choose data for synthesis" multiple="true"/>
     <!-- <param format="data" name="model1" type="data" label="model1" /> -->
     <param name="synthesis" type="select" label="Select the desired structures to be synthesized">
       <option value="all" selected="true">all</option>
@@ -28,7 +30,6 @@
       <option value="lzw" selected="true">lzw</option>
       <option value="none">no compression</option>
     </param>
-    <param name="microscope" type="text" label="Microscope (optional)"/>
     <param name="sampling_method" type="select" label="Select a sampling method">
       <option value="trimmed" selected="true">trimmed</option>
       <option value="disc">disc</option>
@@ -47,19 +48,21 @@
     <param name="sbml" type="boolean" checked="false" label="If true, will return sbml spatial files for use in molecular simulation"/>
   </inputs>
   <outputs>
-    <data format="tiff" name="output" from_work_dir="output.ome.tif"/>
+    <collection name="output" type="list" label="Synthetic images">
+      <discover_datasets pattern="(?P&lt;designation&gt;.*)\.ome.tif" />
+    </collection>
   </outputs>
-<help>
+  <help>
 
-**Description**
+  **Description**
 
-Synthesize instances from multiple trained models saved in multiple formats.
+  Synthesize instances from multiple trained models saved in multiple formats.
 
------
+  -----
 
-**Output**
+  **Output**
 
-A zip containing the desired output files.
+  A zip containing the desired output files.
 
-</help>
+  </help>
 </tool>
