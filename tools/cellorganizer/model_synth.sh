@@ -1,90 +1,73 @@
-#!/usr/bin/env bash
+find . -type f -name "cell*.ome.tif" -exec mv -v {} . \;
+find . -type f -name "cell*.xml" -exec mv -v {} . \;
 
-export PATH=$PATH:$(dirname $0)
+if [ -d param ]; then
+    zip -r param.zip param
+    rm -rfv param
+fi
 
-WORKING_DIRECTORY=`pwd`
-MODEL1=$1
-MODEL2=$2
-MODEL3=$3
-MODEL4=$4
-MODEL5=$5
-MODEL6=$6
-SYNTHESISFLAG=$7
-NUMIMGS=$8
-RESOLUTION=$9
-PREFIX=${10}
-COMPRESSION=${11}
-MICROSCOPE=${12}
-SAMPLINGMETHOD=${13}
-VERBOSE=${14}
-DEBUG=${15}
-RANDOMWALK=${16}
-WALKSTEPS=${17}
-WALKTYPE=${18}
-TIF=${19}
-INDEXED=${20}
-BLENDER=${21}
-SBML=${22}
+if [ -d temp ]; then
+    zip -r temp.zip temp
+    rm -rfv temp
+fi
 
-echo "
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DO NOT MODIFY THIS BLOCK
-pwd
-cd ./cellorganizer
-pwd
-ls
-setup();
-cd('$WORKING_DIRECTORY')
+if [ -f diary.txt ]; then
+    file diary.txt
+fi
 
-options.targetDirectory = pwd;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-models = {};
+if [ -f model.mat ]; then
+    file model.mat
+fi
 
-if ~isempty('$MODEL1') && ~strcmpi('none','$MODEL1')
-	models{end+1} = '$MODEL1';
-end
+if [ -f param.zip ]; then
+    file param.zip
+fi
+    
+if [ -f temp.zip ]; then
+    file temp.zip
+fi
 
-if ~isempty('$MODEL2') && ~strcmpi('none','$MODEL2')
-	models{end+1} = '$MODEL2';
-end
+for I in *.ome.tif
+do
+    file $I
+done
+    
+echo "# Image synthesis" > report.md
+echo "[Log](./diary.txt)" >> report.md
+for I in *.ome.tif
+do
+    echo "[$I](./$I)" >> report.md
+done
 
-if ~isempty('$MODEL3') && ~strcmpi('none','$MODEL3')
-	models{end+1} = '$MODEL3';
-end
+echo "Making temporary folder "$1
+if [ ! -d $1 ]; then
+        mkdir $1
+fi
 
-if ~isempty('$MODEL4') && ~strcmpi('none','$MODEL4')
-	models{end+1} = '$MODEL4';
-end
+if [ -f diary.txt ]; then
+    mv -v diary.txt $1
+fi
 
-if ~isempty('$MODEL5') && ~strcmpi('none','$MODEL5')
-	models{end+1} = '$MODEL5';
-end
+if [ -f model.mat ]; then
+    cp -v model.mat $1
+fi
 
-if ~isempty('$MODEL6') && ~strcmpi('none','$MODEL6')
-	models{end+1} = '$MODEL6';
-end
+if [ -f param.zip ]; then
+    mv -v param.zip $1
+fi
 
-options.synthesis = '$SYNTHESISFLAG';
-options.numberOfSynthesizedImages = $NUMIMGS;
-options.resolution.cell = $RESOLUTION;
-options.resolution.objects = $RESOLUTION;
-options.prefix = '$PREFIX';
-options.image.compression = '$COMPRESSION';
-options.microscope = '$MICROSCOPE';
-options.sampling.method = '$SAMPLINGMETHOD';
-options.verbose = $VERBOSE;
-options.debug = $DEBUG;
-options.randomwalk = $RANDOMWALK;
-options.walksteps = $WALKSTEPS;
-options.walktype = '$WALKTYPE';
-output.tifimages = $TIF;
-output.indexedimage = $INDEXED;   
-output.blenderfile = $BLENDER;
-output.SBML = $SBML;
+if [ -f temp.zip ]; then
+    mv -v  temp.zip $1
+fi
 
-answer = slml2img( models, options );
+if [ -f report.md ]; then
+    cp -v  report.md $1
+fi
 
-exit;" > script.m
+for I in *.ome.tif
+do
+    cp -v $I $1
+done
 
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
+grip report.md --export report.html > /dev/null 2>&1
+sed -i '' 's/report.md/CellOrganizer+Galaxy/g' report.html
