@@ -24,7 +24,7 @@ if [ -f temp.zip ]; then
     file temp.zip
 fi
     
-echo "# Train generative model tool outpout" > report.md
+echo "# Train generative model tool output" > report.md
 
 if [ -f model_information.txt ]; then
 	echo "\`\`\`" >> report.md
