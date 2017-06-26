@@ -2,7 +2,7 @@
 
 
 echo "Linking file"
-ln -s $1 ./image.ome.tif
+cp -s $1 ./image.ome.tif
 
 echo "Checking file"
 file ./image.ome.tif
