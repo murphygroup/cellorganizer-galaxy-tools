@@ -24,7 +24,8 @@
     diary model_information.txt;
     if exist( './model.mat' ); load( './model.mat' ); model2info( model ); end;
     diary off;
-    exit;"; &&
+    exit;";
+    
     bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
   </command>
   <inputs>
@@ -167,13 +168,13 @@
 
 **Description**
 
-Train a cellular model in CellOrganizer and make a model report.
+Trains a generative model from a collection of OME.TIFF files.
 
 -----
 
 **Output**
 
-A trained cell organizer model and a model report.
+A generative model.
 
 </help>
 </tool>
