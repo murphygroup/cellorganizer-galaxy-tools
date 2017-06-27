@@ -20,8 +20,6 @@
     diary off;
     toc,
     exit;"
-
-    bash 
   </command>]
   <inputs>
     <section name="listofmodels" title="List of Models" expanded="false">
