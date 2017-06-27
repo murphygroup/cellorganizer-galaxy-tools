@@ -1,0 +1,83 @@
+<tool id="image_synthesis2" name="Synthesize an instance" version="0.0.2">
+  <description> from multiple models trained in CellOrganizer</description>
+  <command>
+    matlab -r "diary diary.txt;
+    tic;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+
+    counter = 0;
+    #for $field in $listofmodels.model
+      counter = counter + 1;
+      filename = '${field.file}';
+      system(['cp -v ' filename ' ' pwd filesep 'model' num2str(sprintf('%05d',counter)) '.mat']);
+    #end for
+
+    model_synth_multiple('$synthesis',$numimgs,'images','$compression','$sampling_method','$advanced.verbose','$advanced.debug', $outputs.indexed','$outputs.blender','$outputs.sbml'); 
+    diary off;
+    toc,
+    exit;"
+
+    bash 
+  </command>]
+  <inputs>
+    <section name="listofmodels" title="List of Models" expanded="false">
+      <repeat name="model" title="Model">
+        <param name="file" type="data" format="mat" label="Choose model for synthesis" multiple="false" optional="false" />
+      </repeat>
+    </section>
+
+    <param name="synthesis" type="select" label="Select the desired structures to be synthesized">
+      <option value="all" selected="true">framework+protein</option>
+      <option value="nucleus">nucleus</option>
+      <option value="framework">nucleus+cell membrane</option>
+    </param>
+
+    <param name="numimgs" type="integer" value="1" label="Number of instances to be synthesized"/>
+
+    <param name="compression" type="select" label="Image Compression">
+      <option value="lzw" selected="true">lzw</option>
+      <option value="none">no compression</option>
+    </param>
+
+    <param name="sampling_method" type="select" label="Sampling method">
+      <option value="disc" selected="true">disc</option>
+      <option value="sampled">sampled</option>
+    </param>
+
+    <section name="outputs" title="Export instances as" expanded="True">
+      <param name="indexed" type="boolean" checked="false" label="Export synthetic images as indexed images"/>
+      <param name="blender" type="boolean" checked="false" label="Export synthetic images as Wavefront OBJ. files"/>
+      <param name="sbml" type="boolean" checked="false" label="Export synthetic images as SBML Level 3 Draft 0.90 instances"/>
+    </section>
+
+    <section name="advanced" title="Advanced" expanded="False">
+      <param name="verbose" type="boolean" checked="false" label="Verbose mode"/>
+      <param name="debug" type="boolean" checked="false" label="Debug mode"/>
+    </section>
+
+  </inputs>
+  <outputs>
+    <collection name="output" type="list" label="Images">
+      <discover_datasets pattern="(?P&lt;designation&gt;.*)\.tif" format="tif" directory="ometiff"/>
+      <discover_datasets pattern="(?P&lt;designation&gt;.*)\.xml" format="xml" directory="sbmlspatial"/>
+    </collection>
+  </outputs>
+
+  <help>
+
+  **Description**
+
+  Synthesize instances from one or multiple trained generative models and export saved in multiple formats.
+
+  -----
+
+  **Output**
+
+  A dataset with one or several OME.TIFF.
+
+  </help>
+</tool>
