@@ -1,0 +1,39 @@
+<tool id="model2info" name="Retrieve" version="0.0.2">
+  <description> information about the model file.</description>
+  <command>
+    matlab -r "tic;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them_mat('$model');
+    load( './model00001.mat' ); 
+    diary diary.txt;
+    model2info( model ),
+    diary off;
+    toc,
+    exit;";
+
+    bash $__tool_directory__/model2info.sh $output.extra_files_path;
+  </command>
+  <inputs>
+    <param name="model" type="data" format="mat" label="Choose data for synthesis" multiple="true"/>
+  </inputs>
+  <outputs>
+    <data format="html" name="output" label="Model information" from_work_dir="report.html"/>
+  </outputs>
+  <help>
+
+  **Description**
+
+  Retrieves and display information about a model file.
+
+  -----
+
+  **Output**
+
+  An HTML file.
+
+  </help>
+</tool>
