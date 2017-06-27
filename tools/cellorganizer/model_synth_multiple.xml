@@ -62,7 +62,7 @@
   </inputs>
   <outputs>
     <collection name="output" type="list" label="Images">
-      <discover_datasets pattern="(?P&lt;designation&gt;.*)\.tif" format="tif" directory="ometiff"/>
+      <discover_datasets pattern="(?P&lt;designation&gt;.*)\.tif" format="tiff" directory="ometiff"/>
       <discover_datasets pattern="(?P&lt;designation&gt;.*)\.xml" format="xml" directory="sbmlspatial"/>
     </collection>
   </outputs>
