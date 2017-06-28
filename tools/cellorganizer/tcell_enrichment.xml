@@ -1,0 +1,40 @@
+<tool id="tcell_enrichment" name="Build" version="0.0.3">
+  <description> enrichment plot from a list of T cell models</description>
+  <command>
+    matlab -r "diary diary.txt;
+    tic;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them_mat('$dataset');
+    ShowTcellEnrichment('*.mat');
+    toc,
+    diary off;
+    exit;";
+  </command>
+  <inputs>
+<param name="dataset" type="data" label="Choose a list of models" multiple="true" optional="false" />
+  </inputs>
+  <outputs>
+  <data format="png" name="output" from_work_dir="output.png"/>
+</outputs>
+<help>
+
+**Description**
+
+Builds a enrichment plot from a list of T cell models.
+
+-----
+
+**Input**
+
+* A list of T cell models
+
+**Output**
+
+* A PNG file
+
+</help>
+</tool>
