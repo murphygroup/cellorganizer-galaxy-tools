@@ -19,7 +19,7 @@
     model_synth_multiple('$synthesis',$numimgs,'images','$compression','$sampling_method','$advanced.verbose','$advanced.debug', $outputs.indexed','$outputs.blender','$outputs.sbml'); 
     diary off;
     toc,
-    exit;"
+    exit;";
   </command>
   <inputs>
     <section name="listofmodels" title="List of Models" expanded="false">
@@ -55,6 +55,7 @@
     <collection name="output" type="list" label="Images">
       <discover_datasets pattern="(?P&lt;designation&gt;.*)\.tif" format="tiff" directory="ometiff"/>
       <discover_datasets pattern="(?P&lt;designation&gt;.*)\.xml" format="xml" directory="sbmlspatial"/>
+      <discover_datasets pattern="(?P&lt;designation&gt;.*)\.obj" format="xml" directory="objs"/>
     </collection>
   </outputs>
   <help>
