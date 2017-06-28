@@ -30,7 +30,7 @@
     bash $__tool_directory__/demo3D42.sh $output.extra_files_path;
   </command>
   <inputs>
-    <param name="dataset" type="data" format="csv" label="Choose annotations" multiple="true" optional="false" />
+    <param name="dataset" type="data" label="Choose annotations" multiple="true" optional="false" />
   </inputs>
   <outputs>
     <data format="html" name="output" from_work_dir="report.html"/>
