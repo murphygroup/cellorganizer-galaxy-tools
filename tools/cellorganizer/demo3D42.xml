@@ -1,0 +1,56 @@
+<tool id="demo3D42" name="demo3D42" version="0.0.1">
+  <description> Trains T cell model.</description>
+  <command>
+    matlab -r "
+    diary diary.txt; 
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory );
+    setup();
+    tic; 
+    cd( './demos/3D/');
+    [answer,directory] = system('uuidgen');
+    directory = strrep(directory,'-','');
+    directory = strtrim(directory);
+    system(['cp -rv ' pwd filesep 'demo3D42 ' directory]);
+    cd( directory );
+    demo3D42();
+    system(['cp -rv models ' current_directory]);
+    system(['cp -rv param ' current_directory]);
+    system(['cp -rv temp ' current_directory]);
+    cd ..;
+    rmdir(directory,'s');
+    cd(current_directory);
+    diary off;
+    pwd,
+    ls,
+    toc,
+    exit;";
+
+    bash $__tool_directory__/demo3D42.sh $output.extra_files_path;
+  </command>
+  <inputs>
+    <param name="dataset" type="data" format="csv" label="Choose annotations" multiple="true" optional="false" />
+  </inputs>
+  <outputs>
+    <data format="html" name="output" from_work_dir="report.html"/>
+  </outputs>
+<help>
+
+**Description**
+
+This demo illustrates using CellOrganizer to train a protein distribution
+model following the approach described in K. T. Roybal, T. E. Buck, X. Ruan, B. H. Cho, D. J. Clark, R. Ambler, H. M. Tunbridge, J. Zhang, P. Verkade, C. Wülfing, and R. F. Murphy (2016) Computational spatiotemporal analysis identifies WAVE2 and Cofilin as joint regulators of costimulation-mediated T cell actin dynamics. Science Signaling 9:rs3. doi: 10.1126/scisignal.aad4149.
+
+-----
+
+**Input**
+
+- Manual annotations
+
+**Output**
+
+- A model
+- HTML file
+</help>
+</tool>
