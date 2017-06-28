@@ -1,0 +1,47 @@
+<tool id="tcell " name="Generate " version="0.0.3">
+  <description> movie from a list of T cell models. generative model</description>
+  <command>
+    matlab -r "diary diary.txt;
+    tic;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them_mat('$dataset');
+    GenerateTcellMovie( '*.mat' );
+    toc,
+    diary off;
+    diary model_information.txt;
+    if exist( './model.mat' ); load( './model.mat' ); model2info( model ); end;
+    diary off;
+    exit;";
+  </command>
+  <inputs>
+<param name="dataset" type="data" label="Choose a list of models" multiple="true" optional="false" />
+  </inputs>
+  <outputs>
+  <collection name="output" type="list" label="Video and frames">
+    <discover_datasets pattern="(?P&lt;designation&gt;.*)\.tif" format="png" directory="video"/>
+    <discover_datasets pattern="(?P&lt;designation&gt;.*)\.avi" format="avi" directory="video"/>
+  </collection>
+</outputs>
+<help>
+
+**Description**
+
+Builds a movie from a list of T cell models
+
+-----
+
+**Input**
+
+* List of T cell models
+
+**Output**
+
+* An avi file
+* A list of pngs
+
+</help>
+</tool>
