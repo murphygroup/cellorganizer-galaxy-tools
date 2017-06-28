@@ -1,4 +1,4 @@
-<tool id="tcell " name="Generate " version="0.0.3">
+<tool id="tcell_generate_movie" name="Generate " version="0.0.3">
   <description> movie from a list of T cell models.</description>
   <command>
     matlab -r "diary diary.txt;
