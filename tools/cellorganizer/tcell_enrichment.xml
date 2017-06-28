@@ -10,6 +10,7 @@
     cd( current_directory );
     check_if_files_exist_on_disk_and_link_them_mat('$dataset');
     ShowTcellEnrichment('*.mat');
+    print(gcf,'enrichment','-dpng');
     toc,
     diary off;
     exit;";
