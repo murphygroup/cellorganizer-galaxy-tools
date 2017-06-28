@@ -1,43 +1,57 @@
-<tool id="show_shape_space" name="show_shape_space" version="0.0.1">
-  <description>Displays a visual representation of the shape space from a trained 2D diffeomorphic model.</description>
-  <command interpreter="bash">
-    show_shape_space.sh $input $number_of_labels $grid_size $draw_traces
+<tool id="show_shape_space" name="Display" version="0.0.1">
+  <description> shape space plot.</description>
+  <command>
+    matlab -r "diary diary.txt;
+    tic;
+    current_directory = pwd; 
+    cellorganizer_directory = getenv('CELLORGANIZER'); 
+    cd( cellorganizer_directory ); 
+    setup(); 
+    cd( current_directory );
+    check_if_files_exist_on_disk_and_link_them_mat('$input');
+
+    NUMBER_OF_LABELS=str2num('$number_of_labels');
+    GRID_SIZE=str2num('$grid_size');
+    DRAW_TRACES=false;
+
+    file = './model00001.mat';
+    options.nlabels = NUMBER_OF_LABELS;
+    options.traces = false;
+    options.subsize = GRID_SIZE;
+
+    show_shape_space_figure_galaxy_wrapper( file, options );
+
+    exit;";
   </command>
   <inputs>
-    <param format="mat" name="input" type="data" label="2D Diffeomorphic Model"></param>
+    <param format="mat" name="input" type="data" label="Select diffeomorphic model"></param>
     <param name="number_of_labels" type="integer" value="5" label="Number of Labels"/>
     <param name="grid_size" type="integer" value="50" label="Grid Size"/>
-    <param name="draw_traces" type="boolean" checked="false" label="Draw Traces"/>
   </inputs>
   <outputs>
-    <data format="png" name="output" from_work_dir="output.png"/>
+    <data format="png" name="output" from_work_dir="show_shape_space.png"/>
   </outputs>
 <help>
 
 **Description**
 
-The 2D Shape Space tool creates a visualization of the shape space from a trained 2D diffeomorphic model.
+The shape space plot tool creates a visualization of the shape space from a trained diffeomorphic model.
 
 -----
 
 **Inputs**
 
-- Trained 2D Diffeomorphic Model
-- Number of Labels
-- Grid Size
-- Draw Traces
+- A model
 
 -----
 
 **Output**
 
-- A PNG (.png) file of the shape space
+- A PNG file
 
 -----
 
 **Example**
-
-The 2D shape space tool displays the following image using a trained 2D diffemorphic model and the parameters (5, 1000, false):
 
 .. image:: https://raw.githubusercontent.com/icaoberg/cellorganizer-galaxy-tools/dev/tools/cellorganizer/images/shape_space.png
   :height: 250
