@@ -19,22 +19,23 @@
     </output>
   </test>
 </tests>
-
 <help>
 **Description**
 
-Validates an SBML Level 3 instance using the public SBML online validator. 
+Validates an SBML_ Level 3 instance using the public SBML online validator. 
 
 -----
 
 **Input**
 
-An SBML Level 3 instance.
+* An SBML Level 3 instance (XML file)
 
 -----
 
 **Output**
 
-If true, then a valid SBML Level 3 instance.
+* If true, then reports the file as a valid instance. False, otherwise.
+
+.. _SBML: http://sbml.org/Documents/Specifications/SBML_Level_3
 </help>
 </tool>
