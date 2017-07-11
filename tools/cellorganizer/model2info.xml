@@ -1,5 +1,5 @@
-<tool id="model2info" name="Retrieve" version="0.0.2">
-  <description> information about the model file.</description>
+<tool id="model2info" name="Retrieve and display " version="0.0.2">
+  <description> information about a generative model file.</description>
   <command>
     matlab -r "tic;
     current_directory = pwd; 
@@ -14,7 +14,6 @@
     diary off;
     toc,
     exit;";
-
     bash $__tool_directory__/model2info.sh $output.extra_files_path;
   </command>
   <inputs>
@@ -27,13 +26,17 @@
 
   **Description**
 
-  Retrieves and display information about a model file.
+  Retrieves and display information about a model file. This tool is a wrapper for model2info.
 
   -----
 
+  **Input**
+
+  * A generative model (mat file)
+
   **Output**
 
-  An HTML file.
+  * Information about the generative model (HTML file)
 
   </help>
 </tool>
