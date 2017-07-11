@@ -12,18 +12,21 @@
 <help>
 **Description**
 
-Validate the file using xmlvalid from BioFormats.
+Validates an OME.TIFF file using BioFormats_ command line tools_.
 
 -----
 
 **Input**
 
-An OME.TIFF file.
+* An OME.TIFF file.
 
 -----
 
 **Output**
 
-If true, then a valid OME.TIFF file.
+* If true, then a valid OME.TIFF file.
+
+.. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
+.. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools
 </help>
 </tool>
