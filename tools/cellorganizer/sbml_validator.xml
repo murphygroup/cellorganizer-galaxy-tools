@@ -9,6 +9,17 @@
   <outputs>
     <data name="output" format="xml" from_work_dir="sbml.xml"/>
   </outputs>
+<tests>
+  <test>
+    <param name="dataset" value="cell.xml" ftype="xml"/>
+    <output name="file">
+         <assert_contents>
+             <not_has_text text="Error" />
+         </assert_contents>
+    </output>
+  </test>
+</tests>
+
 <help>
 **Description**
 
