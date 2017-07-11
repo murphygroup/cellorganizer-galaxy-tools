@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo "Linking file"
 cp -s $1 ./image.ome.tif
 
@@ -8,7 +7,8 @@ echo "Checking file"
 file ./image.ome.tif
 
 echo "Validating file"
-xmlvalid ./image.ome.tif
+xmlvalid ./image.ome.tif >> output.txt
+cat output.txt
 
 if ! xmlvalid ./image.ome.tif | grep -q "No validation errors found."; then
 	echo "File is not valid"
