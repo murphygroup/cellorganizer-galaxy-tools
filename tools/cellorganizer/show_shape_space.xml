@@ -31,6 +31,15 @@
   <outputs>
     <data format="png" name="output" from_work_dir="show_shape_space.png"/>
   </outputs>
+<tests>
+  <test>
+    <param name="input" value="helamodel_9_16_15.mat" ftype="mat"/>
+    <param name="number_of_labels" value="5" type="integer"/>
+    <param name="grid_size" value="50" type="integer"/>
+    <output value="script.m" ftype="mat"/>
+  </test>
+</tests>
+
 <help>
 
 **Description**
