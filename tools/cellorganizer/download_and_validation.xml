@@ -1,10 +1,10 @@
-<tool id="download_and_validation" name="download and validation" version="1.0.0">
-  <description>from an image url</description>
+<tool id="import_ometiff_from_url" name="Import OME.TIFF" version="1.0.0">
+  <description> from a URL</description>
   <command interpreter="bash">
     download_and_validation.sh $image_name 
   </command>
   <inputs>
-    <param name="image_name" type="text" value="http://woodstock.compbio.cs.cmu.edu:8080/job/cellorganizer-demo3D34/166/artifact/demos/3D/demo3D34/img/cell1/cell1.ome.tif" label="Provide an image url:"/>
+    <param name="image_name" type="text" value="http://woodstock.compbio.cs.cmu.edu:8080/job/cellorganizer-demo3D34/166/artifact/demos/3D/demo3D34/img/cell1/cell1.ome.tif" label="Provide an image URL"/>
   </inputs>
   <outputs>
     <data format="tiff" name="image" from_work_dir="image.ome.tif"/>
