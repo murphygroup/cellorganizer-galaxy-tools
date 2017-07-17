@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Linking file"
-cp -s $1 ./image.ome.tif
+echo "Linking file "$1
+cp -v $1 ./image.ome.tif
 
 echo "Checking file"
 file ./image.ome.tif
