@@ -24,8 +24,8 @@
       </param>
   </inputs>
   <outputs>
-    <data format="mat" name="output">
-      <discover_datasets label="" pattern="(?P&lt;designation&gt;.*)\.mat" />
+    <data format="input" name="output">
+      <discover_datasets  pattern="(?P&lt;designation&gt;.*)\.mat" />
     </data>
   </outputs>
   <help>
