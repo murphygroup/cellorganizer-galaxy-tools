@@ -1,30 +1,32 @@
 <tool id="download_models_from_repository" name="Download" version="1.0.0">
   <description> model from the curated model repository</description>
   <command interpreter="bash">
-    download_models_from_repository.sh $dataset 
+    download_models_from_repository.sh "$dataset"
   </command>
   <inputs>
     <param name="dataset" type="select" label="Select a model to download">
-        <option value="http://www.cellorganizer.org/Downloads/models/cell_model_nuc_align.mat">3D H1299 - diffeomorphic model of the cell</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/endosome.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of endosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/lysosome.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/mitochondrion.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/nucleolus.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/3t3_model.mat">3D 3T3 - diffeomorphic model of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/centro.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of centrosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/hela_model.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/lamp2.mat">3D HeLa LAMP2 - cylindrical and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/mit.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/nuc.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/tfr.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of endosomes</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/tub.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of microtubles</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/hela_nuc_10_15_15.mat">3D HeLa - diffeomorphic model of the nucleus</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/hela_cell_10_15_15.mat">3D HeLa - diffeomorphic model of the cell</option>
-        <option value="http://www.cellorganizer.org/Downloads/models/helamodel_9_16_15.mat">3D HeLa - diffeomorphic model of the cell and nucleus</option>
+        <option value="cell_model_nuc_align.mat">3D H1299 - diffeomorphic model of the cell</option>
+        <option value="endosome.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of endosomes</option>
+        <option value="lysosome.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
+        <option value="mitochondrion.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
+        <option value="nucleolus.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
+        <option value="3t3_model.mat">3D 3T3 - diffeomorphic model of the cell and nucleus - vesicle model of lysosomes</option>
+        <option value="centro.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of centrosomes</option>
+        <option value="hela_model.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
+        <option value="lamp2.mat">3D HeLa LAMP2 - cylindrical and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
+        <option value="mit.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
+        <option value="nuc.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
+        <option value="tfr.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of endosomes</option>
+        <option value="tub.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of microtubles</option>
+        <option value="hela_nuc_10_15_15.mat">3D HeLa - diffeomorphic model of the nucleus</option>
+        <option value="hela_cell_10_15_15.mat">3D HeLa - diffeomorphic model of the cell</option>
+        <option value="helamodel_9_16_15.mat">3D HeLa - diffeomorphic model of the cell and nucleus</option>
       </param>
   </inputs>
   <outputs>
-    <data format="mat" name="model" from_work_dir="model.mat"/>
+    <data format="mat" name="output">
+      <discover_datasets label="" pattern="(?P&lt;designation&gt;.*)\.mat" />
+    </data>
   </outputs>
   <help>
   </help>
