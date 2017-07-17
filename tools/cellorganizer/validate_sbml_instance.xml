@@ -1,4 +1,4 @@
-<tool id="sbml_validator" name="Validate" version="0.0.1">
+<tool id="validate_sbml_instace" name="Validate" version="0.0.1">
   <description> an SBML Level 3 instance</description>
   <command interpreter="bash"> 
 	sbml_validator.sh $dataset
@@ -7,7 +7,7 @@
 	  <param name="dataset" type="data" format="xml" label="Choose a file for validation" multiple="false" optional="false" />      
   </inputs>
   <outputs>
-    <data name="output" format="xml" from_work_dir="sbml.xml"/>
+    <data name="output" format="xml" label="Validation of ${dataset.name}" from_work_dir="sbml.xml"/>
   </outputs>
 <tests>
   <test>
@@ -22,7 +22,10 @@
 <help>
 **Description**
 
-Validates an SBML_ Level 3 instance using the public SBML online validator. 
+.. image:: http://www.cellorganizer.org/galaxy/images/sbml_logo.png
+
+|
+| Validates an SBML_ Level 3 instance using the public SBML online _validator. 
 
 -----
 
@@ -32,10 +35,17 @@ Validates an SBML_ Level 3 instance using the public SBML online validator.
 
 -----
 
+**Options**
+
+* No options are needed
+
+-----
+
 **Output**
 
-* If true, then reports the file as a valid instance. False, otherwise.
+* If the validator returns true, then this tool reports the file as a valid instance. False, otherwise.
 
 .. _SBML: http://sbml.org/Documents/Specifications/SBML_Level_3
+.. _validator: http://sbml.org/Facilities/Validator/
 </help>
 </tool>
