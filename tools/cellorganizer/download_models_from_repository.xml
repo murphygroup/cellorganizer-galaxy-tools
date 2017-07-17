@@ -24,7 +24,7 @@
       </param>
   </inputs>
   <outputs>
-    <data format="input" name="output">
+    <data format="input" name="output" label="${dataset.value}">
       <discover_datasets  pattern="(?P&lt;designation&gt;.*)\.mat" />
     </data>
   </outputs>
