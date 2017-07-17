@@ -27,6 +27,5 @@
     <data format="mat" name="model" from_work_dir="model.mat"/>
   </outputs>
   <help>
-    
   </help>
 </tool>
