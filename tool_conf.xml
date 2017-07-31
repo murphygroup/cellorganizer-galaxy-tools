@@ -3,6 +3,7 @@
   <section id="get_data" name="Get Data">
     <tool file="data_source/upload.xml" />
     <tool file="cellorganizer/import_and_validate_ometiff.xml" />
+    <tool file="cellorganizer/download_models_from_repository.xml" /> 
   </section>
 
     <section id="training" name="Training">
@@ -31,8 +32,9 @@
     </section>
 
     <section id="validators" name="Validators" >
-      <tool file="cellorganizer/obj_validator.xml" />
-      <tool file="cellorganizer/sbml_validator.xml" /> 
-      <tool file="cellorganizer/ometiff_validator.xml" /> 
+      <tool file="cellorganizer/validate_ometiff_file.xml" />
+      <tool file="cellorganizer/validate_sbml_file.xml" /> 
+      <tool file="cellorganizer/validate_wavefront_obj_file.xml" /> 
+      <tool file="cellorganizer/validate_dataset_list_of_ometiffs.xml" />
     </section>
 </toolbox>
