@@ -1,4 +1,4 @@
-<tool id="model_training" name="Train" version="0.0.3">
+<tool id="model_training2" name="Train" version="0.0.3">
   <description> a generative model</description>
   <command>
     matlab -r "diary diary.txt;
@@ -18,6 +18,7 @@
     #for $field in $doc.documentation
       documentation = setfield( documentation, '${field.docname}', '${field.docvalues}' );
     #end for
+
     train_model('$dimensionality',$maskchannel,$dnachannel,$cellchannel,$proteinchannel,'$trainflag','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$nuc.nucleustype','$nuc.nucleusname','$nuc.nucleusclass','$nuc.nucleusid','$mem.celltype','$mem.cellname','$mem.cellclass','$mem.cellid','$pro.proteintype','$pro.proteinname','$pro.proteinclass','$pro.proteinid','$pro.proteincytonuclearflag',documentation,'$gen.verbose','$gen.debug');
     toc,
     diary off;
@@ -29,8 +30,12 @@
     bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
   </command>
   <inputs>
-    <param name="dataset" type="data" format="tiff" label="Choose a data set for training" multiple="true" optional="false" />
-
+    <section name="listofmodels" title="List of Models" expanded="false">
+      <repeat name="model" title="Model">
+        <param name="file" type="data" format="mat" label="Choose a model training" multiple="false" optional="false" />
+      </repeat>
+    </section>
+    
     <param name="dimensionality" type="select" label="Dimensionality">
       <option value="2D">all</option>
       <option value="3D" selected="true">nuclear</option>
