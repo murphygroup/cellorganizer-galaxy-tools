@@ -330,6 +330,12 @@
 
   -----
 
+  **Input**
+
+  A dataset of OME.TIFF files, and a combination of options selections.
+
+  -----
+
   **Output**
 
   A generative model.
