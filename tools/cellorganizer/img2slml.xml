@@ -9,12 +9,18 @@
     setup(); 
     cd( current_directory );
     check_if_files_exist_on_disk_and_link_them('$dataset');
- 
     selection_flag('$dimensionality','$nuc.nclasstype.nucleusclass','$nuc.nclasstype.nucleustype');
-    selection_flag('$dimensionality','$optmmodel.mem.cclasstype.cellclass','$optmmodel.mem.cclasstype.celltype');
-    selection_flag('$dimensionality','$optmmodel.mem.optpmodel.pro.pclasstype.proteinclass','$optmmodel.mem.optpmodel.pro.pclasstype.proteintype');
-    selection_flag('$dimensionality','$optmmodel.mem.optcmodel.cyto.pclasstype.proteinclass','$optmmodel.mem.optpmodel.cyto.pclasstype.proteintype');
 
+    #if str( $optmmodel.optmmodel_selector ) == "yes"
+      selection_flag('$dimensionality','$optmmodel.mem.cclasstype.cellclass','$optmmodel.mem.cclasstype.celltype','cell');
+      #if str( $optmmodel.optpmodel.optpromodel ) == "yes" 
+        selection_flag('$dimensionality','$optmmodel.optpmodel.pro.pclasstype.proteinclass','$optmmodel.optpmodel.pro.pclasstype.proteintype','protein');
+      #end if
+      #if str( $optmmodel.optcmodel.optcytomodel ) == "yes" 
+        selection_flag('$dimensionality','$optmmodel.optcmodel.cyto.pclasstype.proteinclass','$optmmodel.optcmodel.cyto.pclasstype.proteintype','nucleus');
+      #end if
+    #end if
+    <!--The following part havent test yet: -->
     documentation = struct();
     #for $field in $doc.documentation
       documentation = setfield( documentation, '${field.docname}', '${field.docvalues}' );
@@ -22,13 +28,13 @@
 
     train_model('$dimensionality','$maskchannel','$dnachannel','$cellchannel','$proteinchannel','$cproteinchannel','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$nuc.nclasstype.nucleustype','$nuc.nucleusname','$nuc.nucleusclass','$nuc.nucleusid','$optmmodel.mem.cclasstype.celltype','$optmmodel.mem.cellname','$optmmodel.mem.cclasstype.cellclass','$optmmodel.mem.cellid','$optmmodel.mem.optpmodel.pro.pclasstype.proteintype','$optmmodel.mem.optpmodel.pro.proteinname','$optmmodel.mem.optpmodel.pro.pclasstype.proteinclass','$optmmodel.mem.optpmodel.pro.proteinid','$optmmodel.mem.optpmodel.pro.proteincytonuclearflag','$optmmodel.mem.optcmodel.cyto.cpclasstype.proteintype','$optmmodel.mem.optcmodel.cyto.proteinname','$optmmodel.mem.optcmodel.cyto.proteinclass','$optmmodel.mem.optcmodel.cyto.proteinid','$optmmodel.mem.optcmodel.cyto.proteincytonuclearflag','$documentation','$gen.verbose','$gen.debug');
 
-
     toc,
     diary off;
     diary model_information.txt;
     if exist( './model.mat' ); load( './model.mat' ); model2info( model ); end;
     diary off;
     exit;";
+    <!-- "; -->
     
     bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
   </command>
@@ -57,8 +63,8 @@
           <param name="nucleustype" label="Choose a model type:" type="select">
             <option value="gmm">gmm</option>
           </param>
-         </when>
-         <when value="nuclear_membrane">
+        </when>
+        <when value="nuclear_membrane">
           <param name="nucleustype" label="Choose a model type:" type="select">
              <option value="medial_axis">medial axis</option>
              <option value="cylindrical_surface">cylindrical surface</option>
