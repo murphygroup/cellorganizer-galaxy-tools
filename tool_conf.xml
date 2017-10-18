@@ -6,12 +6,14 @@
     <tool file="cellorganizer/download_models_from_repository.xml" /> 
   </section>
 
+	<!-- Model training tool -->  
     <section id="training" name="Training">
       <tool file="cellorganizer/img2slml.xml" />
     </section>
 
+    <!-- Synthesis tool -->
     <section id="synthesis" name="Synthesis">
-      <tool file="cellorganizer/model_synth.xml" />
+      <tool file="cellorganizer/slml2img.xml" />
     </section>
 
     <!-- These are useful tools -->
@@ -31,6 +33,7 @@
       <tool file="cellorganizer/vesicular_model_summary.xml" />
     </section>
 
+    <!-- Validators -->
     <section id="validators" name="Validators" >
       <tool file="cellorganizer/validate_ometiff_file.xml" />
       <tool file="cellorganizer/validate_sbml_file.xml" /> 
