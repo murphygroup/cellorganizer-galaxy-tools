@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export CELLORGANIZER=cellorganizer_v2.7.0
+
 cp galaxy.ini galaxy/config
 cp tool_conf.xml galaxy/config
 cp datatypes_conf.xml galaxy/config
