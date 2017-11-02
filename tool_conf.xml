@@ -36,7 +36,7 @@
     <!-- Validators -->
     <section id="validators" name="Validators" >
       <tool file="cellorganizer/validate_ometiff_file.xml" />
-      <tool file="cellorganizer/validate_sbml_file.xml" /> 
+      <tool file="cellorganizer/validate_sbml_instance.xml" /> 
       <tool file="cellorganizer/validate_wavefront_obj_file.xml" /> 
       <tool file="cellorganizer/validate_dataset_list_of_ometiffs.xml" />
     </section>

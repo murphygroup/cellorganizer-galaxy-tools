@@ -1,7 +1,7 @@
-<tool id="validate_sbml_instace" name="Validate" version="0.0.1">
+<tool id="validate_sbml_instance" name="Validate" version="0.0.1">
   <description> an SBML Level 3 instance</description>
   <command interpreter="bash"> 
-	sbml_validator.sh $dataset
+	validate_sbml_instance.sh $dataset
   </command>
   <inputs>
 	  <param name="dataset" type="data" format="xml" label="Choose a file for validation" multiple="false" optional="false" />      
@@ -19,6 +19,9 @@
     </output>
   </test>
 </tests>
+<stdio>
+  <exit_code range="1"   level="fatal"   description="Invalid SBML Level 3 instance" />
+</stdio>
 <help>
 **Description**
 
