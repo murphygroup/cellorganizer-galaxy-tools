@@ -1,14 +1,24 @@
 # cellorganizer-galaxy
-CellOrganizer tools and scripts for CellOrganizer on Galaxy+Bridges.
+CellOrganizer tools and scripts for Galaxy.
 
-## Requirements
-If you want to run all the tools in this repo, you will need to install these requirements in your Galaxy server or compute cluster
-
-* [Matlab 2015a or higher](http://www.mathworks.com/)
-  * [Statistics and Machine Learning Toolbox](http://www.mathworks.com/products/statistics/)
-  * [Curve Fitting Toolbox](http://www.mathworks.com/products/curvefitting/)
-  * [Image Processing Toolbox](http://www.mathworks.com/products/image/)
-  * [SimBiology Toolbox](http://www.mathworks.com/help/simbio/)
+## Pre-requisites
+* A working Galaxy instance. 
+* [Matlab 2016a or higher](http://www.mathworks.com/)
+	* Matlab 2016b or newer
+	* Bioinformatics Toolbox
+	* Computer Vision System Toolbox
+	* Control System Toolbox
+	* Curve Fitting Toolbox
+	* Image Processing Toolbox
+	* Mapping Toolbox
+	* Optimization Toolbox
+	* Robust Control Toolbox
+	* Signal Processing Toolbox
+	* Simulink
+	* Simulink Design Optimization
+	* Statistics and Machine Learning Toolbox
+	* System Identification Toolbox
+	* Wavelet Toolbox
 * [ffmpeg](https://ffmpeg.org/). A complete, cross-platform solution to record, convert and stream audio and video.
 * [pandoc](http://pandoc.org/).  A universal document converter.
 * Python libraries
