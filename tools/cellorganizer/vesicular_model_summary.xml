@@ -1,5 +1,5 @@
-<tool id="Vesicle model summary" name="Vesicle model summary" version="0.0.1">
-  <description>Prints useful information and plots of parameters for a trained vesicular model</description>
+<tool id="Vesicle model summary" name="Prints model summary" version="0.0.1">
+  <description>of useful information and plots of parameters for a trained vesicular model.</description>
   <command interpreter="bash">
     vesicular_model_summary.sh $input
   </command>

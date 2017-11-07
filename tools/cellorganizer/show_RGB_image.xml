@@ -1,5 +1,5 @@
-<tool id="show_RGB_image" name="show_RGB_image" version="0.0.1">
-  <description>Makes an RGB image from a 2D image.</description>
+<tool id="show_RGB_image" name="Makes an RGB image" version="0.0.1">
+  <description>from a 2D image.</description>
   <command interpreter="bash">
     show_RGB_image.sh $input $red $green $blue
   </command>

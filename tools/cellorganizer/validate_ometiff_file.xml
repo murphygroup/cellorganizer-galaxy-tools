@@ -1,5 +1,5 @@
-<tool id="ometiff_validation" name="Validate" version="0.0.1">
-<description> an OME.TIFF</description>
+<tool id="ometiff_validation" name="Validates" version="0.0.1">
+<description>an OME.TIFF.</description>
 <command interpreter="bash">
   validate_ometiff_file.sh $dataset
 </command>

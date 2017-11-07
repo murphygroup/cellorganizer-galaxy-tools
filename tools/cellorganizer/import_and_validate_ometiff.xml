@@ -1,5 +1,5 @@
-<tool id="import_ometiff_from_url" name="Import OME.TIFF" version="1.0.0">
-  <description> from a URL</description>
+<tool id="import_ometiff_from_url" name="Imports OME.TIFF" version="1.0.0">
+  <description>from a URL.</description>
   <command interpreter="bash">
     import_and_validate_ometiff.sh $image_name 
   </command>

@@ -1,5 +1,5 @@
-<tool id="generate_3D_surface_plot" name="generate_3D_surface_plot" version="0.0.1">
-  <description>Generates a surface plot from a 3D synthetic image.</description>
+<tool id="generate_3D_surface_plot" name="Generates a surface plot" version="0.0.1">
+  <description>from a 3D synthetic image.</description>
   <command interpreter="bash">
     show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
   </command>

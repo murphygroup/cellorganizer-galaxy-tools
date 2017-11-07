@@ -1,5 +1,5 @@
-<tool id="show_projection" name="show_projection" version="0.0.1">
-  <description>Make a projection from a 3D synthetic image.</description>
+<tool id="show_projection" name="Makes a projection" version="0.0.1">
+  <description>from a 3D synthetic image.</description>
   <command interpreter="bash">
     show_projection.sh $input $channel
   </command>

@@ -1,5 +1,5 @@
-<tool id="show_RGB_projection" name="show_RGB_projection" version="0.0.1">
-  <description>Make an RGB projection from a 3D synthetic image.</description>
+<tool id="show_RGB_projection" name="Makes an RGB projection" version="0.0.1">
+  <description>from a 3D synthetic image.</description>
   <command interpreter="bash">
     show_RGB_projection.sh $input $red $green $blue
   </command>
