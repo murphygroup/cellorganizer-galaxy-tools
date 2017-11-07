@@ -1,5 +1,5 @@
-<tool id="slml2img" name="slml2img" version="0.0.1">
-  <description>Generates a synthetic image from a valid SLML model</description>
+<tool id="slml2img" name="Generates" version="0.0.1">
+  <description> a synthetic image from a valid SLML model</description>
   <command interpreter="bash">
     slml2img.sh $data $options_synthesis $dimensionality $options_spherical_cell $options_microscope $options_sample_method $seed
   </command>

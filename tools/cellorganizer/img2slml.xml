@@ -1,4 +1,4 @@
-<tool id="model_training2" name="Train" version="0.0.3">
+<tool id="img2slml" name="Train" version="0.0.3">
   <description> a generative model</description>
   <command>
     matlab -r "diary diary.txt;
