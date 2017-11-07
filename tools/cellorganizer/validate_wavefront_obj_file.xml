@@ -1,4 +1,4 @@
-<tool id="meshalyzer" name="Validates " version="0.0.1">
+<tool id="meshalyzer" name="Validates" version="0.0.1">
   <description>Wavefront OBJ file.</description>
   <command>
   	echo ln -s $dataset $(pwd)/file.obj

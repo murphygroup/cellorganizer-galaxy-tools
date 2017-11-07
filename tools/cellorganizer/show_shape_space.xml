@@ -1,4 +1,4 @@
-<tool id="show_shape_space" name="Display" version="0.0.1">
+<tool id="show_shape_space" name="Displays" version="0.0.1">
   <description> shape space plot.</description>
   <command>
     matlab -r "diary diary.txt;

@@ -1,5 +1,5 @@
-<tool id="download_models_from_repository" name="Download" version="1.0.0">
-  <description> model from the curated model repository</description>
+<tool id="download_models_from_repository" name="Downloads" version="1.0.0">
+  <description>model from the curated model repository.</description>
   <command interpreter="bash">
     download_models_from_repository.sh "$dataset"
   </command>

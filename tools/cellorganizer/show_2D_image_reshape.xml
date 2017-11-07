@@ -1,5 +1,5 @@
-<tool id="show_2D_image_reshape" name="show_2D_image_reshape" version="0.0.1">
-  <description>Exports the image to a format that can be opened in a web browser.</description>
+<tool id="show_2D_image_reshape" name="Exports 2D image" version="0.0.1">
+  <description>to a format that can be opened in a web browser.</description>
   <command interpreter="bash">
     show_2D_image_reshape.sh $input
   </command>
