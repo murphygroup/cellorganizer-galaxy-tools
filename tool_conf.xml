@@ -14,22 +14,29 @@
     <!-- Synthesis tool -->
     <section id="synthesis" name="Synthesis">
       <tool file="cellorganizer/slml2img.xml" />
+      <tool file="cellorganizer/synthesize_2D_diffeomorphic_instance.xml" />
+      <tool file="cellorganizer/synthesize_3D_vesicular_instance.xml" />
+      <tool file="cellorganizer/model_synth.xml" />
+      <tool file="cellorganizer/model_synth_multiple.xml" />
     </section>
 
     <!-- These are useful tools -->
     <section id="cellorganizer-tools" name="Useful tools">
-      <tool file="cellorganizer/get_info.xml" />
-      <tool file="cellorganizer/ometiff_validation.xml" />
+      <tool file="cellorganizer/model2info.xml" />
+      <tool file="cellorganizer/dataset_ometiff_validation.xml" />
       <tool file="cellorganizer/show_2D_image_reshape.xml" />
       <tool file="cellorganizer/show_3D_image_reshape.xml" />
-      <tool file="cellorganizer/show_projection.xml" />
+      <tool file="cellorganizer/show_3D_surface_plot.xml" />
       <tool file="cellorganizer/show_RGB_projection.xml" />
       <tool file="cellorganizer/show_RGB_image.xml" />
+      <tool file="cellorganizer/show_variable.xml" />
+      <tool file="cellorganizer/show_image_reshape.xml" />
+      <tool file="cellorganizer/show_image_information.xml" />
+      <tool file="cellorganizer/show_projection.xml" />
       <tool file="cellorganizer/show_shape_space.xml" />
-      <tool file="cellorganizer/export_to_blender.xml" />
-      <tool file="cellorganizer/export_to_vcell.xml" />
-      <tool file="cellorganizer/show_3D_surface_plot.xml" />
-      <tool file="cellorganizer/compare_vesicular_models.xml" />
+      <tool file="cellorganizer/tcell_compare_models.xml" />
+      <tool file="cellorganizer/tcell_enrichment.xml" />
+      <tool file="cellorganizer/tcell_generate_movie.xml" />
       <tool file="cellorganizer/vesicular_model_summary.xml" />
     </section>
 
