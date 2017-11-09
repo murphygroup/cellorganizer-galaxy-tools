@@ -82,17 +82,21 @@
       <discover_datasets pattern="(?P&lt;designation&gt;.*)\.obj" format="xml" directory="objs"/>
     </collection>
   </outputs>
-  <help>
+<help>
 
-  **Description**
+**Description**
 
-  Synthesize instances from one or multiple trained generative models and export saved in multiple formats.
+Synthesize instances from one or multiple trained generative models and export saved in multiple formats.
 
-  -----
+-----
 
-  **Output**
+**Input**
 
-  A dataset with one or several OME.TIFF.
+The selected models to be synthesized, along with the configuration of synthesis options.
 
-  </help>
+**Output**
+
+A dataset with one or several OME.TIFF.
+
+</help>
 </tool>

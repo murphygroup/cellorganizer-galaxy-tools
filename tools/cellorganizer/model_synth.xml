@@ -1,27 +1,3 @@
-<!-- 
- Copyright (C) 2012-2017 Murphy Lab
- Lane Center for Computational Biology
- School of Computer Science
- Carnegie Mellon University
-
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published
- by the Free Software Foundation; either version 2 of the License,
- or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
- 02110-1301, USA.
-
- For additional information visit http://murphylab.web.cmu.edu or
- send email to murphy@cmu.edu
--->
 <tool id="Synthesize an instance" name="Synthesize an instance" version="0.0.2">
   <description>Synthesizes an instance from multiple models trained in CellOrganizer</description>
   <command>
@@ -36,7 +12,7 @@
     model_synth('$synthesis',$numimgs,$resolution,'$prefix','$compression','$microscope','$sampling_method','$verbose','$debug','$randomwalk',$walksteps,'$walktype','$tif','$indexed','$blender','$sbml'); 
     diary off;
     toc,
-    exit;" && 
+    exit;" 
     bash $__tool_directory__/model_synth.sh $output.extra_files_path;
   </command>
   <inputs>
@@ -76,17 +52,21 @@
       <discover_datasets pattern="(?P&lt;designation&gt;.*)\.ome.tif" />
     </collection>
   </outputs>
-  <help>
+<help>
 
-  **Description**
+**Description**
 
-  Synthesize instances from multiple trained models saved in multiple formats.
+Synthesize an instance from multiple trained models saved in multiple formats.
 
-  -----
+-----
 
-  **Output**
+**Input**
 
-  A zip containing the desired output files.
+The selected model to be synthesized, along with the configuration of synthesis options.
 
-  </help>
+**Output**
+
+A zip containing the desired output files.
+
+</help>
 </tool>
