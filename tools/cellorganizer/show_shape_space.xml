@@ -51,13 +51,13 @@ The shape space plot tool creates a visualization of the shape space from a trai
 
 **Inputs**
 
-- A model
+A model.
 
 -----
 
 **Output**
 
-- A PNG file
+A PNG file.
 
 -----
 
