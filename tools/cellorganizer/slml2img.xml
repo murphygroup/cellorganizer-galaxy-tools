@@ -76,6 +76,12 @@ Synthesize image(s) from generative models trained using CellOrganizer.
 
 -----
 
+**Input**
+
+A generative model.
+
+-----
+
 **Output**
 
 One or more images.

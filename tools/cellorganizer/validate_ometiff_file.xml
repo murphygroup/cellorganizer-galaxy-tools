@@ -34,19 +34,19 @@
 
 **Input**
 
-* An OME.TIFF file.
+A OME.TIFF file.
 
 -----
 
 **Options**
 
-* No options are needed
+No options are needed.
 
 -----
 
 **Output**
 
-* If the validator returns true, then this tool reports the file as a valid OME.TIFF. False, otherwise.
+If the validator returns true, then this tool reports the file as a valid OME.TIFF. False, otherwise.
 
 .. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
 .. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools

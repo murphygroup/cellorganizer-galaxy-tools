@@ -411,23 +411,23 @@
     <data format="html" name="output2" from_work_dir="report.html"/>
   </outputs>
 
-  <help>
+<help>
 
-  **Description**
+**Description**
 
-  Trains a generative model from a collection of OME.TIFF files.
+Trains a generative model from a collection of OME.TIFF files.
 
-  -----
+-----
 
-  **Input**
+**Input**
 
-  A dataset of OME.TIFF files, and a combination of options selections.
+A dataset of OME.TIFF files, and a combination of options selections.
 
-  -----
+-----
 
-  **Output**
+**Output**
 
-  A generative model.
+A generative model.
 
-  </help>
+</help>
 </tool>

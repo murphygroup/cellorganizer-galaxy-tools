@@ -20,12 +20,12 @@ Makes a projection from one channel of a 3D synthetic image. This projection can
 
 **Input**
 
-- 3D synthetic image
+A 3D synthetic image.
 
 -----
 
 **Output**
 
-- A PNG file.
+A PNG file.
 </help>
 </tool>

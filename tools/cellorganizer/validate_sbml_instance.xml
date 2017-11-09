@@ -34,19 +34,19 @@
 
 **Input**
 
-* An SBML Level 3 instance (XML file)
+An SBML Level 3 instance (XML file).
 
 -----
 
 **Options**
 
-* No options are needed
+No options are needed.
 
 -----
 
 **Output**
 
-* If the validator returns true, then this tool reports the file as a valid instance. False, otherwise.
+Returns true if the input file is a valid SBML Level 3 instance. Returns false otherwise.
 
 .. _SBML: http://sbml.org/Documents/Specifications/SBML_Level_3
 .. _validator: http://sbml.org/Facilities/Validator/

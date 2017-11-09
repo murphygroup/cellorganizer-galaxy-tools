@@ -22,12 +22,12 @@ Makes an RGB projection from 3 specific channels from a 3D synthetic image. This
 
 **Input**
 
-- 3D synthetic image
+A 3D synthetic image.
 
 -----
 
 **Output**
 
-- A PNG file.
+A PNG file.
 </help>
 </tool>
