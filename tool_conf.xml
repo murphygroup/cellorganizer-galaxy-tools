@@ -1,12 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <toolbox>
-  <section id="get_data" name="Get Data">
-    <tool file="data_source/upload.xml" />
-    <tool file="cellorganizer/import_and_validate_ometiff.xml" />
-    <tool file="cellorganizer/download_models_from_repository.xml" /> 
-  </section>
+    <destination id="local" runner="local" >
+	<env id="CELLORGANIZER">/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer</env>
+	<env id="MATLAB">/opt/packages/matlab/R2016a/bin/matlab</env>
+	<env id="BFTOOLS">/pylon1/mc4s8dp/icaoberg/tools/bioformats/bftools</env>
+	<env id="FFMPEG">/usr/local/bin/FFMPEG</env>
+	<env id="PANDOC">/usr/local/bin/pandoc</env>
+    </destination>
+    
+    <section id="get_data" name="Get Data">
+	<tool file="data_source/upload.xml" />
+	<tool file="cellorganizer/import_and_validate_ometiff.xml" />
+	<tool file="cellorganizer/download_models_from_repository.xml" /> 
+    </section>
 
-	<!-- Model training tool -->  
+    <!-- Model training tool -->  
     <section id="training" name="Training">
       <tool file="cellorganizer/img2slml.xml" />
     </section>

@@ -19,7 +19,7 @@ Validate the files using xmlvalid from BioFormats.
 
 **Input**
 
-A dataset of images containing OME.TIFF files
+A dataset of images containing OME.TIFF files.
 
 -----
 
