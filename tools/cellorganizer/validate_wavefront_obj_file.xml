@@ -44,19 +44,19 @@
 
 **Input**
 
-* A Wavefront OBJ file.
+A Wavefront OBJ file.
 
 -----
 
 **Options**
 
-* No options are needed for this tools
+No options are needed for this tools.
 
-_____
+-----
 
 **Output**
 
-* If the validator returns true, then this tool will be report the file can be imported to CellBlender_. False, otherwise.
+If the validator returns true, then this tool will report that the file can be imported to CellBlender_. Returns false otherwise.
 
 .. _meshalyzer: https://github.com/mcellteam/mesh_tools/tree/master/meshalyzer
 .. _CellBlender: http://mcell.org/tutorials/index.html

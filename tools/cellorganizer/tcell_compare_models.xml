@@ -55,11 +55,11 @@ Builds a plot that shows the comparison between two T cell models.
 
 **Input**
 
-* A list composed of two T cell models
+A list composed of two T cell models.
 
 **Output**
 
-* A PNG file
+A PNG file.
 
 </help>
 </tool>

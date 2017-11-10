@@ -94,6 +94,8 @@ Synthesize instances from one or multiple trained generative models and export s
 
 The selected models to be synthesized, along with the configuration of synthesis options.
 
+-----
+
 **Output**
 
 A dataset with one or several OME.TIFF.

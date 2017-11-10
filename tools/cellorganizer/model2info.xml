@@ -56,11 +56,11 @@ Retrieves and display information about a model file. This tool is a wrapper for
 
 **Input**
 
-* A generative model (mat file)
+A generative model (mat file).
 
 **Output**
 
-* Information about the generative model (HTML file)
+Information about the generative model (HTML file).
 
 </help>
 </tool>

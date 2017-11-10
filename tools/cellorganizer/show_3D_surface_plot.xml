@@ -50,15 +50,15 @@ The 3D surface plot tool generates a surface plot from a 3D synthetic image.
 
 **Inputs**
 
-- 3D Synthetic Image
-- View Angles on x- and y-Direction
-- Alpha-Value
+- A 3D Synthetic Image.
+- View Angles on x- and y-Direction.
+- Alpha-Value.
 
 -----
 
 **Output**
 
-- A PNG (.png) file of the surface plot
+A PNG (.png) file of the surface plot.
 
 -----
 

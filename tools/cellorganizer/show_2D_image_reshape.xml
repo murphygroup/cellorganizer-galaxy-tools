@@ -43,12 +43,12 @@ Exports the image as a PNG file so that it can displayed in a web browser.
 
 **Input**
 
-- 2D synthetic image
+2D synthetic image.
 
 -----
 
 **Output**
 
-- A PNG file.
+A PNG file.
 </help>
 </tool>

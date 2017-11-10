@@ -49,13 +49,13 @@ Makes an RGB image from a 2D image.
 
 **Input**
 
-- A TIFF file
+A TIFF file.
 
 -----
 
 **Output**
 
-- An RGB image in PNG format.
+An RGB image in PNG format.
 
 -----
 

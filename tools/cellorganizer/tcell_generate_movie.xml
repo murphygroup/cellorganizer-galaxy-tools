@@ -54,18 +54,19 @@
 
 **Description**
 
-Builds a movie from a list of T cell models
+Builds a movie from a list of T cell models.
 
 -----
 
 **Input**
 
-* List of T cell models
+List of T cell models.
+
+-----
 
 **Output**
 
-* An avi file
-* A list of pngs
+An avi file, and a list of pngs. 
 
 </help>
 </tool>

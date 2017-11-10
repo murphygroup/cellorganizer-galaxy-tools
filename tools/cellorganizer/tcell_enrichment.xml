@@ -57,11 +57,13 @@ Builds a enrichment plot from a list of T cell models.
 
 **Input**
 
-* A list of T cell models
+A list of T cell models.
+
+-----
 
 **Output**
 
-* A PNG file
+A PNG file.
 
 </help>
 </tool>
