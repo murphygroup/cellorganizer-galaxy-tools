@@ -19,13 +19,13 @@ Downloads an OME.TIFF from URL and validates the file using BioFormats_ command 
 
 **Input**
 
-* A link to an existing OME.TIFF (URL)
+A link to an existing OME.TIFF (URL).
 
 -----
 
 **Output**
 
-* If the file is a valid OME.TIFF, then the file placed in the workspace of the current history. False otherwise.
+If the file is a valid OME.TIFF, then it is placed in the workspace of the current history. Returns false otherwise.
 
 .. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
 .. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools

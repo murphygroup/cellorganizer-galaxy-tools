@@ -31,12 +31,12 @@ Displays an OME.TIFF in a web browser.
 
 **Input**
 
-- A valid OME.TIFF
+A valid OME.TIFF.
 
 -----
 
 **Output**
 
-- A PNG file.
+A PNG file.
 </help>
 </tool>
