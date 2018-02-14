@@ -47,7 +47,7 @@
       </param>
   </inputs>
   <outputs>
-    <data format="input" name="output" label="Model from repository" from_work_dir="model.mat"/>
+    <data format="mat" name="output" label="Model from repository" from_work_dir="model.mat"/>
   </outputs>
 <help>
 
