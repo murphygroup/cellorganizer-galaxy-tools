@@ -52,20 +52,20 @@
       <tool file="cellorganizer/model_synth_multiple.xml" />
     </section>
 
-    <!-- These are useful tools -->
+    <!-- These are useful tools for images-->
     <section id="cellorganizer-tools" name="Useful tools">
-      <tool file="cellorganizer/model2info.xml" />
       <tool file="cellorganizer/dataset_ometiff_validation.xml" />
-      <tool file="cellorganizer/show_2D_image_reshape.xml" />
-      <tool file="cellorganizer/show_3D_image_reshape.xml" />
-      <tool file="cellorganizer/show_3D_surface_plot.xml" />
-      <tool file="cellorganizer/show_RGB_projection.xml" />
-      <tool file="cellorganizer/show_RGB_image.xml" />
-      <tool file="cellorganizer/show_variable.xml" />
+      <tool file="cellorganizer/show_image_reshape.xml" />
+      <tool file="cellorganizer/show_surface_plot.xml" />
+      <tool file="cellorganizer/show_projection.xml" />
       <tool file="cellorganizer/show_image_reshape.xml" />
       <tool file="cellorganizer/show_image_information.xml" />
-      <tool file="cellorganizer/show_projection.xml" />
-      <tool file="cellorganizer/show_shape_space.xml" />
+    </section>
+
+
+    <!-- These are useful tools for models -->
+    <section id="cellorganizer-tools" name="Useful tools">
+      <tool file="cellorganizer/model2info.xml" />
       <tool file="cellorganizer/tcell_compare_models.xml" />
       <tool file="cellorganizer/tcell_enrichment.xml" />
       <tool file="cellorganizer/tcell_generate_movie.xml" />
