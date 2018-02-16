@@ -9,12 +9,14 @@ RED=$2
 GREEN=$3
 BLUE=$4
 
-ln -s $INPUT $(pwd)/output.zip
-unzip ./output.zip
-rm -fv output.zip
-find . -type f -name "*.tif" -exec mv -v {} . \;
+ln -s $CELLORGANIZER $(pwd)/cellorganizer
+validate_ometiff_file.sh $INPUT
+valid=$?
 
-echo "Generating Matlab script"
+if [ $valid -ne 0 ]; then
+    exit 1
+fi
+
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
@@ -23,12 +25,6 @@ setup();
 cd('$WORKING_DIRECTORY');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-directory = pwd;
-answer = show_RGB_image_galaxy_wrapper( directory, $RED, $GREEN, $BLUE );
-exit;" > script.m
-
-echo "Linking CellOrganizer"
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-
-echo "Running script"
-$MATLAB -nodesktop -nosplash -r "script;"
+answer = show_RGB_image_galaxy_wrapper( '$INPUT', $RED, $GREEN, $BLUE );
+exit;" | $MATLAB
+exit 0

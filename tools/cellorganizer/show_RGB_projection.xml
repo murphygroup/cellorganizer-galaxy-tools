@@ -23,20 +23,23 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>from a 3D synthetic image.</description>
-  <command interpreter="bash">
-    show_RGB_projection.sh $input $red $green $blue
-  </command>
-  <inputs>
-	<param format="zip" name="input" type="data" label="3D image"></param>
-	  <param name="red" type="integer" value="1" label="Red channel index" />
-    <param name="green" type="integer" value="2" label="Green channel index" />
-    <param name="blue" type="integer" value="3" label="Blue channel index" />
-  </inputs>
-  <outputs>
-    <data format="png" name="output" from_work_dir="output.png"/>
-  </outputs>
-<help>
+    <description>from a 3D synthetic image.</description>
+    <command interpreter="bash">
+	show_RGB_projection.sh $input $red $green $blue
+    </command>
+    <inputs>
+	<param format="tiff" name="input" type="data" label="3D image"></param>
+	<param name="red" type="integer" value="1" label="Red channel index" />
+	<param name="green" type="integer" value="2" label="Green channel index" />
+	<param name="blue" type="integer" value="3" label="Blue channel index" />
+    </inputs>
+    <outputs>
+	<data format="png" name="output" from_work_dir="output.png"/>
+    </outputs>
+    <stdio>
+	<exit_code range="1" level="fatal" description="Invalid file format" />
+    </stdio>
+    <help>
 
 **Description**
 
@@ -46,12 +49,12 @@ Makes an RGB projection from 3 specific channels from a 3D synthetic image. This
 
 **Input**
 
-A 3D synthetic image.
+A 3D synthetic image in the OME.TIFF format.
 
 -----
 
 **Output**
 
 A PNG file.
-</help>
+    </help>
 </tool>
