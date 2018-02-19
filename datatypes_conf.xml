@@ -23,28 +23,28 @@
     <datatype extension="xml" type="galaxy.datatypes.xml:GenericXml" mimetype="application/xml" display_in_upload="true"/>
     <datatype extension="xlsx" type="galaxy.datatypes.binary:Xlsx" display_in_upload="true" />
     <datatype extension="zip" type="galaxy.datatypes.binary:CompressedZipArchive" display_in_upload="True"/>
-    <datatype extension="mat" type="galaxy.datatypes.binary:Binary" subclass="True" display_in_upload="true" />
+    <datatype extension="mat" type="galaxy.datatypes.binary:Binary" display_in_upload="true" />
     <datatype extension="html" type="galaxy.datatypes.text:Html" mimetype="text/html"/>
   </registration>
   <sniffers>
-    <sniffer type="galaxy.datatypes.tabular:CSV"/>
-    <sniffer type="galaxy.datatypes.binary:RData" />
-    <sniffer type="galaxy.datatypes.images:Jpg"/>
-    <sniffer type="galaxy.datatypes.images:Png"/>
-    <sniffer type="galaxy.datatypes.images:Tiff"/>
-    <sniffer type="galaxy.datatypes.images:Bmp"/>
-    <sniffer type="galaxy.datatypes.images:Gif"/>
-    <sniffer type="galaxy.datatypes.images:Im"/>
-    <sniffer type="galaxy.datatypes.images:Pcd"/>
-    <sniffer type="galaxy.datatypes.images:Pcx"/>
-    <sniffer type="galaxy.datatypes.images:Ppm"/>
-    <sniffer type="galaxy.datatypes.images:Psd"/>
-    <sniffer type="galaxy.datatypes.images:Xbm"/>
-    <sniffer type="galaxy.datatypes.images:Rgb"/>
-    <sniffer type="galaxy.datatypes.images:Pbm"/>
-    <sniffer type="galaxy.datatypes.images:Pgm"/>
-    <sniffer type="galaxy.datatypes.images:Eps"/>
-    <sniffer type="galaxy.datatypes.binary:Mat"/>
-    <sniffer type="galaxy.datatypes.text:Html"/>
+	<sniffer type="galaxy.datatypes.binary:Mat"/>
+	<sniffer type="galaxy.datatypes.tabular:CSV"/>
+	<sniffer type="galaxy.datatypes.binary:RData" />
+	<sniffer type="galaxy.datatypes.images:Jpg"/>
+	<sniffer type="galaxy.datatypes.images:Png"/>
+	<sniffer type="galaxy.datatypes.images:Tiff"/>
+	<sniffer type="galaxy.datatypes.images:Bmp"/>
+	<sniffer type="galaxy.datatypes.images:Gif"/>
+	<sniffer type="galaxy.datatypes.images:Im"/>
+	<sniffer type="galaxy.datatypes.images:Pcd"/>
+	<sniffer type="galaxy.datatypes.images:Pcx"/>
+	<sniffer type="galaxy.datatypes.images:Ppm"/>
+	<sniffer type="galaxy.datatypes.images:Psd"/>
+	<sniffer type="galaxy.datatypes.images:Xbm"/>
+	<sniffer type="galaxy.datatypes.images:Rgb"/>
+	<sniffer type="galaxy.datatypes.images:Pbm"/>
+	<sniffer type="galaxy.datatypes.images:Pgm"/>
+	<sniffer type="galaxy.datatypes.images:Eps"/>
+	<sniffer type="galaxy.datatypes.text:Html"/>
   </sniffers>
 </datatypes> 
