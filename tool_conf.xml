@@ -52,20 +52,19 @@
       <tool file="cellorganizer/model_synth_multiple.xml" />
     </section>
 
-    <!-- These are useful tools -->
-    <section id="cellorganizer-tools" name="Useful tools">
-      <tool file="cellorganizer/model2info.xml" />
-      <tool file="cellorganizer/dataset_ometiff_validation.xml" />
-      <tool file="cellorganizer/show_2D_image_reshape.xml" />
-      <tool file="cellorganizer/show_3D_image_reshape.xml" />
-      <tool file="cellorganizer/show_3D_surface_plot.xml" />
-      <tool file="cellorganizer/show_RGB_projection.xml" />
-      <tool file="cellorganizer/show_RGB_image.xml" />
-      <tool file="cellorganizer/show_variable.xml" />
+    <!-- These are useful tools for images-->
+    <section id="cellorganizer-tools-images" name="Useful tools for images">
+      <tool file="cellorganizer/show_image_reshape.xml" />
+      <tool file="cellorganizer/show_surface_plot.xml" />
+      <tool file="cellorganizer/show_projection.xml" />
       <tool file="cellorganizer/show_image_reshape.xml" />
       <tool file="cellorganizer/show_image_information.xml" />
-      <tool file="cellorganizer/show_projection.xml" />
-      <tool file="cellorganizer/show_shape_space.xml" />
+    </section>
+
+
+    <!-- These are useful tools for models -->
+    <section id="cellorganizer-tools-models" name="Useful tools for models">
+      <tool file="cellorganizer/model2info.xml" />
       <tool file="cellorganizer/tcell_compare_models.xml" />
       <tool file="cellorganizer/tcell_enrichment.xml" />
       <tool file="cellorganizer/tcell_generate_movie.xml" />
@@ -73,7 +72,7 @@
     </section>
 
     <!-- Validators -->
-    <section id="validators" name="Validators" >
+    <section id="validators" name="File Validators" >
       <tool file="cellorganizer/validate_ometiff_file.xml" />
       <tool file="cellorganizer/validate_sbml_instance.xml" /> 
       <tool file="cellorganizer/validate_wavefront_obj_file.xml" /> 
