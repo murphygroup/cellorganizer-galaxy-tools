@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!--
- Copyright (C) 2007-2016 Murphy Lab
+ Copyright (C) 2007-2018 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -33,9 +33,9 @@
     </destination>
     
     <section id="get_data" name="Get Data">
-	<tool file="data_source/upload.xml" />
-	<tool file="cellorganizer/import_and_validate_ometiff.xml" />
-	<tool file="cellorganizer/download_models_from_repository.xml" /> 
+      <tool file="data_source/upload.xml" />
+      <tool file="cellorganizer/import_and_validate_ometiff.xml" />
+      <tool file="cellorganizer/download_models_from_repository.xml" /> 
     </section>
 
     <!-- Model training tool -->  
@@ -46,10 +46,6 @@
     <!-- Synthesis tool -->
     <section id="synthesis" name="Synthesis">
       <tool file="cellorganizer/slml2img.xml" />
-      <tool file="cellorganizer/synthesize_2D_diffeomorphic_instance.xml" />
-      <tool file="cellorganizer/synthesize_3D_vesicular_instance.xml" />
-      <tool file="cellorganizer/model_synth.xml" />
-      <tool file="cellorganizer/model_synth_multiple.xml" />
     </section>
 
     <!-- These are useful tools for images-->
