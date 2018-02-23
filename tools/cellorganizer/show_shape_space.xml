@@ -1,6 +1,6 @@
-<tool id="show_shape_space" name="Displays" version="0.0.1">
+<tool id="show_shape_space" name="Display" version="0.0.1">
 <!--
- Copyright (C) 2007-2017 Murphy Lab
+ Copyright (C) 2007-2018 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,32 +23,12 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> shape space plot.</description>
+  <description> shape space plot from a diffeomorphic model.</description>
   <command>
-    matlab -r "diary diary.txt;
-    tic;
-    current_directory = pwd; 
-    cellorganizer_directory = getenv('CELLORGANIZER'); 
-    cd( cellorganizer_directory ); 
-    setup(); 
-    cd( current_directory );
-    check_if_files_exist_on_disk_and_link_them_mat('$input');
-
-    NUMBER_OF_LABELS=str2num('$number_of_labels');
-    GRID_SIZE=str2num('$grid_size');
-    DRAW_TRACES=false;
-
-    file = './model00001.mat';
-    options.nlabels = NUMBER_OF_LABELS;
-    options.traces = false;
-    options.subsize = GRID_SIZE;
-
-    show_shape_space_figure_galaxy_wrapper( file, options );
-
-    exit;";
+    bash $__tool_directory__/model2info.sh $model $number_of_labels $grid_size $output.extra_files_path;
   </command>
   <inputs>
-    <param format="mat" name="input" type="data" label="Select diffeomorphic model"></param>
+    <param format="mat" name="model" type="data" label="Select diffeomorphic model"></param>
     <param name="number_of_labels" type="integer" value="5" label="Number of Labels"/>
     <param name="grid_size" type="integer" value="50" label="Grid Size"/>
   </inputs>
@@ -57,7 +37,7 @@
   </outputs>
 <tests>
   <test>
-    <param name="input" value="helamodel_9_16_15.mat" ftype="mat"/>
+    <param name="model" value="helamodel_9_16_15.mat" ftype="mat"/>
     <param name="number_of_labels" value="5" type="integer"/>
     <param name="grid_size" value="50" type="integer"/>
     <output value="script.m" ftype="mat"/>
