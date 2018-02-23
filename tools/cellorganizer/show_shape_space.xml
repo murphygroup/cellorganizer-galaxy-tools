@@ -25,7 +25,7 @@
 -->
   <description> shape space plot from a diffeomorphic model.</description>
   <command>
-    bash $__tool_directory__/model2info.sh $model $number_of_labels $grid_size $output.extra_files_path;
+    bash $__tool_directory__/show_shape_space.sh $model $number_of_labels $grid_size $output.extra_files_path;
   </command>
   <inputs>
     <param format="mat" name="model" type="data" label="Select diffeomorphic model"></param>

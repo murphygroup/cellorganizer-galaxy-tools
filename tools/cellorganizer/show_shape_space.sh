@@ -3,7 +3,7 @@
 MODEL=$1
 NUMBER_OF_LABELS=$2
 GRID_SIZE=$3
-DRAW_TRACES=$4
+DRAW_TRACES=false
 
 cat <<EOF >> script.m
 tic;
