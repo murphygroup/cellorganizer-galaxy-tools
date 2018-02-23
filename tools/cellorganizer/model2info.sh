@@ -1,5 +1,9 @@
 #!/bin/bash
 
+model=$1
+temporary_folder=$2
+
+echo "Writing temporary file"
 cat <<EOF >> script.m
 tic;
 current_directory = pwd; 
@@ -16,6 +20,7 @@ toc,
 exit;
 EOF
 
+echo "Running Matlab script"
 cat script.m | matlab -nodesktop
 rm -fv script.m
 
@@ -30,13 +35,13 @@ if [ -f diary.txt ]; then
 	echo "\`\`\`" >> report.md
 fi
 
-echo "Making temporary folder "$1
-if [ ! -d $1 ]; then
-        mkdir $1
+echo "Making temporary folder "$temporary_folder
+if [ ! -d $temporary_folder ]; then
+        mkdir $temporary_folder
 fi
 
 if [ -f diary.txt ]; then
-    cp -v diary.txt $1
+    cp -v diary.txt $temporary_folder
 fi
 
 echo "Parsing Markdown file into HTML file"
