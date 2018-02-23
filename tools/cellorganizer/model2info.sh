@@ -1,7 +1,7 @@
 #!/bin/bash
 
-model=$1
-temporary_folder=$2
+MODEL=$1
+TEMPORARY_FOLDER=$2
 
 echo "Writing temporary file"
 cat <<EOF >> script.m
@@ -11,7 +11,7 @@ cellorganizer_directory = getenv('CELLORGANIZER');
 cd( cellorganizer_directory ); 
 setup(); 
 cd( current_directory );
-check_if_files_exist_on_disk_and_link_them_mat('$model');
+check_if_files_exist_on_disk_and_link_them_mat('$MODEL');
 load( './model00001.mat' ); 
 diary diary.txt;
 model2info( model );
@@ -35,13 +35,13 @@ if [ -f diary.txt ]; then
 	echo "\`\`\`" >> report.md
 fi
 
-echo "Making temporary folder "$temporary_folder
-if [ ! -d $temporary_folder ]; then
-        mkdir $temporary_folder
+echo "Making temporary folder "$TEMPORARY_FOLDER
+if [ ! -d $TEMPORARY_FOLDER ]; then
+        mkdir $TEMPORARY_FOLDER
 fi
 
 if [ -f diary.txt ]; then
-    cp -v diary.txt $temporary_folder
+    cp -v diary.txt $TEMPORARY_FOLDER
 fi
 
 echo "Parsing Markdown file into HTML file"
