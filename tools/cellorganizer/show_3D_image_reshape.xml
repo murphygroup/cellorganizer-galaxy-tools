@@ -1,5 +1,29 @@
-<tool id="show_3D_image_reshape" name="show_3D_image_reshape" version="0.0.1">
-  <description>Exports the image to a format that can be opened in a web browser.</description>
+<tool id="show_3D_image_reshape" name="Exports 3D image" version="0.0.1">
+<!--
+ Copyright (C) 2007-2017 Murphy Lab
+ Lane Center for Computational Biology
+ School of Computer Science
+ Carnegie Mellon University
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published
+ by the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+
+ For additional information visit http://murphylab.web.cmu.edu or
+ send email to murphy@cmu.edu
+-->
+  <description>to a format that can be opened in a web browser.</description>
   <command interpreter="bash">
     show_3D_image_reshape.sh $input
   </command>
@@ -19,12 +43,12 @@ Exports the image as a PNG file so that it can displayed in a web browser.
 
 **Input**
 
-- 3D synthetic image
+A 3D synthetic image.
 
 -----
 
 **Output**
 
-- A PNG file.
+A PNG file.
 </help>
 </tool>

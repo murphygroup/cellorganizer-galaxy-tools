@@ -1,35 +1,33 @@
 #!/usr/bin/env bash
 
-export PATH=$PATH:$(dirname $0)
-
-WORKING_DIRECTORY=`pwd`
-
-INPUT=$1
-cp -v $INPUT $(pwd)/model.mat
-
+MODEL=$1
 NUMBER_OF_LABELS=$2
 GRID_SIZE=$3
-DRAW_TRACES=$4
+DRAW_TRACES=false
 
-echo "
+cat <<EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-cd ./cellorganizer
-setup();
-cd('$WORKING_DIRECTORY')
+tic;
+current_directory = pwd; 
+cellorganizer_directory = getenv('CELLORGANIZER'); 
+cd( cellorganizer_directory ); 
+setup(); 
+cd( current_directory );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-file = './model.mat';
+check_if_files_exist_on_disk_and_link_them_mat('$MODEL');
+diary diary.txt;
+file = './model00001.mat'; 
 options.nlabels = $NUMBER_OF_LABELS;
 options.traces = $DRAW_TRACES;
 options.subsize = $GRID_SIZE;
 
 show_shape_space_figure_galaxy_wrapper( file, options );
+diary off;
+toc,
+exit;
+EOF
 
-exit;" > script.m
-
-cat script.m
-
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
-
+cat script.m | matlab -nodesktop
+rm -fv script.m

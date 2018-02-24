@@ -1,4 +1,28 @@
 <tool id="tcell_enrichment" name="Build" version="0.0.3">
+<!--
+ Copyright (C) 2007-2017 Murphy Lab
+ Lane Center for Computational Biology
+ School of Computer Science
+ Carnegie Mellon University
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published
+ by the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+
+ For additional information visit http://murphylab.web.cmu.edu or
+ send email to murphy@cmu.edu
+-->
   <description> enrichment plot from a list of T cell models</description>
   <command>
     matlab -r "diary diary.txt;
@@ -33,11 +57,13 @@ Builds a enrichment plot from a list of T cell models.
 
 **Input**
 
-* A list of T cell models
+A list of T cell models.
+
+-----
 
 **Output**
 
-* A PNG file
+A PNG file.
 
 </help>
 </tool>

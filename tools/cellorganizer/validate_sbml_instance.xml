@@ -1,7 +1,31 @@
-<tool id="validate_sbml_instace" name="Validate" version="0.0.1">
-  <description> an SBML Level 3 instance</description>
+<tool id="validate_sbml_instance" name="Validates" version="0.0.1">
+<!--
+ Copyright (C) 2007-2017 Murphy Lab
+ Lane Center for Computational Biology
+ School of Computer Science
+ Carnegie Mellon University
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published
+ by the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+
+ For additional information visit http://murphylab.web.cmu.edu or
+ send email to murphy@cmu.edu
+-->
+  <description>an SBML Level 3 instance.</description>
   <command interpreter="bash"> 
-	sbml_validator.sh $dataset
+	validate_sbml_instance.sh $dataset
   </command>
   <inputs>
 	  <param name="dataset" type="data" format="xml" label="Choose a file for validation" multiple="false" optional="false" />      
@@ -19,6 +43,9 @@
     </output>
   </test>
 </tests>
+<stdio>
+  <exit_code range="1"   level="fatal"   description="Invalid SBML Level 3 instance" />
+</stdio>
 <help>
 **Description**
 
@@ -31,19 +58,19 @@
 
 **Input**
 
-* An SBML Level 3 instance (XML file)
+An SBML Level 3 instance (XML file).
 
 -----
 
 **Options**
 
-* No options are needed
+No options are needed.
 
 -----
 
 **Output**
 
-* If the validator returns true, then this tool reports the file as a valid instance. False, otherwise.
+Returns true if the input file is a valid SBML Level 3 instance. Returns false otherwise.
 
 .. _SBML: http://sbml.org/Documents/Specifications/SBML_Level_3
 .. _validator: http://sbml.org/Facilities/Validator/

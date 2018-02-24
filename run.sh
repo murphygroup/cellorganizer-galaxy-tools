@@ -1,12 +1,22 @@
 #!/bin/bash
 
-cp galaxy.ini galaxy/config
-cp tool_conf.xml galaxy/config
-cp datatypes_conf.xml galaxy/config
-#cp requirements.txt galaxy/requirements.txt
-rsync -ruv datatypes/ galaxy/lib/galaxy/datatypes/
-rsync -ruv tools/ galaxy/tools/
-rsync -ruv tool-data/ galaxy/tool-data # for future usage
+export CELLORGANIZER=/Users/icaoberg/Desktop/cellorganizer3
+export PATH=$PATH:./bftools
 
-cd galaxy
-./run.sh
+if [ $# -eq 0 ]; then
+	rsync -ruv tools/ galaxy/tools/
+	cp tool_conf.xml galaxy/config
+	cd galaxy
+	bash ./run.sh
+fi
+
+if [ $# -eq 1 ]; then
+	cp galaxy.ini galaxy/config
+	cp tool_conf.xml galaxy/config
+	cp datatypes_conf.xml galaxy/config
+	rsync -ruv tool-data/ galaxy/tool-data # for future usage
+	cp welcome.html galaxy/static/
+	rsync -ruv tools/ galaxy/tools/
+	cd galaxy
+	bash ./run.sh
+fi

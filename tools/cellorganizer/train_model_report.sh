@@ -16,6 +16,10 @@ if [ -f model.mat ]; then
     file model.mat
 fi
 
+if [ -f options.mat ]; then
+    file options.mat
+fi
+
 if [ -f param.zip ]; then
     file param.zip
 fi
@@ -24,34 +28,22 @@ if [ -f temp.zip ]; then
     file temp.zip
 fi
     
-echo "# Train generative model tool output" > report.md
-
-if [ -f model_information.txt ]; then
-	echo "\`\`\`" >> report.md
-	cat model_information.txt >> report.md
-	echo "\`\`\`" >> report.md
-fi
-
-echo "* [View Log](./diary.txt)" >> report.md
-if [ -f model.mat ]; then
-	echo "* [Model Download](./model.mat)" >> report.md
-fi
-
+echo "# Train model tool report " > report.md
+echo "## Log " >> report.md
+echo "\`\`\`" >> report.md
+cat diary.txt >> report.md
+echo "\`\`\`" >> report.md
+echo "![Model Download](./model.mat)" >> report.md
+echo " " >> report.md
+echo "![Options Download](./options.mat)" >> report.md
 echo " " >> report.md
 if [ -f param.zip ]; then
-    echo "* [Parameterization Download](./param.zip)" >> report.md
+    echo "![Parameterization Download](./param.zip)" >> report.md
 fi
-
 echo " " >> report.md
 if [ -f temp.zip ]; then
-    echo "* [Temporary Results Download](./temp.zip)" >> report.md
+    echo "![Temporary Results Download](./temp.zip)" >> report.md
 fi
-
-echo " " >> report.md
-if [ -f options.mat ]; then
-    echo "* [Options used in Main function Call](./options.mat)" >> report.md
-fi
-
 
 echo "Making temporary folder "$1
 if [ ! -d $1 ]; then
@@ -63,7 +55,11 @@ if [ -f diary.txt ]; then
 fi
 
 if [ -f model.mat ]; then
-    cp -v model.mat $1
+    mv -v model.mat $1
+fi
+
+if [ -f options.mat ]; then
+    mv -v options.mat $1
 fi
 
 if [ -f param.zip ]; then
@@ -74,19 +70,5 @@ if [ -f temp.zip ]; then
     mv -v  temp.zip $1
 fi
 
-if [ -f options.mat ]; then
-    mv -v  options.mat $1
-fi
-
-#grip report.md --export report.html > /dev/null 2>&1
-#sed -i '' 's/report.md/CellOrganizer+Galaxy/g' report.html
-
-pandoc report.md -o report.html
-
-if [ ! -f model.mat ]; then
-	echo "Model file not found." 
-	exit -1
-else
-	echo "Model file found."
-	exit 0
-fi
+grip report.md --no-inline --export report.html > /dev/null 2>&1
+sed -i '' 's/report.md/CellOrganizer+Galaxy Report/g' report.html

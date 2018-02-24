@@ -1,33 +1,58 @@
-<tool id="import_ometiff_from_url" name="Import OME.TIFF" version="1.0.0">
-  <description> from a URL</description>
+<tool id="import_ometiff_from_url" name="Imports OME.TIFF" version="1.0.0">
+<!--
+ Copyright (C) 2007-2017 Murphy Lab
+ Lane Center for Computational Biology
+ School of Computer Science
+ Carnegie Mellon University
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published
+ by the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+
+ For additional information visit http://murphylab.web.cmu.edu or
+ send email to murphy@cmu.edu
+-->
+  <description>from a URL.</description>
   <command interpreter="bash">
     import_and_validate_ometiff.sh $image_name 
   </command>
   <inputs>
-    <param name="image_name" type="text" value="http://woodstock.compbio.cs.cmu.edu:8080/job/cellorganizer-demo3D34/166/artifact/demos/3D/demo3D34/img/cell1/cell1.ome.tif" label="Provide an image URL"/>
+    <param name="image_name" type="text" value="https://downloads.openmicroscopy.org/images/OME-TIFF/2016-06/modulo/FLIM-ModuloAlongC.ome.tiff" label="Provide an image URL"/>
   </inputs>
   <outputs>
     <data format="tiff" name="image" from_work_dir="image.ome.tif"/>
   </outputs>
-  <help>
+<help>
 
-  **Description**
+**Description**
 
-  Downloads an OME.TIFF from URL and validates the file using BioFormats_ command line tools_.
+Downloads an OME.TIFF from URL and validates the file using BioFormats_ command line tools_.
 
-  -----
+-----
 
-  **Input**
+**Input**
 
-  * A link to an existing OME.TIFF (URL)
+A link to an existing OME.TIFF (URL).
 
-  -----
+-----
 
-  **Output**
+**Output**
 
-  * If the file is a valid OME.TIFF, then the file placed in the workspace of the current history. False otherwise.
+If the file is a valid OME.TIFF, then it is placed in the workspace of the current history. Returns false otherwise.
 
-  .. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
-  .. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools
-  </help>
+.. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
+.. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools
+
+</help>
 </tool>

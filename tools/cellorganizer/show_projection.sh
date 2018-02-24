@@ -1,31 +1,30 @@
 #!/usr/bin/env bash
 
-export PATH=$PATH:$(dirname $0)
-
-WORKING_DIRECTORY=`pwd`
-
 INPUT=$1
-CHANNEL=$2
 
-echo ln -s $INPUT $(pwd)/output.zip
-ln -s $INPUT $(pwd)/output.zip
-unzip ./output.zip
-rm -fv output.zip
-find . -type f -name "*.tif" -exec mv -v {} . \;
-
-echo "
+cat << EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-cd ./cellorganizer
+tic;
+current_directory = pwd; 
+cellorganizer_directory = getenv('CELLORGANIZER'); 
+cd( cellorganizer_directory ); 
 setup();
-cd('$WORKING_DIRECTORY');
+cd( current_directory );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-directory = pwd;
-channel=$CHANNEL
-answer = show_projection_galaxy_wrapper( directory, channel )
+diary diary.txt;
+tic;
+img = ometiff2reshape( '$INPUT' );
+imwrite( img, './output.png' )
+toc,
+diary off;
+exit;" 
+EOF
 
-exit;" > script.m
+cat script.m | matlab -nodesktop -nosplash
+rm -fv script.m
 
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
+if [ ! -f output.png ]; then
+	exit 2
+fi

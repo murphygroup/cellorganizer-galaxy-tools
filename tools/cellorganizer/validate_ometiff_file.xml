@@ -1,5 +1,29 @@
-<tool id="ometiff_validation" name="Validate" version="0.0.1">
-<description> an OME.TIFF</description>
+<tool id="ometiff_validation" name="Validates" version="0.0.1">
+<!--
+ Copyright (C) 2007-2017 Murphy Lab
+ Lane Center for Computational Biology
+ School of Computer Science
+ Carnegie Mellon University
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published
+ by the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+
+ For additional information visit http://murphylab.web.cmu.edu or
+ send email to murphy@cmu.edu
+-->
+<description>an OME.TIFF.</description>
 <command interpreter="bash">
   validate_ometiff_file.sh $dataset
 </command>
@@ -19,6 +43,9 @@
     </output>
   </test>
 </tests>
+<stdio>
+  <exit_code range="1"   level="fatal"   description="Invalid OME.TIFF" />
+</stdio>
 <help>
 **Description**
 
@@ -31,19 +58,19 @@
 
 **Input**
 
-* An OME.TIFF file.
+A OME.TIFF file.
 
 -----
 
 **Options**
 
-* No options are needed
+No options are needed.
 
 -----
 
 **Output**
 
-* If the validator returns true, then this tool reports the file as a valid OME.TIFF. False, otherwise.
+If the validator returns true, then this tool reports the file as a valid OME.TIFF. False, otherwise.
 
 .. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
 .. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools
