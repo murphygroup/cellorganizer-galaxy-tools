@@ -5,6 +5,7 @@ export PATH=$PATH:./bftools
 
 if [ $# -eq 0 ]; then
 	rsync -ruv tools/ galaxy/tools/
+	cp tool_conf.xml galaxy/config
 	cd galaxy
 	bash ./run.sh
 fi

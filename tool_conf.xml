@@ -52,7 +52,7 @@
     <section id="cellorganizer-tools-images" name="Useful tools for images">
       <tool file="cellorganizer/show_image_reshape.xml" />
       <tool file="cellorganizer/show_surface_plot.xml" />
-      <tool file="cellorganizer/show_projection.xml" />
+      <tool file="cellorganizer/show_RGB_projection.xml" />
       <tool file="cellorganizer/show_image_reshape.xml" />
       <tool file="cellorganizer/show_image_information.xml" />
     </section>
