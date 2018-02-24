@@ -47,9 +47,7 @@
       </param>
   </inputs>
   <outputs>
-    <data format="input" name="output" label="${dataset.value} from model repository">
-      <discover_datasets  pattern="(?P&lt;designation&gt;.*)\.mat" />
-    </data>
+    <data format="mat" name="output" label="Model from repository" from_work_dir="model.mat"/>
   </outputs>
 <help>
 
