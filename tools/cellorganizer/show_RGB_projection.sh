@@ -1,34 +1,32 @@
 #!/usr/bin/env bash
 
-export PATH=$PATH:$(dirname $0)
-
-WORKING_DIRECTORY=`pwd`
-
 INPUT=$1
 RED=$2
 GREEN=$3
 BLUE=$4
 
-ln -s $INPUT $(pwd)/output.zip
-unzip ./output.zip
-rm -fv output.zip
-find . -type f -name "*.tif" -exec mv -v {} . \;
-
-echo "Generating Matlab script"
-echo "
+cat << EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-cd ./cellorganizer
+tic;
+current_directory = pwd; 
+cellorganizer_directory = getenv('CELLORGANIZER'); 
+cd( cellorganizer_directory ); 
 setup();
-cd('$WORKING_DIRECTORY');
+cd( current_directory );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-directory = pwd;
-answer = show_RGB_image_galaxy_wrapper( directory, $RED, $GREEN, $BLUE );
-exit;" > script.m
+diary diary.txt;
+tic;
+answer = show_RGB_projection_galaxy_wrapper_ometiff( '$INPUT', $RED, $GREEN, $BLUE );
+toc,
+diary off;
+exit;" 
+EOF
 
-echo "Linking CellOrganizer"
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
+cat script.m | matlab -nodesktop -nosplash
+rm -fv script.m
 
-echo "Running script"
-$MATLAB -nodesktop -nosplash -r "script;"
+if [ ! -f output.png ]; then
+	exit 2
+fi
