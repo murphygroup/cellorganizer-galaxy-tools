@@ -24,13 +24,13 @@
  send email to murphy@cmu.edu
 -->
 <toolbox>
-    <destination id="local" runner="local" >
-	<env id="CELLORGANIZER">/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer</env>
-	<env id="MATLAB">/opt/packages/matlab/R2016a/bin/matlab</env>
-	<env id="BFTOOLS">/pylon1/mc4s8dp/icaoberg/tools/bioformats/bftools</env>
-	<env id="FFMPEG">/usr/local/bin/FFMPEG</env>
-	<env id="PANDOC">/usr/local/bin/pandoc</env>
-    </destination>
+  <destination id="local" runner="local" >
+  	<env id="CELLORGANIZER">/pylon1/mc4s8dp/icaoberg/galaxy/cellorganizer</env>
+  	<env id="MATLAB">/opt/packages/matlab/R2016a/bin/matlab</env>
+  	<env id="BFTOOLS">/pylon1/mc4s8dp/icaoberg/tools/bioformats/bftools</env>
+  	<env id="FFMPEG">/usr/local/bin/FFMPEG</env>
+  	<env id="PANDOC">/usr/local/bin/pandoc</env>
+  </destination>
     
     <section id="get_data" name="Get Data">
       <tool file="data_source/upload.xml" />
@@ -50,10 +50,9 @@
 
     <!-- These are useful tools for images-->
     <section id="cellorganizer-tools-images" name="Useful tools for images">
-      <tool file="cellorganizer/show_image_reshape.xml" />
       <tool file="cellorganizer/show_surface_plot.xml" />
       <tool file="cellorganizer/show_RGB_projection.xml" />
-      <tool file="cellorganizer/show_image_reshape.xml" />
+      <tool file="cellorganizer/show_projection.xml" />
       <tool file="cellorganizer/show_image_information.xml" />
     </section>
 
