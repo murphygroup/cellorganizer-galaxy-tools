@@ -23,18 +23,18 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> shape space plot from a diffeomorphic model.</description>
-  <command>
-    bash $__tool_directory__/show_shape_space.sh $model $number_of_labels $grid_size $output.extra_files_path;
-  </command>
-  <inputs>
-    <param format="mat" name="model" type="data" label="Select diffeomorphic model"></param>
-    <param name="number_of_labels" type="integer" value="5" label="Number of Labels"/>
-    <param name="grid_size" type="integer" value="50" label="Grid Size"/>
-  </inputs>
-  <outputs>
-    <data format="png" name="output" from_work_dir="show_shape_space.png"/>
-  </outputs>
+<description> shape space plot from a diffeomorphic model.</description>
+<command>
+  bash $__tool_directory__/show_shape_space.sh $model $number_of_labels $grid_size $output.extra_files_path;
+</command>
+<inputs>
+  <param format="mat" name="model" type="data" label="Select diffeomorphic model"></param>
+  <param name="number_of_labels" type="integer" value="5" label="Number of Labels"/>
+  <param name="grid_size" type="integer" value="50" label="Grid Size"/>
+</inputs>
+<outputs>
+  <data format="png" name="output" from_work_dir="show_shape_space.png"/>
+</outputs>
 <tests>
   <test>
     <param name="model" value="helamodel_9_16_15.mat" ftype="mat"/>
@@ -43,7 +43,9 @@
     <output value="script.m" ftype="mat"/>
   </test>
 </tests>
-
+<stdio>
+  <exit_code range="1" level="fatal" description="Unable to find output file show_shape_space.png on disk." />
+</stdio>
 <help>
 
 **Description**

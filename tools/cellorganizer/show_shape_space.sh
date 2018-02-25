@@ -5,7 +5,8 @@ NUMBER_OF_LABELS=$2
 GRID_SIZE=$3
 DRAW_TRACES=false
 
-cat <<EOF >> script.m
+echo "Writing temporary file"
+cat << EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 tic;
@@ -29,5 +30,15 @@ toc,
 exit;
 EOF
 
+echo "Running Matlab script"
+cat script.m
 cat script.m | matlab -nodesktop
 rm -fv script.m
+
+if [ -f show_shape_space.png ]; then
+	exit
+fi
+
+if [ ! -f show_shape_space.png ]; then
+	exit 2
+fi
