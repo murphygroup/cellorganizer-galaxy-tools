@@ -40,5 +40,5 @@ if [ -f show_shape_space.png ]; then
 fi
 
 if [ ! -f show_shape_space.png ]; then
-	exit 2
+	exit 1
 fi
