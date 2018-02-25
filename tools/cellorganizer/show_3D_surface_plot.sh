@@ -30,9 +30,19 @@ alphaval = $ALPHAVAL;
 f = figure('visible','off');
 syn2surfaceplot_ometiff( './img.ome.tif', colors, viewangles, alphaval );
 saveas( f, 'output.png', 'png' );
+toc,
 exit;
 EOF
 
 echo "Running Matlab script"
-cat script.m | matlab -nodesktop -nosplash
+cat script.m
+cat script.m | matlab -nodesktop -nosplash 2>/dev/null 
 rm -fv script.m
+
+if [ -f output.png ]; then
+	exit
+fi
+
+if [ ! -f output.png ]; then
+	exit 1
+fi
