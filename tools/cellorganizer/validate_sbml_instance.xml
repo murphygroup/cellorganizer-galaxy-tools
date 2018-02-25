@@ -31,7 +31,7 @@
 	  <param name="dataset" type="data" format="xml" label="Choose a file for validation" multiple="false" optional="false" />      
   </inputs>
   <outputs>
-    <data name="output" format="xml" label="Validation of ${dataset.name}" from_work_dir="sbml.xml"/>
+    <data name="output" format="html" label="Validation of ${dataset.name}" from_work_dir="report.html"/>
   </outputs>
 <tests>
   <test>
