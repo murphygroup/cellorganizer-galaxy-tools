@@ -1,4 +1,4 @@
-<tool id="generate_3D_surface_plot" name="Generates a surface plot" version="0.0.1">
+<tool id="generate_3D_surface_plot" name="Generates" version="0.0.1">
 <!--
  Copyright (C) 2007-2017 Murphy Lab
  Lane Center for Computational Biology
@@ -23,23 +23,26 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>from a 3D synthetic image.</description>
-  <command interpreter="bash">
-    show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
-  </command>
-  <inputs>
-    <!-- 3D images -->
-    <param format="zip" name="input" type="data" label="3D Image"></param>
-    <!-- view angle in the x-direction -->
-    <param name="viewanglex" type="integer" value="20" label="View Angle on x-Direction"/>
-    <!-- view angle in the y-direction -->
-    <param name="viewangley" type="integer" value="-30" label="View Angle on y-Direction"/>
-    <!-- alpha value -->
-    <param name="alphavalue" type="float" value="0.1" label="Alpha-Value"/>
-  </inputs>
-  <outputs>
-    <data format="png" name="output" from_work_dir="output.png"/>
-  </outputs>
+<description> a surface plot from a 3D OME.TIFF image.</description>
+<command>
+  bash $__tool_directory__/show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
+</command>
+<inputs>
+  <!-- 3D image -->
+  <param format="tiff" name="input" type="data" label="3D OME.TIFF"></param>
+  <!-- view angle in the x-direction -->
+  <param name="viewanglex" type="integer" value="20" label="View Angle on x-Direction"/>
+  <!-- view angle in the y-direction -->
+  <param name="viewangley" type="integer" value="-30" label="View Angle on y-Direction"/>
+  <!-- alpha value -->
+  <param name="alphavalue" type="float" value="0.1" label="Alpha-Value"/>
+</inputs>
+<outputs>
+  <data format="png" name="output" from_work_dir="output.png"/>
+</outputs>
+<stdio>
+  <exit_code range="1" level="fatal" description="Unable to find output file output.png on disk." />
+</stdio>
 <help>
 
 **Description**

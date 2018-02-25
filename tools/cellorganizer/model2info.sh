@@ -4,13 +4,17 @@ MODEL=$1
 TEMPORARY_FOLDER=$2
 
 echo "Writing temporary file"
-cat <<EOF >> script.m
+cat << EOF >> script.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT MODIFY THIS BLOCK
 tic;
 current_directory = pwd; 
 cellorganizer_directory = getenv('CELLORGANIZER'); 
 cd( cellorganizer_directory ); 
 setup(); 
 cd( current_directory );
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 check_if_files_exist_on_disk_and_link_them_mat('$MODEL');
 load( './model00001.mat' ); 
 diary diary.txt;

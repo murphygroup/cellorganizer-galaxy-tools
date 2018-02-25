@@ -1,25 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-export PATH=$PATH:$(dirname $0)
-
-WORKING_DIRECTORY=`pwd`
-
-INPUT=$1
+IMAGE=$1
 VIEWANGLEX=$2
 VIEWANGLEY=$3
 ALPHAVAL=$4
 
-cp -v $INPUT $(pwd)/output.zip
-unzip ./output.zip
-rm -fv output.zip
-find . -type f -name "*.tif" -exec mv -v {} . \;
+echo "Linking image to current working directory"
+ln -s $IMAGE $(pwd)/img.ome.tif
 
-echo "
+echo "Writing temporary file"
+cat << EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-cd ./cellorganizer
-setup();
-cd('$WORKING_DIRECTORY');
+tic;
+current_directory = pwd; 
+cellorganizer_directory = getenv('CELLORGANIZER'); 
+cd( cellorganizer_directory ); 
+setup(); 
+cd( current_directory );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 colors = {'blue', 'green' 'red'};
@@ -30,10 +28,21 @@ alphaval = $ALPHAVAL;
 
 % show shape space by calling the function
 f = figure('visible','off');
-syn2surfaceplot( pwd, colors, viewangles, alphaval );
+syn2surfaceplot_ometiff( './img.ome.tif', colors, viewangles, alphaval );
 saveas( f, 'output.png', 'png' );
+toc,
+exit;
+EOF
 
-exit;" > script.m
+echo "Running Matlab script"
+cat script.m
+cat script.m | matlab -nodesktop -nosplash 2>/dev/null 
+rm -fv script.m
 
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
+if [ -f output.png ]; then
+	exit
+fi
+
+if [ ! -f output.png ]; then
+	exit 1
+fi
