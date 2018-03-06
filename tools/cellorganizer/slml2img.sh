@@ -37,5 +37,5 @@ exit;
 EOF
 
 echo "Running Matlab script"
-cat script.m | matlab -nodesktop
+cat script.m | matlab -nodesktop 2>/dev/null
 rm -fv script.m
