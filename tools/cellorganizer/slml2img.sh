@@ -24,9 +24,11 @@ options.synthesis = '$options_synthesis';
 options.output.tifimages = false;
 options.output.OMETIFF = true;
 options.numberOfSynthesizedImages = 5;
-filenames = strsplit('$data', ',');
 
 check_if_files_exist_on_disk_and_link_them_mat('$data');
+files = dir( [ pwd filesep '*.mat']);
+filenames = {};
+for i=1:length(files); filenames{length(filenames)+1}=[pwd filesep files(i).name]; end
 diary diary.txt;
 answer = slml2img(filenames, options);
 diary off;
