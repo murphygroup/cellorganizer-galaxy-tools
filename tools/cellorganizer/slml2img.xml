@@ -25,12 +25,15 @@
 -->
   <description>from a valid SLML model.</description>
   <command interpreter="bash">
+      <!--
     slml2img.sh $data $options_synthesis $dimensionality $options_spherical_cell $options_microscope $options_sample_method $seed
+    -->
+    slml2img.sh $dataset $options_synthesis $other_options.compression $other_options.seed
   </command>
 
   <inputs>
     <!-- select datasets -->
-    <param name="dataset" type="data" label="Select models(s)"/>
+    <param name="dataset" type="data" multiple="true" label="Select models(s)" min="1" max="10"/>
 
     <!-- synthesis option -->
     <param name="options_synthesis" type="select" label="Synthesis option">
@@ -38,9 +41,8 @@
       <option value="framework">framework</option>
       <option value="all" selected="true">all</option>
     </param>
-
+    <!--
     <section name="dimensionality" title="Dimensionality Options" expanded="True">
-      <!-- dimensionality -->
       <conditional name="dimensionality">
         <param name="dimensionality" type="select" label="dimensionality">
           <option value="2D" selected="true">2D</option>
@@ -50,13 +52,11 @@
           <param name="options_spherical_cell" type="boolean" label="spherical_cell" checked="true" />
         </when>
         <when value="3D">
-          <!-- options.microscope -->
           <param name="options_microscope" type="select" label="options.microscope">
             <option value="none" selected="true">None</option>
             <option value="SVI">SVI</option>
           </param>
 
-          <!-- options.sample.method -->
           <param name="options_sample_method" type="select" label="options.sample.method">
             <option value="disc" selected="true">disc</option>
             <option value="sampled">sampled</option>
@@ -64,7 +64,7 @@
         </when>
        </conditional>
     </section>
-
+    -->
     <section name="other_options" title="Other options" expanded="False">
       <!-- output options -->
       <param name="options.tifimages" type="boolean" label="Write TIF image(s)" checked="true" />
@@ -87,10 +87,12 @@
       <param name="options_debug" type="boolean" label="Debug mode" checked="false" />
       <param name="options_display" type="boolean" label="Display mode" checked="false" />
       <param name="options_verbose" type="boolean" label="Verbose mode" checked="false" />
+      <param name="options_output_tifimages" type="boolean" label="Output TIFF" checked="false" />
+      <param name="options_output_OMETIFF" type="boolean" label="Output OMETIFF" checked="true" />
     </section>
   </inputs>
   <outputs>
-    <data format="txt" name="output" />
+    <data auto_format="true"  name="images" from_work_dir="imgs"/>
   </outputs>
 <help>
 

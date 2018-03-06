@@ -29,7 +29,7 @@ class Binary( data.Data ):
     """Binary data"""
     edam_format = "format_2333"
     sniffable_binary_formats = []
-    unsniffable_binary_formats = []
+    unsniffable_binary_formats = ["mat"]
 
     @staticmethod
     def register_sniffable_binary_format(data_type, ext, type_class):
@@ -89,6 +89,8 @@ class Mat( Binary ):
 
     def sniff( self, filename ):
         return False
+
+Binary.register_unsniffable_binary_ext("mat")
 
 
 class Ab1( Binary ):

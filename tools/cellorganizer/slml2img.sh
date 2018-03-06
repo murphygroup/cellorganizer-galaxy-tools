@@ -1,15 +1,39 @@
 #!/usr/bin/env bash
 
-export PATH=$PATH:$(dirname $0)
+data=$1
+options_synthesis=$2
+compression=$3
+seed=$4
 
-WORKING_DIRECTORY=`pwd`
+echo "Writing temporary file"
+cat << EOF >> script.m
+tic;
+current_directory = pwd;
+cellorganizer_directory = getenv('CELLORGANIZER');
+cd( cellorganizer_directory );
+setup();
+cd( current_directory );
 
-echo "
-exit;" > script.m
+options.seed = $seed;
+options.targetDirectory = current_directory;
+options.prefix = 'imgs';
+options.compression = '$compression';
+options.debug = false;
+options.display = false;
+options.synthesis = '$options_synthesis';
+options.output.tifimages = false;
+options.output.OMETIFF = true;
+options.numberOfSynthesizedImages = 5;
+filenames = strsplit('$data', ',');
 
-echo "Running the following script in Matlab"
-cat script.m
+check_if_files_exist_on_disk_and_link_them_mat('$data');
+diary diary.txt;
+answer = slml2img(filenames, options);
+diary off;
+toc;
+exit;
+EOF
 
-echo $WORKING_DIRECTORY
-ln -s $CELLORGANIZER $(pwd)/cellorganizer
-$MATLAB -nodesktop -nosplash -r "script;"
+echo "Running Matlab script"
+cat script.m | matlab -nodesktop
+rm -fv script.m
