@@ -14,6 +14,10 @@ if [ $# -eq 1 ]; then
 	if [ "$1" == "install" ]; then
 		git submodule init
 		git submodule update
+		cd galaxy
+		git fetch --all
+		git checkout release_17.09
+		cd ..
 		cp galaxy.ini galaxy/config
 		cp tool_conf.xml galaxy/config
 		cp datatypes_conf.xml galaxy/config
