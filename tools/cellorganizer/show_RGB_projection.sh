@@ -21,7 +21,7 @@ tic;
 answer = show_RGB_projection_galaxy_wrapper_ometiff( '$INPUT', $RED, $GREEN, $BLUE );
 toc,
 diary off;
-exit;" 
+exit; 
 EOF
 
 cat script.m | matlab -nodesktop -nosplash
