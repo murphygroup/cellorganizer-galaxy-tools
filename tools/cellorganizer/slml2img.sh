@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SCRIPT=$1
+#2>/dev/null
 cat $SCRIPT | matlab -nodesktop -nosplash
 rm -fv $SCRIPT
 

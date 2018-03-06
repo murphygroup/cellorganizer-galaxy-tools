@@ -52,7 +52,7 @@
     answer = slml2img(filenames, options);
     diary off;
     toc;
-    exit;" > script.m
+    exit;" > script.m;
     cat script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;
@@ -82,16 +82,23 @@
           <param name="options_microscope" type="select" label="options.microscope">
             <option value="none" selected="true">None</option>
             <option value="SVI">SVI</option>
-          </param>
+	  </param>
+	  </when>
+	  </conditional>
+	  <section>
+-->
+    <!-- Microscope option -->
+    <param name="options_microscope" type="select" label="options.microscope">
+	<option value="none" selected="true"> None </option>
+	<option value="SVI"> SVI </option>
+    </param>
 
-          <param name="options_sample_method" type="select" label="options.sample.method">
-            <option value="disc" selected="true">disc</option>
-            <option value="sampled">sampled</option>
-          </param>
-        </when>
-       </conditional>
-    </section>
-    -->
+    <!-- Sampling option -->
+    <param name="options_sample_method" type="select" label="options.sample.method">
+	<option value="disc" selected="true">disc</option>
+	<option value="sampled">sampled</option>
+    </param>
+    
     <section name="other_options" title="Other options" expanded="False">
       <!-- output options -->
       <param name="options.tifimages" type="boolean" label="Write TIF image(s)" checked="true" />
@@ -102,9 +109,9 @@
       <!-- seed for random number generator -->
       <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
 
-      <!-- number of synthesized images -->
+      <!-- number of synthesized images 
       <param name="number_of_synthesized_images" type="integer" value="1" label="Number of synthesized images"/>
-
+	-->
       <!-- image compression -->
       <param name="compression" type="select" label="Image compression">
         <option value="lzw" selected="true">LZW</option>
