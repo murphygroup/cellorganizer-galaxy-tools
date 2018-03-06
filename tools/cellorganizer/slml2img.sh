@@ -4,6 +4,7 @@ data=$1
 options_synthesis=$2
 compression=$3
 seed=$4
+advanced=$5
 
 echo "Writing temporary file"
 cat << EOF >> script.m
@@ -35,6 +36,8 @@ diary off;
 toc;
 exit;
 EOF
+
+echo $advanced
 
 echo "Running Matlab script"
 cat script.m | matlab -nodesktop 2>/dev/null
