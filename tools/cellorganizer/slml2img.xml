@@ -24,11 +24,12 @@
  send email to murphy@cmu.edu
 -->
   <description>from a valid SLML model.</description>
-  <command interpreter="bash">
+  <command>
       <!--
     slml2img.sh $data $options_synthesis $dimensionality $options_spherical_cell $options_microscope $options_sample_method $seed
     -->
-    slml2img.sh $dataset $options_synthesis $other_options.compression $other_options.seed
+
+    bash $__tool_directory__/slml2img.sh $dataset $options_synthesis $other_options.compression $other_options.seed $advanced
   </command>
 
   <inputs>
@@ -90,6 +91,14 @@
       <param name="options_output_tifimages" type="boolean" label="Output TIFF" checked="false" />
       <param name="options_output_OMETIFF" type="boolean" label="Output OMETIFF" checked="true" />
     </section>
+
+    <section name="advanced" title="Advanced options" expanded="false">
+      <repeat name="advanced" title="Options">
+        <param name="name" type="text" label="Name"> </param>
+        <param name="value" type="text" label="Value"></param>
+      </repeat>
+    </section>
+
   </inputs>
   <outputs>
     <data auto_format="true"  name="images" from_work_dir="imgs"/>
