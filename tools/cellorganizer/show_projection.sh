@@ -16,10 +16,10 @@ cd( current_directory );
 diary diary.txt;
 tic;
 img = ometiff2reshape( '$INPUT' );
-imwrite( img, './output.png' )
+imwrite( img, './output.png' );
 toc,
 diary off;
-exit;" 
+exit; 
 EOF
 
 cat script.m | matlab -nodesktop -nosplash
