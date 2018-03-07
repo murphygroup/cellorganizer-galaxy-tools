@@ -46,7 +46,7 @@
     options.debug = false;
     options.display = false;
 
-    options.train.flag = $trainflag;
+    options.train.flag = '$trainflag';
     
     options.nucleus.class = '$nucleus.class';
     options.nucleus.type = '$nucleus.type';
@@ -81,8 +81,10 @@
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;
     
-    bash $__tool_directory__/img2slml.sh "output.extra_files_path/script.m";
+    bash $__tool_directory__/img2slml.sh "$output.extra_files_path/script.m";
+    <!--
     bash $__tool_directory__/train_model_report.sh "output.extra_files_path/report.html";
+    -->
     <!--
     matlab -r "
     check_if_files_exist_on_disk_and_link_them('$dataset');
@@ -128,7 +130,7 @@
   <inputs>
 
       <section name="imgdir" title="image directory" expanded="True">
-	  <param name="dataset" format="tiff" type="data" label="OME.TIFF(s)"/>
+	  <param name="dataset" format="tiff" type="data" multiple="true" label="OME.TIFF(s)" min="1" max="50"/>
       </section>
       
       <param name="trainflag" label="Select the cellular components desired for modeling" type="select">
@@ -566,11 +568,15 @@
 
   </inputs>
   -->
+  <!--
   <outputs>
     <data format="mat" name="output1" from_work_dir="model.mat"/>
     <data format="html" name="output2" from_work_dir="report.html"/>
   </outputs>
-
+-->
+    <outputs>
+	<data format="mat" name="output" from_work_dir="model.mat"/>
+    </outputs>
 <help>
 
 **Description**
