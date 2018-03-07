@@ -25,13 +25,54 @@
 -->
   <description>a generative model.</description>
   <command>
-    matlab -r "diary diary.txt;
-    tic; 
-    current_directory = pwd; 
-    cellorganizer_directory = getenv('CELLORGANIZER'); 
-    cd( cellorganizer_directory ); 
-    setup(); 
+    echo -e "tic;
+    current_directory = pwd;
+    cellorganizer_directory = getenv('CELLORGANIZER');
+    cd( cellorganizer_directory );
+    setup();
     cd( current_directory );
+
+    dimensionality = $dimensionalty;
+    dnaImgDir = $imgdir.dna;
+    cellImgDir = $imgdir.cell;
+    protImgDir = $imgdir.protein;
+
+
+    check_if_files_exist_on_disk_and_link_them();
+    files
+
+    options.verbose = true;
+    options.debug = false;
+    options.display = false;
+    options.train.flag = $trainflag;
+    options.nucleus.class = $;
+    options.cell.class = $;
+    options.cell.type = $;
+    options.protein.class = $;
+    options.protein.type = $;
+    options.model.diffeomorphic.distance_computing_method = $;
+    options.masks = $;
+    options.model.resolution = [ 0.49, 0.49 ];
+    options.model.filename = ;
+    options.model.id = ;
+    options.model.name = ;
+    options.nucleus.name = ;
+    options.cell.model = ;
+    options.downsampling = [5, 5];
+    options.model.diffeomorphic.com_align = ;
+ 
+    check_if_files_exist_on_disk_and_link_them('$dataset');
+
+    diary diary.txt;
+    answer = img2slml( dimensionality, dna, cell, protein, options );
+    diary off;
+    toc;
+    exit;" > script.m;
+
+    bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
+    
+    <!--
+    matlab -r "
     check_if_files_exist_on_disk_and_link_them('$dataset');
 
     #if str( $train.trainflag ) == "all"
@@ -70,7 +111,96 @@
     exit;";
     
     bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
+    -->
   </command>
+  <inputs>
+
+      <section name="imgdir" title="image directories" expanded="True">
+	  <conditional name="use dna">
+	      <param name="selector" type="select" label="Choose whether dna images will be used">
+		  <option value="no"> no </option>
+		  <option value="yes"> yes </option>
+	      </param>
+	      <when value="no"
+	  <param name="dna" format="tiff" type="data" label="OME.TIFF"/>
+	  <param name="cell" format="tiff" type="data" label="OME.TIFF"/>
+	  <param name="protein" format="tiff" type="data" label="OME.TIFF"/>
+      </section>
+      
+      <param name="trainflag" label="Select the cellular components desired for modeling" type="select">
+	  <option value="all" selected="true"> all </option>
+	  <option value="framework"> framework </option>
+      </param>
+
+      <param name="dimensionality" type="select" label="dimensionality">
+	  <option value="2"> 2D </option>
+	  <option value="3"> 3D </option>
+      </param>
+      
+      <section name="nucleus" title="nucleus options" expanded="True">
+	  <param name="class" type="select" label="class">
+	      <option value="nuclear_membrane"> nuclear membrane </option>
+	      <option value="framework"> framework </option>
+	  </param>
+	  <param name="type" type="select" label="type">
+	      <option value="diffeomorphic"> diffeomorphic </option>
+	      <option value="cylindrical_surface"> cylindrical surface </option>
+	      <option value="medial_axis"> medial axis </option>
+	      <option value="pca"> pca </option>
+	  </param>
+      </section>
+      
+      
+      <section name="cell" title="cell options" expanded="False">
+	  <param name="class" type="select" label="class">
+	      <option value="cell_membrane"> cell membrane </option>
+	      <option value="framework"> framework </option>
+	  </param>
+	  <param name="type" type="select" label="type">
+	      <option value="ratio"> ratio </option>
+	      <option value="diffeomorphic"> diffeomorphic </option>
+	      <option value="pca"> pca </option>
+	  </param>
+	  <param name="model" type="select" label="model">
+	      <option value="lamp2"> LAMP 2 </option>
+	      <option value="Tub"> Tub </option>
+	      <option value="framework"> framework </option>
+	  </param>
+      </section>
+
+
+    <section name="protein" title="protein options" expanded="True">
+	<param name="class" type="select" label="class">
+	    <option value="vesicle"> vesicle </option>
+	    <option value="lysosome"> lysosome </option>
+	    <option value="nuc"> nuc </option>
+	    <option value="microtubule"> microtubule </option>
+	    <option value="network"> network </option>
+	    <option value="standardized_voxels"> standardized_voxels </option>
+	</param>
+	<param name="type" type="select" label="type">
+	    <option value="gmm"> gmm </option>
+	    <option value="microtubule_growth"> microtubule growth </option>
+	    <option value="standardized_map_half-ellipsoid"> standardized map half-ellipsoid </option>
+	    <option value="morphing"> morphing </option>
+	</param>
+	<param name="name" type="select" label="name">
+	    <option value="lamp2"> lamp 2 </option>
+	    <option value="Tub"> Tub </option>
+	</param>
+	<param name="cytonuclearflag" type="select" label="cytonuclearflag">
+	    <option value="nuc"> nuc </option>
+	    <option value="cyto"> cyto </option>
+	</param>
+    </section>
+    <section name="model" title="model options" expanded="false">
+	<repeat name="option" title="Options">
+	    <param name="name" type="text" label="Name"></param>
+	    <param name="value" type="text" label="Value"></param>
+	</repeat>
+    </section>
+</inputs>
+  <!--
   <inputs>
     <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
     <param name="modelname" type="text" value="model" label="Provide a name for the model"/>
@@ -430,6 +560,7 @@
     </section>
 
   </inputs>
+  -->
   <outputs>
     <data format="mat" name="output1" from_work_dir="model.mat"/>
     <data format="html" name="output2" from_work_dir="report.html"/>
