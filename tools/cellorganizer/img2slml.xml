@@ -32,45 +32,57 @@
     setup();
     cd( current_directory );
 
-    dimensionality = $dimensionalty;
-    dnaImgDir = $imgdir.dna;
-    cellImgDir = $imgdir.cell;
-    protImgDir = $imgdir.protein;
-
-
-    check_if_files_exist_on_disk_and_link_them();
-    files
+    dimensionality = $dimensionality;
+    
+    check_if_files_exist_on_disk_and_link_them('$imgdir.dataset');
+    files = dir( [ pwd filesep '*.ome.tif'] );
+    num_files = length(files);
+    options.masks = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],1),3 ), 1:num_files, 'UniformOutput', false);
+    dnaImgDir = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],2),3 ), 1:num_files, 'UniformOutput', false);
+    cellImgDir = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],3),3 ), 1:num_files, 'UniformOutput', false);
+    protImgDir = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],4),3 ), 1:num_files, 'UniformOutput', false);
 
     options.verbose = true;
     options.debug = false;
     options.display = false;
+
     options.train.flag = $trainflag;
-    options.nucleus.class = $;
-    options.cell.class = $;
-    options.cell.type = $;
-    options.protein.class = $;
-    options.protein.type = $;
-    options.model.diffeomorphic.distance_computing_method = $;
-    options.masks = $;
-    options.model.resolution = [ 0.49, 0.49 ];
-    options.model.filename = ;
-    options.model.id = ;
-    options.model.name = ;
-    options.nucleus.name = ;
-    options.cell.model = ;
-    options.downsampling = [5, 5];
-    options.model.diffeomorphic.com_align = ;
- 
-    check_if_files_exist_on_disk_and_link_them('$dataset');
+    
+    options.nucleus.class = '$nucleus.class';
+    options.nucleus.type = '$nucleus.type';
+
+    options.cell.class = '$cell.class';
+    options.cell.type = '$cell.type';
+    options.cell.model = '$cell.model';
+
+    options.protein.class = '$protein.class';
+    options.protein.type = '$protein.type';
+    options.protein.name = '$protein.name';
+    options.protein.cytonuclearflag = '$protein.cytonuclearflag';
+
+    options.model.resolution = str2num('$model.resolution');
+    options.model.downsampling = str2num('$model.downsampling');
+
+    #for $field in $model.option
+	options.${field.name}=${field.value};
+    #end for
 
     diary diary.txt;
-    answer = img2slml( dimensionality, dna, cell, protein, options );
+    answer = img2slml( dimensionality, dnaImgDir, cellImgDir, proteinImgDir, options );
+    diary off;
+
+    diary model_information.txt;
+    if exist( './model.mat' ) load( './model.mat' ); model2info( model ); end;
     diary off;
     toc;
     exit;" > script.m;
-
-    bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
     
+    cat script.m;
+    if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
+    cp script.m $output.extra_files_path;
+    
+    bash $__tool_directory__/img2slml.sh "output.extra_files_path/script.m";
+    bash $__tool_directory__/train_model_report.sh "output.extra_files_path/report.html";
     <!--
     matlab -r "
     check_if_files_exist_on_disk_and_link_them('$dataset');
@@ -115,16 +127,8 @@
   </command>
   <inputs>
 
-      <section name="imgdir" title="image directories" expanded="True">
-	  <conditional name="use dna">
-	      <param name="selector" type="select" label="Choose whether dna images will be used">
-		  <option value="no"> no </option>
-		  <option value="yes"> yes </option>
-	      </param>
-	      <when value="no"
-	  <param name="dna" format="tiff" type="data" label="OME.TIFF"/>
-	  <param name="cell" format="tiff" type="data" label="OME.TIFF"/>
-	  <param name="protein" format="tiff" type="data" label="OME.TIFF"/>
+      <section name="imgdir" title="image directory" expanded="True">
+	  <param name="dataset" format="tiff" type="data" label="OME.TIFF(s)"/>
       </section>
       
       <param name="trainflag" label="Select the cellular components desired for modeling" type="select">
@@ -150,7 +154,6 @@
 	  </param>
       </section>
       
-      
       <section name="cell" title="cell options" expanded="False">
 	  <param name="class" type="select" label="class">
 	      <option value="cell_membrane"> cell membrane </option>
@@ -167,7 +170,6 @@
 	      <option value="framework"> framework </option>
 	  </param>
       </section>
-
 
     <section name="protein" title="protein options" expanded="True">
 	<param name="class" type="select" label="class">
@@ -193,7 +195,10 @@
 	    <option value="cyto"> cyto </option>
 	</param>
     </section>
+    
     <section name="model" title="model options" expanded="false">
+	<param name="resolution" type="text" label="model resolution (input should be numeric sequence delimited by single space)"/>
+	<param name="downsampling" type="text" label="model downsampling (input should be numeric sequence delimited by single space)"/>
 	<repeat name="option" title="Options">
 	    <param name="name" type="text" label="Name"></param>
 	    <param name="value" type="text" label="Value"></param>
