@@ -31,183 +31,75 @@
     cd( cellorganizer_directory );
     setup();
     cd( current_directory );
-
-    dimensionality = $dimensionality;
-    
-    check_if_files_exist_on_disk_and_link_them('$imgdir.dataset');
+    dimensionality = '$train.dim.dimensionality';
+    check_if_files_exist_on_disk_and_link_them('$dataset');
     files = dir( [ pwd filesep '*.ome.tif'] );
     num_files = length(files);
-    options.masks = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],1),3 ), 1:num_files, 'UniformOutput', false);
-    dnaImgDir = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],2),3 ), 1:num_files, 'UniformOutput', false);
-    cellImgDir = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],3),3 ), 1:num_files, 'UniformOutput', false);
-    protImgDir = arrayfun(@() flipdim( OME_loadchannel([directory filesep files{i}],4),3 ), 1:num_files, 'UniformOutput', false);
-
     options.verbose = true;
     options.debug = false;
     options.display = false;
-
-    options.train.flag = '$trainflag';
-    
-    options.nucleus.class = '$nucleus.class';
-    options.nucleus.type = '$nucleus.type';
-
-    options.cell.class = '$cell.class';
-    options.cell.type = '$cell.type';
-    options.cell.model = '$cell.model';
-
-    options.protein.class = '$protein.class';
-    options.protein.type = '$protein.type';
-    options.protein.name = '$protein.name';
-    options.protein.cytonuclearflag = '$protein.cytonuclearflag';
-
-    options.model.resolution = str2num('$model.resolution');
-    options.model.downsampling = str2num('$model.downsampling');
-
-    #for $field in $model.option
-	options.${field.name}=${field.value};
+    options.train.flag = '$train.trainflag';
+    files = sort_nat({files.name});
+    directory = pwd;
+    if strcmpi( options.train.flag, 'nucleus' );
+    for i = 1:length(files);
+        dnaImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],2),3 );
+        cellImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],3),3 );
+        protImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],4),3 );
+    end;
+    end;
+    if strcmpi( options.train.flag, 'framework' );
+    for i = 1:length(files);
+        dnaImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],2),3 );
+        cellImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],3),3 );
+        protImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],4),3 );
+    end;
+    end;
+    if strcmpi( options.train.flag, 'all' );
+    for i = 1:length(files);
+        dnaImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],2),3 );
+        cellImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],3),3 );
+        protImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],4),3 );
+    end;
+    end;
+    options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
+    options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
+    options.cell.class = '$train.dim.mem.cclasstype.cellclass';
+    options.cell.type = '$train.dim.mem.cclasstype.celltype';
+    #if str( $train.trainflag ) == "all"
+    options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
+    options.protein.type = '$train.dim.pro.proteincytonuclearflag';
+    options.protein.name = '$train.dim.pro.proteinname';
+    options.protein.cytonuclearflag = '$train.dim.pro.proteincytonuclearflag';
+    #end if
+    options.model.resolution = OME_getResolution('./cell00001.ome.tif');
+    if strcmpi( dimensionality, '2D' )
+      if size(options.model.resolution,2) > 2
+        options.model.resolution = options.model.resolution(1:2);
+      end;
+      options.model.downsampling = [$gen.downsamplex $gen.downsampley];
+    else
+      options.model.downsampling = [$gen.downsamplex $gen.downsampley $gen.downsamplez];
+    end;
+    #for $field in $advanced.options
+       options.${field.name}=${field.value};
     #end for
-
+    options.model.filename = 'model.xml';
     diary diary.txt;
-    answer = img2slml( dimensionality, dnaImgDir, cellImgDir, proteinImgDir, options );
-    diary off;
-
-    diary model_information.txt;
-    if exist( './model.mat' ) load( './model.mat' ); model2info( model ); end;
-    diary off;
-    toc;
-    exit;" > script.m;
-    
-    cat script.m;
-    if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
-    cp script.m $output.extra_files_path;
-    
-    bash $__tool_directory__/img2slml.sh "$output.extra_files_path/script.m";
-    <!--
-    bash $__tool_directory__/train_model_report.sh "output.extra_files_path/report.html";
-    -->
-    <!--
-    matlab -r "
-    check_if_files_exist_on_disk_and_link_them('$dataset');
-
-    #if str( $train.trainflag ) == "all"
-      selection_flag('$train.dim.dimensionality','nucleus','$train.dim.nuc.nclasstype.nucleusclass','$train.dim.nuc.nclasstype.nucleustype');
-      selection_flag('$train.dim.dimensionality','cell','$train.dim.mem.cclasstype.cellclass','$train.dim.mem.cclasstype.celltype');
-      selection_flag('$train.dim.dimensionality','protein','$train.dim.pro.pclasstype.proteinclass','$train.dim.pro.pclasstype.proteintype');
-    #end if
-    #if str( $train.trainflag ) == "framework"
-      selection_flag('$train.dim.dimensionality','nucleus','$train.dim.nuc.nclasstype.nucleusclass','$train.dim.nuc.nclasstype.nucleustype');
-      selection_flag('$train.dim.dimensionality','cell','$train.dim.mem.cclasstype.cellclass','$train.dim.mem.cclasstype.celltype');
-    #end if
-    #if str( $train.trainflag ) == "nuclear"
-      selection_flag('$train.dim.dimensionality','nucleus','$train.dim.nuc.nclasstype.nucleusclass','$train.dim.nuc.nclasstype.nucleustype');
-    #end if
-
-    documentation = struct();
-    #for $field in $doc.documentation
-      documentation = setfield( documentation, '${field.docname}', '${field.docvalues}' );
-    #end for
-
-    #if str( $train.trainflag ) == "all"
-      train_model('$train.dim.dimensionality','$maskchannel','$train.dim.nuc.dnachannel','$train.dim.mem.cellchannel','$train.dim.pro.proteinchannel','$train.trainflag','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$train.dim.nuc.nclasstype.nucleustype','$train.dim.nuc.nucleusname','$train.dim.nuc.nclasstype.nucleusclass','$train.dim.nuc.nucleusid','$train.dim.mem.cclasstype.celltype','$train.dim.mem.cellname','$train.dim.mem.cclasstype.cellclass','$train.dim.mem.cellid','$train.dim.pro.pclasstype.proteintype','$train.dim.pro.proteinname','$train.dim.pro.pclasstype.proteinclass','$train.dim.pro.proteinid','$train.dim.pro.proteincytonuclearflag',documentation,'$gen.verbose','$gen.debug');
-    #end if
-    #if str( $train.trainflag ) == "framework"
-      train_model('$train.dim.dimensionality','$maskchannel','$train.dim.nuc.dnachannel','$train.dim.mem.cellchannel','','$train.trainflag','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$train.dim.nuc.nclasstype.nucleustype','$train.dim.nuc.nucleusname','$train.dim.nuc.nclasstype.nucleusclass','$train.dim.nuc.nucleusid','$train.dim.mem.cclasstype.celltype','$train.dim.mem.cellname','$train.dim.mem.cclasstype.cellclass','$train.dim.mem.cellid','','','','','',documentation,'$gen.verbose','$gen.debug');
-    #end if
-    #if str( $train.trainflag ) == "nuclear"
-      train_model('$train.dim.dimensionality','$maskchannel','$train.dim.nuc.dnachannel','','','$train.trainflag','$modelname','$modelid','$gen.downsamplex','$gen.downsampley','$gen.downsamplez','$train.dim.nuc.nclasstype.nucleustype','$train.dim.nuc.nucleusname','$train.dim.nuc.nclasstype.nucleusclass','$train.dim.nuc.nucleusid','','','','','','','','','',documentation,'$gen.verbose','$gen.debug');
-    #end if
-
-    toc,
+    if strcmpi( options.train.flag, 'all' ); answer = img2slml( dimensionality, dnaImgDir, cellImgDir, proteinImgDir, options ); end;
+    if strcmpi( options.train.flag, 'framework' ); answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options ); end;
+    if strcmpi( options.train.flag, 'nucleus' ); answer = img2slml( dimensionality, dnaImgDir, [], [], options ); end;
     diary off;
     diary model_information.txt;
     if exist( './model.mat' ); load( './model.mat' ); model2info( model ); end;
     diary off;
-    exit;";
-    
-    bash $__tool_directory__/train_model_report.sh $output2.extra_files_path;
-    -->
+    toc;
+    exit;" > script.m;
+    if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
+    cp script.m $output.extra_files_path;
+    pwd;
+    bash $__tool_directory__/img2slml.sh "$output.extra_files_path";
   </command>
-  <inputs>
-
-      <section name="imgdir" title="image directory" expanded="True">
-	  <param name="dataset" format="tiff" type="data" multiple="true" label="OME.TIFF(s)" min="1" max="50"/>
-      </section>
-      
-      <param name="trainflag" label="Select the cellular components desired for modeling" type="select">
-	  <option value="all" selected="true"> all </option>
-	  <option value="framework"> framework </option>
-      </param>
-
-      <param name="dimensionality" type="select" label="dimensionality">
-	  <option value="2"> 2D </option>
-	  <option value="3"> 3D </option>
-      </param>
-      
-      <section name="nucleus" title="nucleus options" expanded="True">
-	  <param name="class" type="select" label="class">
-	      <option value="nuclear_membrane"> nuclear membrane </option>
-	      <option value="framework"> framework </option>
-	  </param>
-	  <param name="type" type="select" label="type">
-	      <option value="diffeomorphic"> diffeomorphic </option>
-	      <option value="cylindrical_surface"> cylindrical surface </option>
-	      <option value="medial_axis"> medial axis </option>
-	      <option value="pca"> pca </option>
-	  </param>
-      </section>
-      
-      <section name="cell" title="cell options" expanded="False">
-	  <param name="class" type="select" label="class">
-	      <option value="cell_membrane"> cell membrane </option>
-	      <option value="framework"> framework </option>
-	  </param>
-	  <param name="type" type="select" label="type">
-	      <option value="ratio"> ratio </option>
-	      <option value="diffeomorphic"> diffeomorphic </option>
-	      <option value="pca"> pca </option>
-	  </param>
-	  <param name="model" type="select" label="model">
-	      <option value="lamp2"> LAMP 2 </option>
-	      <option value="Tub"> Tub </option>
-	      <option value="framework"> framework </option>
-	  </param>
-      </section>
-
-    <section name="protein" title="protein options" expanded="True">
-	<param name="class" type="select" label="class">
-	    <option value="vesicle"> vesicle </option>
-	    <option value="lysosome"> lysosome </option>
-	    <option value="nuc"> nuc </option>
-	    <option value="microtubule"> microtubule </option>
-	    <option value="network"> network </option>
-	    <option value="standardized_voxels"> standardized_voxels </option>
-	</param>
-	<param name="type" type="select" label="type">
-	    <option value="gmm"> gmm </option>
-	    <option value="microtubule_growth"> microtubule growth </option>
-	    <option value="standardized_map_half-ellipsoid"> standardized map half-ellipsoid </option>
-	    <option value="morphing"> morphing </option>
-	</param>
-	<param name="name" type="select" label="name">
-	    <option value="lamp2"> lamp 2 </option>
-	    <option value="Tub"> Tub </option>
-	</param>
-	<param name="cytonuclearflag" type="select" label="cytonuclearflag">
-	    <option value="nuc"> nuc </option>
-	    <option value="cyto"> cyto </option>
-	</param>
-    </section>
-    
-    <section name="model" title="model options" expanded="false">
-	<param name="resolution" type="text" label="model resolution (input should be numeric sequence delimited by single space)"/>
-	<param name="downsampling" type="text" label="model downsampling (input should be numeric sequence delimited by single space)"/>
-	<repeat name="option" title="Options">
-	    <param name="name" type="text" label="Name"></param>
-	    <param name="value" type="text" label="Value"></param>
-	</repeat>
-    </section>
-</inputs>
-  <!--
   <inputs>
     <param name="dataset" type="data" label="Choose a data set for training" multiple="true" optional="false" />
     <param name="modelname" type="text" value="model" label="Provide a name for the model"/>
@@ -219,6 +111,7 @@
         <option value="framework">framework</option>
         <option value="nuclear">nuclear</option>
       </param>
+      <!-- train.flag -->
       <when value="all">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality:">
@@ -227,23 +120,26 @@
           </param>
           <when value="2D">
             <section name="nuc" title="Nucleus Options" expanded="false">
-              <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the imageset"/>
+              <param name="dnachannel" type="integer" value="1" label="Provide the DNA channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
+              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
+              <!-- Nuclear shape model class -->
               <conditional name="nclasstype">
-                <param name="nucleusclass" label="Choose a class for this model:" type="select">
+                <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">nuclear membrane</option>
                   <option value="framework">framework</option>
                 </param>
+                <!-- Nuclear shape model type -->
                 <when value="nuclear_membrane">
-                  <param name="nucleustype" label="Choose a model type:" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                  <param name="nucleustype" label="Choose a model type" type="select">
+                     <option value="medial_axis">Medial axis</option>
+                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
-                  <param name="nucleustype" label="Choose a model type:" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                  <param name="nucleustype" label="Choose a model type" type="select">
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
+                    <option value="pca">PCA</option>
                   </param>
                 </when>
               </conditional>
@@ -375,6 +271,7 @@
           </when>
         </conditional>
       </when>
+      <!-- TRAIN.FLAG == FRAMEWORK -->
       <when value="framework">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality:">
@@ -383,23 +280,24 @@
           </param>
           <when value="2D">
             <section name="nuc" title="Nucleus Options" expanded="false">
-              <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the imageset"/>
+              <param name="dnachannel" type="integer" value="1" label="Provide the DNA channel number for the imageset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
+              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
               <conditional name="nclasstype">
-                <param name="nucleusclass" label="Choose a class for this model:" type="select">
-                  <option value="nuclear_membrane" selected="true">nuclear membrane</option>
-                  <option value="framework">framework</option>
+                <param name="nucleusclass" label="Choose a class for this model" type="select">
+                  <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="nuclear_membrane">
-                  <param name="nucleustype" label="Choose a model type:" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                  <param name="nucleustype" label="Choose a model type" type="select">
+                     <option value="medial_axis">Medial axis</option>
+                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
-                  <param name="nucleustype" label="Choose a model type:" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                  <param name="nucleustype" label="Choose a model type" type="select">
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
+                    <option value="pca">PCA</option>
                   </param>
                 </when>
               </conditional>
@@ -409,18 +307,19 @@
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
               <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
-                <param name="cellclass" label="Choose a class for this model:" type="select">
-                  <option value="cell_membrane" selected="true">cell membrane</option>
-                  <option value="framework">framework</option>
+                <param name="cellclass" label="Choose a class for this model" type="select">
+                  <option value="cell_membrane" selected="true">Cell membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="cell_membrane">
-                  <param name="celltype" label="Choose a model type:" type="select">
-                    <option value="ratio" selected="true">ratio</option>
+                  <param name="celltype" label="Choose a model type" type="select">
+                    <option value="ratio" selected="true">Ratio</option>
                   </param>
                 </when>
                 <when value="framework">
-                  <param name="celltype" label="Choose a model type:" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                  <param name="celltype" label="Choose a model type" type="select">
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
+                    <option value="pca">PCA</option>
                   </param>
                 </when>
               </conditional>
@@ -479,9 +378,10 @@
           </when>
         </conditional>
       </when>
+      <!-- TRAIN.FLAG == FRAMEWORK -->
       <when value="nuclear">
         <conditional name="dim">
-          <param name="dimensionality" type="select" label="Dimensionality:">
+          <param name="dimensionality" type="select" label="Dimensionality">
             <option value="2D">2D</option>
             <option value="3D" selected="true">3D</option>
           </param>
@@ -558,6 +458,13 @@
       <param name="debug" type="boolean" label="Save intermediate results?" selected="false">
       </param>
     </section>
+
+    <section name="advanced" title="Advanced options" expanded="true">
+      <repeat name="options" title="Options">
+        <param name="name" type="text" label="Name"> </param>
+        <param name="value" type="text" label="Values"></param>
+      </repeat>
+    </section>
     
     <section name="doc" title="Documentation" expanded="false">
       <repeat name="documentation" title="Documentation">
@@ -565,18 +472,16 @@
         <param name="docvalues" type="text" label="Values"></param>
       </repeat>
     </section>
-
   </inputs>
-  -->
   <!--
   <outputs>
     <data format="mat" name="output1" from_work_dir="model.mat"/>
     <data format="html" name="output2" from_work_dir="report.html"/>
   </outputs>
 -->
-    <outputs>
+<outputs>
 	<data format="mat" name="output" from_work_dir="model.mat"/>
-    </outputs>
+</outputs>
 <help>
 
 **Description**
