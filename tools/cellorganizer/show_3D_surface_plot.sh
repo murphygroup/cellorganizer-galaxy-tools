@@ -28,6 +28,13 @@ alphaval = $ALPHAVAL;
 
 % show shape space by calling the function
 f = figure('visible','off');
+
+if strcmpi( get_ometiff_dimensionality( './img.ome.tif' ), '2D' )
+	warning( 'Cannot generate a 3D surface plot from a 2D image' );
+	system( 'touch ./cannot_generate_from_2D' );
+	exit;
+end
+
 syn2surfaceplot_ometiff( './img.ome.tif', colors, viewangles, alphaval );
 saveas( f, 'output.png', 'png' );
 toc,
@@ -38,6 +45,10 @@ echo "Running Matlab script"
 cat script.m
 cat script.m | matlab -nodesktop -nosplash 2>/dev/null 
 rm -fv script.m
+
+if [ -f ./cannot_generate_from_2D ]; then
+	exit 2
+fi
 
 if [ -f output.png ]; then
 	exit
