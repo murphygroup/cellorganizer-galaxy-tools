@@ -32,7 +32,12 @@
     setup();
     cd( current_directory );
     dimensionality = '$train.dim.dimensionality';
-    check_if_files_exist_on_disk_and_link_them('$dataset');
+    current_directory = pwd;
+    cellorganizer_directory = getenv('CELLORGANIZER');
+    cd( cellorganizer_directory );
+    setup();
+    cd( current_directory );
+    dimensionality = '$train.dim.dimensionality';
     files = dir( [ pwd filesep '*.ome.tif'] );
     num_files = length(files);
     options.verbose = true;
@@ -72,7 +77,7 @@
     options.protein.name = '$train.dim.pro.proteinname';
     options.protein.cytonuclearflag = '$train.dim.pro.proteincytonuclearflag';
     #end if
-    options.model.resolution = OME_getResolution('./cell00001.ome.tif');
+    options.model.resolution = OME_getResolution('./image00001.ome.tif');
     if strcmpi( dimensionality, '2D' )
       if size(options.model.resolution,2) > 2
         options.model.resolution = options.model.resolution(1:2);
@@ -86,18 +91,22 @@
     #end for
     options.model.filename = 'model.xml';
     diary diary.txt;
-    if strcmpi( options.train.flag, 'all' ); answer = img2slml( dimensionality, dnaImgDir, cellImgDir, proteinImgDir, options ); end;
-    if strcmpi( options.train.flag, 'framework' ); answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options ); end;
-    if strcmpi( options.train.flag, 'nucleus' ); answer = img2slml( dimensionality, dnaImgDir, [], [], options ); end;
-    diary off;
-    diary model_information.txt;
-    if exist( './model.mat' ); load( './model.mat' ); model2info( model ); end;
+    if strcmpi( options.train.flag, 'all' )
+      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, proteinImgDir, options ); 
+    end;
+    if strcmpi( options.train.flag, 'framework' )
+      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options ); 
+    end;
+    if strcmpi( options.train.flag, 'nucleus' ); 
+      answer = img2slml( dimensionality, dnaImgDir, [], [], options );
+     end;
     diary off;
     toc;
     exit;" > script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;
     pwd;
+    bash $__tool_directory__/check_if_files_exist_on_disk_and_link_them.sh "$dataset";
     bash $__tool_directory__/img2slml.sh "$output.extra_files_path";
   </command>
   <inputs>
