@@ -1,4 +1,4 @@
-<tool id="model2info" name="Retrieve and display " version="0.0.2">
+<tool id="model2report" name="Compare" version="0.0.2">
 <!--
  Copyright (C) 2007-2018 Murphy Lab
  Lane Center for Computational Biology

@@ -17,6 +17,15 @@ cd( current_directory );
 
 check_if_files_exist_on_disk_and_link_them_mat('$MODEL');
 load( './model00001.mat' ); 
+
+if is_diffeomorphic( model )
+	options.nlabels = 5;
+	options.traces = 0;
+	options.subsize = 750;
+
+	show_shape_space_figure_galaxy_wrapper( './model00001.mat', options );
+end
+
 diary diary.txt;
 model2info( model );
 diary off;
@@ -28,8 +37,20 @@ echo "Running Matlab script"
 cat script.m | matlab -nodesktop
 rm -fv script.m
 
+echo "Making temporary folder "$TEMPORARY_FOLDER
+if [ ! -d $TEMPORARY_FOLDER ]; then
+        mkdir $TEMPORARY_FOLDER
+fi
+
 echo "Generating Markdown file"    
 echo "# model2info tool output" > report.md
+
+if [ -f show_shape_space.png ]; then
+	convert -resize 50% show_shape_space.png thumbnail.jpg
+	cp -v show_shape_space.png $TEMPORARY_FOLDER
+	cp -v thumbnail.jpg $TEMPORARY_FOLDER
+	echo "[![Shape space](thumbnail.jpg)](show_shape_space.png)" >> report.md
+fi
 
 if [ -f diary.txt ]; then
 	echo "\`\`\`" >> report.md
@@ -37,11 +58,6 @@ if [ -f diary.txt ]; then
 	grep -v "model2info( model );" diary.txt > temp && mv temp diary.txt
 	cat diary.txt >> report.md
 	echo "\`\`\`" >> report.md
-fi
-
-echo "Making temporary folder "$TEMPORARY_FOLDER
-if [ ! -d $TEMPORARY_FOLDER ]; then
-        mkdir $TEMPORARY_FOLDER
 fi
 
 if [ -f diary.txt ]; then
