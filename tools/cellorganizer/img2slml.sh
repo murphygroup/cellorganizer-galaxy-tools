@@ -2,8 +2,6 @@
 
 cat script.m | matlab -nodesktop -nosplash
 
-rm -fv script.m
-
 if [ ! -d $1 ]; then
 	mkdir $1
 fi
