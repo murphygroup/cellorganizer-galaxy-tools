@@ -1,4 +1,4 @@
-<tool id="model2report" name="Compare" version="0.0.2">
+<tool id="model2report" name="Print information" version="0.0.2">
 <!--
  Copyright (C) 2007-2018 Murphy Lab
  Lane Center for Computational Biology
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> information about a generative model file.</description>
+  <description> about a generative model file.</description>
   <command>
     bash $__tool_directory__/model2info.sh $model $output.extra_files_path;
   </command>
