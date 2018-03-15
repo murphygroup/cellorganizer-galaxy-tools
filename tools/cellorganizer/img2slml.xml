@@ -87,7 +87,10 @@
       options.model.downsampling = [$gen.downsamplex $gen.downsampley $gen.downsamplez];
     end;
     #for $field in $advanced.options
-       options.${field.name}=${field.value};
+       options.${field.name}='${field.value}';
+    #end for
+    #for $field in $doc.documentation
+	options.documentation.${field.docname}='${field.docvalues}';
     #end for
     options.model.filename = 'model.xml';
     diary diary.txt;
