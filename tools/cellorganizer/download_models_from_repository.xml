@@ -29,18 +29,18 @@
   </command>
   <inputs>
     <param name="dataset" type="select" label="Select a model to download">
-        <option value="cellline-H1299.dimensionality-3D.framework_model-diffeomorphic.author-gj.version-1.0.0.mat">3D H1299 - diffeomorphic model of the cell</option>
-        <option value="cellline-hela.dimensionality-2D.protein_model_class-endosome.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of endosomes</option>
-        <option value="cellline-hela.dimensionality-2D.protein_model_class-lysosome.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="cellline-hela.dimensionality-2D.protein_model_class-mitochondrion.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
-        <option value="cellline-hela.dimensionality-2D.protein_model_class-nucleolus.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
-        <option value="cellline-3t3.dimensionality-3D.nuclear_model_class-framework.nuclear_model_type-diffeomorphic.cell_model_class-framework.cell_model_type-diffeomorphic.protein_model_class-none.protein_model_class-none.author-murphylab.version-2.2.0.mat">3D 3T3 - diffeomorphic model of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="cellline-hela.dimensionality-3D.nuclear_model_class-nucleus.nuclear_model_type-major_axis.cell_model_class-cell.cell_model_type-ratio.protein_model_class-centrosome.protein_model_class-centrosome.author-murphylab.version-2.2.0.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of centrosomes</option>
-        <option value="cellline-hela.dimensionality-3D.nuclear_model_class-nucleus.nuclear_model_type-major_axis.cell_model_class-cell.cell_model_type-ratio.protein_model_class-lysosome.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">3D HeLa LAMP2 - cylindrical and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
-        <option value="cellline-hela.dimensionality-3D.nuclear_model_class-nucleus.nuclear_model_type-major_axis.cell_model_class-cell.cell_model_type-ratio.protein_model_class-mitochondrion.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
-        <option value="cellline-hela.dimensionality-3D.nuclear_model_class-nucleus.nuclear_model_type-major_axis.cell_model_class-cell.cell_model_type-ratio.protein_model_class-nucleoli.protein_model_class-vesicle.author-murphylab.version-2.2.0.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
-        <option value="tfr.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of endosomes</option>
-        <option value="cellline-hela.dimensionality-3D.nuclear_model_class-nucleus.nuclear_model_type-major_axis.cell_model_class-cell.cell_model_type-ratio.protein_model_class-microtubule.protein_model_class-network.author-murphylab.version-2.2.0.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - model of microtubles</option>
+        <option value="cell_model_nuc_align.mat">3D H1299 - diffeomorphic model of the cell</option>
+        <option value="endosome.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of endosomes</option>
+        <option value="lysosome.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
+        <option value="mitochondrion.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
+        <option value="nucleolus.mat">2D HeLa - medial axis and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
+        <option value="3t3_model.mat">3D 3T3 - diffeomorphic model of the cell and nucleus - vesicle model of lysosomes</option>
+	<option value="centro.mat">3D HeLa -cylindrical and ratio models of the cell and nucleus - vesicle model of centrosomes</option>
+	<option value="lamp2.mat">3D HeLa LAMP2 - cylindrical and ratio models of the cell and nucleus - vesicle model of lysosomes</option>
+	<option value="mit.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of mitochondria</option>
+	<option value="nuc.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of nucleoli</option>
+	<option value="tfr.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - vesicle model of endosomes</option>
+	<option value="tub.mat">3D HeLa - cylindrical and ratio models of the cell and nucleus - model of microtubules</option>
         <option value="hela_nuc_10_15_15.mat">3D HeLa - diffeomorphic model of the nucleus</option>
         <option value="hela_cell_10_15_15.mat">3D HeLa - diffeomorphic model of the cell</option>
         <option value="helamodel_9_16_15.mat">3D HeLa - diffeomorphic model of the cell and nucleus</option>
