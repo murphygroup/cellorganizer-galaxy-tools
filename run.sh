@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export CELLORGANIZER=/usr0/home/icaoberg/alleninstitute/cellorganizer3
-export PATH=$PATH:./bftools
+export PATH=$PATH:$(pwd)/bftools
 
 if [ $# -eq 0 ]; then
 	rsync -ruv tools/ galaxy/tools/
