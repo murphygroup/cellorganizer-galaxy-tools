@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export CELLORGANIZER=/usr0/home/icaoberg/alleninstitute/cellorganizer3
-export PATH=$PATH:/usr0/home/icaoberg/alleninstitute/bftools
+export PATH=$PATH:$(pwd)/bftools
 
 if [ $# -eq 0 ]; then
 	rsync -ruv tools/ galaxy/tools/
@@ -27,6 +27,14 @@ if [ $# -eq 1 ]; then
 		rsync -ruv tool-data/ galaxy/tool-data # for future usage
 		cp welcome.html galaxy/static/
 		rsync -ruv tools/ galaxy/tools/
+
+		if [ -f bftools.zip ]; then
+			rm -fv bftools.zip
+		fi
+		wget http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip
+		unzip -o bftools.zip
+		rm -fv bftools.zip
+
 		cd galaxy
 		bash ./run.sh
 	fi
