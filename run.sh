@@ -26,6 +26,8 @@ if [ $# -eq 1 ]; then
 		cp welcome.html galaxy/static/
 		rsync -ruv tools/ galaxy/tools/
 
+		cp images/Mitochondria-1.png galaxy/static/images/Mitochondria-1.png
+
 		if [ -f bftools.zip ]; then
 			rm -fv bftools.zip
 		fi
