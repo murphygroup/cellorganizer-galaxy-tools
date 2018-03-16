@@ -1,0 +1,36 @@
+name: Uploading a file from your computer
+title_default: "Uploading a file from your computer"
+description: "An introduction on how to upload a file from your computer to CellOrganizer Galaxy."
+steps:
+    - content: "This short tour will walk you through how to upload files from your computer into <b>CellOrganizer Galaxy</b>"
+
+    - element: "#title_get_data"
+      intro: "Click on Get Data to see the ways you can get data"
+      position: "right"
+      postclick:
+        - "#title_get_data > a"
+
+    - element: 'a[href$="tool_runner?tool_id=upload1"]'
+      intro: "Click on Upload File..."
+      position: "top"
+      postclick:
+        - 'a[href$="tool_runner?tool_id=upload1"]'
+        - "#title_get_data > a"
+
+    - element: "#btn-local"
+      intro: "...choose a local file from your computer..."
+      position: "left"
+      postclick: 
+        - "#btn-local"
+
+    - element: "#btn-start"
+      intro: "...and then, click Start to begin the upload."
+      position: "right"
+      postclick:
+        - "#btn-start"
+        - 'a[href$="tool_runner?tool_id=upload1"]'
+
+    - title: "Done."
+      intro: "You have downloaded a model from our repository. 
+              It will show up in the History, where you can view, edit or delete it.
+              To leave the upload dialogue box, click anywhere on the background."
