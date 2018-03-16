@@ -9,6 +9,8 @@ if [ $# -eq 0 ]; then
 	cp core.dl_model_from_repo.yaml galaxy/config/plugins/tours
 	cp core.import_ometiff.yaml galaxy/config/plugins/tours
 	cp core.upload_from_computer.yaml galaxy/config/plugins/tours
+	cp core.show_image_info.yaml galaxy/config/plugins/tours
+	cp core.validate_ometiff.yaml galaxy/config/plugins/tours	
 	cd galaxy
 	bash ./run.sh
 fi
