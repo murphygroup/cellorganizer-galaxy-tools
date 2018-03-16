@@ -1,11 +1,12 @@
 #!/bin/bash
 
-export CELLORGANIZER=/Users/icaoberg/Desktop/cellorganizer3
+export CELLORGANIZER=/usr0/home/icaoberg/alleninstitute/cellorganizer3
 export PATH=$PATH:./bftools
 
 if [ $# -eq 0 ]; then
 	rsync -ruv tools/ galaxy/tools/
 	cp tool_conf.xml galaxy/config
+        cp -v core.ulani.yaml galaxy/config/plugins/tours/
 	cd galaxy
 	bash ./run.sh
 fi
