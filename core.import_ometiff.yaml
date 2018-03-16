@@ -1,0 +1,35 @@
+name: Importing OME.TIFF files from url
+title_default: "Importing OME.TIFF files from url"
+description: "An introduction on how to import OME.TIFF files from a url to CellOrganizer Galaxy."
+steps:
+    - content: "This short tour will walk you through how to import OME.TIFF files into <b>CellOrganizer Galaxy</b> from a url."
+
+    - element: "#title_get_data"
+      intro: "Click on Get Data to see the ways you can get data"
+      position: "right"
+      postclick:
+        - "#title_get_data > a"
+
+    - element: 'a[href$="tool_runner?tool_id=import_ometiff_from_url"]'
+      intro: "Click on Imports OME.TIFF from a URL..."
+      position: "top"
+      postclick:
+        - 'a[href$="tool_runner?tool_id=import_ometiff_from_url"]'
+        - "#title_get_data > a"
+
+    - element: ".ui-input"
+      intro: "...provide a URL to an OME.TIFF image (or use our default)..."
+      position: "left"
+      postclick: 
+        - ".ui-input"
+
+    - element: "#execute"
+      intro: "...and then, click execute."
+      position: "right"
+      postclick:
+        - "#execute"
+
+
+    - title: "Done."
+      intro: "You have imported an OME.TIFF from a URL. 
+              The file will show up in your History, where you can view, edit or delete it."
