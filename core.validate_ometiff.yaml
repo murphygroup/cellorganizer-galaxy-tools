@@ -1,0 +1,66 @@
+name: Validate an OME.TIFF image
+title_default: "Validating an OME.TIFF image"
+description: "An walkthrough on how to validate an OME.TIFF image using CellOrganizer Galaxy."
+steps:
+    - content: "This short tour will walk you through how to validate an OME.TIFF image using <b>CellOrganizer Galaxy</b>."
+
+    - element: "#title_get_data"
+      intro: "First, we will import an OME.TIFF image from a URL. 
+              Click on Get Data to see the ways you can get data."
+      position: "right"
+      postclick:
+        - "#title_get_data > a"
+
+    - element: 'a[href$="tool_runner?tool_id=import_ometiff_from_url"]'
+      intro: "Click on Imports OME.TIFF from a URL..."
+      position: "top"
+      postclick:
+        - 'a[href$="tool_runner?tool_id=import_ometiff_from_url"]'
+        - "#title_get_data > a"
+
+    - element: ".ui-input"
+      intro: "...provide a URL to an OME.TIFF image (or use our default)..."
+      position: "left"
+      postclick: 
+        - ".ui-input"
+
+    - element: "#execute"
+      intro: "...and then, click execute."
+      position: "right"
+      postclick:
+        - "#execute"
+
+    - element: "div.title-bar.clear:eq(0)"
+      intro: "Your imported OME.TIFF is now in History.
+              Wait until the import is complete. Then we will validate it."
+      position: "left"
+      postclick:
+        - "div.title-bar.clear:eq(0)"
+
+    - element: "#title_validators"
+      intro: "In the tools section, click on File Validators to see the available tools."
+      position: "right"
+      postclick:
+        - "#title_validators > a"
+
+    - element: 'a[href$="tool_runner?tool_id=ometiff_validation"]'
+      intro: "Click on Validate an OME.TIFF."
+      position: "top"
+      postclick:
+        - 'a[href$="tool_runner?tool_id=ometiff_validation"]'
+        - "#title_cellorganizer-tools-images > a"
+
+    - element: "div.select2-container.select"
+      intro: "From the drop down menu, choose the OME.TIFF file you just imported."
+      position: "left"
+      postclick: 
+        - "div.select2-container.select"
+  
+    - element: "#execute"
+      intro: "Click execute."
+      position: "right"
+      postclick:
+        - "#execute"  
+
+    - title: "Done."
+      intro: "You have now validated the OME.TIFF."
