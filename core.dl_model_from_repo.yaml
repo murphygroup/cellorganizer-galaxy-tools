@@ -1,0 +1,34 @@
+name: Downloading models from repository
+title_default: "Downloading models from repository"
+description: "An introduction on how to download models from the model repository to CellOrganizer Galaxy."
+steps:
+    - content: "This short tour will walk you through how to download models from <b>CellOrganizer Galaxy's</b> model repository"
+
+    - element: "#title_get_data"
+      intro: "Click on Get Data to see the ways you can get data"
+      position: "right"
+      postclick:
+        - "#title_get_data > a"
+
+    - element: 'a[href$="tool_runner?tool_id=download_models_from_repository"]'
+      intro: "We can download existing models from a repository..."
+      position: "top"
+      postclick:
+        - 'a[href$="tool_runner?tool_id=download_models_from_repository"]'
+        - "#title_get_data > a"
+
+    - element: "div.ui-select"
+      intro: "...by selecting a model from the dropdown menu (or use our default)..."
+      position: "left"
+      postclick: 
+        - "div.select2-container.select > a.select2-choice"
+
+    - element: "#execute"
+      intro: "...and then, click execute."
+      position: "right"
+      postclick:
+        - "#execute"
+
+    - title: "Done."
+      intro: "You have downloaded a model from our repository. 
+              It will show up in the History, where you can view, edit or delete it."
