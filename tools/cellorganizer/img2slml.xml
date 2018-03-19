@@ -44,6 +44,8 @@
     options.debug = false;
     options.display = false;
     options.train.flag = '$train.trainflag';
+    options.model.name = '$modelname';
+    options.model.id = '$modelid';
     files = sort_nat({files.name});
     directory = pwd;
     if strcmpi( options.train.flag, 'nucleus' );
@@ -142,8 +144,8 @@
                 <!-- Nuclear shape model type -->
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">Medial axis</option>
-                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
+                     <option value="medial_axis">medial axis</option>
+                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
