@@ -1,3 +1,6 @@
 [submodule "galaxy"]
 	path = galaxy
 	url = https://github.com/galaxyproject/galaxy.git
+[submodule "cellorganizer3"]
+	path = cellorganizer3
+	url = git@repositories.compbio.cs.cmu.edu:cellorganizer/cellorganizer3.git
