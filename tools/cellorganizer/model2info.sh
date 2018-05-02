@@ -27,7 +27,7 @@ if is_diffeomorphic( model )
 end
 
 diary diary.txt;
-model2info( model );
+slml2info( model );
 diary off;
 toc,
 exit;
