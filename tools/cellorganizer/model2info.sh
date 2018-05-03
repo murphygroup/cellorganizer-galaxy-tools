@@ -27,7 +27,7 @@ if is_diffeomorphic( model )
 end
 
 diary diary.txt;
-slml2info( model );
+slml2info( './model00001.mat' );
 diary off;
 toc,
 exit;
@@ -35,7 +35,7 @@ EOF
 
 echo "Running Matlab script"
 cat script.m | matlab -nodesktop
-rm -fv script.m
+#rm -fv script.m
 
 echo "Making temporary folder "$TEMPORARY_FOLDER
 if [ ! -d $TEMPORARY_FOLDER ]; then
@@ -55,7 +55,7 @@ fi
 if [ -f diary.txt ]; then
 	echo "\`\`\`" >> report.md
 	grep -v "diary off;" diary.txt > temp && mv temp diary.txt
-	grep -v "model2info( model );" diary.txt > temp && mv temp diary.txt
+	grep -v "slml2info( './model00001.mat' );" diary.txt > temp && mv temp diary.txt
 	cat diary.txt >> report.md
 	echo "\`\`\`" >> report.md
 fi
