@@ -32,9 +32,11 @@
     setup();
     cd( current_directory );
     options.seed = $other_options.seed;
+    state = rng( options.seed );
     options.targetDirectory = current_directory;
     options.prefix = 'imgs';
     options.compression = '$other_options.compression';
+    options.sampling.method = '$options_sample_method';
     options.debug = false;
     options.display = false;
     options.synthesis = '$options_synthesis';
