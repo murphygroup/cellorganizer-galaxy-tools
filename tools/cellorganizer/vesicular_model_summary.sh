@@ -4,10 +4,6 @@ MODEL1=$1
 MODEL2=$2
 TEMP_FOLDER=$3
 
-if [ ! -d $TEMP_FOLDER ]; then
-	mkdir $TEMP_FOLDER;
-fi
-
 echo "Writing temporary file"
 cat << EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,7 +21,7 @@ system(['cp -v $MODEL2 model00002.mat']);
 file1 = [pwd filesep 'model00001.mat']; 
 file2 = [ pwd filesep 'model00002.mat']; 
 directory = pwd;
-vesicle_comparison( file1, file2, directory );
+slml2report( file1, file2);
 diary off;
 toc,
 exit;
@@ -35,4 +31,11 @@ echo "Running Matlab script"
 cat script.m
 cat script.m | matlab -nodesktop
 
-mv *.png $TEMP_FOLDER
+echo "Making temporary folder "$TEMP_FOLDER
+if [ ! -d $TEMP_FOLDER ]; then
+    mkdir $TEMP_FOLDER
+fi
+
+echo $TEMP_FOLDER
+
+cp -v report/*.png $TEMP_FOLDER

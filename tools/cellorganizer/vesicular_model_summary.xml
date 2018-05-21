@@ -25,7 +25,6 @@
 -->
 <description> on 3D vesicular models.</description>
 <command>
-  if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
   bash $__tool_directory__/vesicular_model_summary.sh $model1 $model2 $output.extra_files_path;
 </command>
 <inputs>
@@ -33,7 +32,7 @@
   <param format="mat" name="model2" type="data" label="Select a 3D vesicular model"></param>
 </inputs>
 <outputs>
-  <data format="html" name="output" from_work_dir="index.html"/>
+    <data format="html" name="output" from_work_dir="report/index.html"/>
 </outputs>
 <stdio>
   <exit_code range="1" level="fatal" description="Unable to find output file index.html on disk." />
