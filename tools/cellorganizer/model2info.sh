@@ -42,27 +42,10 @@ if [ ! -d $TEMPORARY_FOLDER ]; then
         mkdir $TEMPORARY_FOLDER
 fi
 
-echo "Generating Markdown file"    
-echo "# model2info tool output" > report.md
-
-if [ -f show_shape_space.png ]; then
-	convert -resize 50% show_shape_space.png thumbnail.jpg
-	cp -v show_shape_space.png $TEMPORARY_FOLDER
-	cp -v thumbnail.jpg $TEMPORARY_FOLDER
-	echo "[![Shape space](thumbnail.jpg)](show_shape_space.png)" >> report.md
+if [ -f report/show_shape_space.png ]; then
+    cp -v report/show_shape_space.png $TEMPORARY_FOLDER
 fi
 
-if [ -f diary.txt ]; then
-	echo "\`\`\`" >> report.md
-	grep -v "diary off;" diary.txt > temp && mv temp diary.txt
-	grep -v "slml2info( './model00001.mat' );" diary.txt > temp && mv temp diary.txt
-	cat diary.txt >> report.md
-	echo "\`\`\`" >> report.md
+if [ -f report/show_shape_space_thumbnail.png ]; then
+    cp -v report/show_shape_space_thumbnail.png $TEMPORARY_FOLDER
 fi
-
-if [ -f diary.txt ]; then
-    cp -v diary.txt $TEMPORARY_FOLDER
-fi
-
-echo "Parsing Markdown file into HTML file"
-pandoc report.md -o report.html

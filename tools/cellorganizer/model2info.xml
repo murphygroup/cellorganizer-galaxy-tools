@@ -31,7 +31,7 @@
     <param name="model" type="data" format="mat" label="Choose data for synthesis" multiple="true"/>
   </inputs>
   <outputs>
-	  <data format="html" name="output" label="Model information" from_work_dir="report.html"/>
+      <data format="html" name="output" label="Model information" from_work_dir="report/index.html"/>
   </outputs>
 <help>
 
