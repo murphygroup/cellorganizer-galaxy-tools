@@ -1,4 +1,4 @@
-<tool id="download_models_from_repository" name="Downloads" version="1.0.0">
+<tool id="download_models_from_repository" name="Imports model" version="1.0.0">
 <!--
  Copyright (C) 2007-2017 Murphy Lab
  Lane Center for Computational Biology
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>model from the curated model repository.</description>
+  <description>from the curated model repository.</description>
   <command interpreter="bash">
     download_models_from_repository.sh "$dataset"
   </command>
@@ -53,7 +53,7 @@
 
 **Description**
 
-Downloads model from the curated model repository.
+Downloads a model from the curated model repository.
 
 -----
 
