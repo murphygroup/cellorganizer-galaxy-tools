@@ -60,10 +60,7 @@
     <!-- These are useful tools for models -->
     <section id="cellorganizer-tools-models" name="Useful tools for models">
       <tool file="cellorganizer/model2info.xml" />
-      <tool file="cellorganizer/tcell_compare_models.xml" />
-      <tool file="cellorganizer/tcell_enrichment.xml" />
-      <tool file="cellorganizer/tcell_generate_movie.xml" />
-      <tool file="cellorganizer/vesicular_model_summary.xml" />
+      <tool file="cellorganizer/slml2slml.xml" />
     </section>
 
     <!-- Validators -->
