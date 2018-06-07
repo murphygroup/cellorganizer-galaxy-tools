@@ -1,0 +1,91 @@
+<tool id="slml2slml" name="Combine " version="0.0.1">
+<!--
+ Copyright (C) 2007-2017 Murphy Lab
+ Lane Center for Computational Biology
+ School of Computer Science
+ Carnegie Mellon University
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published
+ by the Free Software Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ 02110-1301, USA.
+
+ For additional information visit http://murphylab.web.cmu.edu or
+ send email to murphy@cmu.edu
+-->
+  <description> multiple generative model files into a single file.</description>
+  <command>
+    echo -e "tic;
+    current_directory = pwd;
+    cellorganizer_directory = getenv('CELLORGANIZER');
+    cd( cellorganizer_directory );
+    setup();
+    cd( current_directory );
+    disp( current_directory );
+    #for $field in $generative_models.files
+      check_if_files_exist_on_disk_and_link_them_mat('$field.dataset');
+    #end for
+    files = dir( [ pwd filesep '*.mat']);
+    filenames = {};
+    for i=1:length(files) filenames{length(filenames)+1}=[pwd filesep files(i).name]; end;
+    #for $field in $doc.documentation
+      options.documentation.${field.docname}='${field.docvalues}';
+    #end for
+    diary diary.txt;
+    answer = slml2slml(filenames, options);
+    diary off;
+    toc;
+    exit;" > script.m;
+    cat script.m;
+    if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
+    cp script.m $output.extra_files_path;
+    bash $__tool_directory__/slml2slml.sh "$output.extra_files_path/script.m";
+  </command>
+  <inputs>
+    <!-- select datasets -->
+    <section name="generative_models" title="Generative models" expanded="true">
+      <repeat name="files" title="Models">
+        <param name="dataset" format="mat" type="data" label="Select model"/>
+      </repeat>
+    </section>
+    <section name="doc" title="Documentation" expanded="true">
+      <repeat name="documentation" title="Documentation">
+        <param name="docname" type="text" label="Name"> </param>
+        <param name="docvalues" type="text" label="Values"></param>
+      </repeat>
+    </section>
+  </inputs>
+  <outputs>
+    <data format="mat" name="output" from_work_dir="model.mat"/>
+  </outputs>
+<help>
+
+**Description**
+
+Combine multiple generative models of the same dimensionality into a single model file.
+
+-----
+
+**Input**
+
+* Up to three generative models
+* Documentation structure
+
+-----
+
+**Output**
+
+* A single generative model file
+
+</help>
+</tool>
