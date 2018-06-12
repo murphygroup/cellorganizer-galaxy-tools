@@ -3,8 +3,8 @@
 dataset=$1
 
 echo "Downloading "$dataset
-echo wget --quiet -O model.mat -nc http://www.cellorganizer.org/downloads/models/$dataset
-wget --quiet -O model.mat -nc http://www.cellorganizer.org/downloads/models/$dataset 2>/dev/null
+echo wget --quiet -O model.mat -nc http://www.cellorganizer.org$dataset
+wget --quiet -O model.mat -nc http://www.cellorganizer.org$dataset 2>/dev/null
 
 find . -type f -empty -exec rm -fv {} \;
 
