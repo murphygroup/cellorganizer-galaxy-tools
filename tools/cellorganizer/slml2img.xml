@@ -31,14 +31,13 @@
     cd( cellorganizer_directory );
     setup();
     cd( current_directory );
-    options.seed = $other_options.seed;
-    state = rng( options.seed );
+    options.debug = true;
+    options.display = false;
+    options.verbose = true;
     options.targetDirectory = current_directory;
     options.prefix = 'imgs';
-    options.compression = '$other_options.compression';
-    options.sampling.method = '$options_sample_method';
-    options.debug = false;
-    options.display = false;
+    options.compression = 'lzw';
+    %options.sampling.method = '$options_sample_method';
     options.synthesis = '$options_synthesis';
     options.output.tifimages = false;
     options.output.OMETIFF = true;
@@ -66,63 +65,28 @@
 
     <!-- synthesis option -->
     <param name="options_synthesis" type="select" label="Synthesis option">
-      <option value="nucleus">nucleus</option>
-      <option value="framework">framework</option>
-      <option value="all" selected="true">all</option>
+      <option value="nucleus">Synthesize nucleus</option>
+      <option value="framework">Synthesize nuclear and cell membrane (framework)</option>
+      <option value="all" selected="true">Synthesize from all models</option>
     </param>
-    <!--
-    <section name="dimensionality" title="Dimensionality Options" expanded="True">
-      <conditional name="dimensionality">
-        <param name="dimensionality" type="select" label="dimensionality">
-          <option value="2D" selected="true">2D</option>
-          <option value="3D">3D</option>
-        </param>
-        <when value="2D">
-          <param name="options_spherical_cell" type="boolean" label="spherical_cell" checked="true" />
-        </when>
-        <when value="3D">
-          <param name="options_microscope" type="select" label="options.microscope">
-            <option value="none" selected="true">None</option>
-            <option value="SVI">SVI</option>
-	  </param>
-	  </when>
-	  </conditional>
-	  <section>
--->
-    <!-- Microscope option -->
+
+    <!-- Microscope option
     <param name="options_microscope" type="select" label="options.microscope">
-	<option value="none" selected="true"> None </option>
-	<option value="SVI"> SVI </option>
+      <option value="none" selected="true"> None </option>
+      <option value="SVI"> SVI </option>
     </param>
+     -->
 
-    <!-- Sampling option -->
+    <!-- Sampling option
     <param name="options_sample_method" type="select" label="options.sample.method">
-	<option value="disc" selected="true">disc</option>
-	<option value="sampled">sampled</option>
+      <option value="disc" selected="true">disc</option>
+      <option value="sampled">sampled</option>
     </param>
+    -->
     
-    <section name="other_options" title="Other options" expanded="False">
-      <!-- output options -->
-      <param name="options.tifimages" type="boolean" label="Write TIF image(s)" checked="true" />
-      <param name="options.indexedimage" type="boolean" label="Write indexed image(s)" checked="false" />
-      <param name="options.blenderfile" type="boolean" label="Write Blender file(s)" checked="false" />
+    <section name="other_options" title="Output Options" expanded="True">
+      <!-- Output options -->
       <param name="options.SBML" type="boolean" label="Write SBML instance(s)" checked="false" />
-
-      <!-- seed for random number generator -->
-      <param name="seed" type="integer" value="3" label="Seed for pseudo-random number generator"/>
-
-      <!-- number of synthesized images 
-      <param name="number_of_synthesized_images" type="integer" value="1" label="Number of synthesized images"/>
-	-->
-      <!-- image compression -->
-      <param name="compression" type="select" label="Image compression">
-        <option value="lzw" selected="true">LZW</option>
-        <option value="none">No compression</option>
-      </param>
-      <param name="options_debug" type="boolean" label="Debug mode" checked="false" />
-      <param name="options_display" type="boolean" label="Display mode" checked="false" />
-      <param name="options_verbose" type="boolean" label="Verbose mode" checked="false" />
-      <param name="options_output_tifimages" type="boolean" label="Output TIFF" checked="false" />
       <param name="options_output_OMETIFF" type="boolean" label="Output OMETIFF" checked="true" />
     </section>
     <section name="advanced_options" title="Advanced options" expanded="false">
@@ -145,13 +109,12 @@ Synthesize image(s) from generative models trained using CellOrganizer.
 
 **Input**
 
-A generative model.
+One or several generative models.
 
 -----
 
 **Output**
 
-One or more images.
-
+A synthetic image.
 </help>
 </tool>
