@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CELLORGANIZER=/usr0/home/icaoberg/alleninstitute/cellorganizer3
+export CELLORGANIZER=$(pwd)/cellorganizer3
 export PATH=$PATH:$(pwd)/bftools
 
 if [ $# -eq 0 ]; then
