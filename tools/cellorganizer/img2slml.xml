@@ -476,7 +476,7 @@
       </when>
     </conditional>
 
-    <section name="gen" title="General options" expanded="false">
+    <section name="gen" title="General options" expanded="true">
       <param name="downsamplex" type="select" label="Select a downsampling factor in x">
         <option value="5">5</option>
         <option value="1" selected="true">1</option>
@@ -498,7 +498,7 @@
       </repeat>
     </section>
     
-    <section name="doc" title="Documentation" expanded="false">
+    <section name="doc" title="Documentation" expanded="true">
       <repeat name="documentation" title="Documentation">
         <param name="docname" type="text" label="Name"> </param>
         <param name="docvalues" type="text" label="Values"></param>
