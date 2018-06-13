@@ -37,7 +37,6 @@
     options.targetDirectory = current_directory;
     options.prefix = 'imgs';
     options.compression = 'lzw';
-    %options.sampling.method = '$options_sample_method';
     options.synthesis = '$options_synthesis';
     options.output.tifimages = false;
     options.output.OMETIFF = true;
@@ -100,7 +99,6 @@
     <data format="tiff" name="output" from_work_dir="cell1.ome.tif"/>
   </outputs>
 <help>
-
 **Description**
 
 Synthesize image(s) from generative models trained using CellOrganizer.
