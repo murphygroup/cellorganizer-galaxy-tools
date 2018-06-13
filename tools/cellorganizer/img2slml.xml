@@ -45,7 +45,7 @@
     options.display = false;
     options.train.flag = '$train.trainflag';
     options.model.name = '$modelname';
-    options.model.id = '$modelid';
+    options.model.id = uuidgen();
     files = sort_nat({files.name});
     directory = pwd;
     if strcmpi( options.train.flag, 'nucleus' );
@@ -107,6 +107,7 @@
     options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
     options.protein.type = '$train.dim.pro.pclasstype.proteintype';
     options.protein.name = '$train.dim.pro.proteinname';
+    options.protein.id = uuidgen();
     options.protein.cytonuclearflag = '$train.dim.pro.proteincytonuclearflag';
     #end if
     options.model.resolution = OME_getResolution('./image00001.ome.tif');
@@ -146,7 +147,6 @@
   <inputs>
     <param name="dataset" type="data" label="Choose a data set for training a generative model" multiple="true" optional="false" />
     <param name="modelname" type="text" value="" label="Provide a name for the model"/>
-    <param name="modelid" type="text" value="" label="Provide an id for the model"/>
     <conditional name="train">
       <param name="trainflag" label="Selected the cellular components desired for modeling" type="select">
         <option value="all" selected="true">Nuclear shape, cell shape and protein pattern</option>
