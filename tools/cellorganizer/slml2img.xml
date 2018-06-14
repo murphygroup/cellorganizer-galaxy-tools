@@ -46,13 +46,14 @@
     filenames = {};
     for i=1:length(files) filenames{length(filenames)+1}=[pwd filesep files(i).name]; end;
     #for $field in $advanced_options.option
-      options.${field.name}=${field.value};
+       options.${field.name}=${field.value};
     #end for
     diary diary.txt;
     answer = slml2img(filenames, options);
     diary off;
     toc;
     exit;" > script.m;
+    sed -i "s/__sq__/'/g" script.m;
     cat script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;
@@ -96,7 +97,7 @@
     </section>
   </inputs>
   <outputs>
-    <data format="tiff" name="output" from_work_dir="cell1.ome.tif"/>
+    <data format="tiff" name="output" from_work_dir="cell1.ome.tif" label="Synthetic image"/>
   </outputs>
 <help>
 **Description**
