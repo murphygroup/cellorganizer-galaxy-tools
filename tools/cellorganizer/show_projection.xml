@@ -31,7 +31,7 @@
         <param format="tiff" name="input" type="data" label="OME.TIFF"></param>
     </inputs>
     <outputs>
-	   <data format="png" name="output" from_work_dir="output.png"/>
+	   <data format="png" name="output" from_work_dir="output.png" label="Image projection"/>
     </outputs>
     <stdio>
 	   <exit_code range="1" level="fatal" description="Invalid file format" />
