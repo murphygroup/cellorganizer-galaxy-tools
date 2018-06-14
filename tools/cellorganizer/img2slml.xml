@@ -476,41 +476,40 @@
       </when>
     </conditional>
 
+    <!-- GENERAL OPTIONS -->
     <section name="gen" title="General options" expanded="true">
       <param name="downsamplex" type="select" label="Select a downsampling factor in x">
-        <option value="5" selected="true">5</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="1" selected="true">1</option>
       </param>
       <param name="downsampley" type="select" label="Select a downsampling factor in y">
-        <option value="5" selected="true">5</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="1" selected="true">1</option>
       </param>
       <param name="downsamplez" type="select" label="Select a downsampling factor in z">
         <option value="5">5</option>
-        <option value="2">2</option>
         <option value="1" selected="true">1</option>
       </param>
-      <param name="verbose" type="boolean" label="Print all information provided during training?" selected="true">
-      </param>
-      <param name="debug" type="boolean" label="Save intermediate results?" selected="false">
-      </param>
     </section>
+    <!-- GENERAL OPTIONS -->
 
+    <!-- ADVANCED OPTIONS -->
     <section name="advanced" title="Advanced options" expanded="true">
       <repeat name="options" title="Options">
         <param name="name" type="text" label="Name"> </param>
         <param name="value" type="text" label="Values"></param>
       </repeat>
     </section>
+    <!-- ADVANCED OPTIONS -->
     
+    <!-- DOCUMENTATION -->
     <section name="doc" title="Documentation" expanded="true">
       <repeat name="documentation" title="Documentation">
         <param name="docname" type="text" label="Name"> </param>
         <param name="docvalues" type="text" label="Values"></param>
       </repeat>
     </section>
+     <!-- DOCUMENTATION -->
   </inputs>
   <outputs>
     <data format="mat" name="output" from_work_dir="model.mat"/>
