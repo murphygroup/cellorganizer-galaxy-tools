@@ -95,6 +95,9 @@
                   protImgDir{length(protImgDir)+1} = temp{j};
               end;
       end;
+      options.nucleus.id = uuidgen();
+      options.cell.id = uuidgen();
+      options.protein.id = uuidgen();
     end;
     options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
     options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
