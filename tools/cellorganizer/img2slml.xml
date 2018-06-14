@@ -164,7 +164,6 @@
             <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the DNA channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
               <!-- Nuclear shape model class -->
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
@@ -188,7 +187,6 @@
             <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
                   <option value="cell_membrane" selected="true">Cell membrane</option>
@@ -209,7 +207,6 @@
             <section name="pro" title="Protein model options" expanded="true">
               <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the image dataset"/>
               <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
-              <param name="proteinid" type="text" value="default" label="Provide an (optional) id for the protein model"/>
               <param name="proteincytonuclearflag" type="select" label="Select a protein pattern location">
                 <option value="cyto" selected="true">Cytoplasm</option>
                 <option value="nuc">Nucleus</option>
@@ -253,7 +250,6 @@
             <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
                   <option value="cell_membrane" selected="true">Cell membrane</option>
@@ -280,7 +276,6 @@
             <section name="pro" title="Protein model options" expanded="true">
               <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the image dataset"/>
               <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
-              <param name="proteinid" type="text" value="default" label="Provide an (optional) id for the protein model"/>
               <param name="proteincytonuclearflag" type="select" label="Select a protein location">
                 <option value="cyto" selected="true">Cytoplasm</option>
                 <option value="nuc">Nucleus</option>
@@ -348,7 +343,6 @@
             <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
                   <option value="cell_membrane" selected="true">Cell membrane</option>
@@ -394,7 +388,6 @@
             <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
                   <option value="cell_membrane" selected="true">Cell membrane</option>
@@ -434,7 +427,6 @@
             <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
@@ -458,7 +450,6 @@
             <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
