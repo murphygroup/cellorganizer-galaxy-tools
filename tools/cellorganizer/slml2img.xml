@@ -99,6 +99,9 @@
   <outputs>
     <data format="tiff" name="output" from_work_dir="cell1.ome.tif" label="Synthetic image"/>
   </outputs>
+  <stdio>
+   <exit_code range="1" level="fatal" description="Unable to find output file cell1.ome.tiff on disk" />
+  </stdio>
 <help>
 **Description**
 
