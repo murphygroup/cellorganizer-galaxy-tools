@@ -171,8 +171,7 @@
                 <!-- Nuclear shape model type -->
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">Medial axis</option>
-                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
+                     <option value="medial_axis" selected="true">Medial axis</option>
                   </param>
                 </when>
                 <when value="framework">
