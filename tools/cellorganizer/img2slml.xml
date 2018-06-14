@@ -150,7 +150,7 @@
         <option value="framework">Nuclear and cell shape (framework)</option>
         <option value="nuclear">Nuclear shape</option>
       </param>
-      <!-- train.flag -->
+      <!-- TRAIN.FLAG == ALL -->
       <when value="all">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality">
@@ -310,6 +310,8 @@
           </when>
         </conditional>
       </when>
+      <!-- TRAIN.FLAG == ALL -->
+
       <!-- TRAIN.FLAG == FRAMEWORK -->
       <when value="framework">
         <conditional name="dim">
@@ -418,6 +420,8 @@
         </conditional>
       </when>
       <!-- TRAIN.FLAG == FRAMEWORK -->
+
+      <!-- TRAIN.FLAG == NUCLEAR -->
       <when value="nuclear">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality">
@@ -474,6 +478,7 @@
           </when>
         </conditional>
       </when>
+       <!-- TRAIN.FLAG == FRAMEWORK -->
     </conditional>
 
     <!-- GENERAL OPTIONS -->
