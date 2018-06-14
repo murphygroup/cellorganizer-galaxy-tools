@@ -154,8 +154,8 @@
       <when value="all">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality">
-            <option value="3D">2D</option>
-            <option value="2D" selected="true">3D</option>
+            <option value="3D">3D</option>
+            <option value="2D" selected="true">2D</option>
           </param>
           <when value="2D">
             <section name="nuc" title="Nuclear shape model options" expanded="true">
