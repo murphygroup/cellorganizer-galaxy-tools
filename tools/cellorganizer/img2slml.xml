@@ -510,7 +510,7 @@
      <!-- DOCUMENTATION -->
   </inputs>
   <outputs>
-    <data format="mat" name="output" from_work_dir="model.mat" label="Generative model" />
+    <data format="mat" name="output" from_work_dir="model.mat" label="Generative model on ${input.name}" />
   </outputs>
 <help>
 
