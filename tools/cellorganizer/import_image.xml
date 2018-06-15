@@ -1,4 +1,4 @@
-<tool id="import_image_or_model" name="Imports image or model" version="1.0.0">
+<tool id="import_image" name="Imports image" version="1.0.0">
 <!--
  Copyright (C) 2007-2017 Murphy Lab
  Lane Center for Computational Biology
@@ -25,40 +25,25 @@
 -->
   <description>from a URL.</description>
   <command interpreter="bash">
-      import_image_or_model.sh ${input_type.URL} ${input_type.input_type_selector}
+      import_image.sh ${URL}
   </command>
   <inputs>
-      <conditional name="input_type">
-	  <param name="input_type_selector" type="select" label="Select type of data being downloaded">
-	      <option value="ometiff" selected="true">OME.TIFF</option>
-	      <option value="mat">Generative model</option>
-	  </param>
-	  <when value="ometiff">
-	      <param name="URL" type="text" value="http://www.cellorganizer.org/demos/demo3D34/img/cell1/cell1.ome.tif" label="Provide the image URL"/>
-	  </when>
-	  <when value="mat">
-	      <param name="URL" type="text" value="http://www.cellorganizer.org/downloads/models/nuc.mat" label="Provide the model URL"/>
-	  </when>
-      </conditional>
+      <param name="URL" type="text" value="http://www.cellorganizer.org/demos/demo3D34/img/cell1/cell1.ome.tif" label="Provide the image URL"/>
   </inputs>
   <outputs>
-      <data format="tiff" name="output" from_work_dir="download">
-	  <change_format>
-	      <when input="input_type.input_type_selector" value="mat" format="mat"/>
-	  </change_format>
-      </data>
+      <data format="tiff" name="output" from_work_dir="download"/>
   </outputs>
 <help>
     
 **Description**
 
-Downloads an image or model from the URL provided, if they are considered valid inputs.
+Downloads an image from the URL provided, if the image is considered a valid input.
 
 -----
 
 **Input**
 
-A link to an image or model. An image must be a valid OME.TIFF_, and any model must be a valid MAT-file_.
+A link to an image. The image must be a valid OME.TIFF_.
 
 OME.TIFF's provided are validated using the BioFormats_ command line tools_.
 
@@ -69,7 +54,6 @@ OME.TIFF's provided are validated using the BioFormats_ command line tools_.
 The file is placed in the workspace of the current history if it is deemed valid. 
 
 .. _OME.TIFF: https://docs.openmicroscopy.org/ome-model/5.6.3/ome-tiff/index.html
-.. _MAT-file: https://www.mathworks.com/help/matlab/import_export/mat-file-versions.html
 .. _BioFormats: http://www.openmicroscopy.org/site/products/bio-formats
 .. _tools: http://www.openmicroscopy.org/site/support/bio-formats5.5/users/comlinetools
 
