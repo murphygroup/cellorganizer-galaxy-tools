@@ -120,10 +120,10 @@
       options.model.downsampling = [$gen.downsamplex $gen.downsampley $gen.downsamplez];
     end;
     #for $field in $advanced.options
-       options.${field.name}='${field.value}';
+       options.${field.name}=${field.value};
     #end for
     #for $field in $doc.documentation
-  options.documentation.${field.docname}='${field.docvalues}';
+  options.documentation.${field.docname}=${field.docvalues};
     #end for
     options.model.filename = 'model.xml';
     diary diary.txt;
@@ -139,6 +139,8 @@
     diary off;
     toc;
     exit;" > script.m;
+    sed -i "s/__sq__/'/g" script.m;
+    sed -i "s/__at__/@/g" script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp -v script.m $output.extra_files_path;
     cp -v $__tool_directory__/check_if_files_exist_on_disk_and_link_them.sh .;
