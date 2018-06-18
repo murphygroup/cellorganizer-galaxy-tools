@@ -230,7 +230,6 @@
             <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
@@ -322,7 +321,6 @@
             <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the DNA channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
@@ -368,7 +366,6 @@
             <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
