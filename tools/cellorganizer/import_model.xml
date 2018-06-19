@@ -25,13 +25,13 @@
 -->
   <description>from a URL.</description>
   <command interpreter="bash">
-      import_model.sh ${input_type.input_type_selector}
+      import_model.sh ${URL}
   </command>
   <inputs>
       <param name="URL" type="text" value="http://www.cellorganizer.org/downloads/models/nuc.mat" label="Provide the model URL"/>
   </inputs>
   <outputs>
-      <data format="mat" name="output" from_work_dir="download"/>
+      <data format="mat" name="output" from_work_dir="download" label="Imported generative model"/>
   </outputs>
 <help>
     
