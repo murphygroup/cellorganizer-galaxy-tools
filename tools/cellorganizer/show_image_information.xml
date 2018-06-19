@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> image information </description>
+  <description> image information</description>
   <command>
     bash $__tool_directory__/show_image_information.sh $dataset
   </command>
