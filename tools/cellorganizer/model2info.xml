@@ -28,7 +28,7 @@
     bash $__tool_directory__/model2info.sh $model $output.extra_files_path;
   </command>
   <inputs>
-    <param name="model" type="data" format="mat" label="Choose data for synthesis" multiple="true"/>
+    <param name="model" type="data" format="mat" label="Choose generative model" multiple="true"/>
   </inputs>
   <outputs>
       <data format="html" name="output" label="Generative model information" from_work_dir="report/index.html"/>
