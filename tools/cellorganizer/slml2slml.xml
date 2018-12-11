@@ -37,6 +37,7 @@
     #end for
     files = dir( [ pwd filesep '*.mat']);
     filenames = {};
+    options.documentation.date = datestr(now);
     for i=1:length(files) filenames{length(filenames)+1}=[pwd filesep files(i).name]; end;
     #for $field in $doc.documentation
       options.documentation.${field.docname}='${field.docvalues}';
@@ -66,7 +67,7 @@
     </section>
   </inputs>
   <outputs>
-    <data format="mat" name="output" from_work_dir="model.mat"/>
+    <data format="mat" name="output" from_work_dir="model.mat" label="New generative model"/>
   </outputs>
 <help>
 

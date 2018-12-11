@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> image information </description>
+  <description> image information</description>
   <command>
     bash $__tool_directory__/show_image_information.sh $dataset
   </command>
@@ -31,7 +31,7 @@
     <param name="dataset" type="data" format="tiff" label="Choose an image" multiple="false" optional="false" />
   </inputs>
   <outputs>
-    <data format="html" name="output" from_work_dir="report.html"/>
+    <data format="html" name="output" from_work_dir="report.html" label="Image information"/>
   </outputs>
 <help>
 

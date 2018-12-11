@@ -25,13 +25,7 @@
 -->
   <description>a generative model.</description>
   <command>
-    echo -e "tic;
-    current_directory = pwd;
-    cellorganizer_directory = getenv('CELLORGANIZER');
-    cd( cellorganizer_directory );
-    setup();
-    cd( current_directory );
-    dimensionality = '$train.dim.dimensionality';
+  echo -e "tic;
     current_directory = pwd;
     cellorganizer_directory = getenv('CELLORGANIZER');
     cd( cellorganizer_directory );
@@ -41,33 +35,69 @@
     files = dir( [ pwd filesep '*.ome.tif'] );
     num_files = length(files);
     options.verbose = true;
-    options.debug = false;
+    options.debug = true;
     options.display = false;
     options.train.flag = '$train.trainflag';
     options.model.name = '$modelname';
-    options.model.id = '$modelid';
+    options.model.id = uuidgen();
     files = sort_nat({files.name});
     directory = pwd;
     if strcmpi( options.train.flag, 'nucleus' );
-    for i = 1:length(files);
-        dnaImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],1),3 );
-        cellImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],2),3 );
-        protImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],3),3 );
-    end;
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 1 );
+              for j=1:1:length(temp);
+                  dnaImgDir{length(dnaImgDir)+1} = temp{j};
+              end;
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 2 );
+              for j=1:1:length(temp);
+                  cellImgDir{length(cellImgDir)+1} = temp{j};
+              end;
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 3 );
+              for j=1:1:length(temp);
+                  protImgDir{length(protImgDir)+1} = temp{j};
+              end;
+      end;
+      options.nucleus.id = uuidgen();
     end;
     if strcmpi( options.train.flag, 'framework' );
-    for i = 1:length(files);
-        dnaImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],1),3 );
-        cellImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],2),3 );
-        protImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],3),3 );
-    end;
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 1 );
+              for j=1:1:length(temp);
+                  dnaImgDir{length(dnaImgDir)+1} = temp{j};
+              end;
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 2 );
+              for j=1:1:length(temp);
+                  cellImgDir{length(cellImgDir)+1} = temp{j};
+              end;
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 3 );
+              for j=1:1:length(temp);
+                  protImgDir{length(protImgDir)+1} = temp{j};
+              end;
+      end;
+      options.nucleus.id = uuidgen();
+      options.cell.id = uuidgen();
     end;
     if strcmpi( options.train.flag, 'all' );
-    for i = 1:length(files);
-        dnaImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],1),3 );
-        cellImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],2),3 );
-        protImgDir{i} = @() flipdim( OME_loadchannel( [directory filesep files{i}],3),3 );
-    end;
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 1 );
+              for j=1:1:length(temp);
+                  dnaImgDir{length(dnaImgDir)+1} = temp{j};
+              end;
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 2 );
+              for j=1:1:length(temp);
+                  cellImgDir{length(cellImgDir)+1} = temp{j};
+              end;
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 3 );
+              for j=1:1:length(temp);
+                  protImgDir{length(protImgDir)+1} = temp{j};
+              end;
+      end;
+      options.nucleus.id = uuidgen();
+      options.cell.id = uuidgen();
+      options.protein.id = uuidgen();
     end;
     options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
     options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
@@ -77,6 +107,7 @@
     options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
     options.protein.type = '$train.dim.pro.pclasstype.proteintype';
     options.protein.name = '$train.dim.pro.proteinname';
+    options.protein.id = uuidgen();
     options.protein.cytonuclearflag = '$train.dim.pro.proteincytonuclearflag';
     #end if
     options.model.resolution = OME_getResolution('./image00001.ome.tif');
@@ -89,10 +120,10 @@
       options.model.downsampling = [$gen.downsamplex $gen.downsampley $gen.downsamplez];
     end;
     #for $field in $advanced.options
-       options.${field.name}='${field.value}';
+       options.${field.name}=${field.value};
     #end for
     #for $field in $doc.documentation
-	options.documentation.${field.docname}='${field.docvalues}';
+  options.documentation.${field.docname}=${field.docvalues};
     #end for
     options.model.filename = 'model.xml';
     diary diary.txt;
@@ -108,6 +139,8 @@
     diary off;
     toc;
     exit;" > script.m;
+    sed -i "s/__sq__/'/g" script.m;
+    sed -i "s/__at__/@/g" script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp -v script.m $output.extra_files_path;
     cp -v $__tool_directory__/check_if_files_exist_on_disk_and_link_them.sh .;
@@ -116,36 +149,33 @@
   <inputs>
     <param name="dataset" type="data" label="Choose a data set for training a generative model" multiple="true" optional="false" />
     <param name="modelname" type="text" value="" label="Provide a name for the model"/>
-    <param name="modelid" type="text" value="" label="Provide an id for the model"/>
     <conditional name="train">
       <param name="trainflag" label="Selected the cellular components desired for modeling" type="select">
         <option value="all" selected="true">Nuclear shape, cell shape and protein pattern</option>
         <option value="framework">Nuclear and cell shape (framework)</option>
         <option value="nuclear">Nuclear shape</option>
       </param>
-      <!-- train.flag -->
+      <!-- TRAIN.FLAG == ALL -->
       <when value="all">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality">
-            <option value="2D">2D</option>
-            <option value="3D" selected="true">3D</option>
+            <option value="3D">3D</option>
+            <option value="2D" selected="true">2D</option>
           </param>
           <when value="2D">
-            <section name="nuc" title="Nuclear shape model options" expanded="false">
+            <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the DNA channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
               <!-- Nuclear shape model class -->
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
-                  <option value="nuclear_membrane" selected="true">nuclear membrane</option>
-                  <option value="framework">framework</option>
+                  <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <!-- Nuclear shape model type -->
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                     <option value="medial_axis" selected="true">Medial axis</option>
                   </param>
                 </when>
                 <when value="framework">
@@ -156,31 +186,29 @@
                 </when>
               </conditional>
             </section>
-            <section name="mem" title="Cell shape model options" expanded="false">
+            <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
-                  <option value="cell_membrane" selected="true">cell membrane</option>
-                  <option value="framework">framework</option>
+                  <option value="cell_membrane" selected="true">Cell membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="cell_membrane">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="ratio" selected="true">ratio</option>
+                    <option value="ratio" selected="true">Ratio</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
               </conditional>
             </section>
-            <section name="pro" title="Protein model options" expanded="false">
+            <section name="pro" title="Protein model options" expanded="true">
               <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the image dataset"/>
               <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
-              <param name="proteinid" type="text" value="default" label="Provide an (optional) id for the protein model"/>
               <param name="proteincytonuclearflag" type="select" label="Select a protein pattern location">
                 <option value="cyto" selected="true">Cytoplasm</option>
                 <option value="nuc">Nucleus</option>
@@ -188,70 +216,67 @@
               </param>
               <conditional name="pclasstype">
                 <param name="proteinclass" label="Choose a class for this model" type="select">
-                  <option value="vesicle" selected="true">vesicle</option>
+                  <option value="vesicle" selected="true">Vesicle</option>
                 </param>
                 <when value="vesicle">
                   <param name="proteintype" label="Choose a model type" type="select">
-                    <option value="gmm" selected="true">gmm</option>
+                    <option value="gmm" selected="true">Gaussian mixture model</option>
                   </param>
                 </when>
               </conditional>
             </section>
           </when>
           <when value="3D">
-            <section name="nuc" title="Nuclear shape model options" expanded="false">
+            <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
-                  <option value="nuclear_membrane" selected="true">nuclear membrane</option>
-                  <option value="framework">framework</option>
+                  <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                     <option value="medial_axis">Medial axis</option>
+                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
               </conditional>
             </section>
-            <section name="mem" title="Cell shape model options" expanded="false">
+            <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
-                  <option value="cell_membrane" selected="true">cell membrane</option>
-                  <option value="framework">framework</option>
-                  <option value="protein_distribution">protein distribution</option>
+                  <option value="cell_membrane" selected="true">Cell membrane</option>
+                  <option value="framework">Framework</option>
+                  <option value="protein_distribution">Protein distribution</option>
                 </param>
                 <when value="cell_membrane">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="ratio" selected="true">ratio</option>
+                    <option value="ratio" selected="true">Ratio</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
                 <when value="protein_distribution">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="morphing" selected="true">morphing</option>
+                    <option value="morphing" selected="true">Morphing</option>
                   </param>
                 </when>
               </conditional>
             </section>
-            <section name="pro" title="Protein model options" expanded="false">
+            <section name="pro" title="Protein model options" expanded="true">
               <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the image dataset"/>
               <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
-              <param name="proteinid" type="text" value="default" label="Provide an (optional) id for the protein model"/>
               <param name="proteincytonuclearflag" type="select" label="Select a protein location">
                 <option value="cyto" selected="true">Cytoplasm</option>
                 <option value="nuc">Nucleus</option>
@@ -259,23 +284,23 @@
               </param>
               <conditional name="pclasstype">
                 <param name="proteinclass" label="Choose a class for this model" type="select">
-                  <option value="vesicle" selected="true">vesicle</option>
-                  <option value="network">network</option>
-                  <option value="standardized_voxels">standardized voxels</option>
+                  <option value="vesicle" selected="true">Vesicle</option>
+                  <option value="network">Network</option>
+                  <option value="standardized_voxels">Standardized voxels</option>
                 </param>
                 <when value="vesicle">
                   <param name="proteintype" label="Choose a model type" type="select">
-                    <option value="gmm" selected="true">gmm</option>
+                    <option value="gmm" selected="true">Gaussian mixture model</option>
                   </param>
                 </when>
                 <when value="network">
                   <param name="proteintype" label="Choose a model type" type="select">
-                    <option value="microtubule_growth" selected="true">microtubule growth</option>
+                    <option value="microtubule_growth" selected="true">Microtubule growth</option>
                   </param>
                 </when>
                 <when value="standardized_voxels">
                   <param name="proteintype" label="Choose a model type" type="select">
-                    <option value="standardized_map_half-ellipsoid" selected="true">standardized map half-ellipsoid</option>
+                    <option value="standardized_map_half-ellipsoid" selected="true">Standardized map half-ellipsoid</option>
                   </param>
                 </when>
               </conditional>
@@ -283,6 +308,8 @@
           </when>
         </conditional>
       </when>
+      <!-- TRAIN.FLAG == ALL -->
+
       <!-- TRAIN.FLAG == FRAMEWORK -->
       <when value="framework">
         <conditional name="dim">
@@ -291,10 +318,9 @@
             <option value="3D" selected="true">3D</option>
           </param>
           <when value="2D">
-            <section name="nuc" title="Nuclear shape model options" expanded="false">
+            <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the DNA channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
                   <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
@@ -314,10 +340,9 @@
                 </when>
               </conditional>
             </section>
-            <section name="mem" title="Cell shape model options" expanded="false">
+            <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
                   <option value="cell_membrane" selected="true">Cell membrane</option>
@@ -338,51 +363,49 @@
             </section>
           </when>
           <when value="3D">
-            <section name="nuc" title="Nuclear shape model options" expanded="false">
+            <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
-                  <option value="nuclear_membrane" selected="true">nuclear membrane</option>
-                  <option value="framework">framework</option>
+                  <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                     <option value="medial_axis">Medial axis</option>
+                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
               </conditional>
             </section>
-            <section name="mem" title="Cell shape model options" expanded="false">
+            <section name="mem" title="Cell shape model options" expanded="true">
               <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
               <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
-              <param name="cellid" type="text" value="default" label="Provide an (optional) id for the cell model"/>
               <conditional name="cclasstype">
                 <param name="cellclass" label="Choose a class for this model" type="select">
-                  <option value="cell_membrane" selected="true">cell membrane</option>
-                  <option value="framework">framework</option>
-                  <option value="protein_distribution">protein distribution</option>
+                  <option value="cell_membrane" selected="true">Cell membrane</option>
+                  <option value="framework">Framework</option>
+                  <option value="protein_distribution">Protein distribution</option>
                 </param>
                 <when value="cell_membrane">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="ratio" selected="true">ratio</option>
+                    <option value="ratio" selected="true">Ratio</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
                 <when value="protein_distribution">
                   <param name="celltype" label="Choose a model type" type="select">
-                    <option value="morphing" selected="true">morphing</option>
+                    <option value="morphing" selected="true">Morphing</option>
                   </param>
                 </when>
               </conditional>
@@ -391,6 +414,8 @@
         </conditional>
       </when>
       <!-- TRAIN.FLAG == FRAMEWORK -->
+
+      <!-- TRAIN.FLAG == NUCLEAR -->
       <when value="nuclear">
         <conditional name="dim">
           <param name="dimensionality" type="select" label="Dimensionality">
@@ -398,48 +423,46 @@
             <option value="3D" selected="true">3D</option>
           </param>
           <when value="2D">
-            <section name="nuc" title="Nuclear shape model options" expanded="false">
+            <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
-                  <option value="nuclear_membrane" selected="true">nuclear membrane</option>
-                  <option value="framework">framework</option>
+                  <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                     <option value="medial_axis">Medial axis</option>
+                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
               </conditional>
             </section>
           </when>
           <when value="3D">
-            <section name="nuc" title="Nuclear shape model options" expanded="false">
+            <section name="nuc" title="Nuclear shape model options" expanded="true">
               <param name="dnachannel" type="integer" value="1" label="Provide the dna channel number for the image dataset"/>
               <param name="nucleusname" type="text" value="default" label="Provide an (optional) name for the nuclear model"/>
-              <param name="nucleusid" type="text" value="default" label="Provide an (optional) id for the nuclear model"/>å
               <conditional name="nclasstype">
                 <param name="nucleusclass" label="Choose a class for this model" type="select">
-                  <option value="nuclear_membrane" selected="true">nuclear membrane</option>
-                  <option value="framework">framework</option>
+                  <option value="nuclear_membrane" selected="true">Nuclear membrane</option>
+                  <option value="framework">Framework</option>
                 </param>
                 <when value="nuclear_membrane">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                     <option value="medial_axis">medial axis</option>
-                     <option value="cylindrical_surface" selected="true">cylindrical surface</option>
+                     <option value="medial_axis">Medial axis</option>
+                     <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
                   </param>
                 </when>
                 <when value="framework">
                   <param name="nucleustype" label="Choose a model type" type="select">
-                    <option value="diffeomorphic" selected="true">diffeomorphic</option>
+                    <option value="diffeomorphic" selected="true">Diffeomorphic</option>
                   </param>
                 </when>
               </conditional>
@@ -447,47 +470,46 @@
           </when>
         </conditional>
       </when>
+       <!-- TRAIN.FLAG == FRAMEWORK -->
     </conditional>
 
-    <section name="gen" title="General options" expanded="false">
+    <!-- GENERAL OPTIONS -->
+    <section name="gen" title="General options" expanded="true">
       <param name="downsamplex" type="select" label="Select a downsampling factor in x">
-        <option value="5" selected="true">5</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="1" selected="true">1</option>
       </param>
       <param name="downsampley" type="select" label="Select a downsampling factor in y">
-        <option value="5" selected="true">5</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="1" selected="true">1</option>
       </param>
       <param name="downsamplez" type="select" label="Select a downsampling factor in z">
         <option value="5">5</option>
-        <option value="2">2</option>
         <option value="1" selected="true">1</option>
       </param>
-      <param name="verbose" type="boolean" label="Print all information provided during training?" selected="true">
-      </param>
-      <param name="debug" type="boolean" label="Save intermediate results?" selected="false">
-      </param>
     </section>
+    <!-- GENERAL OPTIONS -->
 
+    <!-- ADVANCED OPTIONS -->
     <section name="advanced" title="Advanced options" expanded="true">
       <repeat name="options" title="Options">
         <param name="name" type="text" label="Name"> </param>
         <param name="value" type="text" label="Values"></param>
       </repeat>
     </section>
+    <!-- ADVANCED OPTIONS -->
     
-    <section name="doc" title="Documentation" expanded="false">
+    <!-- DOCUMENTATION -->
+    <section name="doc" title="Documentation" expanded="true">
       <repeat name="documentation" title="Documentation">
         <param name="docname" type="text" label="Name"> </param>
         <param name="docvalues" type="text" label="Values"></param>
       </repeat>
     </section>
+     <!-- DOCUMENTATION -->
   </inputs>
   <outputs>
-    <data format="mat" name="output" from_work_dir="model.mat"/>
-    <!--<data format="html" name="output2" from_work_dir="report.html"/>-->
+    <data format="mat" name="output" from_work_dir="model.mat" label="Generative model" />
   </outputs>
 <help>
 
