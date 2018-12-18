@@ -1,6 +1,6 @@
 <tool id="slml2img" name="Generates a synthetic image" version="0.0.1">
 <!--
- Copyright (C) 2007-2017 Murphy Lab
+ Copyright (C) 2007-2018 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>from a valid SLML model.</description>
+  <description> from a valid SLML model.</description>
   <command>
     echo -e "tic;
     current_directory = pwd;
@@ -55,6 +55,8 @@
     exit;" > script.m;
     sed -i "s/__sq__/'/g" script.m;
     sed -i "s/__at__/@/g" script.m;
+    sed -i "s/__oc__/{/g" script.m;
+    sed -i "s/__cc__/}/g" script.m;
     cat script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;

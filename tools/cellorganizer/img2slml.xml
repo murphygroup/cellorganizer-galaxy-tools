@@ -1,6 +1,6 @@
-<tool id="img2slml" name="Trains" version="0.0.3">
+<tool id="img2slml" name="Trains a generative model" version="0.0.3">
 <!-- 
- Copyright (C) 2012-2017 Murphy Lab
+ Copyright (C) 2012-2018 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>a generative model.</description>
+  <description> from a collection of OME.TIFFs..</description>
   <command>
   echo -e "tic;
     current_directory = pwd;
