@@ -51,6 +51,7 @@
 
     <!-- These are useful tools for images-->
     <section id="cellorganizer-tools-images" name="Useful tools for images">
+      <tool file="cellorganizer/export_to_vcell.xml" />
       <tool file="cellorganizer/show_3D_surface_plot.xml" />
       <tool file="cellorganizer/show_RGB_projection.xml" />
       <tool file="cellorganizer/show_projection.xml" />
@@ -62,6 +63,7 @@
     <section id="cellorganizer-tools-models" name="Useful tools for models">
       <tool file="cellorganizer/model2info.xml" />
       <tool file="cellorganizer/slml2slml.xml" />
+      <tool file="cellorganizer/show_shape_space.xml" />
     </section>
 
     <!-- Validators -->
