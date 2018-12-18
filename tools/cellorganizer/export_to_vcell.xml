@@ -1,5 +1,5 @@
-<tool id="export_to_vcell" name="export_to_vcell" version="0.0.1">
-  <description>Exports a 2D synthetic image to a format that can be imported in VCell.</description>
+<tool id="export_to_vcell" name="Exports a 2D synthetic image" version="0.0.1">
+  <description> to a format that can be imported in VCell.</description>
   <command interpreter="bash">
     export_to_vcell.sh $input
   </command>
@@ -28,4 +28,3 @@ Exports a 2D synthetic image as a indexed image that can be imported to VCell as
 - An indexed image.
 </help>
 </tool>
-
