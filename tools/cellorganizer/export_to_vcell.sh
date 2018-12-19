@@ -11,9 +11,12 @@ ln -s $INPUT $(pwd)/output.tif
 echo "
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
-cd ./cellorganizer
+tic;
+current_directory = pwd;
+cellorganizer_directory = getenv('CELLORGANIZER');
+cd( cellorganizer_directory );
 setup();
-cd('$WORKING_DIRECTORY');
+cd( current_directory );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 img = tif2img( 'output.tif' );
