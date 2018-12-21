@@ -157,6 +157,7 @@
         <option value="framework">Nuclear and cell shape (framework)</option>
         <option value="nuclear">Nuclear shape</option>
         <option value="cell">Cell shape</option>
+        <option value="protein">Protein pattern</option>
       </param>
       <!-- TRAIN.FLAG == ALL -->
       <when value="all">
