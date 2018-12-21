@@ -478,7 +478,6 @@
 
     <!-- GENERAL OPTIONS -->
     <section name="gen" title="General options" expanded="true">
-      <param name="debug" type="boolean" label="Debug flag" checked="false" />
       <param name="downsamplex" type="select" label="Select a downsampling factor in x">
         <option value="5">5</option>
         <option value="1" selected="true">1</option>
@@ -491,6 +490,7 @@
         <option value="5">5</option>
         <option value="1" selected="true">1</option>
       </param>
+      <param name="debug" type="boolean" label="Keep image parameterizations and temporary files?" checked="false" />
     </section>
     <!-- GENERAL OPTIONS -->
 
