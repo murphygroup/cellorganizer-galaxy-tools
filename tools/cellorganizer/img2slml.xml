@@ -42,6 +42,7 @@
     options.model.id = uuidgen();
     files = sort_nat({files.name});
     directory = pwd;
+    #if str( $train.trainflag ) == "nucleus"
     if strcmpi( options.train.flag, 'nucleus' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -62,6 +63,8 @@
       options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
       options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
     end;
+    #end if
+    #if str( $train.trainflag ) == "framework"
     if strcmpi( options.train.flag, 'framework' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -85,6 +88,8 @@
       options.cell.class = '$train.dim.mem.cclasstype.cellclass';
       options.cell.type = '$train.dim.mem.cclasstype.celltype';
     end;
+    #end if
+    #if str( $train.trainflag ) == "cell"
     if strcmpi( options.train.flag, 'cell' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -97,6 +102,8 @@
       options.cell.class = '$train.dim.mem.cclasstype.cellclass';
       options.cell.type = '$train.dim.mem.cclasstype.celltype';
     end;
+    #end if
+    #if str( $train.trainflag ) == "protein"
     if strcmpi( options.train.flag, 'protein' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -107,6 +114,8 @@
       end;
       options.protein.id = uuidgen();
     end;
+    #end if
+    #if str( $train.trainflag ) == "all"
     if strcmpi( options.train.flag, 'all' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -131,6 +140,7 @@
       options.cell.class = '$train.dim.mem.cclasstype.cellclass';
       options.cell.type = '$train.dim.mem.cclasstype.celltype';
     end;
+    #end if
     #if str( $train.trainflag ) == "all"
     options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
     options.protein.type = '$train.dim.pro.pclasstype.proteintype';
