@@ -181,6 +181,12 @@
     if strcmpi( options.train.flag, 'nucleus' ); 
       answer = img2slml( dimensionality, dnaImgDir, [], [], options );
      end;
+    if strcmpi( options.train.flag, 'cell' ); 
+      answer = img2slml( dimensionality, [], cellImgDir, [], options );
+    end;
+    if strcmpi( options.train.flag, 'nucleus' ); 
+      answer = img2slml( dimensionality, [], [], protImgDir, options );
+    end;
     diary off;
     toc;
     exit;" > script.m;
