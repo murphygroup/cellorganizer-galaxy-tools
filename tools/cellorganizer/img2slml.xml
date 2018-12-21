@@ -59,6 +59,8 @@
               end;
       end;
       options.nucleus.id = uuidgen();
+      options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
+      options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
     end;
     if strcmpi( options.train.flag, 'framework' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
@@ -78,6 +80,32 @@
       end;
       options.nucleus.id = uuidgen();
       options.cell.id = uuidgen();
+      options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
+      options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
+      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
+      options.cell.type = '$train.dim.mem.cclasstype.celltype';
+    end;
+    if strcmpi( options.train.flag, 'cell' );
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 2 );
+              for j=1:1:length(temp);
+                  cellImgDir{length(cellImgDir)+1} = temp{j};
+              end;
+      end;
+      options.cell.id = uuidgen();
+      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
+      options.cell.type = '$train.dim.mem.cclasstype.celltype';
+    end;
+    if strcmpi( options.train.flag, 'protein' );
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 3 );
+              for j=1:1:length(temp);
+                  protImgDir{length(protImgDir)+1} = temp{j};
+              end;
+      end;
+      options.protein.id = uuidgen();
     end;
     if strcmpi( options.train.flag, 'all' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
@@ -98,12 +126,19 @@
       options.nucleus.id = uuidgen();
       options.cell.id = uuidgen();
       options.protein.id = uuidgen();
+      options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
+      options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
+      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
+      options.cell.type = '$train.dim.mem.cclasstype.celltype';
     end;
-    options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
-    options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
-    options.cell.class = '$train.dim.mem.cclasstype.cellclass';
-    options.cell.type = '$train.dim.mem.cclasstype.celltype';
     #if str( $train.trainflag ) == "all"
+    options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
+    options.protein.type = '$train.dim.pro.pclasstype.proteintype';
+    options.protein.name = '$train.dim.pro.proteinname';
+    options.protein.id = uuidgen();
+    options.protein.cytonuclearflag = '$train.dim.pro.proteincytonuclearflag';
+    #end if
+    #if str( $train.trainflag ) == "protein"
     options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
     options.protein.type = '$train.dim.pro.pclasstype.proteintype';
     options.protein.name = '$train.dim.pro.proteinname';
