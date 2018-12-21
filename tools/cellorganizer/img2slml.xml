@@ -290,7 +290,6 @@
                 <param name="proteinclass" label="Choose a class for this model" type="select">
                   <option value="vesicle" selected="true">Vesicle</option>
                   <option value="network">Network</option>
-                  <option value="standardized_voxels">Standardized voxels</option>
                 </param>
                 <when value="vesicle">
                   <param name="proteintype" label="Choose a model type" type="select">
@@ -300,11 +299,6 @@
                 <when value="network">
                   <param name="proteintype" label="Choose a model type" type="select">
                     <option value="microtubule_growth" selected="true">Microtubule growth</option>
-                  </param>
-                </when>
-                <when value="standardized_voxels">
-                  <param name="proteintype" label="Choose a model type" type="select">
-                    <option value="standardized_map_half-ellipsoid" selected="true">Standardized map half-ellipsoid</option>
                   </param>
                 </when>
               </conditional>
@@ -500,7 +494,33 @@
           </when>
         </conditional>
       </when>
-       <!-- TRAIN.FLAG == CELL -->
+      <!-- TRAIN.FLAG == CELL -->
+              
+      <!-- TRAIN.FLAG == PROTEIN -->
+      <when value="protein">
+        <conditional name="dim">
+          <param name="dimensionality" type="select" label="Dimensionality">
+            <option value="3D" selected="true">3D</option>
+          </param>
+          <when value="3D">
+            <section name="pro" title="Protein model options" expanded="true">
+              <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the image dataset"/>
+              <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
+              <conditional name="pclasstype">
+                <param name="proteinclass" label="Choose a class for this model" type="select">
+                  <option value="standardized_voxels">Standardized voxels</option>
+                </param>
+                <when value="standardized_voxels">
+                  <param name="proteintype" label="Choose a model type" type="select">
+                    <option value="standardized_map_half-ellipsoid" selected="true">Standardized map half-ellipsoid</option>
+                  </param>
+                </when>
+              </conditional>
+            </section>
+          </when>
+        </conditional>
+      </when>
+      <!-- TRAIN.FLAG == PROTEIN -->
     </conditional>
 
     <!-- GENERAL OPTIONS -->
