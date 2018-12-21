@@ -156,6 +156,7 @@
         <option value="all" selected="true">Nuclear shape, cell shape and protein pattern</option>
         <option value="framework">Nuclear and cell shape (framework)</option>
         <option value="nuclear">Nuclear shape</option>
+        <option value="cell">Cell shape</option>
       </param>
       <!-- TRAIN.FLAG == ALL -->
       <when value="all">
@@ -473,7 +474,33 @@
           </when>
         </conditional>
       </when>
-       <!-- TRAIN.FLAG == FRAMEWORK -->
+       <!-- TRAIN.FLAG == NUCLEAR -->
+       
+       <!-- TRAIN.FLAG == CELL -->
+      <when value="cell">
+        <conditional name="dim">
+          <param name="dimensionality" type="select" label="Dimensionality">
+            <option value="3D" selected="true">3D</option>
+          </param>
+          <when value="3D">
+            <section name="mem" title="Cell shape model options" expanded="true">
+              <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
+              <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
+              <conditional name="cclasstype">
+                <param name="cellclass" label="Choose a class for this model" type="select">
+                  <option value="cell_membrane" selected="true">Cell membrane</option>
+                </param>
+                <when value="cell_membrane">
+                  <param name="celltype" label="Choose a model type" type="select">
+                    <option value="spharm_rpdm" selected="true">SPHARM</option>
+                  </param>
+                </when>
+              </conditional>
+            </section>
+          </when>
+        </conditional>
+      </when>
+       <!-- TRAIN.FLAG == CELL -->
     </conditional>
 
     <!-- GENERAL OPTIONS -->
