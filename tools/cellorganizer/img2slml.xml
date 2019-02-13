@@ -1,5 +1,5 @@
 <tool id="img2slml" name="Trains a generative model" version="0.0.3">
-<!-- 
+<!--
  Copyright (C) 2012-2018 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
@@ -173,18 +173,18 @@
     options.model.filename = 'model.xml';
     diary diary.txt;
     if strcmpi( options.train.flag, 'all' )
-      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, protImgDir, options ); 
+      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, protImgDir, options );
     end;
     if strcmpi( options.train.flag, 'framework' )
-      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options ); 
+      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options );
     end;
-    if strcmpi( options.train.flag, 'nucleus' ); 
+    if strcmpi( options.train.flag, 'nucleus' );
       answer = img2slml( dimensionality, dnaImgDir, [], [], options );
      end;
-    if strcmpi( options.train.flag, 'cell' ); 
+    if strcmpi( options.train.flag, 'cell' );
       answer = img2slml( dimensionality, [], cellImgDir, [], options );
     end;
-    if strcmpi( options.train.flag, 'nucleus' ); 
+    if strcmpi( options.train.flag, 'nucleus' );
       answer = img2slml( dimensionality, [], [], protImgDir, options );
     end;
     diary off;
@@ -425,6 +425,7 @@
                   <param name="nucleustype" label="Choose a model type" type="select">
                      <option value="medial_axis">Medial axis</option>
                      <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
+                     <option value="spharm-rpdm" selected="true">SPHARM-RPDM</option>
                   </param>
                 </when>
                 <when value="framework">
@@ -446,6 +447,7 @@
                 <when value="cell_membrane">
                   <param name="celltype" label="Choose a model type" type="select">
                     <option value="ratio" selected="true">Ratio</option>
+                    <option value="spharm-rpdm" selected="true">SPHARM-RPDM</option>
                   </param>
                 </when>
                 <when value="framework">
@@ -521,7 +523,7 @@
         </conditional>
       </when>
        <!-- TRAIN.FLAG == NUCLEAR -->
-       
+
        <!-- TRAIN.FLAG == CELL -->
       <when value="cell">
         <conditional name="dim">
@@ -547,7 +549,7 @@
         </conditional>
       </when>
       <!-- TRAIN.FLAG == CELL -->
-              
+
       <!-- TRAIN.FLAG == PROTEIN -->
       <when value="protein">
         <conditional name="dim">
@@ -601,7 +603,7 @@
       </repeat>
     </section>
     <!-- ADVANCED OPTIONS -->
-    
+
     <!-- DOCUMENTATION -->
     <section name="doc" title="Documentation" expanded="true">
       <repeat name="documentation" title="Documentation">
