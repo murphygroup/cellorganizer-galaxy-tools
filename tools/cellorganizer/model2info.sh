@@ -49,3 +49,11 @@ fi
 if [ -f report/show_shape_space_thumbnail.png ]; then
     cp -v report/show_shape_space_thumbnail.png $TEMPORARY_FOLDER
 fi
+
+if [ -f report/show_shape_evolution_thumbnail.png ]; then
+    cp -v report/show_shape_evolution_thumbnail.png $TEMPORARY_FOLDER
+fi
+
+if [ -f report/show_shape_evolution.png ]; then
+    cp -v report/show_shape_evolution.png $TEMPORARY_FOLDER
+fi
