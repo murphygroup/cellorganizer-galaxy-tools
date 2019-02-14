@@ -57,6 +57,8 @@
     sed -i "s/__at__/@/g" script.m;
     sed -i "s/__oc__/{/g" script.m;
     sed -i "s/__cc__/}/g" script.m;
+    sed -i "s/__ob__/[/g" script.m;
+    sed -i "s/__cb__/]/g" script.m;
     cat script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;
