@@ -425,7 +425,7 @@
                   <param name="nucleustype" label="Choose a model type" type="select">
                      <option value="medial_axis">Medial axis</option>
                      <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
-                     <option value="spharm-rpdm" selected="true">SPHARM-RPDM</option>
+                     <option value="spharm_rpdm" selected="true">SPHARM-RPDM</option>
                   </param>
                 </when>
                 <when value="framework">
@@ -447,7 +447,7 @@
                 <when value="cell_membrane">
                   <param name="celltype" label="Choose a model type" type="select">
                     <option value="ratio" selected="true">Ratio</option>
-                    <option value="spharm-rpdm" selected="true">SPHARM-RPDM</option>
+                    <option value="spharm_rpdm" selected="true">SPHARM-RPDM</option>
                   </param>
                 </when>
                 <when value="framework">
