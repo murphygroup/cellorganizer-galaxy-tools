@@ -1,6 +1,6 @@
-<tool id="validate_sbml_instance" name="Validates an SBML Level 3 instance" version="0.0.1">
+<tool id="validate_sbml_instance" name="Validates an SBML Level 3 instance." version="0.0.1">
 <!--
- Copyright (C) 2007-2017 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>.</description>
+  <description>Returns true if file is valid. False otherwise..</description>
   <command interpreter="bash">
 	validate_sbml_instance.sh $dataset
   </command>

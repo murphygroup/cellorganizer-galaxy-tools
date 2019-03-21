@@ -1,6 +1,6 @@
-<tool id="meshalyzer" name="Validates a Wavefront OBJ file" version="0.0.1">
+<tool id="meshalyzer" name="Validates a Wavefront OBJ file." version="0.0.1">
 <!--
- Copyright (C) 2007-2017 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>.</description>
+  <description>Returns true if file is valid. False otherwise.</description>
   <command>
   	echo ln -s $dataset $(pwd)/file.obj
   	ln -s $dataset $(pwd)/file.obj
