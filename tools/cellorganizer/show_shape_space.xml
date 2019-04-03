@@ -23,12 +23,12 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-<description> shape space plot from a diffeomorphic model.</description>
+<description> shape space plot from a model.</description>
 <command>
   bash $__tool_directory__/show_shape_space.sh $model $number_of_labels $grid_size $output.extra_files_path;
 </command>
 <inputs>
-  <param format="mat" name="model" type="data" label="Select diffeomorphic model"></param>
+  <param format="mat" name="model" type="data" label="Select model"></param>
   <param name="number_of_labels" type="integer" value="5" label="Number of Labels"/>
   <param name="grid_size" type="integer" value="50" label="Grid Size"/>
 </inputs>
@@ -50,7 +50,7 @@
 
 **Description**
 
-The shape space plot tool creates a visualization of the shape space from a trained diffeomorphic model.
+The shape space plot tool creates a visualization of the shape space from a trained model.
 
 -----
 
