@@ -1,6 +1,6 @@
 <tool id="slml2img" name="Generates a synthetic image" version="0.0.1">
 <!--
- Copyright (C) 2007-2018 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -39,7 +39,10 @@
     options.compression = 'lzw';
     options.synthesis = '$options_synthesis';
     options.output.tifimages = false;
-    options.output.OMETIFF = true;
+    options.output.OMETIFF = $other_options.options_output_OMETIFF;
+    options.output.SBMLSpatial = $other_options.options_output_SBMLSpatial;
+    options.output.VCML = $other_options.options_output_VCML;
+    options.output.indexedimage = $other_options.options_output_indexedimage;
     options.numberOfSynthesizedImages = 1;
     check_if_files_exist_on_disk_and_link_them_mat('$dataset');
     files = dir( [ pwd filesep '*.mat']);
@@ -62,7 +65,7 @@
     cat script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp script.m $output.extra_files_path;
-    bash $__tool_directory__/slml2img.sh "$output.extra_files_path/script.m";
+    bash $__tool_directory__/slml2img.sh "$output.extra_files_path/script.m" "$output.extra_files_path";
   </command>
   <inputs>
     <!-- select datasets -->
@@ -91,8 +94,10 @@
     
     <section name="other_options" title="Output Options" expanded="True">
       <!-- Output options -->
-      <param name="options.SBML" type="boolean" label="Write SBML instance(s)" checked="false" />
       <param name="options_output_OMETIFF" type="boolean" label="Output OMETIFF" checked="true" />
+      <param name="options_output_SBMLSpatial" type="boolean" label="SBML Spatial 3" checked="false" />
+      <param name="options_output_VCML" type="boolean" label="VCML instance" checked="false" />
+      <param name="options_output_indexedimage" type="boolean" label="Indexed image" checked="false" />
     </section>
     <section name="advanced_options" title="Advanced options" expanded="false">
       <repeat name="option" title="Options">
@@ -102,7 +107,18 @@
     </section>
   </inputs>
   <outputs>
-    <data format="tiff" name="output" from_work_dir="cell1.ome.tif" label="Synthetic image"/>
+    <data format="tiff" from_work_dir="cell1.ome.tif" name="output" label="OME.TIFF synthetic image">
+        <filter>other_options['options_output_OMETIFF']</filter>
+    </data>
+    <data format="xml" from_work_dir="cell.xml" name="output2" label="SBML instance">
+        <filter>other_options['options_output_SBMLSpatial']</filter>
+    </data>
+    <data format="xml" from_work_dir="cell.vcml" name="output3" label="VCML instance">
+        <filter>other_options['options_output_VCML']</filter>
+    </data>
+    <data format="png" from_work_dir="indexed.png" name="output3" label="Indexed image">
+        <filter>other_options['options_output_indexedimage']</filter>
+    </data>
   </outputs>
   <stdio>
    <exit_code range="1" level="fatal" description="Unable to find output file cell1.ome.tiff on disk" />

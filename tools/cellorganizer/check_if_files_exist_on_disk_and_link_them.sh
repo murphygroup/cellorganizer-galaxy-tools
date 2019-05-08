@@ -9,6 +9,7 @@ do
 	COUNTER=$((COUNTER+1))
 	VALUE=`printf "%05d\n" $COUNTER`
 	if [ -f $FILE ]; then
+		echo Linking $FILE to image$VALUE.ome.tif
 		ln -s $FILE ./image$VALUE.ome.tif 2>/dev/null
 	fi
 done

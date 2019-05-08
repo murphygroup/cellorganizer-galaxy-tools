@@ -1,4 +1,4 @@
-<tool id="export_to_vcell" name="Exports a 2D synthetic image to a format that can be imported in VCell." version="0.0.1">
+<tool id="export_to_vcell" name="Exports a 2D synthetic image for VCell." version="0.0.1">
 <!--
  Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description></description>
+  <description>Exports file as indexed image.</description>
   <command interpreter="bash">
     export_to_vcell.sh $input
   </command>
