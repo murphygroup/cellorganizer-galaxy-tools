@@ -113,10 +113,10 @@
     <data format="xml" from_work_dir="cell.xml" name="output2" label="SBML instance">
         <filter>other_options['options_output_SBMLSpatial']</filter>
     </data>
-    <data format="xml" from_work_dir="cell.vcml" name="output3" label="VCML instance">
+    <data format="vcml" from_work_dir="cell.vcml" name="output3" label="VCML instance">
         <filter>other_options['options_output_VCML']</filter>
     </data>
-    <data format="png" from_work_dir="indexed.png" name="output3" label="Indexed image">
+    <data format="png" from_work_dir="indexed.png" name="output4" label="Indexed image">
         <filter>other_options['options_output_indexedimage']</filter>
     </data>
   </outputs>
