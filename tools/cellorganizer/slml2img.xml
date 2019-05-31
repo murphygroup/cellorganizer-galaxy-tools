@@ -41,7 +41,7 @@
     options.output.tifimages = false;
     options.output.OMETIFF = $other_options.options_output_OMETIFF;
     options.output.SBMLSpatial = $other_options.options_output_SBMLSpatial;
-    options.output.VCML = $other_options.options_output_VCML;
+    options.output.writeVCML = $other_options.options_output_VCML;
     options.output.indexedimage = $other_options.options_output_indexedimage;
     options.numberOfSynthesizedImages = 1;
     check_if_files_exist_on_disk_and_link_them_mat('$dataset');
@@ -91,7 +91,7 @@
       <option value="sampled">sampled</option>
     </param>
     -->
-    
+
     <section name="other_options" title="Output Options" expanded="True">
       <!-- Output options -->
       <param name="options_output_OMETIFF" type="boolean" label="Output OMETIFF" checked="true" />
@@ -109,6 +109,7 @@
   <outputs>
     <data format="tiff" from_work_dir="cell1.ome.tif" name="output" label="OME.TIFF synthetic image">
         <filter>other_options['options_output_OMETIFF']</filter>
+
     </data>
     <data format="xml" from_work_dir="cell.xml" name="output2" label="SBML instance">
         <filter>other_options['options_output_SBMLSpatial']</filter>
