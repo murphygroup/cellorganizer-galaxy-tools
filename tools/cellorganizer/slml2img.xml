@@ -122,7 +122,6 @@
     </data>
   </outputs>
   <stdio>
-   <exit_code range="1" level="fatal" description="Unable to find output file cell1.ome.tiff on disk" />
   </stdio>
 <help>
 **Description**
