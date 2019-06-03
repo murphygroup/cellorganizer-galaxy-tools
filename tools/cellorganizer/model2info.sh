@@ -8,15 +8,15 @@ cat << EOF >> script.m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DO NOT MODIFY THIS BLOCK
 tic;
-current_directory = pwd; 
-cellorganizer_directory = getenv('CELLORGANIZER'); 
-cd( cellorganizer_directory ); 
-setup(); 
+current_directory = pwd;
+cellorganizer_directory = getenv('CELLORGANIZER');
+cd( cellorganizer_directory );
+setup();
 cd( current_directory );
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 check_if_files_exist_on_disk_and_link_them_mat('$MODEL');
-load( './model00001.mat' ); 
+load( './model00001.mat' );
 
 if is_diffeomorphic( model )
 	options.nlabels = 5;
@@ -25,6 +25,8 @@ if is_diffeomorphic( model )
 
 	show_shape_space_figure_galaxy_wrapper( './model00001.mat', options );
 end
+
+
 
 diary diary.txt;
 slml2info( {'./model00001.mat'} );

@@ -60,7 +60,7 @@ These rules are meant for CellOrganizer developers and contributors.
 
 4. Tools that generate more than one output, e.g. show_image_info, compare_models, should generate an HTML file with linked files. Those tools should have the option to allow users to export the document to PDF as well.
 
-#Bugs and Questions
+## Bugs and Questions
 
 Any GitHub user can create an issue on our public repository
 
@@ -69,3 +69,7 @@ Any GitHub user can create an issue on our public repository
 For other inquiries feel free to send an email to our mailing list
 
 * [Send email to mailing list](mailto:cellorganizer@compbio.cmu.edu)
+ 
+
+## License
+This project is licensed under the GNU General Public License v3.0
