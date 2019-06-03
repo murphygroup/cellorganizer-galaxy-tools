@@ -1,6 +1,6 @@
-<tool id="generate_3D_surface_plot" name="Generates" version="0.0.1">
+<tool id="generate_3D_surface_plot" name="Generates a surface plot from a 3D OME.TIFF image." version="0.0.1">
 <!--
- Copyright (C) 2007-2017 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-<description> a surface plot from a 3D OME.TIFF image.</description>
+<description></description>
 <command>
   bash $__tool_directory__/show_3D_surface_plot.sh $input $viewanglex $viewangley $alphavalue
 </command>

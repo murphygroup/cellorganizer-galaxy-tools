@@ -1,6 +1,6 @@
-<tool id="show_image_information" name="Show" version="0.0.1">
+<tool id="show_image_information" name="Show image information." version="0.0.1">
 <!--
- Copyright (C) 2007-2018 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> image information</description>
+  <description></description>
   <command>
     bash $__tool_directory__/show_image_information.sh $dataset
   </command>

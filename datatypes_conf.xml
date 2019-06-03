@@ -24,10 +24,12 @@
     <datatype extension="xlsx" type="galaxy.datatypes.binary:Xlsx" display_in_upload="true" />
     <datatype extension="zip" type="galaxy.datatypes.binary:CompressedZipArchive" display_in_upload="True"/>
     <datatype extension="mat" type="galaxy.datatypes.binary:Binary" display_in_upload="true" />
+    <datatype extension="OME.TIFF" type="galaxy.datatypes.binary:Binary" display_in_upload="true" />
     <datatype extension="html" type="galaxy.datatypes.text:Html" mimetype="text/html"/>
   </registration>
   <sniffers>
 	<sniffer type="galaxy.datatypes.binary:Mat"/>
+	<sniffer type="galaxy.datatypes.binary:OME.TIFF"/>
 	<sniffer type="galaxy.datatypes.tabular:CSV"/>
 	<sniffer type="galaxy.datatypes.binary:RData" />
 	<sniffer type="galaxy.datatypes.images:Jpg"/>

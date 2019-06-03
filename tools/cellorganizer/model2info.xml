@@ -1,6 +1,6 @@
-<tool id="model2report" name="Print information" version="0.0.2">
+<tool id="model2report" name="Print information about a generative model file." version="0.0.2">
 <!--
- Copyright (C) 2007-2018 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description> about a generative model file.</description>
+  <description></description>
   <command>
     bash $__tool_directory__/model2info.sh $model $output.extra_files_path;
   </command>
@@ -48,6 +48,5 @@ A generative model (mat file).
 **Output**
 
 Information about the generative model (HTML file).
-
 </help>
 </tool>

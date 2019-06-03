@@ -1,6 +1,6 @@
-<tool id="img2slml" name="Trains" version="0.0.3">
-<!-- 
- Copyright (C) 2012-2017 Murphy Lab
+<tool id="img2slml" name="Trains a generative model" version="0.0.3">
+<!--
+ Copyright (C) 2012-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-  <description>a generative model.</description>
+  <description> from a collection of OME.TIFFs.</description>
   <command>
   echo -e "tic;
     current_directory = pwd;
@@ -42,6 +42,7 @@
     options.model.id = uuidgen();
     files = sort_nat({files.name});
     directory = pwd;
+    #if str( $train.trainflag ) == "nucleus"
     if strcmpi( options.train.flag, 'nucleus' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -62,6 +63,8 @@
       options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
       options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
     end;
+    #end if
+    #if str( $train.trainflag ) == "framework"
     if strcmpi( options.train.flag, 'framework' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -80,11 +83,39 @@
       end;
       options.nucleus.id = uuidgen();
       options.cell.id = uuidgen();
-      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
-      options.cell.type = '$train.dim.mem.cclasstype.celltype';
       options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
       options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
+      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
+      options.cell.type = '$train.dim.mem.cclasstype.celltype';
     end;
+    #end if
+    #if str( $train.trainflag ) == "cell"
+    if strcmpi( options.train.flag, 'cell' );
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 2 );
+              for j=1:1:length(temp);
+                  cellImgDir{length(cellImgDir)+1} = temp{j};
+              end;
+      end;
+      options.cell.id = uuidgen();
+      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
+      options.cell.type = '$train.dim.mem.cclasstype.celltype';
+    end;
+    #end if
+    #if str( $train.trainflag ) == "protein"
+    if strcmpi( options.train.flag, 'protein' );
+      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
+      for i = 1:length(files);
+              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 3 );
+              for j=1:1:length(temp);
+                  protImgDir{length(protImgDir)+1} = temp{j};
+              end;
+      end;
+      options.protein.id = uuidgen();
+    end;
+    #end if
+    #if str( $train.trainflag ) == "all"
     if strcmpi( options.train.flag, 'all' );
       dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
       for i = 1:length(files);
@@ -104,24 +135,12 @@
       options.nucleus.id = uuidgen();
       options.cell.id = uuidgen();
       options.protein.id = uuidgen();
-      options.cell.class = '$train.dim.mem.cclasstype.cellclass';
-      options.cell.type = '$train.dim.mem.cclasstype.celltype';
       options.nucleus.class = '$train.dim.nuc.nclasstype.nucleusclass';
       options.nucleus.type = '$train.dim.nuc.nclasstype.nucleustype';
-    end;
-    if strcmpi( options.train.flag, 'cell' );
-      dnaImgDir = {}; cellImgDir = {}; protImgDir = {};
-      for i = 1:length(files);
-              temp = get_list_of_function_handles_from_ometiff( [directory filesep files{i}], 2 );
-              for j=1:1:length(temp);
-                  cellImgDir{length(cellImgDir)+1} = temp{j};
-              end;
-      end;
-      options.nucleus.id = uuidgen();
-      options.cell.id = uuidgen();
       options.cell.class = '$train.dim.mem.cclasstype.cellclass';
       options.cell.type = '$train.dim.mem.cclasstype.celltype';
     end;
+    #end if
     #if str( $train.trainflag ) == "all"
     options.protein.class = '$train.dim.pro.pclasstype.proteinclass';
     options.protein.type = '$train.dim.pro.pclasstype.proteintype';
@@ -154,14 +173,20 @@
     options.model.filename = 'model.xml';
     diary diary.txt;
     if strcmpi( options.train.flag, 'all' )
-      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, protImgDir, options ); 
+      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, protImgDir, options );
     end;
     if strcmpi( options.train.flag, 'framework' )
-      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options ); 
+      answer = img2slml( dimensionality, dnaImgDir, cellImgDir, [], options );
     end;
-    if strcmpi( options.train.flag, 'nucleus' ); 
+    if strcmpi( options.train.flag, 'nucleus' );
       answer = img2slml( dimensionality, dnaImgDir, [], [], options );
      end;
+    if strcmpi( options.train.flag, 'cell' );
+      answer = img2slml( dimensionality, [], cellImgDir, [], options );
+    end;
+    if strcmpi( options.train.flag, 'nucleus' );
+      answer = img2slml( dimensionality, [], [], protImgDir, options );
+    end;
     diary off;
     toc;
     exit;" > script.m;
@@ -169,6 +194,8 @@
     sed -i "s/__at__/@/g" script.m;
     sed -i "s/__oc__/{/g" script.m;
     sed -i "s/__cc__/}/g" script.m;
+    sed -i "s/__ob__/[/g" script.m;
+    sed -i "s/__cb__/]/g" script.m;
     if [ ! -d $output.extra_files_path ]; then mkdir $output.extra_files_path; fi;
     cp -v script.m $output.extra_files_path;
     cp -v $__tool_directory__/check_if_files_exist_on_disk_and_link_them.sh .;
@@ -182,6 +209,8 @@
         <option value="all" selected="true">Nuclear shape, cell shape and protein pattern</option>
         <option value="framework">Nuclear and cell shape (framework)</option>
         <option value="nuclear">Nuclear shape</option>
+        <option value="cell">Cell shape</option>
+        <option value="protein">Protein pattern</option>
       </param>
       <!-- TRAIN.FLAG == ALL -->
       <when value="all">
@@ -230,6 +259,7 @@
                 <when value="framework">
                   <param name="celltype" label="Choose a model type" type="select">
                     <option value="diffeomorphic" selected="true">Diffeomorphic</option>
+                    <option value="pca" selected="true">PCA</option>
                   </param>
                 </when>
               </conditional>
@@ -314,7 +344,6 @@
                 <param name="proteinclass" label="Choose a class for this model" type="select">
                   <option value="vesicle" selected="true">Vesicle</option>
                   <option value="network">Network</option>
-                  <option value="standardized_voxels">Standardized voxels</option>
                 </param>
                 <when value="vesicle">
                   <param name="proteintype" label="Choose a model type" type="select">
@@ -324,11 +353,6 @@
                 <when value="network">
                   <param name="proteintype" label="Choose a model type" type="select">
                     <option value="microtubule_growth" selected="true">Microtubule growth</option>
-                  </param>
-                </when>
-                <when value="standardized_voxels">
-                  <param name="proteintype" label="Choose a model type" type="select">
-                    <option value="standardized_map_half-ellipsoid" selected="true">Standardized map half-ellipsoid</option>
                   </param>
                 </when>
               </conditional>
@@ -403,6 +427,7 @@
                   <param name="nucleustype" label="Choose a model type" type="select">
                      <option value="medial_axis">Medial axis</option>
                      <option value="cylindrical_surface" selected="true">Cylindrical surface</option>
+                     <option value="spharm_rpdm" selected="true">SPHARM-RPDM</option>
                   </param>
                 </when>
                 <when value="framework">
@@ -424,6 +449,7 @@
                 <when value="cell_membrane">
                   <param name="celltype" label="Choose a model type" type="select">
                     <option value="ratio" selected="true">Ratio</option>
+                    <option value="spharm_rpdm" selected="true">SPHARM-RPDM</option>
                   </param>
                 </when>
                 <when value="framework">
@@ -498,7 +524,59 @@
           </when>
         </conditional>
       </when>
-       <!-- TRAIN.FLAG == FRAMEWORK -->
+       <!-- TRAIN.FLAG == NUCLEAR -->
+
+       <!-- TRAIN.FLAG == CELL -->
+      <when value="cell">
+        <conditional name="dim">
+          <param name="dimensionality" type="select" label="Dimensionality">
+            <option value="3D" selected="true">3D</option>
+          </param>
+          <when value="3D">
+            <section name="mem" title="Cell shape model options" expanded="true">
+              <param name="cellchannel" type="integer" value="2" label="Provide the cell channel number for the image dataset"/>
+              <param name="cellname" type="text" value="default" label="Provide an (optional) name for the cell model"/>
+              <conditional name="cclasstype">
+                <param name="cellclass" label="Choose a class for this model" type="select">
+                  <option value="cell_membrane" selected="true">Cell membrane</option>
+                </param>
+                <when value="cell_membrane">
+                  <param name="celltype" label="Choose a model type" type="select">
+                    <option value="spharm_rpdm" selected="true">SPHARM</option>
+                  </param>
+                </when>
+              </conditional>
+            </section>
+          </when>
+        </conditional>
+      </when>
+      <!-- TRAIN.FLAG == CELL -->
+
+      <!-- TRAIN.FLAG == PROTEIN -->
+      <when value="protein">
+        <conditional name="dim">
+          <param name="dimensionality" type="select" label="Dimensionality">
+            <option value="3D" selected="true">3D</option>
+          </param>
+          <when value="3D">
+            <section name="pro" title="Protein model options" expanded="true">
+              <param name="proteinchannel" type="integer" value="3" label="Provide the protein channel number for the image dataset"/>
+              <param name="proteinname" type="text" value="default" label="Provide an (optional) name for the protein model"/>
+              <conditional name="pclasstype">
+                <param name="proteinclass" label="Choose a class for this model" type="select">
+                  <option value="standardized_voxels">Standardized voxels</option>
+                </param>
+                <when value="standardized_voxels">
+                  <param name="proteintype" label="Choose a model type" type="select">
+                    <option value="standardized_map_half-ellipsoid" selected="true">Standardized map half-ellipsoid</option>
+                  </param>
+                </when>
+              </conditional>
+            </section>
+          </when>
+        </conditional>
+      </when>
+      <!-- TRAIN.FLAG == PROTEIN -->
     </conditional>
 
     <!-- GENERAL OPTIONS -->
@@ -515,6 +593,7 @@
         <option value="5">5</option>
         <option value="1" selected="true">1</option>
       </param>
+      <param name="debug" type="boolean" label="Keep image parameterizations and temporary files?" checked="false" />
     </section>
     <!-- GENERAL OPTIONS -->
 
@@ -526,7 +605,7 @@
       </repeat>
     </section>
     <!-- ADVANCED OPTIONS -->
-    
+
     <!-- DOCUMENTATION -->
     <section name="doc" title="Documentation" expanded="true">
       <repeat name="documentation" title="Documentation">
@@ -538,6 +617,9 @@
   </inputs>
   <outputs>
     <data format="mat" name="output" from_work_dir="model.mat" label="Generative model" />
+    <data format="zip" from_work_dir="parameterization_and_temp_results.zip" name="output2" label="Image parameterizations and temp results">
+    	<filter>gen['debug']</filter>
+    </data>
   </outputs>
 <help>
 

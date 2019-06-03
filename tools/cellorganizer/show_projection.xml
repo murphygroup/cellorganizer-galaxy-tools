@@ -1,6 +1,6 @@
-<tool id="show_projection" name="Makes" version="0.0.1">
+<tool id="show_projection" name="Makes a projection from an OME.TIFF." version="0.0.1">
 <!--
- Copyright (C) 2007-2018 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-    <description> a projection from an OME.TIFF.</description>
+    <description></description>
     <command>
 	   bash $__tool_directory__/show_projection.sh $input $output.extra_files_path;
     </command>

@@ -29,22 +29,7 @@ end
 
 
 diary diary.txt;
-
-%Load multiple models if tcell model
-if is_tcell_model(model)
-	files=dir(fullfile('.','*.mat'));
-	models = fullfile('.', {files.name});
-	slml2info(models);
-
-	%Change name of file to show_enrichment.png
-	img_name=ml_ls('report/*model_mean_enrichment_plot_mdl*.png');
-	I = imread( img_name{1} );
-	imwrite( I, 'report/show_enrichment.png' );
-
-else
-	slml2info({'./model00001.mat'});
-end
-
+slml2info( {'./model00001.mat'} );
 diary off;
 toc,
 exit;
@@ -73,8 +58,4 @@ fi
 
 if [ -f report/show_shape_evolution.png ]; then
     cp -v report/show_shape_evolution.png $TEMPORARY_FOLDER
-fi
-
-if [ -f report/show_enrichment.png ]; then
-    cp -v report/show_enrichment.png $TEMPORARY_FOLDER
 fi

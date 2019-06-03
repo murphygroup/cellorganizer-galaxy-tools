@@ -1,6 +1,6 @@
-<tool id="ometiff_validation" name="Validates" version="0.0.1">
+<tool id="ometiff_validation" name="Validates an OME.TIFF." version="0.0.1">
 <!--
- Copyright (C) 2007-2017 Murphy Lab
+ Copyright (C) 2007-2019 Murphy Lab
  Lane Center for Computational Biology
  School of Computer Science
  Carnegie Mellon University
@@ -23,7 +23,7 @@
  For additional information visit http://murphylab.web.cmu.edu or
  send email to murphy@cmu.edu
 -->
-<description>an OME.TIFF.</description>
+<description>Returns true if file is valid. False otherwise.</description>
 <command interpreter="bash">
   validate_ometiff_file.sh $dataset
 </command>
