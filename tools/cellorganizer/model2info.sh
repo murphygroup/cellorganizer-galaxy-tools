@@ -59,3 +59,7 @@ fi
 if [ -f report/show_shape_evolution.png ]; then
     cp -v report/show_shape_evolution.png $TEMPORARY_FOLDER
 fi
+
+if [ -d report/images ]; then
+    cp -rv report/images $TEMPORARY_FOLDER
+fi
